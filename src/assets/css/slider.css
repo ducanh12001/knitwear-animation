@@ -1,0 +1,67 @@
+.imagesSlider .swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  left: 5vw !important;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  margin: 0;
+}
+
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  right: 5vw !important;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  margin: 0;
+}
+
+.imagesSlider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.titlesSlider {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 25 !important;
+}
+
+.titlesSlider .swiper-wrapper .swiper-slide h2 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: auto;
+  z-index: 20;
+  text-align: center;
+  mix-blend-mode: difference;
+  margin: 0;
+  font-size: 5vw;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 100%;
+  text-transform: uppercase;
+}
