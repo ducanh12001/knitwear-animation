@@ -21,16 +21,16 @@ export function ImageSlider({ slides, swiperRef, onSwiper }) {
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
-          <a href={""} className="swiper-slide relative w-full h-full">
-            <div className="slide-image desktop relative w-full h-full">
+          <a href={""} className="swiper-slide relative h-full w-full">
+            <div className="slide-image desktop relative h-full w-full">
               <img
                 src={slide.desktopImg}
                 alt={slide.title}
-                className="w-full h-full block object-cover"
+                className="block h-full w-full object-cover"
                 style={{ objectPosition: "center bottom" }}
               />
             </div>
-            <div className="slide-image mobile relative w-full h-full">
+            <div className="slide-image mobile relative h-full w-full">
               <img src={slide.mobileImg} alt={slide.title} />
             </div>
           </a>

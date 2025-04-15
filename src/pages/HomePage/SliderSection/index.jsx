@@ -44,8 +44,8 @@ export function SliderSection({}) {
   ];
 
   return (
-    <section className="homepage--slider relative w-full h-screen">
-      <div className="relative w-full h-full">
+    <section className="homepage--slider relative h-screen w-full">
+      <div className="relative h-full w-full">
         <ImageSlider
           slides={slides}
           swiperRef={imagesSwiperRef}

@@ -1,41 +1,29 @@
 import { useEffect } from "react";
 import gsap from "gsap";
+import ScrollVelocity from "./animations/ScrollVelocity";
 
 export function Header() {
-  useEffect(() => {
-    gsap.to(".fixed-rolling-text-bar .wrapper .item", {
-      x: "-200%",
-      repeat: -1,
-      duration: 10,
-      ease: "linear",
-    });
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <header className="has-banner">
-      <div className="fixed-rolling-text-bar active--rotation">
-        <div className="wrapper">
-          {[...Array(4)].map((_, index) => (
-            <div className="item" key={index}>
-              <p className="text-white uppercase whitespace-nowrap">
-                Akke Promo Launch 50% off – Spedizione gratuita per ordini
-                superiori a 350€
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
+      <ScrollVelocity
+        texts={[
+          "Akke Promo Launch 50% off – Spedizione gratuita per ordini superiori a 350€",
+        ]}
+        className="custom-scroll-text"
+      />
       <div className="header-wrapper text-[1.2rem]">
-        <div className="left relative w-auto flex justify-start items-start gap-[6rem]">
+        <div className="left relative flex w-auto items-start justify-start gap-[6rem]">
           <div className="logo">
-            <a href="" className="js-header-background">
+            <a href="" className="js-header-background text-white">
               ABC
             </a>
           </div>
-          <div className="nav relative w-auto h-auto flex flex-col justify-start items-start gap-[1rem]">
+          <div className="nav relative flex h-auto w-auto flex-col items-start justify-start gap-[1rem]">
             <ul
               id="menu-left-menu"
-              className="menu relative flex justify-start items-center gap-[1rem]"
+              className="menu relative flex items-center justify-start gap-[1rem]"
             >
               <li>
                 <a href="">Menswear</a>
@@ -49,27 +37,27 @@ export function Header() {
             </ul>
           </div>
         </div>
-        <div className="right relative w-auto flex justify-end items-start gap-[3rem]">
-          <div className="nav relative flex justify-end items-start gap-[10rem]">
+        <div className="right relative flex w-auto items-start justify-end gap-[3rem]">
+          <div className="nav relative flex items-start justify-end gap-[10rem]">
             <ul
               id="menu-right-menu"
-              className="menu relative flex justify-start items-center gap-[1rem]"
+              className="menu relative flex items-center justify-start gap-[1rem]"
             >
               <li>
                 <a
                   href="https://akkeknitwear.com/akkeworld/"
-                  className="text-[#FD7453] "
+                  className="text-[#FD7453]"
                 >
                   Akkeworld
                 </a>
               </li>
             </ul>
-            <ul className="relative flex justify-start items-center gap-[1rem]">
+            <ul className="relative flex items-center justify-start gap-[1rem]">
               <li>
                 <span className="open--navbar-login text-white">Login</span>
               </li>
               <li>
-                <div className="header--bag flex justify-center items-center cursor-pointer">
+                <div className="header--bag flex cursor-pointer items-center justify-center">
                   <span className="text-white">Cart</span>
                   <div className="total--bag text-[#FD7453]">(0)</div>
                 </div>

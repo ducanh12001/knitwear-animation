@@ -3,6 +3,7 @@ import { Navigation, EffectCreative } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-creative";
+import DecryptedText from "../../../components/animations/DecryptedText.jsx";
 
 export function TitleSlider({ slides, swiperRef, onSwiper }) {
   return (
@@ -38,7 +39,18 @@ export function TitleSlider({ slides, swiperRef, onSwiper }) {
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
           <a href={""} className="swiper-slide">
-            <h2>{slide.title}</h2>
+            <h2 className="font-humane">
+              {index === 0 ? (
+                <DecryptedText
+                  text={slide.title}
+                  animateOn="view"
+                  revealDirection="center"
+                  maxIterations={40}
+                />
+              ) : (
+                slide.title
+              )}
+            </h2>
           </a>
         </SwiperSlide>
       ))}

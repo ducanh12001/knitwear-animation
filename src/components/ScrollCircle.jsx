@@ -29,14 +29,14 @@ function ScrollCircle() {
       const maxScroll = document.body.scrollHeight - window.innerHeight;
 
       if (scrollY <= 0) {
-        gsap.to(arrow, { rotation: 180, duration: 0.3 });
-      } else if (scrollY >= maxScroll) {
         gsap.to(arrow, { rotation: 0, duration: 0.3 });
+      } else if (scrollY >= maxScroll) {
+        gsap.to(arrow, { rotation: 180, duration: 0.3 });
       } else {
         if (scrollY > lastScrollY.current) {
-          gsap.to(arrow, { rotation: 180, duration: 0.3 });
-        } else {
           gsap.to(arrow, { rotation: 0, duration: 0.3 });
+        } else {
+          gsap.to(arrow, { rotation: 180, duration: 0.3 });
         }
       }
       lastScrollY.current = scrollY;
@@ -51,8 +51,16 @@ function ScrollCircle() {
   }, []);
 
   return (
-    <div id="circle-scroll">
-      <div className="arrow up" ref={arrowRef} />
+    <div
+      id="circle-scroll"
+      onClick={() => {
+        window.scrollTo(0, 0);
+      }}
+    >
+      <div
+        className="relative h-[1.5rem] w-[1.5rem] rotate-0 bg-[#302F35] mask-[url('/src/assets/arrow.svg')] mask-no-repeat"
+        ref={arrowRef}
+      />
       <div className="circle-back">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <circle cx="50" cy="50" r="48"></circle>

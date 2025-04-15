@@ -1,6 +1,6 @@
 import { SliderSection } from "./SliderSection";
 
-function MainContent() {
+function HomePage() {
   return (
     <main className="block bg-black">
       <div className="overflow-hidden">
@@ -10,4 +10,4 @@ function MainContent() {
   );
 }
 
-export default MainContent;
+export default HomePage;

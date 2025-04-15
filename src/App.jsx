@@ -1,16 +1,25 @@
 import ScrollCircle from "./components/ScrollCircle";
-import MainContent from "./components/MainContent";
-import "./App.css";
 import { Header } from "./components/Header";
-import ProductList from "./components/MainContent/ProductList";
+import HomePage from "./pages/HomePage";
+import "./App.css";
+import ProductList from "./pages/HomePage/ProductList";
+import Footer from "./components/Footer";
+import { useEffect } from "react";
+import CustomScrollbar from "./components/CustomScrollbar";
 
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="relative w-full h-auto">
+    <div className="relative h-auto w-full">
       <Header />
-      <MainContent />
+      <HomePage />
       <ProductList />
+      <Footer />
       <ScrollCircle />
+      <CustomScrollbar />
     </div>
   );
 }
