@@ -23,7 +23,6 @@ const Footer = () => {
       setErrors((prev) => ({ ...prev, invalid: true }));
       return;
     }
-    // Giả lập kiểm tra email đã tồn tại
     if (email === "test@example.com") {
       setErrors((prev) => ({ ...prev, exists: true }));
       return;
@@ -34,15 +33,8 @@ const Footer = () => {
   };
 
   return (
-    <motion.footer
-      className="relative box-border w-full bg-[#A9AFA4] p-16"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.8 }}
-    >
+    <footer className="relative box-border w-full bg-[#A9AFA4] p-16">
       <div className="relative flex h-auto w-full flex-col gap-[15rem]">
-        {/* Footer Top */}
         <div className="relative flex h-auto w-full flex-col gap-8 md:flex-row md:gap-0">
           <div className="relative w-1/2">
             <h2 className="font-humane leading-full m-0 text-[6vw] font-bold text-[#302F35] uppercase">
@@ -97,7 +89,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Footer Middle */}
         <div className="relative flex h-auto w-full items-center justify-between">
           <div className="flex grid-cols-3 flex-col gap-8 md:grid md:gap-[10rem]">
             <div className="relative flex h-auto w-full flex-col gap-4 md:gap-8">
@@ -200,7 +191,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Footer Bottom */}
         <div className="relative box-border flex h-auto w-full items-center justify-between">
           <div className="relative flex w-auto flex-col items-start justify-start gap-0 md:flex-row md:items-center md:gap-4">
             <p className="leading-full text-xl text-[#302F35] uppercase">
@@ -220,7 +210,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 };
 

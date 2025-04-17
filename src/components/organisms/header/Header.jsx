@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import gsap from "gsap";
-import ScrollVelocity from "./animations/ScrollVelocity";
+import ScrollVelocity from "../../animations/ScrollVelocity";
 
 export function Header() {
   useEffect(() => {}, []);
@@ -9,9 +8,8 @@ export function Header() {
     <header className="has-banner">
       <ScrollVelocity
         texts={[
-          "Akke Promo Launch 50% off – Spedizione gratuita per ordini superiori a 350€",
+          "Akke Promo Launch 50% off – Free shipping for orders over 350€",
         ]}
-        className="custom-scroll-text"
       />
       <div className="header-wrapper text-[1.2rem]">
         <div className="left relative flex w-auto items-start justify-start gap-[6rem]">

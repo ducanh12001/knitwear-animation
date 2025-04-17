@@ -14,7 +14,7 @@ export function ImageSlider({ slides, swiperRef, onSwiper }) {
       spaceBetween={0}
       slidesPerView={1}
       loop={true}
-      className="imagesSlider"
+      className="imagesSlider relative !z-10 h-full w-full"
       ref={swiperRef}
       onSwiper={onSwiper}
       speed={1500}
@@ -22,16 +22,20 @@ export function ImageSlider({ slides, swiperRef, onSwiper }) {
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
           <a href={""} className="swiper-slide relative h-full w-full">
-            <div className="slide-image desktop relative h-full w-full">
+            <div className="slide-image relative hidden h-full w-full md:block">
               <img
                 src={slide.desktopImg}
                 alt={slide.title}
-                className="block h-full w-full object-cover"
+                className="block h-full w-full object-cover object-center"
                 style={{ objectPosition: "center bottom" }}
               />
             </div>
-            <div className="slide-image mobile relative h-full w-full">
-              <img src={slide.mobileImg} alt={slide.title} />
+            <div className="slide-image relative block h-full w-full md:hidden">
+              <img
+                src={slide.mobileImg}
+                alt={slide.title}
+                className="block h-full w-full object-cover object-center"
+              />
             </div>
           </a>
         </SwiperSlide>

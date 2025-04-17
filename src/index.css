@@ -119,10 +119,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-section {
-  display: block;
-}
-
 img {
   border-style: none;
 }
@@ -144,12 +140,4 @@ ul {
   button {
     background-color: #f9f9f9;
   }
-}
-
-.desktop {
-  display: block !important;
-}
-
-.mobile {
-  display: none !important;
 }
