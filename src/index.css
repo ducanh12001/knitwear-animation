@@ -141,3 +141,19 @@ ul {
     background-color: #f9f9f9;
   }
 }
+
+.desktop {
+  display: none;
+}
+
+.mobile {
+  display: block;
+}
+@media (min-width: 48rem /* 768px */) {
+  .desktop {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
+}

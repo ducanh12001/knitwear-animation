@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router";
 import HomePage from "./pages/HomePage";
 import CustomScrollbar from "./components/others/CustomScrollbar";
 import { Header } from "./components/organisms/header/Header";
 import Footer from "./components/organisms/footer/Footer";
 import ScrollCircle from "./components/others/ScrollCircle";
-import "./App.css";
-import { Route, Routes, useLocation, useNavigate } from "react-router";
 import Lenis from "lenis";
 import gsap from "gsap";
 import ProductCollection from "./pages/ProductCollection";
+import AkkeLimited from "./pages/AkkeLimited";
+import "./App.css";
 
 function App() {
   const location = useLocation();
@@ -143,6 +144,7 @@ function App() {
                 path="/categoria-prodotto/womenswear/"
                 element={<ProductCollection isMen={false} />}
               />
+              <Route path="/everest-akke-limited" element={<AkkeLimited />} />
             </Routes>
             <Footer />
             <ScrollCircle />

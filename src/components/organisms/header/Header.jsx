@@ -85,7 +85,7 @@ export function Header() {
                 <Link to="/categoria-prodotto/womenswear/">Womenswear</Link>
               </li>
               <li>
-                <Link to="/">Limited</Link>
+                <Link to="/everest-akke-limited">Limited</Link>
               </li>
             </ul>
           </div>
@@ -107,9 +107,9 @@ export function Header() {
             </ul>
             <ul className="relative flex items-center justify-start gap-[1rem]">
               <li>
-                <span className="open--navbar-login leading-full text-[14px] text-white uppercase md:text-[1.6rem]">
+                <div className="open--navbar-login leading-full text-[14px] text-white uppercase md:text-[1.6rem]">
                   Login
-                </span>
+                </div>
               </li>
               <li>
                 <div className="header--bag leading-full flex cursor-pointer items-center justify-center text-[14px] uppercase md:text-[1.6rem]">
