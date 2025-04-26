@@ -126,7 +126,6 @@ function Limited() {
       >
         <a
           href="https://akkeknitwear.com/everest-akke-limited/"
-          cursor-className="hover"
           className="relative block w-full"
         >
           <div className="image-back relative h-auto w-full">

@@ -3,10 +3,6 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        // inter: ["Inter", "sans-serif"],
-        // humane: ["Humane Grotesque", "sans-serif"],
-      },
       animation: {
         fadeIn: "fadeIn 1s ease-in-out",
       },

@@ -289,9 +289,9 @@ function Roadmap() {
           </div>
         </div>
       </div>
-      <div class="button-element relative mx-auto my-0 block h-auto w-auto md:hidden">
-        <a class="button-container relative block h-full w-full" href="">
-          <div class="back-track absolute top-0 left-0 h-full w-full"></div>
+      <div className="button-element relative mx-auto my-0 block h-auto w-auto md:hidden">
+        <a className="button-container relative block h-full w-full" href="">
+          <div className="back-track absolute top-0 left-0 h-full w-full"></div>
           <span className="leading-full relative box-border block px-[3.75vw] py-[2.3vw] text-[1.75rem] text-white uppercase">
             Discover Akke World
           </span>

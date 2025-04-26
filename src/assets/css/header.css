@@ -5,8 +5,6 @@ header {
   width: 100%;
   height: auto;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
   flex-direction: column;
   padding: 5vh 0 0 0;
   box-sizing: border-box;
@@ -29,10 +27,4 @@ header .header-wrapper {
   align-items: flex-start;
   padding: 0 5vw;
   box-sizing: border-box;
-}
-
-header .header-wrapper .left .nav ul li a {
-  color: #fff;
-  font-size: 1.2rem;
-  text-transform: uppercase;
 }
