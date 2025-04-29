@@ -10,6 +10,7 @@ import gsap from "gsap";
 import ProductCollection from "./pages/ProductCollection";
 import AkkeLimited from "./pages/AkkeLimited";
 import "./App.css";
+import "./styles/index";
 
 function App() {
   const location = useLocation();
@@ -17,9 +18,19 @@ function App() {
   const [displayLocation, setDisplayLocation] = useState(location);
 
   useEffect(() => {
+    // Cấu hình Lenis để hỗ trợ position: sticky
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      // Đảm bảo các thuộc tính vị trí CSS sẽ hoạt động đúng
+      smoothTouch: false,
+      touchMultiplier: 1,
+      syncTouch: true,
+      // Cấu hình thêm để tôn trọng các phần tử sticky
+      wheelMultiplier: 1,
+      lerp: 0.1, // Linear interpolation - giúp mượt hơn
+      smoothWheel: true,
+      syncTouchLerp: 0.1,
     });
 
     function raf(time) {
@@ -31,6 +42,21 @@ function App() {
     if (location.pathname !== displayLocation.pathname) {
       startAnimation(() => lenis.scrollTo(0, { immediate: true }));
     }
+
+    // Sự kiện đặc biệt cho position: sticky
+    const updateStickyElements = () => {
+      // Kích hoạt tính toán lại vị trí cho các phần tử sticky
+      document.querySelectorAll("[class*='sticky']").forEach((el) => {
+        const currentTop = el.style.top;
+        el.style.top = "auto";
+        // Force reflow
+        void el.offsetHeight;
+        el.style.top = currentTop;
+      });
+    };
+
+    // Liên kết với sự kiện cuộn của Lenis
+    lenis.on("scroll", updateStickyElements);
 
     return () => {
       lenis.destroy();
@@ -48,7 +74,9 @@ function App() {
       ? "Menswear"
       : location.pathname.includes("/womenswear")
         ? "Womenswear"
-        : "Akke Knitwear";
+        : location.pathname.includes("/everest-akke-limite")
+          ? "Everest Akke Limited"
+          : "Akke Knitwear";
 
     gsap.set(pageTransition, { opacity: 1, visibility: "inherit" });
     gsap.fromTo(
@@ -133,6 +161,7 @@ function App() {
           <Header />
           <main
             className={`block ${location.pathname === "/" ? "bg-black" : "bg-[#e1e1e1]"}`}
+            data-lenis-scroll-container
           >
             <Routes>
               <Route path="/" element={<HomePage />} />
