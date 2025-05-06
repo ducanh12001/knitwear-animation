@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import ScrollVelocity from "../../animations/ScrollVelocity";
 
-export function Header() {
+export function Header({ setOpenLogin }) {
   const [isOpen, setIsOpen] = useState(false);
   // const topRef = useRef(null);
   // const centerRef = useRef(null);
@@ -107,7 +107,10 @@ export function Header() {
             </ul>
             <ul className="relative flex items-center justify-start gap-[1rem]">
               <li>
-                <div className="open--navbar-login leading-full text-[14px] text-white uppercase md:text-[1.6rem]">
+                <div
+                  className="open--navbar-login leading-full text-[14px] text-white uppercase md:text-[1.6rem]"
+                  onClick={() => setOpenLogin(true)}
+                >
                   Login
                 </div>
               </li>
