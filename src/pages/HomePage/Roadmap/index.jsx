@@ -232,18 +232,15 @@ function Roadmap() {
                 ref={h2TextRef}
                 className="text-[20px] leading-[120%] tracking-normal text-white md:text-[3vw] md:tracking-[-2px]"
               >
-                AKKE is technical innovation and yarn evolution, a new space
-                between fashion and functionality.
+                AKKE is technical innovation and yarn evolution, a new space between fashion and
+                functionality.
               </h2>
             </div>
             <div
               ref={discoverButtonRef}
               className="discover-button relative mt-[5rem] hidden h-auto w-auto md:block"
             >
-              <a
-                ref={discoverLinkRef}
-                className="relative block h-full w-full cursor-pointer"
-              >
+              <a ref={discoverLinkRef} className="relative block h-full w-full cursor-pointer">
                 <div className="back-track absolute top-0 left-0 h-full w-full">
                   <svg
                     viewBox="0 0 434.86865234375 104.68115234375"
@@ -305,14 +302,11 @@ function Roadmap() {
                 ref={(el) => (columnImageRefs.current[0] = el)}
                 className="column-image relative z-10 h-auto w-full overflow-hidden"
               >
-                <div
-                  ref={(el) => (columnImageScaleRefs.current[0] = el)}
-                  className="imageScale"
-                >
+                <div ref={(el) => (columnImageScaleRefs.current[0] = el)} className="imageScale">
                   <div className="relative h-auto w-full">
                     <img
                       src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-2-1.webp"
-                      className="h-atuo block w-full"
+                      className="block h-auto w-full"
                     />
                   </div>
                 </div>
@@ -335,14 +329,11 @@ function Roadmap() {
                 ref={(el) => (columnImageRefs.current[1] = el)}
                 className="column-image relative z-10 h-auto w-full overflow-hidden"
               >
-                <div
-                  ref={(el) => (columnImageScaleRefs.current[1] = el)}
-                  className="imageScale"
-                >
+                <div ref={(el) => (columnImageScaleRefs.current[1] = el)} className="imageScale">
                   <div className="relative h-auto w-full">
                     <img
                       src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-3-1.webp"
-                      className="h-atuo block w-full"
+                      className="block h-auto w-full"
                     />
                   </div>
                 </div>

@@ -1,3 +1,4 @@
+@import "https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap";
 @import "tailwindcss";
 
 @font-face {
@@ -52,6 +53,7 @@
 @theme {
   --font-inter: "Inter", sans-serif;
   --font-humane: "Humane Grotesque", sans-serif;
+  --font-permanent-marker: "Permanent Marker", cursive;
   --text-h2: 15vw;
   --leading-full: 100%;
 }
@@ -109,9 +111,6 @@ ul {
   :root {
     color: #213547;
     background-color: #ffffff;
-  }
-  a:hover {
-    color: inherit;
   }
 }
 

@@ -12,6 +12,8 @@ import AkkeLimited from "./pages/AkkeLimited";
 import LoginModal from "./components/organisms/modal/LoginModal";
 import "./App.css";
 import "./styles/index";
+import CustomCursor from "./components/others/CustomCursor";
+import AkkeWorld from "./pages/AkkeWorld";
 
 function App() {
   const location = useLocation();
@@ -75,7 +77,9 @@ function App() {
           ? "Womenswear"
           : location.pathname.includes("/everest-akke-limite")
             ? "Everest Akke Limited"
-            : "Akke Knitwear";
+            : location.pathname.includes("/akkeworld")
+              ? "Akkeworld"
+              : "Akke Knitwear";
 
       gsap.set(pageTransition, { opacity: 1, visibility: "inherit" });
       gsap.fromTo(
@@ -166,6 +170,7 @@ function App() {
       </div>
       {isTransitioning ? null : (
         <div className="relative h-auto w-full">
+          <CustomCursor />
           <Header setOpenLogin={setOpenLogin} />
           <main
             className={`block ${location.pathname === "/" ? "bg-black" : "bg-[#e1e1e1]"}`}
@@ -182,6 +187,7 @@ function App() {
                 element={<ProductCollection isMen={false} />}
               />
               <Route path="/everest-akke-limited" element={<AkkeLimited />} />
+              <Route path="/akkeworld" element={<AkkeWorld />} />
             </Routes>
             <Footer />
             <ScrollCircle />

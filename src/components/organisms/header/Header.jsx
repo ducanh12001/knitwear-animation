@@ -60,11 +60,7 @@ export function Header({ setOpenLogin }) {
 
   return (
     <header className="has-banner">
-      <ScrollVelocity
-        texts={[
-          "Akke Promo Launch 50% off – Free shipping for orders over 350€",
-        ]}
-      />
+      <ScrollVelocity texts={["Akke Promo Launch 50% off – Free shipping for orders over 350€"]} />
       <div className="header-wrapper text-[1.2rem]">
         <div className="left relative flex w-auto items-start justify-start gap-[1.5rem] md:gap-[6rem]">
           <div className="logo relative h-[4rem] w-[4.3rem] md:h-[6rem] md:w-[13rem]">
@@ -97,10 +93,7 @@ export function Header({ setOpenLogin }) {
               className="menu leading-full relative hidden items-center justify-start gap-[1rem] text-[1.6rem] uppercase md:flex"
             >
               <li>
-                <Link
-                  to="https://akkeknitwear.com/akkeworld/"
-                  className="text-[#FD7453]"
-                >
+                <Link to="/akkeworld" className="text-[#FD7453]">
                   Akkeworld
                 </Link>
               </li>
