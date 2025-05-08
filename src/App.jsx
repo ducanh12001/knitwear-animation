@@ -10,16 +10,19 @@ import gsap from "gsap";
 import ProductCollection from "./pages/ProductCollection";
 import AkkeLimited from "./pages/AkkeLimited";
 import LoginModal from "./components/organisms/modal/LoginModal";
-import "./App.css";
-import "./styles/index";
 import CustomCursor from "./components/others/CustomCursor";
 import AkkeWorld from "./pages/AkkeWorld";
+import SideMenu from "./components/others/SideMenu";
+
+import "./App.css";
+import "./styles/index";
 
 function App() {
   const location = useLocation();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [displayLocation, setDisplayLocation] = useState(location);
   const [openLogin, setOpenLogin] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
   const lenisRef = useRef(null);
 
   useEffect(() => {
@@ -142,6 +145,7 @@ function App() {
 
   useEffect(() => {
     if (location.pathname !== displayLocation.pathname) {
+      setOpenMenu(false);
       startAnimation(() => {});
     }
   }, [location, displayLocation, startAnimation]);
@@ -149,6 +153,7 @@ function App() {
   return (
     <div className="overflow-hidden">
       <LoginModal isOpen={openLogin} onClose={() => setOpenLogin(false)} lenis={lenisRef.current} />
+      <SideMenu isOpen={openMenu} lenis={lenisRef.current} />
       <div
         id="pageTransition"
         className="invisible fixed top-0 left-0 z-200 h-full w-full opacity-0"
@@ -171,7 +176,7 @@ function App() {
       {isTransitioning ? null : (
         <div className="relative h-auto w-full">
           <CustomCursor />
-          <Header setOpenLogin={setOpenLogin} />
+          <Header setOpenLogin={setOpenLogin} openMenu={openMenu} setOpenMenu={setOpenMenu} />
           <main
             className={`block ${location.pathname === "/" ? "bg-black" : "bg-[#e1e1e1]"}`}
             data-lenis-scroll-container

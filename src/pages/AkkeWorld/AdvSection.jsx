@@ -1,17 +1,137 @@
-import React from "react";
+import React, { useState } from "react";
+import gsap from "gsap";
+import { useMediaQuery } from "react-responsive";
+
+const polaroidData = [
+  {
+    label: "Everest",
+    image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-1.jpg",
+    top: "5vh",
+    left: "10vw",
+    labelRight: "2vw",
+    labelLeft: "initial",
+  },
+  {
+    label: "Trisul",
+    image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-2.jpg",
+    top: "20vh",
+    left: "15vw",
+    labelRight: "3vw",
+    labelLeft: "initial",
+  },
+  {
+    label: "Kardong",
+    image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-3.jpg",
+    top: "30vh",
+    left: "8vw",
+    labelRight: "initial",
+    labelLeft: "2vw",
+  },
+  {
+    label: "K2",
+    image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-4.jpg",
+    top: "8vh",
+    left: "65vw",
+    labelRight: "1vw",
+    labelLeft: "initial",
+  },
+  {
+    label: "Nanga Parbat",
+    image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-5.jpg",
+    top: "15vh",
+    left: "62vw",
+    labelRight: "initial",
+    labelLeft: "0",
+  },
+  {
+    label: "Nanga Parbat",
+    image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/AKKE-ADV-FW232400502.jpg",
+    top: "5vh",
+    left: "10vw",
+    labelRight: "2vw",
+    labelLeft: "initial",
+  },
+];
 
 export default function AdvSection() {
+  const isDesktop = useMediaQuery({
+    query: "(min-width: 768px)",
+  });
+
+  const [selected, setSelected] = useState(0);
+
+  const openPolaroidModal = (index) => {
+    setSelected(index);
+    if (isDesktop) {
+      handleMouseEnter(index);
+    } else {
+      gsap.set(".akkeworld--adv .custom-modal", {
+        autoAlpha: 1,
+      });
+      gsap.to(".akkeworld--adv .custom-modal .modal-bg", {
+        autoAlpha: 1,
+        ease: "power2.out",
+      });
+      gsap.to(".akkeworld--adv .custom-modal .modal-zoom", {
+        autoAlpha: 1,
+        scale: 1,
+        ease: "power2.out",
+        duration: 0.4,
+        delay: 0.2,
+      });
+    }
+  };
+
+  const handleMouseEnter = (index) => {
+    if (!isDesktop) return;
+    const polaroid = document.querySelector(`.polaroid-list .polaroid[data-order="${index}"]`);
+    if (!polaroid) return;
+
+    gsap.to(polaroid, {
+      autoAlpha: 1,
+      rotate: -2.5,
+      scale: 1,
+    });
+  };
+
+  const handleMouseLeave = (index) => {
+    const polaroid = document.querySelector(`.polaroid-list .polaroid[data-order="${index}"]`);
+    if (!polaroid) return;
+
+    gsap.to(polaroid, {
+      autoAlpha: 0,
+      rotate: 0,
+      scale: 0.8,
+    });
+  };
+
+  const handleCloseModal = () => {
+    gsap.to(".akkeworld--adv .custom-modal .modal-zoom", {
+      autoAlpha: 0,
+      scale: 0.6,
+      duration: 0.3,
+      ease: "power2.in",
+    });
+    gsap.set(".akkeworld--adv .custom-modal", {
+      autoAlpha: 0,
+      delay: 0.5,
+    });
+  };
+
   return (
     <section className="akkeworld--adv relative h-auto w-full bg-[#1d1d1d]">
-      <div className="road absolute top-0 left-1/2 z-15 h-full -translate-x-1/2 xl:h-[60%]">
+      <div
+        className="road elAnimation absolute top-0 left-1/2 z-15 h-full -translate-x-1/2 xl:h-[60%]"
+        animation="road"
+      >
         <svg
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
           x="0px"
           y="0px"
           viewBox="0 0 680.7 2454.8"
-          xml:space="preserve"
+          xmlSpace="preserve"
           className="relative block h-full w-auto"
         >
           <path
@@ -38,7 +158,6 @@ export default function AdvSection() {
     c48.3,18.5,65.8-22.8,102.1-10.4c14.8,5.1-51.6,40.6-51.6,52.1s-113,100.8-88.9,122.8s-76.8,64.9-90,97.3
     c-13.2,32.4-87.7,69.3-88.3,90.2c-1.8,68.3-88.4,53.9-120.3,161.6c-30,101.3-5.5,118.2-80.1,213.2c-2.2,2.8-4.5,5.8-6.7,8.9
     C20,2303.4,1,2364.6,1,2427.4v26.4"
-            // style="stroke-dasharray: 9008.8, 9008.8; stroke-dashoffset: 0;"
           />
           {[
             { cx: 116.4, cy: 123 },
@@ -48,7 +167,13 @@ export default function AdvSection() {
             { cx: 224, cy: 763.4 },
             { cx: 456.9, cy: 769.4 },
           ].map((point, index) => (
-            <g key={index}>
+            <g
+              key={index}
+              onClick={() => openPolaroidModal(index)}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={() => handleMouseLeave(index)}
+              className="group relative cursor-pointer"
+            >
               <circle
                 className="z-10 border fill-none stroke-[#A9AFA4]"
                 cx={point.cx}
@@ -68,7 +193,7 @@ export default function AdvSection() {
                 style={{ r: "16px", transition: "stroke 0.35s ease-in-out" }}
               />
               <circle
-                className="before z-1 hidden fill-none stroke-[#A9AFA4] opacity-0 transition-opacity duration-350 ease-in-out"
+                className="before z-1 fill-none stroke-[#A9AFA4] opacity-0 transition-opacity duration-350 ease-in-out group-hover:opacity-100"
                 cx={point.cx}
                 cy={point.cy}
                 r="6"
@@ -92,7 +217,7 @@ export default function AdvSection() {
                 />
               </circle>
               <circle
-                className="after z-2 hidden fill-none stroke-[#A9AFA4] opacity-0 transition-opacity duration-350 ease-in-out"
+                className="after z-2 fill-none stroke-[#A9AFA4] opacity-0 transition-opacity duration-350 ease-in-out group-hover:opacity-100"
                 cx={point.cx}
                 cy={point.cy}
                 r="6"
@@ -119,37 +244,75 @@ export default function AdvSection() {
           ))}
         </svg>
       </div>
+      <div className="polaroid-list absolute z-12">
+        {polaroidData.map((item, index) => (
+          <div
+            key={index}
+            className="polaroid absolute box-border h-auto w-[18vw] scale-80 rotate-0 bg-white px-[1vw] pt-[1vw] pb-[3.5vw] opacity-0"
+            style={{
+              top: item.top,
+              left: item.left,
+            }}
+            data-order={index}
+          >
+            <div className="frame relative h-auto w-full">
+              <img className="block h-auto w-full" src={item.image} alt={item.label} />
+              <span
+                className="font-permanent-marker leading-full absolute -bottom-[1.75vw] translate-y-1/2 text-[2rem] text-[#1d1d1d]"
+                style={{ left: item.labelLeft, right: item.labelRight }}
+              >
+                {item.label}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
       <div className="adv-section relative z-10 box-border flex h-auto w-full items-start justify-end px-[5vw] pt-[2.5rem] pb-[15rem] md:py-[25vh]">
         <div className="relative flex flex-col items-end justify-start gap-2 md:gap-8">
-          <h2 className="font-humane text-[90px] leading-[75%] text-[#A9AFA4] uppercase md:text-[12vw]">
+          <h2
+            className="elAnimation font-humane text-[90px] leading-[75%] text-[#A9AFA4] uppercase md:text-[12vw]"
+            animation="ease-right-to-left"
+          >
             ADV Campaign
           </h2>
-          <h3 className="text-base leading-[75%] text-[#A9AFA4] uppercase md:text-[1.25rem]">
+          <h3
+            className="elAnimation text-base leading-[75%] text-[#A9AFA4] uppercase md:text-[1.25rem]"
+            animation="ease-right-to-left"
+          >
             Spring Summer 2025
           </h3>
         </div>
       </div>
       <div className="collections-section relative z-20 mt-[15v] box-border h-auto w-full px-[5vw] pt-0 pb-[15vh] md:mt-0 md:pt-[15vh]">
         <div className="relative flex h-auto w-full flex-col items-center justify-start">
-          <h2 className="font-humane mb-[5vw] text-[90px] leading-[75%] text-[#A9AFA4] uppercase md:text-[12vw]">
+          <h2
+            className="elAnimation font-humane mb-[5vw] text-[90px] leading-[75%] text-[#A9AFA4] uppercase md:text-[12vw]"
+            animation="ease-bottom-to-top"
+          >
             Explore AKKE Collections
           </h2>
           <div className="columns relative grid h-auto w-full grid-cols-2">
             <div className="column relative h-auto w-full">
               <div className="cat relative flex h-auto w-full items-start justify-center">
                 <a className="relative block h-full w-[90%] md:w-[33vw]">
-                  <div className="column-image relative z-10 h-auto w-full">
+                  <div
+                    className="elAnimation column-image relative z-10 h-auto w-full"
+                    animation="clip-top-to-bottom"
+                  >
                     <div className="imageScale">
                       <div className="relative h-auto w-full transition-transform duration-1000 ease-in-out">
                         <img
-                          src="https://akkeknitwear.com/website/wp-content/uploads/2025/03/uomo.webp"
+                          src="https://akkeknitwear.com/website/wp-content/uploads/2025/03/uomo.jpg"
                           className="block h-auto w-full"
                         />
                       </div>
                     </div>
                   </div>
                   <div className="column-text absolute top-1/2 left-0 z-15 flex h-auto w-full -translate-y-1/2 flex-col items-center justify-center">
-                    <h2 className="font-humane leading-full text-[70px] text-white uppercase md:text-[12vw]">
+                    <h2
+                      className="elAnimation font-humane leading-full text-[70px] text-white uppercase md:text-[12vw]"
+                      animation="ease-bottom-to-top"
+                    >
                       Menswear
                     </h2>
                   </div>
@@ -159,18 +322,24 @@ export default function AdvSection() {
             <div className="column relative h-auto w-full">
               <div className="cat relative mt-[15vh] flex h-auto w-full items-start justify-center">
                 <a className="relative block h-full w-[90%] md:w-[33vw]">
-                  <div className="column-image relative z-10 h-auto w-full">
+                  <div
+                    className="elAnimation column-image relative z-10 h-auto w-full"
+                    animation="clip-top-to-bottom"
+                  >
                     <div className="imageScale">
                       <div className="relative h-auto w-full transition-transform duration-1000 ease-in-out">
                         <img
-                          src="https://akkeknitwear.com/website/wp-content/uploads/2025/03/donna.webp"
+                          src="https://akkeknitwear.com/website/wp-content/uploads/2025/03/donna.jpg"
                           className="h-atuo block w-full"
                         />
                       </div>
                     </div>
                   </div>
                   <div className="column-text absolute top-1/2 left-0 z-15 flex h-auto w-full -translate-y-1/2 flex-col items-center justify-center">
-                    <h2 className="font-humane leading-full text-[70px] text-white uppercase md:text-[12vw]">
+                    <h2
+                      className="elAnimation font-humane leading-full text-[70px] text-white uppercase md:text-[12vw]"
+                      animation="ease-bottom-to-top"
+                    >
                       Womenswear
                     </h2>
                   </div>
@@ -182,18 +351,24 @@ export default function AdvSection() {
             <div className="column">
               <div className="cat relative flex h-auto w-full items-start justify-center">
                 <a className="relative flex h-full w-auto items-center justify-center">
-                  <div className="column-image relative z-10 h-auto w-[50vw] md:w-[33vw]">
+                  <div
+                    className="elAnimation column-image relative z-10 h-auto w-[50vw] md:w-[33vw]"
+                    animation="clip-top-to-bottom"
+                  >
                     <div className="imageScale">
                       <div className="relative h-auto w-full transition-transform duration-1000 ease-in-out">
                         <img
-                          src="https://akkeknitwear.com/website/wp-content/uploads/2023/11/LIMITED.webp"
+                          src="https://akkeknitwear.com/website/wp-content/uploads/2023/11/LIMITED.jpg"
                           className="block h-auto w-full"
                         />
                       </div>
                     </div>
                   </div>
                   <div className="column-text relative z-11 flex -translate-x-[5vw] flex-col items-end justify-center gap-2 whitespace-normal md:gap-0 md:whitespace-nowrap">
-                    <h2 className="font-humane leading-full text-[70px] text-white uppercase md:text-[12vw]">
+                    <h2
+                      className="elAnimation font-humane leading-full text-[70px] text-white uppercase md:text-[12vw]"
+                      animation="ease-right-to-left"
+                    >
                       Everest Akke Limited
                     </h2>
                   </div>
@@ -204,20 +379,30 @@ export default function AdvSection() {
         </div>
       </div>
       <div className="custom-modal mobile invisible fixed top-0 left-0 z-999 h-full w-full opacity-0">
-        <div className="modal-bg absolute top-0 left-0 h-full w-full bg-[#1d1d1d]/85 opacity-0" />
+        <div
+          className="modal-bg absolute top-0 left-0 h-full w-full bg-[#1d1d1d]/85 opacity-0"
+          onClick={handleCloseModal}
+        />
         <div className="modal-zoom invisible absolute top-1/2 left-1/2 h-auto w-[90%] -translate-1/2 scale-60 bg-white opacity-0 md:w-[50vw]">
           <div className="modal-close absolute top-auto right-4 bottom-4 z-45">
-            <div className="close-cross relative h-5 w-5 cursor-pointer md:h-12 md:w-12">
+            <div
+              className="close-cross relative h-5 w-5 cursor-pointer md:h-12 md:w-12"
+              onClick={handleCloseModal}
+            >
               <div className="icon absolute top-1/2 left-1/2 h-[3px] w-full -translate-1/2 rotate-45 bg-[#1d1d1d]" />
               <div className="icon absolute top-1/2 left-1/2 h-[3px] w-full -translate-1/2 -rotate-45 bg-[#1d1d1d]" />
             </div>
           </div>
-          <div className="relative box-border h-auto w-full px-[2vw] pt-[2vw] pb-[5vw]">
+          <div className="relative box-border h-auto w-full px-[2vw] pt-[2vw] pb-[5rem]">
             <div className="relative flex h-auto w-full flex-col items-start justify-start gap-4">
               <div className="relative h-auto w-full">
-                <img src="" alt="" className="block h-auto w-full" />
+                <img
+                  src={polaroidData[selected].image}
+                  alt={polaroidData[selected].label}
+                  className="block h-auto w-full"
+                />
                 <span className="font-permanent-marker leading-full absolute -bottom-[2.5rem] left-0 translate-y-1/2 text-[2rem] text-[#1d1d1d]">
-                  {}
+                  {polaroidData[selected].label}
                 </span>
               </div>
             </div>

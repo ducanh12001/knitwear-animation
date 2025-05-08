@@ -124,13 +124,16 @@ function Limited() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.5 }}
       >
-        <a
-          href="https://akkeknitwear.com/everest-akke-limited/"
-          className="relative block w-full"
-        >
-          <div className="image-back relative h-auto w-full">
+        <a href="https://akkeknitwear.com/everest-akke-limited/" className="relative block w-full">
+          <div className="image-back mobile relative h-auto w-full">
             <img
-              src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/limited_home_without_man-1280x720.webp"
+              src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/limited_home_without_man_mobile-blend.jpg"
+              className="w-full"
+            />
+          </div>
+          <div className="image-back desktop relative h-auto w-full">
+            <img
+              src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/limited_home_without_man.jpg"
               className="w-full"
             />
           </div>
@@ -142,12 +145,9 @@ function Limited() {
               Everest Akke Limited
             </h2>
           </div>
-          <div
-            ref={imageRef}
-            className="image-front absolute top-0 left-0 h-auto w-full"
-          >
+          <div ref={imageRef} className="image-front desktop absolute top-0 left-0 h-auto w-full">
             <img
-              src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/AI_Immagine-1280x720.webp"
+              src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/AI_Immagine.png"
               className="w-full"
             />
           </div>

@@ -13,15 +13,12 @@ function AkkeLimited() {
         }}
         blockColumns={{
           leftTitle: "Only 100 Items",
-          leftImage:
-            "https://akkeknitwear.com/website/wp-content/uploads/2023/12/Everest-2-600x800.webp",
+          leftImage: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/Everest-2.jpg",
           rightTitle: "Double Face",
-          rightImage:
-            "https://akkeknitwear.com/website/wp-content/uploads/2023/12/Everest-3-600x800.webp",
+          rightImage: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/Everest-3.jpg",
         }}
         blockFull={{
-          image:
-            "https://akkeknitwear.com/website/wp-content/uploads/2023/12/Everest-4-1440x720.webp",
+          image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/Everest-4.jpg",
           des: "Un maglione double face che chiede di diventare parte integrante del tuo abbigliamento tecnico, regalandoti adattabilità, resistenza e durevolezza, ma anche un capo che entra nella quotidianità con la sua traspirabilità, la sua leggerezza e indiscusse qualità estetiche.",
         }}
       />

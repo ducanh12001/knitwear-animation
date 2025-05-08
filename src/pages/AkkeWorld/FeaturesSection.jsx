@@ -1,4 +1,6 @@
+import gsap from "gsap";
 import React, { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 const featuresData = [
   {
@@ -28,19 +30,60 @@ const featuresData = [
 ];
 
 export default function FeaturesSection() {
+  const isDesktop = useMediaQuery({
+    query: "(min-width: 768px)",
+  });
   const [selected, setSelected] = useState(0);
+
+  const openFeatureModal = (index) => {
+    setSelected(index);
+    gsap.set(".akkeworld--features .custom-modal", {
+      autoAlpha: 1,
+      ease: "power2.out",
+    });
+    gsap.to(".akkeworld--features .custom-modal .modal-bg", {
+      autoAlpha: 1,
+      ease: "power2.out",
+    });
+    gsap.to(".akkeworld--features .custom-modal .modal-zoom", {
+      autoAlpha: 1,
+      scale: 1,
+      ease: "power2.out",
+      duration: 0.4,
+      delay: 0.2,
+    });
+  };
+
+  const closeFeatureModal = () => {
+    gsap.to(".akkeworld--features .custom-modal .modal-zoom", {
+      autoAlpha: 0,
+      scale: 0.6,
+      duration: 0.4,
+      ease: "power2.in",
+    });
+    gsap.set(".akkeworld--features .custom-modal", {
+      autoAlpha: 0,
+      delay: 0.6,
+    });
+  };
 
   return (
     <section className="akkeworld--features">
       <div className="wrapper relative h-auto w-full overflow-hidden bg-[#e1e1e1] py-[3.75rem] md:bg-inherit md:py-0">
         <div className="title relative top-0 left-0 z-15 mb-[2.5rem] translate-y-0 text-center md:absolute md:top-1/2 md:left-[5vw] md:mb-0 md:-translate-y-1/2 md:text-left">
-          <h2 className="font-humane m-0 text-[90px] leading-[75%] text-[#A9AFA4] uppercase md:text-[12vw]">
+          <h2
+            className="elAnimation font-humane m-0 text-[90px] leading-[75%] text-[#A9AFA4] uppercase md:text-[12vw]"
+            animation="ease-left-to-right"
+          >
             AKKE Features
           </h2>
         </div>
-        <div className="image desktop relative z-10 h-auto w-full">
+        <div
+          className="image elAnimation desktop relative z-10 h-auto w-full"
+          animation="ease-bottom-to-top-scaled"
+        >
           <img
-            src="https://akkeknitwear.com/website/wp-content/uploads/2023/11/AkkeWorld-6-800x400.webp"
+            src="https://akkeknitwear.com/website/wp-content/uploads/2023/11/AkkeWorld-6.jpg"
             alt=""
             className="block h-auto w-full"
           />
@@ -58,20 +101,17 @@ export default function FeaturesSection() {
           {featuresData.map((item, index) => (
             <div
               key={index}
-              className={`dot absolute flex items-center justify-start gap-1 md:gap-4 ${index === 0 && "flex-row-reverse"} ${index === 1 && "right-[2.5vw]"}`}
+              className={`dot elAnimation absolute flex items-center justify-start gap-1 md:gap-4 ${index === 0 && "flex-row-reverse"} ${index === 1 && "right-[2.5vw]"}`}
+              animation={index === 0 ? "ease-left-to-right" : "ease-right-to-left"}
               style={{
-                top: item.mobile.top,
-                left: item.mobile.left,
-                "@media (min-width: 768px)": {
-                  top: item.desktop.top,
-                  left: item.desktop.left,
-                },
+                top: isDesktop ? item.desktop.top : item.mobile.top,
+                left: isDesktop ? item.desktop.left : item.mobile.left,
               }}
             >
               <div
                 className="circle relative box-border flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border-1 border-[#1d1d1d] transition-all duration-350 ease-in-out md:h-[2.5vw] md:w-[2.5vw] md:border-2 md:border-[#A9AFA4]"
                 onClick={() => {
-                  setSelected(index);
+                  openFeatureModal(index);
                 }}
               >
                 <div className="inner relative h-[calc(100%-6px)] w-[calc(100%-6px)] rounded-full bg-[#1d1d1d] transition-all duration-350 ease-in-out md:h-[calc(100%-8px)] md:w-[calc(100%-8px)] md:bg-[#A9AFA4]" />
@@ -83,11 +123,17 @@ export default function FeaturesSection() {
           ))}
         </div>
       </div>
-      <div className="custom-modal invisible fixed top-0 left-0 z-999 hidden h-full w-full opacity-0">
-        <div className="modal-bg absolute top-0 left-0 h-full w-full bg-[#1d1d1d]/85 opacity-0" />
+      <div className="custom-modal invisible fixed top-0 left-0 z-999 h-full w-full opacity-0">
+        <div
+          className="modal-bg absolute top-0 left-0 h-full w-full bg-[#1d1d1d]/85 opacity-0"
+          onClick={closeFeatureModal}
+        />
         <div className="modal-zoom invisible absolute top-1/2 left-1/2 h-auto w-[90%] -translate-1/2 scale-60 bg-white opacity-0 md:w-[50vw]">
-          <div className="modal-close absolute top-4 right-4 rotate-z-45">
-            <div className="close-cross relative h-5 w-5 cursor-pointer md:h-12 md:w-12">
+          <div className="modal-close absolute top-4 right-4 z-45">
+            <div
+              className="close-cross relative h-5 w-5 cursor-pointer md:h-12 md:w-12"
+              onClick={closeFeatureModal}
+            >
               <div className="icon absolute top-1/2 left-1/2 h-[3px] w-full -translate-1/2 rotate-45 bg-[#1d1d1d]" />
               <div className="icon absolute top-1/2 left-1/2 h-[3px] w-full -translate-1/2 -rotate-45 bg-[#1d1d1d]" />
             </div>

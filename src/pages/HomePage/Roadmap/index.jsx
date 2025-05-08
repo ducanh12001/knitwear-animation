@@ -219,7 +219,7 @@ function Roadmap() {
           <div ref={innerImageRef} className="inner-image overflow-hidden">
             <div ref={imageScaleRef} className="imageScale">
               <img
-                src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-1-1.webp"
+                src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-1-1.jpg"
                 className="block h-auto w-[33vw]"
               />
             </div>
@@ -305,7 +305,7 @@ function Roadmap() {
                 <div ref={(el) => (columnImageScaleRefs.current[0] = el)} className="imageScale">
                   <div className="relative h-auto w-full">
                     <img
-                      src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-2-1.webp"
+                      src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-2-1.jpg"
                       className="block h-auto w-full"
                     />
                   </div>
@@ -332,7 +332,7 @@ function Roadmap() {
                 <div ref={(el) => (columnImageScaleRefs.current[1] = el)} className="imageScale">
                   <div className="relative h-auto w-full">
                     <img
-                      src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-3-1.webp"
+                      src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-3-1.jpg"
                       className="block h-auto w-full"
                     />
                   </div>

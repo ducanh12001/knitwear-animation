@@ -1,0 +1,53 @@
+.elAnimation {
+  &[animation="ease-bottom-to-top"] {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10vh);
+  }
+  &[animation="ease-bottom-to-top-scaled"] {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10vh) scale(0.9);
+  }
+  &[animation="clip-top-to-bottom"] {
+    overflow: hidden;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+    .imageScale {
+      transform: scale(1.2);
+    }
+  }
+  &[animation="ease-left-to-right"] {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10vw);
+  }
+  &[animation="ease-right-to-left"] {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10vw);
+  }
+  &[animation="scrumbleText"] {
+    opacity: 0;
+    visibility: hidden;
+    /* transform: translateY(10vh); */
+  }
+  &[animation="road"] {
+    svg {
+      g {
+        opacity: 0;
+      }
+    }
+  }
+  &[animation="ease-scale"] {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9);
+  }
+  &[animation="ease-stagger-list"] {
+    .home-rel-product {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10vh) scale(0.9);
+    }
+  }
+}
