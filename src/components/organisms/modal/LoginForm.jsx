@@ -104,7 +104,9 @@ export default function LoginForm({ handleTabSwitch }) {
             type="submit"
             className="send-login relative flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] bg-[#FD7453] px-4 transition-all duration-350 ease-in-out hover:bg-[#fd5932] md:h-[6rem] md:rounded-[25px] md:px-[2rem]"
           >
-            <span className="leading-full text-base text-white md:text-[1.25rem]">Log in</span>
+            <span className="leading-full text-base text-white md:text-[1.25rem]">
+              Login
+            </span>
           </button>
           <a
             className="goToRecPassword leading-full cursor-pointer text-base text-[#1d1d1d] underline"

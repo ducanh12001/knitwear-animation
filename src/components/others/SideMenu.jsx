@@ -5,23 +5,23 @@ import { Link } from "react-router";
 const menuLinks = [
   {
     label: "Menswear",
-    url: "/categoria-prodotto/menswear/",
+    path: "/categoria-prodotto/menswear",
   },
   {
     label: "Womenswear",
-    url: "/categoria-prodotto/womenswear/",
+    path: "/categoria-prodotto/womenswear",
   },
   {
     label: "Everest Akke Limited",
-    url: "/everest-akke-limited",
+    path: "/everest-akke-limited",
   },
   {
     label: "Akkeworld",
-    url: "/akkeworld",
+    path: "/akkeworld",
   },
   {
     label: "Contacts",
-    url: "https://akkeknitwear.com/en/contacts/",
+    path: "/contacts",
   },
 ];
 
@@ -74,7 +74,7 @@ export default function SideMenu({ isOpen, lenis }) {
           {menuLinks.map((link, index) => (
             <li key={index}>
               <Link
-                to={link.url}
+                to={link.path}
                 className="font-humane block border-t border-t-[#868686]/10 px-[5vw] py-1 text-[4.4rem] text-[#1d1d1d]"
               >
                 {link.label}

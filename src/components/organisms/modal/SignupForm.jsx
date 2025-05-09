@@ -156,10 +156,9 @@ export default function SignupForm({ handleTabSwitch }) {
                 className={`inner-check relative h-3 w-3 bg-[#1d1d1d] mask-[url('/src/assets/check.svg')] mask-no-repeat opacity-0 transition-opacity duration-200 ease-in-out md:h-[1.5rem] md:w-[1.5rem] ${isChecked ? "opacity-100" : "opacity-0"}`}
               />
             </div>
-            <span className="leading-full flex-1 basis-[100%] text-[14px] text-[#1d1d1d] md:basis-0 md:text-base">
+            <span className="leading-full flex-1 basis-[100%] text-[14px] text-[#1d1d1d] md:basis-auto md:text-base">
               I have read and accepted the
               <a
-                cursor-class="hover"
                 href="https://akkeknitwear.com/en/privacy-policy/"
                 target="_blank"
                 className="leading-full mx-1 text-[14px] font-bold text-[#1d1d1d] md:text-base"
@@ -184,7 +183,9 @@ export default function SignupForm({ handleTabSwitch }) {
             type="submit"
             className="send-login relative flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] bg-[#FD7453] px-4 transition-all duration-350 ease-in-out hover:bg-[#fd5932] md:h-[6rem] md:rounded-[25px] md:px-[2rem]"
           >
-            <span className="leading-full text-base text-white md:text-[1.25rem]">Sign up</span>
+            <span className="leading-full text-base text-white md:text-[1.25rem]">
+              Sign up
+            </span>
           </button>
         </div>
         <div className="bt relative h-auto w-full">

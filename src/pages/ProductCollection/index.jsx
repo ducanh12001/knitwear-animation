@@ -8,7 +8,7 @@ import { ProductCard } from "../HomePage/ProductList/ProductCard";
 const FILTER_ITEMS = [
   {
     label: "View all",
-    href: "https://akkeknitwear.com/categoria-prodotto/menswear/",
+    href: "/product-category/menswear-collection",
   },
   {
     label: "Polo",
@@ -49,7 +49,7 @@ function ProductCollection({ isMen }) {
           <div className="shop-filters relative flex h-auto w-full items-start justify-center">
             <ul className="relative flex flex-wrap items-center justify-center gap-3 md:gap-[1.5rem]">
               {FILTER_ITEMS.map((item, index) => (
-                <li className="current-filter-item">
+                <li key={index} className="current-filter-item">
                   <a
                     key={index}
                     href={item.href}

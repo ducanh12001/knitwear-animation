@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -232,15 +233,19 @@ function Roadmap() {
                 ref={h2TextRef}
                 className="text-[20px] leading-[120%] tracking-normal text-white md:text-[3vw] md:tracking-[-2px]"
               >
-                AKKE is technical innovation and yarn evolution, a new space between fashion and
-                functionality.
+                AKKE is technical innovation and yarn evolution, a new space
+                between fashion and functionality.
               </h2>
             </div>
             <div
               ref={discoverButtonRef}
               className="discover-button relative mt-[5rem] hidden h-auto w-auto md:block"
             >
-              <a ref={discoverLinkRef} className="relative block h-full w-full cursor-pointer">
+              <Link
+                ref={discoverLinkRef}
+                className="relative block h-full w-full cursor-pointer"
+                to="/akkeworld"
+              >
                 <div className="back-track absolute top-0 left-0 h-full w-full">
                   <svg
                     viewBox="0 0 434.86865234375 104.68115234375"
@@ -281,28 +286,37 @@ function Roadmap() {
                 <span className="leading-full relative box-border block px-[3.75vw] py-[2.3vw] text-[1.75rem] text-white uppercase">
                   Discover Akke World
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </div>
       <div className="button-element relative mx-auto my-0 block h-auto w-auto md:hidden">
-        <a className="button-container relative block h-full w-full" href="">
+        <Link
+          className="button-container relative block h-full w-full"
+          to="/akkeworld"
+        >
           <div className="back-track absolute top-0 left-0 h-full w-full"></div>
           <span className="leading-full relative box-border block px-[3.75vw] py-[2.3vw] text-[1.75rem] text-white uppercase">
             Discover Akke World
           </span>
-        </a>
+        </Link>
       </div>
       <div className="bottom relative z-20 mt-[2.5rem] grid h-auto w-full grid-cols-2 md:mt-0">
         <div className="column relative h-auto w-full">
           <div className="cat relative flex h-auto w-full items-start justify-center">
-            <a className="relative block h-full w-[45vw] md:w-[33vw]">
+            <Link
+              to="/product-category/menswear-collection"
+              className="relative block h-full w-[45vw] md:w-[33vw]"
+            >
               <div
                 ref={(el) => (columnImageRefs.current[0] = el)}
                 className="column-image relative z-10 h-auto w-full overflow-hidden"
               >
-                <div ref={(el) => (columnImageScaleRefs.current[0] = el)} className="imageScale">
+                <div
+                  ref={(el) => (columnImageScaleRefs.current[0] = el)}
+                  className="imageScale"
+                >
                   <div className="relative h-auto w-full">
                     <img
                       src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-2-1.jpg"
@@ -319,17 +333,23 @@ function Roadmap() {
                   Men
                 </h2>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="column relative h-auto w-full">
           <div className="cat relative mt-[15vh] flex h-auto w-full items-start justify-center">
-            <a className="relative block h-full w-[45vw] md:w-[33vw]">
+            <Link
+              to="/product-category/womenswear-collection"
+              className="relative block h-full w-[45vw] md:w-[33vw]"
+            >
               <div
                 ref={(el) => (columnImageRefs.current[1] = el)}
                 className="column-image relative z-10 h-auto w-full overflow-hidden"
               >
-                <div ref={(el) => (columnImageScaleRefs.current[1] = el)} className="imageScale">
+                <div
+                  ref={(el) => (columnImageScaleRefs.current[1] = el)}
+                  className="imageScale"
+                >
                   <div className="relative h-auto w-full">
                     <img
                       src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-3-1.jpg"
@@ -346,7 +366,7 @@ function Roadmap() {
                   Women
                 </h2>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
