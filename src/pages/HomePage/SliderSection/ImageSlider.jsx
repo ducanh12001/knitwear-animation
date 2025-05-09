@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Link } from "react-router";
 
 export function ImageSlider({ slides, swiperRef, onSwiper }) {
   return (
@@ -21,7 +22,7 @@ export function ImageSlider({ slides, swiperRef, onSwiper }) {
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
-          <a href={""} className="swiper-slide relative h-full w-full">
+          <Link to={slide.href} className="swiper-slide relative h-full w-full">
             <div className="slide-image relative hidden h-full w-full md:block">
               <img
                 src={slide.desktopImg}
@@ -37,7 +38,7 @@ export function ImageSlider({ slides, swiperRef, onSwiper }) {
                 className="block h-full w-full object-cover object-center"
               />
             </div>
-          </a>
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>

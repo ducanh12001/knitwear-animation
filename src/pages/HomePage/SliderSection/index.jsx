@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { ImageSlider } from "./ImageSlider";
 import { TitleSlider } from "./TitleSlider";
 
-export function SliderSection({}) {
+export function SliderSection() {
   const imagesSwiperRef = useRef(null);
   const titlesSwiperRef = useRef(null);
 
@@ -18,7 +18,7 @@ export function SliderSection({}) {
 
   const slides = [
     {
-      href: "https://akkeknitwear.com/categoria-prodotto/menswear/",
+      href: "/product-category/menswear-collection",
       title: "New Collection",
       desktopImg:
         "https://akkeknitwear.com/website/wp-content/uploads/2023/10/bannerhome.jpg",
@@ -26,7 +26,7 @@ export function SliderSection({}) {
         "https://akkeknitwear.com/website/wp-content/uploads/2023/10/bannerhome-mob.jpg",
     },
     {
-      href: "https://akkeknitwear.com/categoria-prodotto/womenswear/",
+      href: "/product-category/womenswear-collection",
       title: "Promo Launch 50% off",
       desktopImg:
         "https://akkeknitwear.com/website/wp-content/uploads/2023/10/Akke-Banner-2.jpg",
@@ -34,7 +34,7 @@ export function SliderSection({}) {
         "https://akkeknitwear.com/website/wp-content/uploads/2023/10/Akke-Banner-mobile-women.jpg",
     },
     {
-      href: "https://akkeknitwear.com/everest-akke-limited/",
+      href: "/everest-akke-limited",
       title: "Everest Akke Limited",
       desktopImg:
         "https://akkeknitwear.com/website/wp-content/uploads/2023/10/Limited-Akke-Everest.jpg",

@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import ScrollVelocity from "../../animations/ScrollVelocity";
+import { getPageTitle } from "../../../common/functions";
 
 export function Header({ setOpenLogin, openMenu, setOpenMenu }) {
+  const location = useLocation();
   // const topRef = useRef(null);
   // const centerRef = useRef(null);
   // const bottomRef = useRef(null);
@@ -84,15 +86,30 @@ export function Header({ setOpenLogin, openMenu, setOpenMenu }) {
               className="menu leading-full relative hidden items-center justify-start gap-[1rem] text-[1.6rem] text-white uppercase md:flex"
             >
               <li>
-                <Link to="/categoria-prodotto/menswear/">Menswear</Link>
+                <Link to="/product-category/menswear-collection">Menswear</Link>
               </li>
               <li>
-                <Link to="/categoria-prodotto/womenswear/">Womenswear</Link>
+                <Link to="/product-category/womenswear-collection">Womenswear</Link>
               </li>
               <li>
                 <Link to="/everest-akke-limited">Limited</Link>
               </li>
             </ul>
+            <div
+              className={`breadcrumb desktop relative h-auto w-auto ${location.pathname === "/" && "invisible opacity-0"}`}
+            >
+              <ul className="relative flex items-center justify-start gap-2">
+                <li>
+                  <Link to="/" className="leading-full text-white">
+                    Homepage
+                  </Link>
+                </li>
+                <li className="separator leading-full text-white">/</li>
+                <li>
+                  <span className="leading-full text-white">{getPageTitle(location.pathname)}</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className="right relative flex w-auto items-start justify-end gap-[3rem]">

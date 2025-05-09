@@ -1,28 +1,29 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 const footerLinks = [
   {
     title: "AKKE Knitwear",
     links: [
-      { label: "Menswear", url: "https://akkeknitwear.com/categoria-prodotto/menswear/" },
-      { label: "Womenswear", url: "https://akkeknitwear.com/categoria-prodotto/womenswear/" },
-      { label: "Everest Akke Limited", url: "https://akkeknitwear.com/everest-akke-limited/" },
-      { label: "Akkeworld", url: "https://akkeknitwear.com/akkeworld/" },
-      { label: "Contacts", url: "https://akkeknitwear.com/contatti/" },
+      { label: "Menswear", path: "/product-category/menswear-collection" },
+      { label: "Womenswear", path: "/product-category/womenswear-collection" },
+      { label: "Everest Akke Limited", path: "/everest-akke-limited" },
+      { label: "Akkeworld", path: "/akkeworld" },
+      { label: "Contacts", path: "/contacts" },
     ],
   },
   {
     title: "Legal Area",
     links: [
-      { label: "Terms of Sale", url: "https://akkeknitwear.com/condizioni-di-vendita/" },
-      { label: "Privacy Policy", url: "https://akkeknitwear.com/privacy-policy/" },
+      { label: "Terms of Sale", path: "https://akkeknitwear.com/condizioni-di-vendita/" },
+      { label: "Privacy Policy", path: "https://akkeknitwear.com/privacy-policy/" },
     ],
   },
   {
     title: "Follow us",
     links: [
-      { label: "Instagram", url: "https://www.instagram.com/akkeknitwear/" },
-      { label: "Facebook", url: "https://www.facebook.com/profile.php?id=100093662019914" },
+      { label: "Instagram", path: "https://www.instagram.com/akkeknitwear/" },
+      { label: "Facebook", path: "https://www.facebook.com/profile.php?id=100093662019914" },
     ],
   },
 ];
@@ -123,14 +124,12 @@ const Footer = () => {
                 <ul className="relative h-auto w-full space-y-0 md:space-y-2">
                   {section.links.map((link, idx) => (
                     <li key={idx}>
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        to={link.path}
                         className="leading-full text-[14px] text-white uppercase md:text-xl"
                       >
                         {link.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
