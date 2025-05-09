@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import { Link } from "react-router";
 
 function Limited() {
   const sectionRef = useRef(null);
@@ -124,7 +125,7 @@ function Limited() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.5 }}
       >
-        <a href="https://akkeknitwear.com/everest-akke-limited/" className="relative block w-full">
+        <Link to="/everest-akke-limited" className="relative block w-full">
           <div className="image-back mobile relative h-auto w-full">
             <img
               src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/limited_home_without_man_mobile-blend.jpg"
@@ -145,13 +146,16 @@ function Limited() {
               Everest Akke Limited
             </h2>
           </div>
-          <div ref={imageRef} className="image-front desktop absolute top-0 left-0 h-auto w-full">
+          <div
+            ref={imageRef}
+            className="image-front desktop absolute top-0 left-0 h-auto w-full"
+          >
             <img
               src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/AI_Immagine.png"
               className="w-full"
             />
           </div>
-        </a>
+        </Link>
       </motion.div>
     </section>
   );

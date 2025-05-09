@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import gsap from "gsap";
 import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router";
 
 const polaroidData = [
   {
     label: "Everest",
-    image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-1.jpg",
+    image:
+      "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-1.jpg",
     top: "5vh",
     left: "10vw",
     labelRight: "2vw",
@@ -13,7 +15,8 @@ const polaroidData = [
   },
   {
     label: "Trisul",
-    image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-2.jpg",
+    image:
+      "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-2.jpg",
     top: "20vh",
     left: "15vw",
     labelRight: "3vw",
@@ -21,7 +24,8 @@ const polaroidData = [
   },
   {
     label: "Kardong",
-    image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-3.jpg",
+    image:
+      "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-3.jpg",
     top: "30vh",
     left: "8vw",
     labelRight: "initial",
@@ -29,7 +33,8 @@ const polaroidData = [
   },
   {
     label: "K2",
-    image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-4.jpg",
+    image:
+      "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-4.jpg",
     top: "8vh",
     left: "65vw",
     labelRight: "1vw",
@@ -37,7 +42,8 @@ const polaroidData = [
   },
   {
     label: "Nanga Parbat",
-    image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-5.jpg",
+    image:
+      "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-5.jpg",
     top: "15vh",
     left: "62vw",
     labelRight: "initial",
@@ -45,7 +51,8 @@ const polaroidData = [
   },
   {
     label: "Nanga Parbat",
-    image: "https://akkeknitwear.com/website/wp-content/uploads/2023/12/AKKE-ADV-FW232400502.jpg",
+    image:
+      "https://akkeknitwear.com/website/wp-content/uploads/2023/12/AKKE-ADV-FW232400502.jpg",
     top: "5vh",
     left: "10vw",
     labelRight: "2vw",
@@ -84,7 +91,9 @@ export default function AdvSection() {
 
   const handleMouseEnter = (index) => {
     if (!isDesktop) return;
-    const polaroid = document.querySelector(`.polaroid-list .polaroid[data-order="${index}"]`);
+    const polaroid = document.querySelector(
+      `.polaroid-list .polaroid[data-order="${index}"]`,
+    );
     if (!polaroid) return;
 
     gsap.to(polaroid, {
@@ -95,7 +104,9 @@ export default function AdvSection() {
   };
 
   const handleMouseLeave = (index) => {
-    const polaroid = document.querySelector(`.polaroid-list .polaroid[data-order="${index}"]`);
+    const polaroid = document.querySelector(
+      `.polaroid-list .polaroid[data-order="${index}"]`,
+    );
     if (!polaroid) return;
 
     gsap.to(polaroid, {
@@ -256,7 +267,11 @@ export default function AdvSection() {
             data-order={index}
           >
             <div className="frame relative h-auto w-full">
-              <img className="block h-auto w-full" src={item.image} alt={item.label} />
+              <img
+                className="block h-auto w-full"
+                src={item.image}
+                alt={item.label}
+              />
               <span
                 className="font-permanent-marker leading-full absolute -bottom-[1.75vw] translate-y-1/2 text-[2rem] text-[#1d1d1d]"
                 style={{ left: item.labelLeft, right: item.labelRight }}
@@ -294,7 +309,10 @@ export default function AdvSection() {
           <div className="columns relative grid h-auto w-full grid-cols-2">
             <div className="column relative h-auto w-full">
               <div className="cat relative flex h-auto w-full items-start justify-center">
-                <a className="relative block h-full w-[90%] md:w-[33vw]">
+                <Link
+                  to="/product-category/menswear-collection"
+                  className="relative block h-full w-[90%] md:w-[33vw]"
+                >
                   <div
                     className="elAnimation column-image relative z-10 h-auto w-full"
                     animation="clip-top-to-bottom"
@@ -316,12 +334,15 @@ export default function AdvSection() {
                       Menswear
                     </h2>
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="column relative h-auto w-full">
               <div className="cat relative mt-[15vh] flex h-auto w-full items-start justify-center">
-                <a className="relative block h-full w-[90%] md:w-[33vw]">
+                <Link
+                  to="/product-category/womenswear-collection"
+                  className="relative block h-full w-[90%] md:w-[33vw]"
+                >
                   <div
                     className="elAnimation column-image relative z-10 h-auto w-full"
                     animation="clip-top-to-bottom"
@@ -343,14 +364,17 @@ export default function AdvSection() {
                       Womenswear
                     </h2>
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
           <div className="columns2 relative mt-8 flex h-auto w-full items-start justify-center">
             <div className="column">
               <div className="cat relative flex h-auto w-full items-start justify-center">
-                <a className="relative flex h-full w-auto items-center justify-center">
+                <Link
+                  to="/everest-akke-limited"
+                  className="relative flex h-full w-auto items-center justify-center"
+                >
                   <div
                     className="elAnimation column-image relative z-10 h-auto w-[50vw] md:w-[33vw]"
                     animation="clip-top-to-bottom"
@@ -372,7 +396,7 @@ export default function AdvSection() {
                       Everest Akke Limited
                     </h2>
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

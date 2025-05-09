@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-creative";
 import DecryptedText from "../../../components/animations/DecryptedText.jsx";
+import { Link } from "react-router";
 
 export function TitleSlider({ slides, swiperRef, onSwiper }) {
   return (
@@ -38,7 +39,7 @@ export function TitleSlider({ slides, swiperRef, onSwiper }) {
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
-          <a href={""} className="swiper-slide">
+          <Link href={slide.href} className="swiper-slide">
             <h2 className="font-humane leading-full absolute top-1/2 left-0 z-20 m-0 h-auto w-full -translate-y-1/2 text-center text-[90px] font-light text-white uppercase mix-blend-difference md:text-[15vw]">
               {index === 0 ? (
                 <DecryptedText
@@ -52,7 +53,7 @@ export function TitleSlider({ slides, swiperRef, onSwiper }) {
                 slide.title
               )}
             </h2>
-          </a>
+          </Link>
         </SwiperSlide>
       ))}
       <div className="swiper-button-prev absolute top-1/2 !left-[5vw] !m-0 flex !h-4 !w-4 -translate-y-1/2 rotate-90 cursor-pointer items-center justify-center md:!h-[3rem] md:!w-[3rem]">

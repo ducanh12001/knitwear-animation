@@ -1,10 +1,14 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useMediaQuery } from "react-responsive";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function ScrollCircle() {
+  const isSP = useMediaQuery({
+    query: "(width < 768px)",
+  });
   const circleRef = useRef(null);
   const arrowRef = useRef(null);
   const lastScrollY = useRef(0);
@@ -36,10 +40,10 @@ function ScrollCircle() {
       } else {
         if (scrollY > lastScrollY.current) {
           gsap.to(arrow, { rotation: 0, duration: 0.3 });
-          header.classList.add("scrolled");
+          header?.classList.add(isSP ? "scrolled-mob" : "scrolled");
         } else {
           gsap.to(arrow, { rotation: 180, duration: 0.3 });
-          header.classList.remove("scrolled");
+          header?.classList.remove(isSP ? "scrolled-mob" : "scrolled");
         }
       }
       lastScrollY.current = scrollY;
@@ -77,7 +81,13 @@ function ScrollCircle() {
       </div>
       <div className="circle-front">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <circle ref={circleRef} className="progress-circle" cx="50" cy="50" r="48"></circle>
+          <circle
+            ref={circleRef}
+            className="progress-circle"
+            cx="50"
+            cy="50"
+            r="48"
+          />
         </svg>
       </div>
       {/* <svg

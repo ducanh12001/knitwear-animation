@@ -10,6 +10,11 @@ header.scrolled {
   transition: transform 0.5s ease-in-out;
 }
 
+header.scrolled-mob {
+  background-color: #1d1d1d;
+  transition: background-color 0.5s ease-in-out;
+}
+
 .circle-back,
 .circle-front {
   position: absolute;

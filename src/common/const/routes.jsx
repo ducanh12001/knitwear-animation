@@ -1,5 +1,6 @@
 import AkkeLimited from "../../pages/AkkeLimited";
 import AkkeWorld from "../../pages/AkkeWorld";
+import Contacts from "../../pages/Contacts";
 import HomePage from "../../pages/HomePage";
 import ProductCollection from "../../pages/ProductCollection";
 
@@ -28,5 +29,10 @@ export const ROUTES = [
     path: "/akkeworld",
     title: "Akkeworld",
     element: <AkkeWorld />,
+  },
+  {
+    path: "/contacts",
+    title: "Contacts",
+    element: <Contacts />,
   },
 ];
