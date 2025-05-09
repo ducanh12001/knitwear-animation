@@ -12,6 +12,7 @@ function ScrollCircle() {
   useEffect(() => {
     const circle = circleRef.current;
     const arrow = arrowRef.current;
+    const header = document.querySelector("header.has-banner");
 
     gsap.to(circle, {
       scrollTrigger: {
@@ -35,8 +36,10 @@ function ScrollCircle() {
       } else {
         if (scrollY > lastScrollY.current) {
           gsap.to(arrow, { rotation: 0, duration: 0.3 });
+          header.classList.add("scrolled");
         } else {
           gsap.to(arrow, { rotation: 180, duration: 0.3 });
+          header.classList.remove("scrolled");
         }
       }
       lastScrollY.current = scrollY;
@@ -50,15 +53,21 @@ function ScrollCircle() {
     };
   }, []);
 
+  const scrollToTop = () => {
+    const arrow = arrowRef.current;
+    if (arrow && gsap.getProperty(arrow, "rotation") > 150) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <div
       id="circle-scroll"
-      onClick={() => {
-        window.scrollTo(0, 0);
-      }}
+      className="fixed right-[5vw] bottom-[5vh] z-140 flex h-12 w-12 items-center justify-center md:h-24 md:w-24"
+      onClick={scrollToTop}
     >
       <div
-        className="relative h-[1.5rem] w-[1.5rem] rotate-0 bg-[#302F35] mask-[url('/src/assets/arrow.svg')] mask-no-repeat"
+        className="relative h-4 w-4 rotate-0 bg-[#302F35] mask-[url('/src/assets/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
         ref={arrowRef}
       />
       <div className="circle-back">
@@ -68,13 +77,7 @@ function ScrollCircle() {
       </div>
       <div className="circle-front">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <circle
-            ref={circleRef}
-            className="progress-circle"
-            cx="50"
-            cy="50"
-            r="48"
-          ></circle>
+          <circle ref={circleRef} className="progress-circle" cx="50" cy="50" r="48"></circle>
         </svg>
       </div>
       {/* <svg

@@ -10,6 +10,10 @@ import gsap from "gsap";
 import ProductCollection from "./pages/ProductCollection";
 import AkkeLimited from "./pages/AkkeLimited";
 import LoginModal from "./components/organisms/modal/LoginModal";
+import CustomCursor from "./components/others/CustomCursor";
+import AkkeWorld from "./pages/AkkeWorld";
+import SideMenu from "./components/others/SideMenu";
+
 import "./App.css";
 import "./styles/index";
 
@@ -18,6 +22,7 @@ function App() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [displayLocation, setDisplayLocation] = useState(location);
   const [openLogin, setOpenLogin] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
   const lenisRef = useRef(null);
 
   useEffect(() => {
@@ -75,7 +80,9 @@ function App() {
           ? "Womenswear"
           : location.pathname.includes("/everest-akke-limite")
             ? "Everest Akke Limited"
-            : "Akke Knitwear";
+            : location.pathname.includes("/akkeworld")
+              ? "Akkeworld"
+              : "Akke Knitwear";
 
       gsap.set(pageTransition, { opacity: 1, visibility: "inherit" });
       gsap.fromTo(
@@ -138,6 +145,7 @@ function App() {
 
   useEffect(() => {
     if (location.pathname !== displayLocation.pathname) {
+      setOpenMenu(false);
       startAnimation(() => {});
     }
   }, [location, displayLocation, startAnimation]);
@@ -145,6 +153,7 @@ function App() {
   return (
     <div className="overflow-hidden">
       <LoginModal isOpen={openLogin} onClose={() => setOpenLogin(false)} lenis={lenisRef.current} />
+      <SideMenu isOpen={openMenu} lenis={lenisRef.current} />
       <div
         id="pageTransition"
         className="invisible fixed top-0 left-0 z-200 h-full w-full opacity-0"
@@ -166,7 +175,8 @@ function App() {
       </div>
       {isTransitioning ? null : (
         <div className="relative h-auto w-full">
-          <Header setOpenLogin={setOpenLogin} />
+          <CustomCursor />
+          <Header setOpenLogin={setOpenLogin} openMenu={openMenu} setOpenMenu={setOpenMenu} />
           <main
             className={`block ${location.pathname === "/" ? "bg-black" : "bg-[#e1e1e1]"}`}
             data-lenis-scroll-container
@@ -182,6 +192,7 @@ function App() {
                 element={<ProductCollection isMen={false} />}
               />
               <Route path="/everest-akke-limited" element={<AkkeLimited />} />
+              <Route path="/akkeworld" element={<AkkeWorld />} />
             </Routes>
             <Footer />
             <ScrollCircle />

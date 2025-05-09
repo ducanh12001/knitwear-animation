@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-// import gsap from "gsap";
+import gsap from "gsap";
 import { Link } from "react-router";
 import ScrollVelocity from "../../animations/ScrollVelocity";
 
-export function Header({ setOpenLogin }) {
-  const [isOpen, setIsOpen] = useState(false);
+export function Header({ setOpenLogin, openMenu, setOpenMenu }) {
   // const topRef = useRef(null);
   // const centerRef = useRef(null);
   // const bottomRef = useRef(null);
@@ -54,17 +53,23 @@ export function Header({ setOpenLogin }) {
   //   }
   // }, [isOpen]);
 
+  useEffect(() => {
+    if (openMenu) {
+      gsap.to(".js-header-background", { backgroundColor: "black", duration: 0.6 });
+      gsap.to(".js-header-color", { color: "#1d1d1d", duration: 0.6 });
+    } else {
+      gsap.to(".js-header-background", { backgroundColor: "white", duration: 0.25 });
+      gsap.to(".js-header-color", { color: "#fff", duration: 0.25 });
+    }
+  }, [openMenu]);
+
   const handleToggle = () => {
-    setIsOpen(!isOpen);
+    setOpenMenu(!openMenu);
   };
 
   return (
     <header className="has-banner">
-      <ScrollVelocity
-        texts={[
-          "Akke Promo Launch 50% off – Free shipping for orders over 350€",
-        ]}
-      />
+      <ScrollVelocity texts={["Akke Promo Launch 50% off – Free shipping for orders over 350€"]} />
       <div className="header-wrapper text-[1.2rem]">
         <div className="left relative flex w-auto items-start justify-start gap-[1.5rem] md:gap-[6rem]">
           <div className="logo relative h-[4rem] w-[4.3rem] md:h-[6rem] md:w-[13rem]">
@@ -97,10 +102,7 @@ export function Header({ setOpenLogin }) {
               className="menu leading-full relative hidden items-center justify-start gap-[1rem] text-[1.6rem] uppercase md:flex"
             >
               <li>
-                <Link
-                  to="https://akkeknitwear.com/akkeworld/"
-                  className="text-[#FD7453]"
-                >
+                <Link to="/akkeworld" className="text-[#FD7453]">
                   Akkeworld
                 </Link>
               </li>
@@ -108,7 +110,7 @@ export function Header({ setOpenLogin }) {
             <ul className="relative flex items-center justify-start gap-[1rem]">
               <li>
                 <div
-                  className="open--navbar-login leading-full text-[14px] text-white uppercase md:text-[1.6rem]"
+                  className="js-header-color leading-full text-[14px] text-white uppercase md:text-[1.6rem]"
                   onClick={() => setOpenLogin(true)}
                 >
                   Login
@@ -116,7 +118,7 @@ export function Header({ setOpenLogin }) {
               </li>
               <li>
                 <div className="header--bag leading-full flex cursor-pointer items-center justify-center text-[14px] uppercase md:text-[1.6rem]">
-                  <span className="text-white">Cart</span>
+                  <span className="js-header-color text-white">Cart</span>
                   <div className="total--bag text-[#FD7453]">(0)</div>
                 </div>
               </li>
@@ -128,28 +130,26 @@ export function Header({ setOpenLogin }) {
           >
             <div className="hamburger-wrapper relative h-full">
               <div
-                className={`absolute top-0 left-0 h-[1px] w-full transition-transform duration-300 ease-in-out ${isOpen ? "translate-y-[8px] scale-80 rotate-18" : "translate-y-0 scale-100 rotate-0"}`}
+                className={`span__wrapper top absolute left-0 h-[1px] w-full transition-transform duration-600 ease-in-out ${openMenu ? "top-[8px] scale-80 rotate-18" : "top-0 scale-100 rotate-0"}`}
                 // ref={topRef}
               >
-                <span className="absolute top-0 left-0 h-full w-full bg-white" />
+                <span className="js-header-background absolute top-0 left-0 h-full w-full bg-white" />
               </div>
               <div
-                className={`absolute top-2 left-0 h-[1px] w-full transition-opacity duration-300 ease-in-out ${
-                  isOpen ? "opacity-0" : "opacity-100"
+                className={`span__wrapper center absolute top-2 left-0 h-[1px] w-full transition-opacity duration-600 ease-in-out ${
+                  openMenu ? "invisible opacity-0" : "visible opacity-100"
                 }`}
                 // ref={centerRef}
               >
-                <span className="absolute top-0 left-0 h-full w-full bg-white" />
+                <span className="js-header-background absolute top-0 left-0 h-full w-full bg-white" />
               </div>
               <div
-                className={`absolute bottom-0 left-0 h-[1px] w-full transition-transform duration-300 ease-in-out ${
-                  isOpen
-                    ? "-translate-y-[8px] scale-80 -rotate-18"
-                    : "translate-y-0 scale-100 rotate-0"
+                className={`span__wrapper bottom absolute left-0 h-[1px] w-full transition-transform duration-600 ease-in-out ${
+                  openMenu ? "bottom-[8px] scale-80 -rotate-18" : "bottom-0 scale-100 rotate-0"
                 }`}
                 // ref={bottomRef}
               >
-                <span className="absolute top-0 left-0 h-full w-full bg-white" />
+                <span className="js-header-background absolute top-0 left-0 h-full w-full bg-white" />
               </div>
             </div>
           </div>

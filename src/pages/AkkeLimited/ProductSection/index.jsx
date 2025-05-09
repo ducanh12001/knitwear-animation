@@ -11,28 +11,28 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const slides = [
   {
-    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CachemireF-1-1280x1603.webp",
+    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CachemireF-1-1280x1603.jpg",
   },
   {
-    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CachemireR-1-1280x1603.webp",
+    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CachemireR-1-1280x1603.jpg",
   },
   {
-    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CachemireD1-1-1280x1603.webp",
+    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CachemireD1-1-1280x1603.jpg",
   },
   {
-    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CachemireD2-1-1280x1603.webp",
+    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CachemireD2-1-1280x1603.jpg",
   },
   {
-    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraD2-1-1280x1603.webp",
+    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraD2-1-1280x1603.jpg",
   },
   {
-    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraD1-1-1280x1603.webp",
+    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraD1-1-1280x1603.jpg",
   },
   {
-    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraF-1-1280x1603.webp",
+    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraF-1-1280x1603.jpg",
   },
   {
-    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraR-1-1280x1603.webp",
+    img: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraR-1-1280x1603.jpg",
   },
 ];
 

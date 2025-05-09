@@ -1,5 +1,31 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+
+const footerLinks = [
+  {
+    title: "AKKE Knitwear",
+    links: [
+      { label: "Menswear", url: "https://akkeknitwear.com/categoria-prodotto/menswear/" },
+      { label: "Womenswear", url: "https://akkeknitwear.com/categoria-prodotto/womenswear/" },
+      { label: "Everest Akke Limited", url: "https://akkeknitwear.com/everest-akke-limited/" },
+      { label: "Akkeworld", url: "https://akkeknitwear.com/akkeworld/" },
+      { label: "Contacts", url: "https://akkeknitwear.com/contatti/" },
+    ],
+  },
+  {
+    title: "Legal Area",
+    links: [
+      { label: "Terms of Sale", url: "https://akkeknitwear.com/condizioni-di-vendita/" },
+      { label: "Privacy Policy", url: "https://akkeknitwear.com/privacy-policy/" },
+    ],
+  },
+  {
+    title: "Follow us",
+    links: [
+      { label: "Instagram", url: "https://www.instagram.com/akkeknitwear/" },
+      { label: "Facebook", url: "https://www.facebook.com/profile.php?id=100093662019914" },
+    ],
+  },
+];
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -33,16 +59,16 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative box-border w-full bg-[#A9AFA4] p-16">
-      <div className="relative flex h-auto w-full flex-col gap-[15rem]">
+    <footer className="relative box-border w-full bg-[#A9AFA4] px-[5vw] py-[3.75rem] md:py-[5vw]">
+      <div className="relative flex h-auto w-full flex-col gap-[5rem] md:gap-[15rem]">
         <div className="relative flex h-auto w-full flex-col gap-8 md:flex-row md:gap-0">
-          <div className="relative w-1/2">
-            <h2 className="font-humane leading-full m-0 text-[6vw] font-bold text-[#302F35] uppercase">
+          <div className="relative w-full md:w-1/2">
+            <h2 className="font-humane leading-full m-0 text-[15vw] font-bold text-[#302F35] uppercase md:text-[6vw]">
               Subscribe to newsletter
             </h2>
             <p className="leading-full text-base text-white">
-              Iscriviti alla nostra newsletter per ricevere un codice sconto sul
-              tuo prossimo acquisto
+              Iscriviti alla nostra newsletter per ricevere un codice sconto sul tuo prossimo
+              acquisto
             </p>
           </div>
           <div className="relative box-border w-full pl-0 md:w-1/2 md:pl-16">
@@ -80,130 +106,52 @@ const Footer = () => {
                   </span>
                 )}
                 {success && (
-                  <span className="absolute right-0 text-xs text-green-400">
-                    Iscritto!
-                  </span>
+                  <span className="absolute right-0 text-xs text-green-400">Iscritto!</span>
                 )}
               </div>
             </form>
           </div>
         </div>
 
-        <div className="relative flex h-auto w-full items-center justify-between">
+        <div className="relative flex h-auto w-full flex-col items-start justify-start gap-8 md:flex-row md:items-center md:justify-between md:gap-0">
           <div className="flex grid-cols-3 flex-col gap-8 md:grid md:gap-[10rem]">
-            <div className="relative flex h-auto w-full flex-col gap-4 md:gap-8">
-              <h3 className="leading-full text-xl text-[#302F35] uppercase">
-                AKKE Knitwear
-              </h3>
-              <ul className="relative h-auto w-full space-y-0 md:space-y-2">
-                <li>
-                  <a
-                    href="https://akkeknitwear.com/categoria-prodotto/menswear/"
-                    className="leading-full text-xl text-white uppercase"
-                  >
-                    Menswear
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://akkeknitwear.com/categoria-prodotto/womenswear/"
-                    className="leading-full text-xl text-white uppercase"
-                  >
-                    Womenswear
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://akkeknitwear.com/everest-akke-limited/"
-                    className="leading-full text-xl text-white uppercase"
-                  >
-                    Everest Akke Limited
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://akkeknitwear.com/akkeworld/"
-                    className="leading-full text-xl text-white uppercase"
-                  >
-                    Akkeworld
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://akkeknitwear.com/contatti/"
-                    className="leading-full text-xl text-white uppercase"
-                  >
-                    Contatti
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="relative flex h-auto w-full flex-col gap-4 md:gap-8">
-              <h3 className="leading-full text-xl text-[#302F35] uppercase">
-                Legal Area
-              </h3>
-              <ul className="relative h-auto w-full space-y-0 md:space-y-2">
-                <li>
-                  <a
-                    href="https://akkeknitwear.com/condizioni-di-vendita/"
-                    className="leading-full text-xl text-white uppercase"
-                  >
-                    CONDIZIONI DI VENDITA
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://akkeknitwear.com/privacy-policy/"
-                    className="leading-full text-xl text-white uppercase"
-                  >
-                    PRIVACY POLICY
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="relative flex h-auto w-full flex-col gap-4 md:gap-8">
-              <h3 className="leading-full text-xl text-[#302F35] uppercase">
-                Follow us
-              </h3>
-              <ul className="relative h-auto w-full space-y-0 md:space-y-2">
-                <li>
-                  <a
-                    href="https://www.instagram.com/akkeknitwear/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="leading-full text-xl text-white uppercase"
-                  >
-                    Instagram
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.facebook.com/profile.php?id=100093662019914"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="leading-full text-xl text-white uppercase"
-                  >
-                    Facebook
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {footerLinks.map((section, index) => (
+              <div key={index} className="relative flex h-auto w-full flex-col gap-4 md:gap-8">
+                <h3 className="leading-full text-[14px] text-[#302F35] uppercase md:text-xl">
+                  {section.title}
+                </h3>
+                <ul className="relative h-auto w-full space-y-0 md:space-y-2">
+                  {section.links.map((link, idx) => (
+                    <li key={idx}>
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="leading-full text-[14px] text-white uppercase md:text-xl"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
         <div className="relative box-border flex h-auto w-full items-center justify-between">
           <div className="relative flex w-auto flex-col items-start justify-start gap-0 md:flex-row md:items-center md:gap-4">
-            <p className="leading-full text-xl text-[#302F35] uppercase">
+            <p className="leading-full text-[14px] text-[#302F35] uppercase md:text-xl">
               ©2023 New Esse Maglieria s.r.l.
             </p>
-            <p className="leading-full text-xl text-[#302F35] uppercase">
+            <p className="leading-full text-[14px] text-[#302F35] uppercase md:text-xl">
               P.Iva 01807740434
             </p>
             <a
               href="https://www.awdagency.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="leading-full mt-2 text-xl font-normal text-[#302F35] uppercase md:mt-0"
+              className="leading-full mt-2 text-[14px] font-normal text-[#302F35] uppercase md:mt-0 md:text-xl"
             >
               Credits Awd Agency
             </a>
