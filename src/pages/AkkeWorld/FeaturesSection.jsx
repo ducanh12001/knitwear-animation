@@ -102,7 +102,9 @@ export default function FeaturesSection() {
             <div
               key={index}
               className={`dot elAnimation absolute flex items-center justify-start gap-1 md:gap-4 ${index === 0 && "flex-row-reverse"} ${index === 1 && "right-[2.5vw]"}`}
-              animation={index === 0 ? "ease-left-to-right" : "ease-right-to-left"}
+              animation={
+                index === 0 ? "ease-left-to-right" : "ease-right-to-left"
+              }
               style={{
                 top: isDesktop ? item.desktop.top : item.mobile.top,
                 left: isDesktop ? item.desktop.left : item.mobile.left,

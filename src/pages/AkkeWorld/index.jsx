@@ -1,142 +1,12 @@
-import React, { useEffect } from "react";
-import ImagesSection from "../AkkeLimited/ImagesSection";
 import FeaturesSection from "./FeaturesSection";
 import FeaturesVideo from "../../assets/features.mp4";
 import AdvSection from "./AdvSection";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DecryptedText from "../../components/animations/DecryptedText";
-
-gsap.registerPlugin(ScrollTrigger);
+import { ImagesSection } from "../AkkeLimited/ImagesSection";
+import { useGSAPAnimation } from "../../hooks/useGSAPAnimation";
 
 function AkkeWorld() {
-  useEffect(() => {
-    const elements = document.querySelectorAll(".page-akkeworld .elAnimation");
-
-    const path = document.querySelector(".page-akkeworld .road .street");
-    const roadG = document.querySelectorAll(".page-akkeworld .road svg g");
-
-    elements.forEach((el) => {
-      const animationType = el.getAttribute("animation");
-      switch (animationType) {
-        case "ease-bottom-to-top":
-          gsap.to(el, {
-            y: 0,
-            autoAlpha: 1,
-            duration: 0.5,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          });
-          break;
-        case "ease-left-to-right":
-        case "ease-right-to-left":
-          gsap.to(el, {
-            x: 0,
-            autoAlpha: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          });
-          break;
-        case "clip-top-to-bottom":
-          gsap.to(el, {
-            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-            duration: 2.5,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          });
-          gsap.to(el.querySelector(".imageScale"), {
-            scale: 1,
-            duration: 2.5,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          });
-          break;
-        case "ease-bottom-to-top-scaled":
-          gsap.to(el, {
-            y: 0,
-            autoAlpha: 1,
-            scale: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          });
-          break;
-        case "scrumbleText":
-          gsap.to(el, {
-            autoAlpha: 1,
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          });
-          break;
-        case "road":
-          path.style.strokeDasharray = `${path.getTotalLength()} ${path.getTotalLength()}`;
-          path.style.strokeDashoffset = path.getTotalLength().toString();
-          gsap.fromTo(
-            path,
-            { strokeDashoffset: path.getTotalLength() },
-            {
-              strokeDashoffset: 0,
-              duration: 7,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: el,
-                start: "top 60%",
-                toggleActions: "play none none none",
-              },
-            },
-          );
-          roadG.forEach((item, index) => {
-            gsap.to(item, {
-              autoAlpha: 1,
-              duration: 2,
-              scrollTrigger: {
-                trigger: el,
-                start: "top 80%",
-                toggleActions: "play none none none",
-              },
-              delay: 1 + index * 0.2,
-            });
-          });
-          break;
-        default:
-          gsap.to(el, {
-            autoAlpha: 1,
-            y: 0,
-            x: 0,
-            scale: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          });
-          break;
-      }
-    });
-  }, []);
+  useGSAPAnimation();
 
   return (
     <div className="page-akkeworld">
@@ -164,12 +34,15 @@ function AkkeWorld() {
         }}
         blockColumns={{
           leftTitle: "Research and experiment",
-          leftImage: "https://akkeknitwear.com/website/wp-content/uploads/2025/03/world-1.jpg",
+          leftImage:
+            "https://akkeknitwear.com/website/wp-content/uploads/2025/03/world-1.jpg",
           rightTitle: "Durable and timeless",
-          rightImage: "https://akkeknitwear.com/website/wp-content/uploads/2025/03/world-2.jpg",
+          rightImage:
+            "https://akkeknitwear.com/website/wp-content/uploads/2025/03/world-2.jpg",
         }}
         blockFull={{
-          image: "https://akkeknitwear.com/website/wp-content/uploads/2025/03/banner2.jpg",
+          image:
+            "https://akkeknitwear.com/website/wp-content/uploads/2025/03/banner2.jpg",
           des: "The innovation of materials and the study of details push AKKE knitwear beyond the boundaries of the ordinary.",
           des2: "We want to inspire those who are looking for something more, those who want to experience the unlimited potential of textile creations.",
         }}

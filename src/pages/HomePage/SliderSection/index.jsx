@@ -8,10 +8,15 @@ export function SliderSection() {
 
   const syncSwipers = (swiperInstance) => {
     // if (imagesSwiperRef.current && titlesSwiperRef.current) {
-    //   // imagesSwiperRef.current.swiper.swipeTo(swiperInstance.realIndex);
     //   const imagesSwiper = imagesSwiperRef.current.swiper;
-    //   if (imagesSwiper) {
+    //   const titlesSwiper = titlesSwiperRef.current.swiper;
+
+    //   if (imagesSwiper && titlesSwiper && imagesSwiper !== swiperInstance) {
     //     imagesSwiper.slideTo(swiperInstance.realIndex);
+    //   }
+
+    //   if (titlesSwiper && imagesSwiper && titlesSwiper !== swiperInstance) {
+    //     titlesSwiper.slideTo(swiperInstance.realIndex);
     //   }
     // }
   };

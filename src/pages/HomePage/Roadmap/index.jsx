@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router";
@@ -6,185 +6,17 @@ import { Link } from "react-router";
 gsap.registerPlugin(ScrollTrigger);
 
 function Roadmap() {
-  const sectionRef = useRef(null);
-  const innerImageRef = useRef(null);
-  const imageScaleRef = useRef(null);
-  const h2TextRef = useRef(null);
-  const pathRef = useRef(null);
-  const discoverButtonRef = useRef(null);
   const discoverLinkRef = useRef(null);
   const ellipseRef = useRef(null);
-  const columnImageRefs = useRef([]);
-  const columnImageScaleRefs = useRef([]);
-  const columnTextH2Refs = useRef([]);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const innerImage = innerImageRef.current;
-    const imageScale = imageScaleRef.current;
-    const h2Text = h2TextRef.current;
-    const path = pathRef.current;
-    const discoverButton = discoverButtonRef.current;
     const discoverLink = discoverLinkRef.current;
     const ellipse = ellipseRef.current;
-    const columnImages = columnImageRefs.current;
-    const columnImageScales = columnImageScaleRefs.current;
-    const columnTextH2s = columnTextH2Refs.current;
 
-    if (
-      !section ||
-      !innerImage ||
-      !imageScale ||
-      !h2Text ||
-      !path ||
-      !discoverButton ||
-      !discoverLink ||
-      !ellipse
-    ) {
+    if (!discoverLink || !ellipse) {
       return;
     }
 
-    // 1. inner-image: clip-path animation (top-to-bottom)
-    gsap.fromTo(
-      innerImage,
-      { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" },
-      {
-        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-        duration: 1.5,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      },
-    );
-
-    // 2. imageScale: scale từ 1.2 về 1
-    gsap.fromTo(
-      imageScale,
-      { scale: 1.2 },
-      {
-        scale: 1,
-        duration: 1.5,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      },
-    );
-
-    // 3. h2 trong inner-text: ease-bottom-to-top (opacity và translateY)
-    gsap.fromTo(
-      h2Text,
-      { opacity: 0, y: "10vh" },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      },
-    );
-
-    // 4. road (SVG path): vẽ từ trên xuống
-    const pathLength = path.getTotalLength();
-    path.style.strokeDasharray = `${pathLength} ${pathLength}`;
-    path.style.strokeDashoffset = pathLength.toString();
-    gsap.fromTo(
-      path,
-      { strokeDashoffset: pathLength },
-      {
-        strokeDashoffset: 0,
-        duration: 10,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      },
-    );
-
-    // 5. discover-button: scale và opacity
-    gsap.fromTo(
-      discoverButton,
-      { scale: 0.9, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      },
-    );
-
-    // 6. column-image: clip-path animation (top-to-bottom)
-    columnImages.forEach((columnImage) => {
-      gsap.fromTo(
-        columnImage,
-        { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" },
-        {
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: columnImage,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        },
-      );
-    });
-
-    // 7. imageScale trong column-image: scale từ 1.2 về 1
-    columnImageScales.forEach((columnImageScale) => {
-      gsap.fromTo(
-        columnImageScale,
-        { scale: 1.2 },
-        {
-          scale: 1,
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: columnImageScale,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        },
-      );
-    });
-
-    // 8. h2 trong column-text: opacity và translateY
-    columnTextH2s.forEach((h2) => {
-      gsap.fromTo(
-        h2,
-        { opacity: 0, y: "10vh" },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: h2,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        },
-      );
-    });
-
-    // 9. Hiệu ứng hover cho ellipse trong front-track
     const handleMouseEnter = () => {
       gsap.to(ellipse, {
         strokeDashoffset: 993.52 * 2,
@@ -211,14 +43,14 @@ function Roadmap() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative flex h-auto w-full flex-col items-start justify-start gap-[15vh] bg-[#A9AFA4] py-[15vh]"
-    >
+    <section className="relative flex h-auto w-full flex-col items-start justify-start gap-[15vh] bg-[#A9AFA4] py-[15vh]">
       <div className="top relative grid h-auto w-full grid-cols-2">
         <div className="image relative flex h-auto w-full items-start justify-end">
-          <div ref={innerImageRef} className="inner-image overflow-hidden">
-            <div ref={imageScaleRef} className="imageScale">
+          <div
+            className="elAnimation inner-image overflow-hidden"
+            animation="clip-top-to-bottom"
+          >
+            <div className="imageScale">
               <img
                 src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-1-1.jpg"
                 className="block h-auto w-[33vw]"
@@ -230,16 +62,16 @@ function Roadmap() {
           <div className="inner-text relative flex h-auto w-full translate-x-0 flex-col items-end justify-start md:translate-x-[-5vw]">
             <div className="relative w-full">
               <h2
-                ref={h2TextRef}
-                className="text-[20px] leading-[120%] tracking-normal text-white md:text-[3vw] md:tracking-[-2px]"
+                className="elAnimation text-[20px] leading-[120%] tracking-normal text-white md:text-[3vw] md:tracking-[-2px]"
+                animation="ease-bottom-to-top"
               >
                 AKKE is technical innovation and yarn evolution, a new space
                 between fashion and functionality.
               </h2>
             </div>
             <div
-              ref={discoverButtonRef}
-              className="discover-button relative mt-[5rem] hidden h-auto w-auto md:block"
+              className="elAnimation discover-button relative mt-[5rem] hidden h-auto w-auto md:block"
+              animation="ease-scale"
             >
               <Link
                 ref={discoverLinkRef}
@@ -296,7 +128,7 @@ function Roadmap() {
           className="button-container relative block h-full w-full"
           to="/akkeworld"
         >
-          <div className="back-track absolute top-0 left-0 h-full w-full"></div>
+          <div className="back-track absolute top-0 left-0 h-full w-full" />
           <span className="leading-full relative box-border block px-[3.75vw] py-[2.3vw] text-[1.75rem] text-white uppercase">
             Discover Akke World
           </span>
@@ -310,13 +142,10 @@ function Roadmap() {
               className="relative block h-full w-[45vw] md:w-[33vw]"
             >
               <div
-                ref={(el) => (columnImageRefs.current[0] = el)}
-                className="column-image relative z-10 h-auto w-full overflow-hidden"
+                className="elAnimation column-image relative z-10 h-auto w-full overflow-hidden"
+                animation="clip-top-to-bottom"
               >
-                <div
-                  ref={(el) => (columnImageScaleRefs.current[0] = el)}
-                  className="imageScale"
-                >
+                <div className="imageScale">
                   <div className="relative h-auto w-full">
                     <img
                       src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-2-1.jpg"
@@ -327,8 +156,8 @@ function Roadmap() {
               </div>
               <div className="column-text absolute top-1/2 left-0 z-15 flex h-auto w-full -translate-y-1/2 flex-col items-center justify-center">
                 <h2
-                  ref={(el) => (columnTextH2Refs.current[0] = el)}
-                  className="font-humane leading-full text-[12vw] font-extralight text-white uppercase"
+                  className="elAnimation font-humane leading-full text-[12vw] font-extralight text-white uppercase"
+                  animation="ease-bottom-to-top"
                 >
                   Men
                 </h2>
@@ -343,13 +172,10 @@ function Roadmap() {
               className="relative block h-full w-[45vw] md:w-[33vw]"
             >
               <div
-                ref={(el) => (columnImageRefs.current[1] = el)}
-                className="column-image relative z-10 h-auto w-full overflow-hidden"
+                className="elAnimation column-image relative z-10 h-auto w-full overflow-hidden"
+                animation="clip-top-to-bottom"
               >
-                <div
-                  ref={(el) => (columnImageScaleRefs.current[1] = el)}
-                  className="imageScale"
-                >
+                <div className="imageScale">
                   <div className="relative h-auto w-full">
                     <img
                       src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-3-1.jpg"
@@ -360,8 +186,8 @@ function Roadmap() {
               </div>
               <div className="column-text absolute top-1/2 left-0 z-15 flex h-auto w-full -translate-y-1/2 flex-col items-center justify-center">
                 <h2
-                  ref={(el) => (columnTextH2Refs.current[1] = el)}
-                  className="font-humane leading-full text-[12vw] font-extralight text-white uppercase"
+                  className="elAnimation font-humane leading-full text-[12vw] font-extralight text-white uppercase"
+                  animation="ease-bottom-to-top"
                 >
                   Women
                 </h2>
@@ -370,7 +196,10 @@ function Roadmap() {
           </div>
         </div>
       </div>
-      <div className="road absolute top-0 left-1/2 z-15 h-full -translate-x-1/2">
+      <div
+        className="road elAnimation absolute top-0 left-1/2 z-15 h-full -translate-x-1/2"
+        animation="road"
+      >
         <svg
           data-name="Livello 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -378,7 +207,6 @@ function Roadmap() {
           className="relative block h-full w-auto"
         >
           <path
-            ref={pathRef}
             className="fill-none stroke-white stroke-2"
             style={{
               strokeLinecap: "round",
