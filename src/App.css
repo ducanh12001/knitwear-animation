@@ -34,7 +34,7 @@ header.scrolled-mob {
 }
 
 .circle-back circle {
-  stroke: #302f35; /* Màu nền vòng tròn */
+  stroke: #302f35;
   stroke-width: 0.75;
 }
 
@@ -43,7 +43,7 @@ header.scrolled-mob {
   stroke-width: 4;
   stroke-linecap: round;
   stroke-dasharray: 301.44; /* Chu vi = 2 * π * 48 */
-  stroke-dashoffset: 301.44; /* Bắt đầu ẩn hoàn toàn */
-  transform: rotate(-90deg); /* Bắt đầu từ đỉnh */
+  stroke-dashoffset: 301.44;
+  transform: rotate(-90deg);
   transform-origin: center;
 }

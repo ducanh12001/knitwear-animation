@@ -132,7 +132,6 @@ export default function LoginModal({ isOpen, onClose, lenis }) {
         ref={panelRef}
         className="login-panel absolute top-0 right-0 z-20 h-full w-[95vw] origin-top-right translate-x-[100%] scale-x-95 overflow-hidden bg-[#e1e1e1] md:w-[35vw]"
       >
-        <div></div>
         <div className="relative z-20 box-border flex h-full w-full flex-col items-start justify-start gap-[2rem] px-[12px] py-[1rem] md:p-[1.25rem]">
           <div className="login-header relative box-border flex h-auto w-full items-stretch justify-between px-[5vw] pt-[2.5rem] pb-[2.5vw] md:pt-[2.5vw]">
             <div className="login-title relative flex w-full items-end justify-start">
@@ -160,7 +159,7 @@ export default function LoginModal({ isOpen, onClose, lenis }) {
             </div>
           </div>
           <div
-            className="wrapper data-lenis-prevent relative h-full w-full grow overflow-y-scroll overscroll-contain"
+            className="wrapper relative h-full w-full grow overflow-y-scroll overscroll-contain"
             data-lenis-prevent
             style={{ scrollbarWidth: "none" }}
           >

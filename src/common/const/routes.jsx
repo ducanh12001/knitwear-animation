@@ -1,5 +1,6 @@
 import AkkeLimited from "../../pages/AkkeLimited";
 import AkkeWorld from "../../pages/AkkeWorld";
+import Cart from "../../pages/Cart";
 import Contacts from "../../pages/Contacts";
 import HomePage from "../../pages/HomePage";
 import ProductCollection from "../../pages/ProductCollection";
@@ -40,5 +41,10 @@ export const ROUTES = [
     path: "/product-category/:id",
     title: "Product",
     element: <ProductDetail />,
+  },
+  {
+    path: "/cart",
+    title: "Cart",
+    element: <Cart />,
   },
 ];

@@ -11,6 +11,7 @@ import { usePageTransition } from "./hooks/usePageTransition";
 import PageTransition from "./components/animations/PageTransition";
 import { ROUTES } from "./common/const/routes";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
+import CartModal from "./components/organisms/modal/CartModal";
 
 import "./App.css";
 import "./styles/index";
@@ -25,12 +26,14 @@ function App() {
   } = usePageTransition();
   const [openLogin, setOpenLogin] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
 
   const lenisRef = useSmoothScroll();
 
   useEffect(() => {
     if (location.pathname !== displayLocation.pathname) {
       setOpenMenu(false);
+      setOpenCart(false);
       startAnimation();
     }
   }, [location, displayLocation, startAnimation]);
@@ -40,6 +43,11 @@ function App() {
       <LoginModal
         isOpen={openLogin}
         onClose={() => setOpenLogin(false)}
+        lenis={lenisRef.current}
+      />
+      <CartModal
+        isOpen={openCart}
+        onClose={() => setOpenCart(false)}
         lenis={lenisRef.current}
       />
       <SideMenu isOpen={openMenu} lenis={lenisRef.current} />
@@ -53,6 +61,7 @@ function App() {
             setOpenLogin={setOpenLogin}
             openMenu={openMenu}
             setOpenMenu={setOpenMenu}
+            setOpenCart={setOpenCart}
           />
           <main
             className={`block ${location.pathname === "/" ? "bg-black" : "bg-[#e1e1e1]"}`}
