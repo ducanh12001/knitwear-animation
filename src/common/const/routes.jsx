@@ -3,6 +3,7 @@ import AkkeWorld from "../../pages/AkkeWorld";
 import Contacts from "../../pages/Contacts";
 import HomePage from "../../pages/HomePage";
 import ProductCollection from "../../pages/ProductCollection";
+import ProductDetail from "../../pages/ProductDetail";
 
 export const ROUTES = [
   {
@@ -34,5 +35,10 @@ export const ROUTES = [
     path: "/contacts",
     title: "Contacts",
     element: <Contacts />,
+  },
+  {
+    path: "/product-category/:id",
+    title: "Product",
+    element: <ProductDetail />,
   },
 ];

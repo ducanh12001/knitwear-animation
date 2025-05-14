@@ -39,8 +39,11 @@ export function TitleSlider({ slides, swiperRef, onSwiper }) {
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
-          <Link href={slide.href} className="swiper-slide">
-            <h2 className="font-humane leading-full absolute top-1/2 left-0 z-20 m-0 h-auto w-full -translate-y-1/2 text-center text-[90px] font-light text-white uppercase mix-blend-difference md:text-[15vw]">
+          <Link to={slide.href} className="swiper-slide">
+            <h2
+              className="elAnimation font-humane leading-full absolute top-1/2 left-0 z-20 m-0 h-auto w-full -translate-y-1/2 text-center text-[90px] font-light text-white uppercase mix-blend-difference md:text-[15vw]"
+              animation="scrumbleText"
+            >
               {index === 0 ? (
                 <DecryptedText
                   text={slide.title}

@@ -1,17 +1,18 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 export function ProductCard({ product }) {
   const [hoveredColor, setHoveredColor] = useState(null);
 
   return (
     <div
-      className="product-card relative h-auto w-full"
+      className="product-card home-rel-product relative h-auto w-full"
       data-id={product.id}
       data-url={product.url}
     >
       <div className="product-wrapper relative h-full w-full">
-        <a
-          href={product.url}
+        <Link
+          to={`/product-category/${product.id}`}
           className="group relative flex h-full w-full flex-col gap-8"
           onMouseLeave={() => setHoveredColor(null)}
         >
@@ -79,7 +80,7 @@ export function ProductCard({ product }) {
               </div>
             </div>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   );
