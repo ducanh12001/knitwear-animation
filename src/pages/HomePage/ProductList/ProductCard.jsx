@@ -65,10 +65,10 @@ export function ProductCard({ product }) {
             <div className="product-price relative h-auto w-full">
               <div className="price group-hover:visibility-hidden visibility-visible flex h-auto w-full flex-col items-center justify-end opacity-100 transition-opacity duration-500 ease-in-out group-hover:opacity-0">
                 <span className="text-[#FD7453] line-through">
-                  {product.price.regular}
+                  € {product.price.regular}
                 </span>
                 <span className="text-2xl font-bold text-[#1d1d1d]">
-                  {product.price.sale}
+                  € {product.price.sale}
                 </span>
               </div>
               <div className="button absolute top-0 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">

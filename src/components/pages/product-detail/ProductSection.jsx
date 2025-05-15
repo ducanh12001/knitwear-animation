@@ -10,6 +10,7 @@ import { useMediaQuery } from "react-responsive";
 import { imageSlides } from "../../../common/const/slides";
 import { ProductDetails } from "./ProductDetails";
 import { HeatIndicator } from "./HeatIndicator";
+import useCart from "../../../hooks/useCart";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,6 +23,7 @@ export function ProductSection({
   const isSP = useMediaQuery({
     query: "(width < 768px)",
   });
+  const { addToCart } = useCart();
 
   const sectionRef = useRef(null);
   const productLeftRef = useRef(null);
@@ -74,12 +76,12 @@ export function ProductSection({
 
   const handleAddToCart = () => {
     if (selectedSize >= 0) {
+      addToCart(product, sizes[selectedSize], selectedColor, 1);
       console.log(
         `Added ${product.title}, size ${sizes[selectedSize]}, color ${
           product.colors?.[selectedColor]?.name
         } to cart`,
       );
-      // Add your cart logic here
     }
   };
 
@@ -98,7 +100,7 @@ export function ProductSection({
         {/* Left Column */}
         <div
           ref={productLeftRef}
-          className="product-left relative box-border h-auto w-full pt-[6rem] pr-[5vw] pl-[5vw] md:sticky md:!h-auto md:pt-0 md:pr-0"
+          className="product-left relative box-border h-auto w-full pt-[6rem] pr-[5vw] pl-[5vw] md:sticky md:top-[calc(6rem+10vh)] md:!h-auto md:pt-0 md:pr-0"
         >
           <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[3rem]">
             <div className="product-top relative flex h-auto w-full flex-col items-start justify-start gap-[1rem]">
@@ -183,7 +185,7 @@ export function ProductSection({
         {/* Right Column */}
         <div
           ref={productRightRef}
-          className="product-right relative box-border h-auto w-full py-[2rem] pr-[5vw] pl-[5vw] md:sticky md:!h-auto md:py-0 md:pl-0"
+          className="product-right relative box-border h-auto w-full py-[2rem] pr-[5vw] pl-[5vw] md:sticky md:top-[calc(6rem+10vh)] md:!h-auto md:py-0 md:pl-0"
         >
           <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[3.75rem]">
             <div className="product-top relative flex h-auto w-full flex-col items-start justify-start gap-[3rem]">
@@ -201,15 +203,15 @@ export function ProductSection({
                   {product.price?.sale ? (
                     <>
                       <span className="regular leading-full text-[#FD7453] line-through">
-                        {product.price.regular}
+                        € {product.price.regular}
                       </span>
                       <span className="sale leading-full text-[2rem] text-[#1d1d1d]">
-                        {product.price.sale}
+                        € {product.price.sale}
                       </span>
                     </>
                   ) : (
                     <span className="regular leading-full text-[2rem] text-[#1d1d1d]">
-                      {product.price?.regular}
+                      € {product.price?.regular}
                     </span>
                   )}
                 </div>
