@@ -55,7 +55,7 @@ function ScrollCircle() {
       window.removeEventListener("scroll", handleScroll);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [isSP]);
 
   const scrollToTop = () => {
     const arrow = arrowRef.current;

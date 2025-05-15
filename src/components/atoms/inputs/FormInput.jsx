@@ -12,7 +12,7 @@ export const FormInput = ({
   return (
     <div className="relative flex h-auto w-full flex-col">
       <input
-        className="leading-full relative z-2 box-border h-[48px] w-full resize-none rounded-[14px] border-none bg-white px-[1rem] text-base text-[#1d1d1d] outline-none md:h-[5rem] md:text-[1.25rem]"
+        className="leading-full relative z-2 box-border h-[48px] w-full resize-none rounded-[14px] border-none bg-white px-[1rem] text-base text-[#1d1d1d] outline-none md:h-[5rem] md:px-[3rem] md:text-[1.25rem]"
         type={showPasswordToggle && showPassword ? "text" : type}
         placeholder={placeholder}
         {...register(name, validation)}
@@ -27,9 +27,9 @@ export const FormInput = ({
           </span>
         </div>
       )}
-      <div className="errors absolute bottom-[-1rem] left-0">
+      <div className="errors absolute right-[3rem] bottom-4">
         {errors[name] && (
-          <span className="error leading-full absolute bottom-0 left-0 text-[0.75rem] whitespace-nowrap text-[#FD7453] opacity-100 transition-all duration-300 ease-in-out">
+          <span className="error leading-full absolute right-0 bottom-0 text-[0.75rem] whitespace-nowrap text-[#FD7453] opacity-100 transition-all duration-300 ease-in-out">
             {errors[name].message}
           </span>
         )}

@@ -35,11 +35,32 @@ function AkkeLimited() {
       />
       <ProductSection
         product={{
+          id: 452123,
+          url: "https://akkeknitwear.com/prodotto/indrasan-mf2415gc1-acid-lime/",
           title: "Everest",
-          price: { regular: "€ 850.00" },
-          colors: [{ hex: "#c1bab7", active: true }],
+          image:
+            "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2415GC1_AcidLime_1-2.jpg",
           description:
             "Production limited to 100 items worldwide. This reversible garment is created using 8 strands of wool/Cordura in a natural colour (side A), combined with 4 strands of pure cashmere in taupe (side B).",
+          price: { regular: "850.00" },
+          colors: [
+            {
+              id: 452,
+              hex: "#b9cb5f",
+              active: true,
+              url: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2415GC1_AcidLime_1-2.jpg",
+            },
+            {
+              id: 2377,
+              hex: "#003b84",
+              url: "https://akkeknitwear.com/website/wp-content/uploads/2024/09/INDRASAN-INDIGO-1.jpg",
+            },
+            {
+              id: 425,
+              hex: "#d4ccc8",
+              url: "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2415GC1_Turtledove_1-1.jpg",
+            },
+          ],
         }}
         themeColor="#93A7A8"
         hoverColor="#82999a"

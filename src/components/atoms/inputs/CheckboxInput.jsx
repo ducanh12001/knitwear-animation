@@ -19,7 +19,7 @@ export const CheckboxInput = ({
         />
         <div className="custom-check relative flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border border-[#1d1d1d] md:h-[2rem] md:w-[2rem] md:rounded-[0.6rem]">
           <div
-            className={`inner-check relative h-3 w-3 bg-[#1d1d1d] mask-[url('/src/assets/check.svg')] mask-no-repeat opacity-0 transition-opacity duration-200 ease-in-out md:h-[1.5rem] md:w-[1.5rem] ${isChecked ? "opacity-100" : "opacity-0"}`}
+            className={`inner-check relative h-3 w-3 bg-[#1d1d1d] mask-[url('/src/assets/check.svg')] mask-no-repeat transition-opacity duration-200 ease-in-out md:h-[1.5rem] md:w-[1.5rem] ${isChecked ? "opacity-100" : "opacity-0"}`}
           />
         </div>
         <span className="leading-full flex-1 basis-[100%] text-[14px] text-[#1d1d1d] md:basis-auto md:text-base">

@@ -66,7 +66,7 @@ export default function SideMenu({ isOpen, lenis }) {
   return (
     <div
       id="menu-mobile"
-      className="mobile invisible fixed top-0 left-0 z-145 h-full w-full overflow-hidden opacity-0"
+      className="invisible fixed top-0 left-0 z-145 block h-full w-full overflow-hidden opacity-0 xl:hidden"
     >
       <div className="menu-mobile-bg absolute top-0 left-0 h-full w-full bg-[#1d1d1d]/85 opacity-0" />
       <div className="menu-mobile-panel absolute top-0 right-0 z-20 h-full w-[97.5vw] origin-top-right translate-x-full scale-x-95 overflow-hidden bg-[#e1e1e1] pt-[100px] uppercase">
@@ -85,7 +85,11 @@ export default function SideMenu({ isOpen, lenis }) {
         <div>
           <ul className="font-humane flex border-t border-b border-[#868686]/10 text-[3rem] text-[#1d1d1d] uppercase">
             <li>
-              <a data-lang="it" href="https://akkeknitwear.com/" className="px-[5vw] py-1">
+              <a
+                data-lang="it"
+                href="https://akkeknitwear.com/"
+                className="px-[5vw] py-1"
+              >
                 Italiano
               </a>
             </li>

@@ -6,7 +6,7 @@ export const menProducts = [
     image:
       "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2415GC1_AcidLime_1-2.jpg",
     description: "Girocollo manica lunga con logo",
-    price: { regular: "€ 218.00", sale: "€ 109.00" },
+    price: { regular: "218.00", sale: "109.00" },
     colors: [
       {
         id: 452,
@@ -33,7 +33,7 @@ export const menProducts = [
     image:
       "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2408SCARF4_Veryperri_1-2.jpg",
     description: "Sciarpa mezza maglia inglese con logo",
-    price: { regular: "€ 125.00" },
+    price: { regular: "125.00" },
     colors: [
       {
         id: 1071,
@@ -68,7 +68,7 @@ export const menProducts = [
     image:
       "https://akkeknitwear.com/website/wp-content/uploads/2024/09/ANNAPURNA-RED-ROCK.jpg",
     description: "",
-    price: { regular: "€ 260.00", sale: "€ 130.00" },
+    price: { regular: "260.00", sale: "130.00" },
     colors: [
       {
         id: 2356,
@@ -97,7 +97,7 @@ export const menProducts = [
     image:
       "https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2418GC1_Asphalt_1.jpg",
     description: "T-shirt manica corta traspirabile",
-    price: { regular: "€ 165.00", sale: "€ 82.00" },
+    price: { regular: "165.00", sale: "82.00" },
     colors: [
       {
         id: 181,
@@ -135,7 +135,7 @@ export const womenProducts = [
     image:
       "https://akkeknitwear.com/website/wp-content/uploads/2023/11/WF2418GC1_Asphalt_1.jpg",
     description: "T-shirt manica corta traspirabile",
-    price: { regular: "€ 165.00", sale: "€ 82.00" },
+    price: { regular: "165.00", sale: "82.00" },
     colors: [
       {
         id: 219,
@@ -170,7 +170,7 @@ export const womenProducts = [
     image:
       "https://akkeknitwear.com/website/wp-content/uploads/2023/11/WF2415DR6_Veryperri_1-1.jpg",
     description: "Abito manica lunga con asola per pollice",
-    price: { regular: "€ 202.00", sale: "€ 101.00" },
+    price: { regular: "202.00", sale: "101.00" },
     colors: [
       {
         id: 582,
@@ -193,7 +193,7 @@ export const womenProducts = [
     image:
       "https://akkeknitwear.com/website/wp-content/uploads/2023/11/WF2415GC7_Turtledove_1-1.jpg",
     description: "Girocollo crop manica lunga con logo patch",
-    price: { regular: "€ 183.00", sale: "€ 91.00" },
+    price: { regular: "183.00", sale: "91.00" },
     colors: [
       {
         id: 592,
@@ -222,7 +222,7 @@ export const womenProducts = [
     image:
       "https://akkeknitwear.com/website/wp-content/uploads/2023/11/WF2407HO5_AcidLime_1-1.jpg",
     description: "Felpa manica lunga con cappuccio",
-    price: { regular: "€ 244.00", sale: "€ 122.00" },
+    price: { regular: "244.00", sale: "122.00" },
     colors: [
       {
         id: 838,
