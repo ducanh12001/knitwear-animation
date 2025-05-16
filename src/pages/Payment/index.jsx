@@ -1,29 +1,36 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-import useCart from "../../hooks/useCart";
-import { FormInput } from "../../components/atoms/inputs/FormInput";
-import { CheckboxInput } from "../../components/atoms/inputs/CheckboxInput";
-import { RadioInput } from "../../components/atoms/inputs/RadioInput";
-import { CountrySelect } from "../../components/atoms/inputs/CountrySelect";
+import { useElements, useStripe } from "@stripe/react-stripe-js";
 
-const countries = [
-  { value: "US", label: "United States" },
-  { value: "GB", label: "United Kingdom" },
-  { value: "FR", label: "France" },
-  { value: "IT", label: "Italy" },
-  { value: "VN", label: "Vietnam" },
-];
+import useCart from "@/hooks/useCart";
+import { FormInput } from "@/components/atoms/inputs/FormInput";
+import { CheckboxInput } from "@/components/atoms/inputs/CheckboxInput";
+import { RadioInput } from "@/components/atoms/inputs/RadioInput";
+import { CountrySelect } from "@/components/atoms/inputs/CountrySelect";
+import { StripeCardElement } from "@/components/atoms/inputs/StripeCardElement";
+import { CheckoutErrorNotice } from "./CheckoutErrorNotice";
+
+const COUNTRIES_WITH_STATES = ["US", "CA", "AU", "MX", "BR", "IN"];
 
 function Payment() {
+  const navigate = useNavigate();
   const [isShipDifferent, setIsShipDifferent] = useState(false);
   const [selectedPayment, setSelectedPayment] = useState("stripe_cc");
-  const { cartItems, cartTotal } = useCart();
+  const { cartItems, cartTotal, removeFromCart } = useCart();
+
+  const stripe = useStripe();
+  const elements = useElements();
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [paymentError, setPaymentError] = useState(null);
+  const [cardComplete, setCardComplete] = useState(false);
+  const [cardError, setCardError] = useState(null);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm({
     defaultValues: {
       billing_first_name: "",
@@ -46,12 +53,116 @@ function Payment() {
       order_comments: "",
       payment_method: "stripe_cc",
     },
+    mode: "onBlur",
   });
 
-  const onSubmit = (data) => {
-    console.log("Order data:", data);
-    // Handle order submission
+  const scrollToField = (fieldId) => {
+    const element =
+      document.getElementById(fieldId) ||
+      document.querySelector(`[name="${fieldId}"]`) ||
+      document.querySelector(`[data-id="${fieldId}"]`);
+
+    if (element) {
+      window.scrollTo({
+        top: element.getBoundingClientRect().top + window.pageYOffset - 100,
+        behavior: "smooth",
+      });
+
+      setTimeout(() => {
+        element.focus();
+      }, 500);
+    }
   };
+
+  const allErrors = { ...errors };
+  if (selectedPayment === "stripe_cc" && !cardComplete && cardError) {
+    allErrors.card_error = {
+      type: "manual",
+      message: cardError,
+    };
+  }
+
+  const handleCardChange = (event) => {
+    setCardComplete(event.complete);
+    if (event.error) {
+      setCardError(event.error.message);
+    } else {
+      setCardError(null);
+    }
+  };
+
+  const onSubmit = async (data) => {
+    console.log("Order data:", data);
+
+    if (selectedPayment === "stripe_cc") {
+      if (!stripe || !elements) {
+        // Stripe chưa được tải xong
+        return;
+      }
+      if (!cardComplete) {
+        setCardError("Please enter valid card details.");
+        scrollToField("wc-stripe-card-element");
+        return;
+      }
+
+      setIsProcessing(true);
+      setPaymentError(null);
+
+      try {
+        // Tạo payment method với CardElement
+        const cardElement = elements.getElement("card");
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+          type: "card",
+          card: cardElement,
+        });
+
+        if (error) {
+          console.error("[payment error]", error);
+          setPaymentError(error.message);
+          setIsProcessing(false);
+          return;
+        }
+
+        // Nếu thành công, bạn sẽ có paymentMethod.id
+        console.log("[PaymentMethod]", paymentMethod);
+
+        // Trong ứng dụng thực tế, bạn sẽ gửi paymentMethod.id đến server
+        // để tạo payment intent và xác nhận thanh toán
+
+        // Reset giỏ hàng và chuyển hướng đến trang xác nhận thanh toán
+        // clearCart();
+        // navigate('/order-confirmation');
+      } catch (err) {
+        console.error("Payment error:", err);
+        setPaymentError("An unexpected error occurred. Please try again.");
+      }
+
+      setIsProcessing(false);
+    } else if (selectedPayment === "bacs") {
+      // Xử lý thanh toán chuyển khoản ngân hàng
+      // Thường thì sẽ chỉ gửi đơn hàng đến server và đợi xác nhận sau
+      // clearCart();
+      // navigate('/order-confirmation');
+    }
+  };
+
+  useEffect(() => {
+    if (!cartItems || cartItems.length === 0) {
+      const redirectTimer = setTimeout(() => {
+        navigate("/cart");
+      }, 100);
+
+      return () => clearTimeout(redirectTimer);
+    }
+  }, [cartItems, navigate]);
+
+  if (!cartItems || cartItems.length === 0) {
+    return (
+      <div className="checkout--redirect-loading flex h-screen w-full items-center justify-center">
+        <p className="text-xl">Redirecting to cart...</p>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -64,6 +175,11 @@ function Payment() {
               className="woocommerce-checkout relative flex h-auto w-full flex-col gap-[5rem] md:grid md:grid-cols-[auto_25%_25%] md:gap-[5vw]"
               onSubmit={handleSubmit(onSubmit)}
             >
+              <CheckoutErrorNotice
+                errors={Object.keys(allErrors).length > 0 ? allErrors : null}
+                scrollToField={scrollToField}
+              />
+
               {/* Billing Details Column */}
               <div className="checkout-column relative h-auto w-full">
                 <div className="relative flex h-auto w-full flex-col gap-[3rem]">
@@ -80,6 +196,7 @@ function Payment() {
                           register={register}
                           validation={{ required: "The field cannot be empty" }}
                           errors={errors}
+                          showErrors={false}
                         />
 
                         <FormInput
@@ -88,6 +205,7 @@ function Payment() {
                           register={register}
                           validation={{ required: "The field cannot be empty" }}
                           errors={errors}
+                          showErrors={false}
                         />
 
                         <div
@@ -97,11 +215,12 @@ function Payment() {
                           <CountrySelect
                             name="billing_country"
                             id="billing_country"
-                            value=""
+                            register={register}
+                            validation={{ required: "Please select a country" }}
+                            errors={errors}
                             onChange={(val) => {
-                              // Update country value
+                              setValue("billing_country", val);
                             }}
-                            countries={countries}
                           />
                         </div>
 
@@ -111,6 +230,7 @@ function Payment() {
                           register={register}
                           validation={{ required: "The field cannot be empty" }}
                           errors={errors}
+                          showErrors={false}
                         />
 
                         <FormInput
@@ -119,6 +239,7 @@ function Payment() {
                           register={register}
                           validation={{ required: "The field cannot be empty" }}
                           errors={errors}
+                          showErrors={false}
                         />
 
                         <FormInput
@@ -127,6 +248,7 @@ function Payment() {
                           register={register}
                           validation={{ required: "The field cannot be empty" }}
                           errors={errors}
+                          showErrors={false}
                         />
 
                         <FormInput
@@ -135,6 +257,7 @@ function Payment() {
                           register={register}
                           validation={{ required: "The field cannot be empty" }}
                           errors={errors}
+                          showErrors={false}
                         />
 
                         <FormInput
@@ -143,6 +266,7 @@ function Payment() {
                           register={register}
                           validation={{ required: "The field cannot be empty" }}
                           errors={errors}
+                          showErrors={false}
                         />
 
                         <FormInput
@@ -158,6 +282,7 @@ function Payment() {
                             },
                           }}
                           errors={errors}
+                          showErrors={false}
                         />
                       </div>
                     </div>
@@ -178,7 +303,6 @@ function Payment() {
                         />
                       </h3>
 
-                      {/* Shipping Address Fields - shown when checkbox is checked */}
                       {isShipDifferent && (
                         <div className="shipping_address">
                           <div className="woocommerce-billing-fields__field-wrapper relative mb-[3rem] flex h-auto w-full flex-col gap-x-[2rem] gap-y-[1.5rem] md:grid md:grid-cols-2">
@@ -190,6 +314,7 @@ function Payment() {
                                 required: "The field cannot be empty",
                               }}
                               errors={errors}
+                              showErrors={false}
                             />
 
                             <FormInput
@@ -200,6 +325,7 @@ function Payment() {
                                 required: "The field cannot be empty",
                               }}
                               errors={errors}
+                              showErrors={false}
                             />
 
                             <div
@@ -209,11 +335,14 @@ function Payment() {
                               <CountrySelect
                                 name="shipping_country"
                                 id="shipping_country"
-                                value=""
-                                onChange={(val) => {
-                                  // Update country value
+                                register={register}
+                                validation={{
+                                  required: "Please select a country",
                                 }}
-                                countries={countries}
+                                errors={errors}
+                                onChange={(val) => {
+                                  setValue("shipping_country", val);
+                                }}
                               />
                             </div>
 
@@ -225,6 +354,7 @@ function Payment() {
                                 required: "The field cannot be empty",
                               }}
                               errors={errors}
+                              showErrors={false}
                             />
 
                             <FormInput
@@ -235,6 +365,7 @@ function Payment() {
                                 required: "The field cannot be empty",
                               }}
                               errors={errors}
+                              showErrors={false}
                             />
 
                             <FormInput
@@ -245,6 +376,7 @@ function Payment() {
                                 required: "The field cannot be empty",
                               }}
                               errors={errors}
+                              showErrors={false}
                             />
 
                             <FormInput
@@ -255,6 +387,7 @@ function Payment() {
                                 required: "The field cannot be empty",
                               }}
                               errors={errors}
+                              showErrors={false}
                             />
                           </div>
                         </div>
@@ -302,7 +435,7 @@ function Payment() {
                             <div className="item-image hide-image-on-email relative flex h-auto w-full items-center justify-center">
                               <div className="image relative h-auto w-full">
                                 <img
-                                  src={item.image}
+                                  src={item.image || null}
                                   alt={item.title}
                                   className="block h-auto w-full"
                                 />
@@ -347,6 +480,20 @@ function Payment() {
                                     {(
                                       parseFloat(item.price) * item.quantity
                                     ).toFixed(2)}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="bottom">
+                                <div
+                                  className="remove-product leading-full relative flex cursor-pointer items-center justify-start gap-1 text-[#1d1d1d] md:justify-start md:gap-2"
+                                  onClick={() => removeFromCart(index)}
+                                >
+                                  <div className="relative h-[14px] w-[14px] cursor-pointer md:h-4 md:w-4">
+                                    <div className="icon absolute top-1/2 left-1/2 h-[1px] w-full -translate-1/2 rotate-45 bg-[#1d1d1d]" />
+                                    <div className="icon absolute top-1/2 left-1/2 h-[1px] w-full -translate-1/2 -rotate-45 bg-[#1d1d1d]" />
+                                  </div>
+                                  <span className="leading-full relative cursor-pointer text-[#1d1d1d] underline">
+                                    Remove
                                   </span>
                                 </div>
                               </div>
@@ -401,34 +548,42 @@ function Payment() {
                         onChange={() => setSelectedPayment("stripe_cc")}
                         label="Credit card"
                       >
-                        <span className="wc-stripe-card-icons-container float-right flex gap-[2px]">
-                          <img
-                            className="wc-stripe-card-icon amex relative -mt-[2px] ml-[0.5em] inline h-[26px] max-h-[26px] w-[43px] max-w-[43px] align-middle"
-                            alt="Amex"
-                            src="https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/amex.svg"
-                          />
-                          <img
-                            className="wc-stripe-card-icon discover relative -mt-[2px] ml-[0.5em] inline h-[26px] max-h-[26px] w-[43px] max-w-[43px] align-middle"
-                            alt="Discover"
-                            src="https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/discover.svg"
-                          />
-                          <img
-                            className="wc-stripe-card-icon visa relative -mt-[2px] ml-[0.5em] inline h-[26px] max-h-[26px] w-[43px] max-w-[43px] align-middle"
-                            alt="Visa"
-                            src="https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/visa.svg"
-                          />
-                          <img
-                            className="wc-stripe-card-icon mastercard relative -mt-[2px] ml-[0.5em] inline h-[26px] max-h-[26px] w-[43px] max-w-[43px] align-middle"
-                            alt="Mastercard"
-                            src="https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/mastercard.svg"
-                          />
+                        <span className="wc-stripe-card-icons-container float-right inline-block">
+                          {[
+                            {
+                              image:
+                                "https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/amex.svg",
+                              alt: "Amex",
+                            },
+                            {
+                              image:
+                                "https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/discover.svg",
+                              alt: "Discover",
+                            },
+                            {
+                              image:
+                                "https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/visa.svg",
+                              alt: "Visa",
+                            },
+                            {
+                              image:
+                                "https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/mastercard.svg",
+                              alt: "Mastercard",
+                            },
+                          ].map((item, index) => (
+                            <img
+                              key={index}
+                              className="wc-stripe-card-icon amex relative -mt-[2px] ml-[2px] inline h-[26px] max-h-[26px] w-[43px] max-w-[43px] align-middle"
+                              alt={item.alt}
+                              src={item.image}
+                            />
+                          ))}
                         </span>
                       </RadioInput>
 
-                      {/* Credit Card Payment Box */}
                       {selectedPayment === "stripe_cc" && (
                         <div
-                          className="payment_box payment_method_stripe_cc wc-stripe-no-methods relative mt-4 box-border w-full bg-white p-0 text-[0.92em] leading-[1.5] text-[#515151]"
+                          className="payment_box payment_method_stripe_cc wc-stripe-no-methods relative box-border w-full bg-white p-0 text-[0.92em] leading-[1.5] text-[#515151]"
                           style={{ gridArea: "box" }}
                         >
                           <div className="wc-stripe_cc-container wc-stripe-gateway-container">
@@ -438,6 +593,16 @@ function Payment() {
                                 className="inline-type StripeElement StripeElement--empty"
                               >
                                 {/* Stripe Card Element will be inserted here by Stripe JS */}
+                                <StripeCardElement
+                                  onCardChange={handleCardChange}
+                                  error={cardError}
+                                />
+
+                                {paymentError && (
+                                  <div className="mt-2 text-sm text-[#FD7453]">
+                                    {paymentError}
+                                  </div>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -454,14 +619,13 @@ function Payment() {
                         label="Bank transfer"
                       />
 
-                      {/* Bank Transfer Payment Box */}
                       {selectedPayment === "bacs" && (
-                        <div className="payment_box payment_method_bacs mt-2 mb-6 rounded-lg bg-white p-4">
-                          <p className="text-sm text-[#1d1d1d]">
-                            Effettua il pagamento tramite bonifico bancario. Usa
-                            l'ID dell'ordine come causale. Il tuo ordine non
-                            verrà spedito finché i fondi non risulteranno
-                            trasferiti nel nostro conto corrente.
+                        <div className="payment_box payment_method_bacs relative box-border w-full rounded-[2px] bg-[#dcd7e3] p-[1em] leading-[1.5] text-[#515151] before:absolute before:top-[-0.75em] before:left-0 before:mt-[-1em] before:ml-[2em] before:block before:border-[1em] before:border-[transparent_transparent_#dcd7e3_transparent] before:content-['']">
+                          <p className="text-sm">
+                            Make your payment via bank transfer. Use your order
+                            ID as the reason for payment. Your order will not be
+                            shipped until the funds have cleared in our bank
+                            account.
                           </p>
                         </div>
                       )}
@@ -490,9 +654,14 @@ function Payment() {
                       <button
                         type="submit"
                         className="custom-button relative box-border flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] bg-[#1d1d1d] px-4 transition-colors duration-350 ease-in-out hover:bg-[#616161] md:h-[6rem] md:rounded-[25px] md:px-8"
+                        disabled={
+                          isProcessing ||
+                          (selectedPayment === "stripe_cc" &&
+                            (!stripe || !elements))
+                        }
                       >
                         <span className="leading-full text-base font-bold text-white md:text-[1.25rem]">
-                          Place order
+                          {isProcessing ? "Processing..." : "Place order"}
                         </span>
                       </button>
                     </div>

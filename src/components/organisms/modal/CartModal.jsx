@@ -1,20 +1,22 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router";
-import useCart from "../../../hooks/useCart";
+import useCart from "@/hooks/useCart";
+import { useModal } from "@/hooks/useModal";
 
-export default function CartModal({ isOpen, onClose, lenis }) {
+export default function CartModal({ lenis }) {
   const modalRef = useRef(null);
   const bgRef = useRef(null);
   const panelRef = useRef(null);
   const closeRef = useRef(null);
 
+  const { modalState, toggleCartModal } = useModal();
   const { cartItems, cartTotal, removeFromCart } = useCart();
 
   useEffect(() => {
     const animations = [];
 
-    if (isOpen) {
+    if (modalState.cartModalOpen) {
       if (lenis) lenis.stop();
 
       gsap.set(modalRef.current, {
@@ -75,7 +77,11 @@ export default function CartModal({ isOpen, onClose, lenis }) {
     return () => {
       animations.forEach((anim) => anim.kill());
     };
-  }, [isOpen, lenis]);
+  }, [modalState.cartModalOpen, lenis]);
+
+  const onClose = () => {
+    toggleCartModal(false);
+  };
 
   return (
     <div
@@ -136,7 +142,7 @@ export default function CartModal({ isOpen, onClose, lenis }) {
                         <div className="item-image relative h-auto w-full">
                           <img
                             alt={item.title}
-                            src={item.image}
+                            src={item.image || null}
                             className="block h-full w-full object-cover object-[center_bottom]"
                           />
                         </div>

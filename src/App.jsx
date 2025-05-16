@@ -12,6 +12,7 @@ import PageTransition from "./components/animations/PageTransition";
 import { ROUTES } from "./common/const/routes";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import CartModal from "./components/organisms/modal/CartModal";
+import { useModal } from "./hooks/useModal";
 
 import "./App.css";
 import "./styles/index";
@@ -24,45 +25,33 @@ function App() {
     startAnimation,
     pageTitle,
   } = usePageTransition();
-  const [openLogin, setOpenLogin] = useState(false);
-  const [openMenu, setOpenMenu] = useState(false);
-  const [openCart, setOpenCart] = useState(false);
-
+  const { modalState, toggleMenu, toggleCartModal } = useModal();
   const lenisRef = useSmoothScroll();
 
   useEffect(() => {
     if (location.pathname !== displayLocation.pathname) {
-      setOpenMenu(false);
-      setOpenCart(false);
+      if (modalState.menuOpen) {
+        toggleMenu(false);
+      }
+      if (modalState.cartModalOpen) {
+        toggleCartModal(false);
+      }
       startAnimation();
     }
-  }, [location, displayLocation, startAnimation]);
+  }, [location, displayLocation]);
 
   return (
     <div className="overflow-hidden">
-      <LoginModal
-        isOpen={openLogin}
-        onClose={() => setOpenLogin(false)}
-        lenis={lenisRef.current}
-      />
-      <CartModal
-        isOpen={openCart}
-        onClose={() => setOpenCart(false)}
-        lenis={lenisRef.current}
-      />
-      <SideMenu isOpen={openMenu} lenis={lenisRef.current} />
+      <LoginModal lenis={lenisRef.current} />
+      <CartModal lenis={lenisRef.current} />
+      <SideMenu lenis={lenisRef.current} />
 
       <PageTransition title={pageTitle} />
 
       {isTransitioning ? null : (
         <div className="relative h-auto w-full">
           <CustomCursor />
-          <Header
-            setOpenLogin={setOpenLogin}
-            openMenu={openMenu}
-            setOpenMenu={setOpenMenu}
-            setOpenCart={setOpenCart}
-          />
+          <Header />
           <main
             className={`block ${location.pathname === "/" ? "bg-black" : "bg-[#e1e1e1]"}`}
             data-lenis-scroll-container
