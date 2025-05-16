@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { Link } from "react-router";
+import { useModal } from "@/hooks/useModal";
 
 const menuLinks = [
   {
@@ -25,9 +26,11 @@ const menuLinks = [
   },
 ];
 
-export default function SideMenu({ isOpen, lenis }) {
+export default function SideMenu({ lenis }) {
+  const { modalState } = useModal();
+
   useEffect(() => {
-    if (isOpen) {
+    if (modalState.menuOpen) {
       if (lenis) lenis.stop();
       gsap.set("#menu-mobile", {
         autoAlpha: 1,
@@ -61,7 +64,7 @@ export default function SideMenu({ isOpen, lenis }) {
         delay: 0.3,
       });
     }
-  }, [isOpen, lenis]);
+  }, [modalState.menuOpen, lenis]);
 
   return (
     <div

@@ -8,7 +8,7 @@ export const RadioInput = ({
   children,
 }) => {
   return (
-    <div className="wc_payment_method relative h-auto w-full items-center justify-start py-[10px] text-left">
+    <div className="wc_payment_method relative flex h-auto w-full items-center justify-start py-[10px] text-left">
       <input
         id={id}
         type="radio"

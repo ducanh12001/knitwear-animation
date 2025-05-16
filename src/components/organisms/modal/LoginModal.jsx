@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
+import { useModal } from "@/hooks/useModal";
 
-export default function LoginModal({ isOpen, onClose, lenis }) {
+export default function LoginModal({ lenis }) {
   const [activeTab, setActiveTab] = useState("login");
   const modalRef = useRef(null);
   const bgRef = useRef(null);
@@ -12,10 +13,12 @@ export default function LoginModal({ isOpen, onClose, lenis }) {
   const loginTitleRef = useRef(null);
   const signupTitleRef = useRef(null);
 
+  const { modalState, toggleLoginModal } = useModal();
+
   useEffect(() => {
     const animations = [];
 
-    if (isOpen) {
+    if (modalState.loginModalOpen) {
       if (lenis) lenis.stop();
 
       handleTabSwitch(activeTab);
@@ -78,7 +81,7 @@ export default function LoginModal({ isOpen, onClose, lenis }) {
     return () => {
       animations.forEach((anim) => anim.kill());
     };
-  }, [isOpen, lenis, activeTab]);
+  }, [modalState.loginModalOpen, lenis, activeTab]);
 
   const handleTabSwitch = (tab) => {
     setActiveTab(tab);
@@ -115,6 +118,10 @@ export default function LoginModal({ isOpen, onClose, lenis }) {
     }
 
     return tl;
+  };
+
+  const onClose = () => {
+    toggleLoginModal(false);
   };
 
   return (

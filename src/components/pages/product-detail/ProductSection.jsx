@@ -11,6 +11,7 @@ import { imageSlides } from "../../../common/const/slides";
 import { ProductDetails } from "./ProductDetails";
 import { HeatIndicator } from "./HeatIndicator";
 import useCart from "../../../hooks/useCart";
+import { useModal } from "@/hooks/useModal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,7 @@ export function ProductSection({
   const isSP = useMediaQuery({
     query: "(width < 768px)",
   });
+  const { toggleCartModal } = useModal();
   const { addToCart } = useCart();
 
   const sectionRef = useRef(null);
@@ -82,6 +84,7 @@ export function ProductSection({
           product.colors?.[selectedColor]?.name
         } to cart`,
       );
+      toggleCartModal(true);
     }
   };
 

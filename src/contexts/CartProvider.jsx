@@ -43,7 +43,7 @@ export default function CartProvider({ children }) {
           id: product.id,
           title: product.title,
           price: product.price?.sale || product.price?.regular,
-          image: product.images?.[0] || "",
+          image: product.image || "",
           size,
           color: product.colors?.[color]?.name || "",
           colorHex: product.colors?.[color]?.hex || "",

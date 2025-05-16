@@ -3,11 +3,17 @@ import gsap from "gsap";
 import { Link, useLocation } from "react-router";
 import ScrollVelocity from "../../animations/ScrollVelocity";
 import { getPageTitle } from "../../../common/functions";
+import useCart from "@/hooks/useCart";
+import { useModal } from "@/hooks/useModal";
 
-export function Header({ setOpenLogin, openMenu, setOpenMenu, setOpenCart }) {
+export function Header() {
   const location = useLocation();
   const headerRef = useRef(null);
   const timelineRef = useRef(null);
+
+  const { modalState, toggleCartModal, toggleLoginModal, toggleMenu } =
+    useModal();
+  const { cartItems } = useCart();
 
   useEffect(() => {
     if (!headerRef.current) return;
@@ -17,7 +23,7 @@ export function Header({ setOpenLogin, openMenu, setOpenMenu, setOpenCart }) {
       timelineRef.current.kill();
     }
 
-    if (openMenu) {
+    if (modalState.menuOpen) {
       if (header.classList.contains("scrolled-mob")) {
         header.classList.replace("scrolled-mob", "was-scolled");
       }
@@ -164,10 +170,10 @@ export function Header({ setOpenLogin, openMenu, setOpenMenu, setOpenCart }) {
         timelineRef.current = null;
       }
     };
-  }, [openMenu]);
+  }, [modalState.menuOpen]);
 
   const handleToggle = () => {
-    setOpenMenu(!openMenu);
+    toggleMenu(!modalState.menuOpen);
   };
 
   const COLORS = {
@@ -245,7 +251,7 @@ export function Header({ setOpenLogin, openMenu, setOpenMenu, setOpenCart }) {
               <li>
                 <div
                   className="js-header-color leading-full cursor-pointer text-[14px] text-white uppercase xl:text-[1.6rem]"
-                  onClick={() => setOpenLogin(true)}
+                  onClick={() => toggleLoginModal(true)}
                 >
                   Login
                 </div>
@@ -253,10 +259,12 @@ export function Header({ setOpenLogin, openMenu, setOpenMenu, setOpenCart }) {
               <li>
                 <div
                   className="header--bag leading-full flex cursor-pointer items-center justify-center text-[14px] uppercase xl:text-[1.6rem]"
-                  onClick={() => setOpenCart(true)}
+                  onClick={() => toggleCartModal(true)}
                 >
                   <span className="js-header-color text-white">Cart</span>
-                  <div style={{ color: COLORS.primary }}>(0)</div>
+                  <div style={{ color: COLORS.primary }}>
+                    ({cartItems.length})
+                  </div>
                 </div>
               </li>
             </ul>
@@ -266,7 +274,6 @@ export function Header({ setOpenLogin, openMenu, setOpenMenu, setOpenCart }) {
             className="hamburger relative block h-[17px] w-10 cursor-pointer xl:hidden"
             onClick={handleToggle}
             aria-label="Toggle menu"
-            aria-expanded={openMenu}
           >
             <div className="hamburger-wrapper relative h-full">
               <div className="span__wrapper top absolute top-0 left-0 h-[1px] w-full">
