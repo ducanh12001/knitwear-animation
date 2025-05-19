@@ -13,6 +13,7 @@ import { ROUTES } from "./common/const/routes";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import CartModal from "./components/organisms/modal/CartModal";
 import { useModal } from "./hooks/useModal";
+import CookieConsent from "./components/others/CookieConsent";
 
 import "./App.css";
 import "./styles/index";
@@ -42,6 +43,7 @@ function App() {
 
   return (
     <div className="overflow-hidden">
+      <CookieConsent />
       <LoginModal lenis={lenisRef.current} />
       <CartModal lenis={lenisRef.current} />
       <SideMenu lenis={lenisRef.current} />
