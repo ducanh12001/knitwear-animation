@@ -1,15 +1,15 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, EffectCreative } from "swiper/modules";
+import { Navigation, EffectCreative, Controller } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-creative";
-import DecryptedText from "../../../components/animations/DecryptedText.jsx";
 import { Link } from "react-router";
+import DecryptedText from "@/components/animations/DecryptedText";
 
-export function TitleSlider({ slides, swiperRef, onSwiper }) {
+export function TitleSlider({ slides, onSwiper }) {
   return (
     <Swiper
-      modules={[Navigation, EffectCreative]}
+      modules={[Navigation, EffectCreative, Controller]}
       navigation={{
         prevEl: ".swiper-button-prev",
         nextEl: ".swiper-button-next",
@@ -33,7 +33,6 @@ export function TitleSlider({ slides, swiperRef, onSwiper }) {
         },
       }}
       className="titlesSlider !absolute top-0 left-0 !z-25 h-full w-full"
-      ref={swiperRef}
       onSwiper={onSwiper}
       speed={1500}
     >

@@ -1,25 +1,17 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ImageSlider } from "./ImageSlider";
 import { TitleSlider } from "./TitleSlider";
 
 export function SliderSection() {
-  const imagesSwiperRef = useRef(null);
-  const titlesSwiperRef = useRef(null);
+  const [firstSwiper, setFirstSwiper] = useState(null);
+  const [secondSwiper, setSecondSwiper] = useState(null);
 
-  const syncSwipers = (swiperInstance) => {
-    // if (imagesSwiperRef.current && titlesSwiperRef.current) {
-    //   const imagesSwiper = imagesSwiperRef.current.swiper;
-    //   const titlesSwiper = titlesSwiperRef.current.swiper;
-
-    //   if (imagesSwiper && titlesSwiper && imagesSwiper !== swiperInstance) {
-    //     imagesSwiper.slideTo(swiperInstance.realIndex);
-    //   }
-
-    //   if (titlesSwiper && imagesSwiper && titlesSwiper !== swiperInstance) {
-    //     titlesSwiper.slideTo(swiperInstance.realIndex);
-    //   }
-    // }
-  };
+  useEffect(() => {
+    if (firstSwiper && secondSwiper) {
+      firstSwiper.controller.control = secondSwiper;
+      secondSwiper.controller.control = firstSwiper;
+    }
+  }, [firstSwiper, secondSwiper]);
 
   const slides = [
     {
@@ -51,16 +43,8 @@ export function SliderSection() {
   return (
     <section className="homepage--slider relative h-screen w-full">
       <div className="relative h-full w-full">
-        <ImageSlider
-          slides={slides}
-          swiperRef={imagesSwiperRef}
-          onSwiper={syncSwipers}
-        />
-        <TitleSlider
-          slides={slides}
-          swiperRef={titlesSwiperRef}
-          onSwiper={syncSwipers}
-        />
+        <ImageSlider slides={slides} onSwiper={setFirstSwiper} />
+        <TitleSlider slides={slides} onSwiper={setSecondSwiper} />
       </div>
     </section>
   );
