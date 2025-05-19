@@ -183,14 +183,17 @@ export function Header() {
   };
 
   return (
-    <header className="has-banner" ref={headerRef}>
+    <header
+      className="has-banner fixed top-0 left-0 z-145 box-border flex h-auto w-full translate-y-0 flex-col gap-[calc((5vh-1rem)/2)] pt-[calc((5vh-1rem)/2)] transition-transform duration-500 ease-in-out"
+      ref={headerRef}
+    >
       <ScrollVelocity
         texts={[
           "Akke Promo Launch 50% off – Free shipping for orders over 350€",
         ]}
       />
 
-      <div className="header-wrapper text-[1.2rem]">
+      <div className="header-wrapper relative box-border flex h-auto w-full items-start justify-between px-[5vw] text-[1.2rem]">
         <div className="left relative flex w-auto items-start justify-start gap-[1.5rem] xl:gap-[6rem]">
           <div className="logo relative h-[4rem] w-[4.3rem] md:max-xl:w-[8rem] xl:h-[6rem] xl:w-[13rem]">
             <Link

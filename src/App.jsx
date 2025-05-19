@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router";
-import CustomScrollbar from "./components/others/CustomScrollbar";
-import { Header } from "./components/organisms/header/Header";
-import Footer from "./components/organisms/footer/Footer";
-import ScrollCircle from "./components/others/ScrollCircle";
-import LoginModal from "./components/organisms/modal/LoginModal";
-import CustomCursor from "./components/others/CustomCursor";
-import SideMenu from "./components/others/SideMenu";
-import { usePageTransition } from "./hooks/usePageTransition";
-import PageTransition from "./components/animations/PageTransition";
-import { ROUTES } from "./common/const/routes";
-import { useSmoothScroll } from "./hooks/useSmoothScroll";
-import CartModal from "./components/organisms/modal/CartModal";
-import { useModal } from "./hooks/useModal";
-import CookieConsent from "./components/others/CookieConsent";
+import { useEffect } from "react";
+import { Navigate, Route, Routes } from "react-router";
+import CustomScrollbar from "@/components/others/CustomScrollbar";
+import { Header } from "@/components/organisms/header/Header";
+import Footer from "@/components/organisms/footer/Footer";
+import ScrollCircle from "@/components/others/ScrollCircle";
+import LoginModal from "@/components/organisms/modal/LoginModal";
+import CustomCursor from "@/components/others/CustomCursor";
+import SideMenu from "@/components/others/SideMenu";
+import { usePageTransition } from "@/hooks/usePageTransition";
+import PageTransition from "@/components/animations/PageTransition";
+import { ROUTES } from "@/common/const/routes";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
+import CartModal from "@/components/organisms/modal/CartModal";
+import { useModal } from "@/hooks/useModal";
+import CookieConsent from "@/components/others/CookieConsent";
 
 import "./App.css";
-import "./styles/index";
+import "@/styles/index";
 
 function App() {
   const {
@@ -30,7 +30,10 @@ function App() {
   const lenisRef = useSmoothScroll();
 
   useEffect(() => {
-    if (location.pathname !== displayLocation.pathname) {
+    if (
+      location.pathname !== displayLocation.pathname &&
+      !location.pathname.startsWith("/checkout")
+    ) {
       if (modalState.menuOpen) {
         toggleMenu(false);
       }
@@ -66,6 +69,7 @@ function App() {
                   element={route.element}
                 />
               ))}
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             <Footer />
             <ScrollCircle />

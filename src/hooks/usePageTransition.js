@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import gsap from "gsap";
 import { useLocation } from "react-router";
-import { getPageTitle } from "../common/functions";
+import { getPageTitle } from "@/common/functions";
 
 export const usePageTransition = () => {
   const location = useLocation();
@@ -48,7 +48,12 @@ export const usePageTransition = () => {
             visibility: "hidden",
             delay: 1,
           });
-          gsap.set(title, { y: -10, opacity: 0, visibility: "hidden", delay: 1.1 });
+          gsap.set(title, {
+            y: -10,
+            opacity: 0,
+            visibility: "hidden",
+            delay: 1.1,
+          });
 
           callback();
         },

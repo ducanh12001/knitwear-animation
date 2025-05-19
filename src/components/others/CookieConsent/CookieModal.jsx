@@ -10,6 +10,7 @@ const CookieModal = forwardRef(
       onRejectAll,
       onSavePreferences,
       onClose,
+      className = "",
     },
     ref,
   ) => {
@@ -90,7 +91,7 @@ const CookieModal = forwardRef(
     return (
       <div
         ref={ref}
-        className={`cky-modal fixed top-1/2 left-1/2 z-999 mx-auto box-border w-full max-w-[calc(100%-16px)] -translate-x-1/2 translate-y-full rounded-lg lg:w-[845px] lg:max-w-full`}
+        className={`cky-modal fixed top-1/2 left-1/2 z-999 mx-auto box-border w-full max-w-[calc(100%-16px)] -translate-x-1/2 translate-y-full rounded-lg lg:w-[845px] lg:max-w-full ${className}`}
       >
         <div className="relative flex max-h-[80vh] w-full flex-col overflow-hidden rounded-lg border border-[#F4F4F4] bg-white text-[#1d1d1d] shadow-xl">
           <div className="flex items-center justify-between border-b border-inherit px-6 py-5.5">
@@ -110,20 +111,6 @@ const CookieModal = forwardRef(
                 alt="Close"
                 className="m-0 h-3 w-3"
               />
-              {/* <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg> */}
             </button>
           </div>
 

@@ -25,53 +25,79 @@ export const useCookieConsent = () => {
 };
 
 export const CookieConsentProvider = ({ children }) => {
-  const { getCookie, setCookie, hasCookie } = useCookies();
+  const { getCookie, setCookie, hasCookie, isReady } = useCookies();
   const [preferences, setPreferences] = useState(DEFAULT_PREFERENCES);
   const [hasConsent, setHasConsent] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Load saved preferences on mount
+  // Load saved preferences on mount - chỉ sau khi useCookies đã sẵn sàng
   useEffect(() => {
-    if (hasCookie(COOKIE_CONSENT_NAME)) {
-      const savedPreferences = getCookie(COOKIE_CONSENT_NAME);
-      if (savedPreferences) {
-        setPreferences((prev) => ({ ...prev, ...savedPreferences }));
-        setHasConsent(true);
+    if (!isReady) return;
+
+    const checkCookieConsent = () => {
+      try {
+        const consentExists = hasCookie(COOKIE_CONSENT_NAME);
+
+        if (consentExists) {
+          const savedPreferences = getCookie(COOKIE_CONSENT_NAME);
+          if (savedPreferences) {
+            setPreferences((prev) => ({ ...prev, ...savedPreferences }));
+            setHasConsent(true);
+          }
+        }
+      } catch (error) {
+        console.error("Error checking cookie consent:", error);
+      } finally {
+        setIsLoading(false);
       }
-    }
-  }, [hasCookie, getCookie]);
+    };
+
+    checkCookieConsent();
+  }, [hasCookie, getCookie, isReady]);
 
   // Save preferences
   const savePreferences = (newPreferences, days = 365) => {
     const expiryDate = new Date();
     expiryDate.setDate(expiryDate.getDate() + days);
 
-    setCookie(COOKIE_CONSENT_NAME, newPreferences, {
-      expires: expiryDate,
-      sameSite: "Lax",
-    });
+    try {
+      setCookie(COOKIE_CONSENT_NAME, newPreferences, {
+        expires: expiryDate,
+        sameSite: "Lax",
+        path: "/",
+      });
 
-    setPreferences(newPreferences);
-    setHasConsent(true);
+      setPreferences(newPreferences);
+      setHasConsent(true);
+    } catch (error) {
+      console.error("Error saving preferences:", error);
+    }
   };
 
   const acceptAll = () => {
-    savePreferences({
+    const allAccepted = {
       necessary: true,
       functional: true,
       analytics: true,
       performance: true,
       advertisement: true,
-    });
+    };
+
+    savePreferences(allAccepted);
+    return allAccepted;
   };
 
   const rejectAll = () => {
-    savePreferences({
+    const allRejected = {
       necessary: true, // Necessary is always true
       functional: false,
       analytics: false,
       performance: false,
       advertisement: false,
-    });
+    };
+
+    savePreferences(allRejected);
+    return allRejected;
   };
 
   // Check if a specific category is allowed
@@ -94,6 +120,7 @@ export const CookieConsentProvider = ({ children }) => {
 
   const saveCurrentPreferences = () => {
     savePreferences(preferences);
+    return preferences;
   };
 
   return (
@@ -101,6 +128,7 @@ export const CookieConsentProvider = ({ children }) => {
       value={{
         preferences,
         hasConsent,
+        isLoading,
         acceptAll,
         rejectAll,
         updatePreference,
