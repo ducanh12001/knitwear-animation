@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router";
 
 export default function Contacts() {
   const [isChecked, setIsChecked] = useState(false);
@@ -120,13 +121,13 @@ export default function Contacts() {
                 </div>
                 <span className="leading-full flex-1 basis-[100%] text-[14px] text-[#e1e1e1] xl:basis-auto xl:text-base">
                   I have read and accepted the
-                  <a
-                    href="https://akkeknitwear.com/en/privacy-policy/"
+                  <Link
+                    to="/privacy-policy"
                     target="_blank"
                     className="leading-full mx-1 text-[14px] font-bold text-[#e1e1e1] xl:text-base"
                   >
                     Privacy Policy
-                  </a>
+                  </Link>
                   provided by New ESSE Maglieria s.r.l.
                 </span>
                 <div className="errors absolute -bottom-4 left-[3rem]">

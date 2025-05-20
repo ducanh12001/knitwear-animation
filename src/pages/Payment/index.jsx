@@ -639,7 +639,7 @@ function Payment() {
                             order, support your experience on this website and
                             for other purposes described in our{" "}
                             <Link
-                              to="https://akkeknitwear.com/en/privacy-policy/"
+                              to="/privacy-policy"
                               className="woocommerce-privacy-policy-link font-bold text-[#1d1d1d]"
                               target="_blank"
                               rel="noopener noreferrer"

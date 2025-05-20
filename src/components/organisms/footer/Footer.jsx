@@ -15,15 +15,18 @@ const footerLinks = [
   {
     title: "Legal Area",
     links: [
-      { label: "Terms of Sale", path: "https://akkeknitwear.com/condizioni-di-vendita/" },
-      { label: "Privacy Policy", path: "https://akkeknitwear.com/privacy-policy/" },
+      { label: "Terms of Sale", path: "/terms-of-sale" },
+      { label: "Privacy Policy", path: "/privacy-policy" },
     ],
   },
   {
     title: "Follow us",
     links: [
-      { label: "Instagram", path: "https://www.instagram.com/akkeknitwear/" },
-      { label: "Facebook", path: "https://www.facebook.com/profile.php?id=100093662019914" },
+      { label: "Instagram", path: "/" },
+      {
+        label: "Facebook",
+        path: "/",
+      },
     ],
   },
 ];
@@ -68,8 +71,8 @@ const Footer = () => {
               Subscribe to newsletter
             </h2>
             <p className="leading-full text-base text-white">
-              Iscriviti alla nostra newsletter per ricevere un codice sconto sul tuo prossimo
-              acquisto
+              Sign up for our newsletter to receive a discount code on your next
+              purchase
             </p>
           </div>
           <div className="relative box-border w-full pl-0 md:w-1/2 md:pl-16">
@@ -93,21 +96,23 @@ const Footer = () => {
               <div className="absolute right-0 -bottom-2 w-full">
                 {errors.empty && (
                   <span className="absolute right-0 text-xs text-[#FD7453]">
-                    Il campo non può essere vuoto
+                    The field cannot be empty
                   </span>
                 )}
                 {errors.invalid && (
                   <span className="absolute right-0 text-xs text-[#FD7453]">
-                    Inserisci un indirizzo valido
+                    Please enter a valid address
                   </span>
                 )}
                 {errors.exists && (
                   <span className="absolute right-0 text-xs text-[#FD7453]">
-                    Indirizzo già iscritto alla nostra newsletter
+                    Address already subscribed to our newsletter
                   </span>
                 )}
                 {success && (
-                  <span className="absolute right-0 text-xs text-green-400">Iscritto!</span>
+                  <span className="absolute right-0 text-xs text-green-400">
+                    Iscritto!
+                  </span>
                 )}
               </div>
             </form>
@@ -117,7 +122,10 @@ const Footer = () => {
         <div className="relative flex h-auto w-full flex-col items-start justify-start gap-8 md:flex-row md:items-center md:justify-between md:gap-0">
           <div className="flex grid-cols-3 flex-col gap-8 md:grid md:gap-[10rem]">
             {footerLinks.map((section, index) => (
-              <div key={index} className="relative flex h-auto w-full flex-col gap-4 md:gap-8">
+              <div
+                key={index}
+                className="relative flex h-auto w-full flex-col gap-4 md:gap-8"
+              >
                 <h3 className="leading-full text-[14px] text-[#302F35] uppercase md:text-xl">
                   {section.title}
                 </h3>

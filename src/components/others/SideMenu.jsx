@@ -88,22 +88,18 @@ export default function SideMenu({ lenis }) {
         <div>
           <ul className="font-humane flex border-t border-b border-[#868686]/10 text-[3rem] text-[#1d1d1d] uppercase">
             <li>
-              <a
-                data-lang="it"
-                href="https://akkeknitwear.com/"
-                className="px-[5vw] py-1"
-              >
+              <Link data-lang="it" href="/" className="px-[5vw] py-1">
                 Italiano
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 data-lang="en"
-                href="https://akkeknitwear.com/en/"
+                to="/"
                 className="px-[5vw] py-1 text-[#FD7453]"
               >
                 English
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
