@@ -6,11 +6,11 @@ import { useModal } from "@/hooks/useModal";
 const menuLinks = [
   {
     label: "Menswear",
-    path: "/categoria-prodotto/menswear",
+    path: "/product-category/menswear-collection",
   },
   {
     label: "Womenswear",
-    path: "/categoria-prodotto/womenswear",
+    path: "/product-category/womenswear-collection",
   },
   {
     label: "Everest Akke Limited",

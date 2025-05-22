@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 export default function CustomCursor() {
-  useEffect(() => {
+  useGSAP(() => {
     const xTo = gsap.quickTo("#cursor", "x", { duration: 0.6, ease: "power3" });
     const yTo = gsap.quickTo("#cursor", "y", { duration: 0.6, ease: "power3" });
 

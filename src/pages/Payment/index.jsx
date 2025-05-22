@@ -4,14 +4,36 @@ import { useForm } from "react-hook-form";
 import { useElements, useStripe } from "@stripe/react-stripe-js";
 
 import useCart from "@/hooks/useCart";
-import { FormInput } from "@/components/atoms/inputs/FormInput";
 import { CheckboxInput } from "@/components/atoms/inputs/CheckboxInput";
-import { RadioInput } from "@/components/atoms/inputs/RadioInput";
-import { CountrySelect } from "@/components/atoms/inputs/CountrySelect";
-import { StripeCardElement } from "@/components/atoms/inputs/StripeCardElement";
+import BillingForm from "@/components/checkout/BillingForm";
+import ShippingForm from "@/components/checkout/ShippingForm";
+import OrderSummary from "@/components/checkout/OrderSummary";
+import PaymentMethods from "@/components/checkout/PaymentMethods";
 import { CheckoutErrorNotice } from "./CheckoutErrorNotice";
 
 const COUNTRIES_WITH_STATES = ["US", "CA", "AU", "MX", "BR", "IN"];
+
+const DEFAULT_FORM_VALUES = {
+  billing_first_name: "",
+  billing_last_name: "",
+  billing_country: "",
+  billing_state: "",
+  billing_address_1: "",
+  billing_postcode: "",
+  billing_city: "",
+  billing_phone: "",
+  billing_email: "",
+  ship_to_different_address: false,
+  shipping_first_name: "",
+  shipping_last_name: "",
+  shipping_country: "",
+  shipping_state: "",
+  shipping_address_1: "",
+  shipping_postcode: "",
+  shipping_city: "",
+  order_comments: "",
+  payment_method: "stripe_cc",
+};
 
 function Payment() {
   const navigate = useNavigate();
@@ -30,30 +52,12 @@ function Payment() {
     register,
     handleSubmit,
     formState: { errors },
+    trigger,
     setValue,
   } = useForm({
-    defaultValues: {
-      billing_first_name: "",
-      billing_last_name: "",
-      billing_country: "",
-      billing_state: "",
-      billing_address_1: "",
-      billing_postcode: "",
-      billing_city: "",
-      billing_phone: "",
-      billing_email: "",
-      ship_to_different_address: false,
-      shipping_first_name: "",
-      shipping_last_name: "",
-      shipping_country: "",
-      shipping_state: "",
-      shipping_address_1: "",
-      shipping_postcode: "",
-      shipping_city: "",
-      order_comments: "",
-      payment_method: "stripe_cc",
-    },
+    defaultValues: { ...DEFAULT_FORM_VALUES },
     mode: "onBlur",
+    reValidateMode: "onChange",
   });
 
   const scrollToField = (fieldId) => {
@@ -156,6 +160,11 @@ function Payment() {
     }
   }, [cartItems, navigate]);
 
+  const handleFieldChange = async (fieldName, value) => {
+    setValue(fieldName, value);
+    await trigger(fieldName);
+  };
+
   if (!cartItems || cartItems.length === 0) {
     return (
       <div className="checkout--redirect-loading flex h-screen w-full items-center justify-center">
@@ -184,108 +193,11 @@ function Payment() {
               <div className="checkout-column relative h-auto w-full">
                 <div className="relative flex h-auto w-full flex-col gap-[3rem]">
                   <div className="relative flex w-full flex-col items-start justify-start gap-[2rem]">
-                    <div className="woocommerce-billing-fields relative h-auto w-full">
-                      <h3 className="font-humane leading-full mb-[3rem] text-[6rem] text-[#FD7453] md:text-[6vw]">
-                        Billing details
-                      </h3>
-
-                      <div className="woocommerce-billing-fields__field-wrapper relative flex h-auto w-full flex-col gap-x-[2rem] gap-y-[1.5rem] md:grid md:grid-cols-2">
-                        <FormInput
-                          name="billing_first_name"
-                          placeholder="First name"
-                          register={register}
-                          validation={{ required: "The field cannot be empty" }}
-                          errors={errors}
-                          showErrors={false}
-                        />
-
-                        <FormInput
-                          name="billing_last_name"
-                          placeholder="Last name"
-                          register={register}
-                          validation={{ required: "The field cannot be empty" }}
-                          errors={errors}
-                          showErrors={false}
-                        />
-
-                        <div
-                          className="form-item z-20"
-                          id="billing_country_field"
-                        >
-                          <CountrySelect
-                            name="billing_country"
-                            id="billing_country"
-                            register={register}
-                            validation={{ required: "Please select a country" }}
-                            errors={errors}
-                            onChange={(val) => {
-                              setValue("billing_country", val);
-                            }}
-                          />
-                        </div>
-
-                        <FormInput
-                          name="billing_state"
-                          placeholder="Province/Region*"
-                          register={register}
-                          validation={{ required: "The field cannot be empty" }}
-                          errors={errors}
-                          showErrors={false}
-                        />
-
-                        <FormInput
-                          name="billing_address_1"
-                          placeholder="Street address"
-                          register={register}
-                          validation={{ required: "The field cannot be empty" }}
-                          errors={errors}
-                          showErrors={false}
-                        />
-
-                        <FormInput
-                          name="billing_postcode"
-                          placeholder="Postcode / ZIP"
-                          register={register}
-                          validation={{ required: "The field cannot be empty" }}
-                          errors={errors}
-                          showErrors={false}
-                        />
-
-                        <FormInput
-                          name="billing_city"
-                          placeholder="Town / City"
-                          register={register}
-                          validation={{ required: "The field cannot be empty" }}
-                          errors={errors}
-                          showErrors={false}
-                        />
-
-                        <FormInput
-                          name="billing_phone"
-                          placeholder="Phone"
-                          register={register}
-                          validation={{ required: "The field cannot be empty" }}
-                          errors={errors}
-                          showErrors={false}
-                        />
-
-                        <FormInput
-                          name="billing_email"
-                          type="email"
-                          placeholder="Email address"
-                          register={register}
-                          validation={{
-                            required: "The field cannot be empty",
-                            pattern: {
-                              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                              message: "Invalid email address",
-                            },
-                          }}
-                          errors={errors}
-                          showErrors={false}
-                        />
-                      </div>
-                    </div>
+                    <BillingForm
+                      register={register}
+                      errors={errors}
+                      handleFieldChange={handleFieldChange}
+                    />
                   </div>
 
                   {/* Ship to different address checkbox */}
@@ -304,93 +216,11 @@ function Payment() {
                       </h3>
 
                       {isShipDifferent && (
-                        <div className="shipping_address">
-                          <div className="woocommerce-billing-fields__field-wrapper relative mb-[3rem] flex h-auto w-full flex-col gap-x-[2rem] gap-y-[1.5rem] md:grid md:grid-cols-2">
-                            <FormInput
-                              name="shipping_first_name"
-                              placeholder="First name"
-                              register={register}
-                              validation={{
-                                required: "The field cannot be empty",
-                              }}
-                              errors={errors}
-                              showErrors={false}
-                            />
-
-                            <FormInput
-                              name="shipping_last_name"
-                              placeholder="Last name"
-                              register={register}
-                              validation={{
-                                required: "The field cannot be empty",
-                              }}
-                              errors={errors}
-                              showErrors={false}
-                            />
-
-                            <div
-                              className="form-item z-20"
-                              id="shipping_country_field"
-                            >
-                              <CountrySelect
-                                name="shipping_country"
-                                id="shipping_country"
-                                register={register}
-                                validation={{
-                                  required: "Please select a country",
-                                }}
-                                errors={errors}
-                                onChange={(val) => {
-                                  setValue("shipping_country", val);
-                                }}
-                              />
-                            </div>
-
-                            <FormInput
-                              name="shipping_state"
-                              placeholder="Province/Region*"
-                              register={register}
-                              validation={{
-                                required: "The field cannot be empty",
-                              }}
-                              errors={errors}
-                              showErrors={false}
-                            />
-
-                            <FormInput
-                              name="shipping_address_1"
-                              placeholder="Street address"
-                              register={register}
-                              validation={{
-                                required: "The field cannot be empty",
-                              }}
-                              errors={errors}
-                              showErrors={false}
-                            />
-
-                            <FormInput
-                              name="shipping_postcode"
-                              placeholder="Postcode / ZIP"
-                              register={register}
-                              validation={{
-                                required: "The field cannot be empty",
-                              }}
-                              errors={errors}
-                              showErrors={false}
-                            />
-
-                            <FormInput
-                              name="shipping_city"
-                              placeholder="Town / City"
-                              register={register}
-                              validation={{
-                                required: "The field cannot be empty",
-                              }}
-                              errors={errors}
-                              showErrors={false}
-                            />
-                          </div>
-                        </div>
+                        <ShippingForm
+                          register={register}
+                          errors={errors}
+                          handleFieldChange={handleFieldChange}
+                        />
                       )}
                     </div>
 
@@ -416,115 +246,11 @@ function Payment() {
 
               {/* Order Summary Column */}
               <div className="checkout-column relative box-border h-auto w-full self-start overflow-hidden">
-                <div className="wrapper">
-                  <h3 className="font-humane leading-full mb-[3rem] text-[6rem] text-[#FD7453] md:text-[6vw]">
-                    Order Summary
-                  </h3>
-
-                  <div
-                    id="order_review"
-                    className="woocommerce-checkout-review-order relative h-auto w-full"
-                  >
-                    <div className="shop_table woocommerce-checkout-review-order-table relative flex h-auto w-full flex-col items-start justify-start">
-                      <div className="order-products relative flex h-auto w-full flex-col items-start justify-start">
-                        {cartItems.map((item, index) => (
-                          <div
-                            key={index}
-                            className="cart_item relative box-border grid h-auto w-full grid-cols-[30%_calc(70%-2rem)] gap-8 border-b border-[#1d1d1d]/50 py-[2.5rem] md:py-[1.5rem]"
-                          >
-                            <div className="item-image hide-image-on-email relative flex h-auto w-full items-center justify-center">
-                              <div className="image relative h-auto w-full">
-                                <img
-                                  src={item.image || null}
-                                  alt={item.title}
-                                  className="block h-auto w-full"
-                                />
-                              </div>
-                            </div>
-
-                            <div className="item-info hide-info-on-email relative flex w-full flex-col items-start justify-between gap-8">
-                              <div className="top relative flex h-auto w-full flex-col items-start justify-start gap-2">
-                                <h3 className="leading-full mb-8 text-[1.5rem] text-[#FD7453]">
-                                  {item.title}
-                                </h3>
-                                <div className="row relative flex h-auto w-full items-center justify-between">
-                                  <span className="label leading-full relative flex w-full items-center justify-between text-[#1d1d1d]">
-                                    Amount
-                                  </span>
-                                  <span className="value leading-full relative flex w-full flex-col items-end justify-start text-[#1d1d1d]">
-                                    {item.quantity}
-                                  </span>
-                                </div>
-                                <div className="row relative flex h-auto w-full items-center justify-between">
-                                  <span className="label leading-full relative flex w-full items-center justify-between text-[#1d1d1d]">
-                                    Size
-                                  </span>
-                                  <span className="value leading-full relative flex w-full flex-col items-end justify-start text-[#1d1d1d]">
-                                    {item.size}
-                                  </span>
-                                </div>
-                                <div className="row relative flex h-auto w-full items-center justify-between">
-                                  <span className="label leading-full relative flex w-full items-center justify-between text-[#1d1d1d]">
-                                    Price
-                                  </span>
-                                  <span className="value leading-full relative flex w-full flex-col items-end justify-start text-[#1d1d1d]">
-                                    € {item.price}
-                                  </span>
-                                </div>
-                                <div className="row sub relative mt-4 flex h-auto w-full items-center justify-between">
-                                  <span className="label leading-full relative flex w-full items-center justify-between text-[#1d1d1d]">
-                                    Subtotal
-                                  </span>
-                                  <span className="value leading-full relative flex w-full flex-col items-end justify-start text-[#1d1d1d]">
-                                    €{" "}
-                                    {(
-                                      parseFloat(item.price) * item.quantity
-                                    ).toFixed(2)}
-                                  </span>
-                                </div>
-                              </div>
-                              <div className="bottom">
-                                <div
-                                  className="remove-product leading-full relative flex cursor-pointer items-center justify-start gap-1 text-[#1d1d1d] md:justify-start md:gap-2"
-                                  onClick={() => removeFromCart(index)}
-                                >
-                                  <div className="relative h-[14px] w-[14px] cursor-pointer md:h-4 md:w-4">
-                                    <div className="icon absolute top-1/2 left-1/2 h-[1px] w-full -translate-1/2 rotate-45 bg-[#1d1d1d]" />
-                                    <div className="icon absolute top-1/2 left-1/2 h-[1px] w-full -translate-1/2 -rotate-45 bg-[#1d1d1d]" />
-                                  </div>
-                                  <span className="leading-full relative cursor-pointer text-[#1d1d1d] underline">
-                                    Remove
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Order Totals */}
-                      <div className="order-recap relative flex h-auto w-full flex-col items-start justify-start">
-                        <div className="row cart-subtotal relative flex w-full items-center justify-between border-b border-[#1d1d1d]/50 py-4 md:py-[1.5rem]">
-                          <span className="value text-base leading-[120%] text-[#1d1d1d] md:text-[1.25rem]">
-                            Subtotal
-                          </span>
-                          <span className="value text-base leading-[120%] text-[#1d1d1d] md:text-[1.25rem]">
-                            € {cartTotal}
-                          </span>
-                        </div>
-
-                        <div className="row order-total relative flex w-full items-center justify-between border-b border-[#1d1d1d]/50 py-4 md:py-[1.5rem]">
-                          <span className="value text-base leading-[120%] text-[#1d1d1d] md:text-[1.25rem]">
-                            Total
-                          </span>
-                          <span className="value text-base leading-[120%] text-[#1d1d1d] md:text-[1.25rem]">
-                            € {cartTotal}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <OrderSummary
+                  cartItems={cartItems}
+                  cartTotal={cartTotal}
+                  removeFromCart={removeFromCart}
+                />
               </div>
 
               {/* Payment Methods Column */}
@@ -538,98 +264,13 @@ function Payment() {
                     className="woocommerce-checkout-payment relative rounded-[5px] bg-transparent"
                   >
                     {/* Payment Methods List */}
-                    <ul className="wc_payment_methods payment_methods methods relative m-0 flex flex-col items-start justify-start gap-2 text-left md:gap-4">
-                      {/* Credit Card Payment Method */}
-                      <RadioInput
-                        id="payment_method_stripe_cc"
-                        name="payment_method"
-                        value="stripe_cc"
-                        checked={selectedPayment === "stripe_cc"}
-                        onChange={() => setSelectedPayment("stripe_cc")}
-                        label="Credit card"
-                      >
-                        <span className="wc-stripe-card-icons-container float-right inline-block">
-                          {[
-                            {
-                              image:
-                                "https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/amex.svg",
-                              alt: "Amex",
-                            },
-                            {
-                              image:
-                                "https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/discover.svg",
-                              alt: "Discover",
-                            },
-                            {
-                              image:
-                                "https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/visa.svg",
-                              alt: "Visa",
-                            },
-                            {
-                              image:
-                                "https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/mastercard.svg",
-                              alt: "Mastercard",
-                            },
-                          ].map((item, index) => (
-                            <img
-                              key={index}
-                              className="wc-stripe-card-icon amex relative -mt-[2px] ml-[2px] inline h-[26px] max-h-[26px] w-[43px] max-w-[43px] align-middle"
-                              alt={item.alt}
-                              src={item.image}
-                            />
-                          ))}
-                        </span>
-                      </RadioInput>
-
-                      {selectedPayment === "stripe_cc" && (
-                        <div
-                          className="payment_box payment_method_stripe_cc wc-stripe-no-methods relative box-border w-full bg-white p-0 text-[0.92em] leading-[1.5] text-[#515151]"
-                          style={{ gridArea: "box" }}
-                        >
-                          <div className="wc-stripe_cc-container wc-stripe-gateway-container">
-                            <div className="wc-stripe_cc-new-method-container">
-                              <div
-                                id="wc-stripe-card-element"
-                                className="inline-type StripeElement StripeElement--empty"
-                              >
-                                {/* Stripe Card Element will be inserted here by Stripe JS */}
-                                <StripeCardElement
-                                  onCardChange={handleCardChange}
-                                  error={cardError}
-                                />
-
-                                {paymentError && (
-                                  <div className="mt-2 text-sm text-[#FD7453]">
-                                    {paymentError}
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Bank Transfer Payment Method */}
-                      <RadioInput
-                        id="payment_method_bacs"
-                        name="payment_method"
-                        value="bacs"
-                        checked={selectedPayment === "bacs"}
-                        onChange={() => setSelectedPayment("bacs")}
-                        label="Bank transfer"
-                      />
-
-                      {selectedPayment === "bacs" && (
-                        <div className="payment_box payment_method_bacs relative box-border w-full rounded-[2px] bg-[#dcd7e3] p-[1em] leading-[1.5] text-[#515151] before:absolute before:top-[-0.75em] before:left-0 before:mt-[-1em] before:ml-[2em] before:block before:border-[1em] before:border-[transparent_transparent_#dcd7e3_transparent] before:content-['']">
-                          <p className="text-sm">
-                            Make your payment via bank transfer. Use your order
-                            ID as the reason for payment. Your order will not be
-                            shipped until the funds have cleared in our bank
-                            account.
-                          </p>
-                        </div>
-                      )}
-                    </ul>
+                    <PaymentMethods
+                      selectedPayment={selectedPayment}
+                      setSelectedPayment={setSelectedPayment}
+                      cardError={cardError}
+                      handleCardChange={handleCardChange}
+                      paymentError={paymentError}
+                    />
 
                     <div className="form-row place-order mt-8 mb-[6px] flex flex-col items-start justify-start gap-8">
                       <div className="woocommerce-terms-and-conditions-wrapper relative">

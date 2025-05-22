@@ -1,5 +1,7 @@
-import { useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router";
+import { ErrorBoundary } from "react-error-boundary";
+
 import CustomScrollbar from "@/components/others/CustomScrollbar";
 import { Header } from "@/components/organisms/header/Header";
 import Footer from "@/components/organisms/footer/Footer";
@@ -7,13 +9,14 @@ import ScrollCircle from "@/components/others/ScrollCircle";
 import LoginModal from "@/components/organisms/modal/LoginModal";
 import CustomCursor from "@/components/others/CustomCursor";
 import SideMenu from "@/components/others/SideMenu";
-import { usePageTransition } from "@/hooks/usePageTransition";
 import PageTransition from "@/components/animations/PageTransition";
 import { ROUTES } from "@/common/const/routes";
-import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import CartModal from "@/components/organisms/modal/CartModal";
-import { useModal } from "@/hooks/useModal";
 import CookieConsent from "@/components/others/CookieConsent";
+import PageErrorFallback from "@/components/others/PageErrorFallback";
+import { usePageTransition } from "@/hooks/usePageTransition";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
+import { useModal } from "@/hooks/useModal";
 
 import "./App.css";
 import "@/styles/index";
@@ -29,6 +32,7 @@ function App() {
   const { modalState, toggleMenu, toggleCartModal, toggleLoginModal } =
     useModal();
   const lenisRef = useSmoothScroll();
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     if (
@@ -46,6 +50,13 @@ function App() {
       }
       startAnimation();
     }
+
+    const whiteRoutes = ["/", "/everest-akke-limited", "/akkeworld"];
+    if (whiteRoutes.some((route) => location.pathname === route)) {
+      setIsDarkMode(false);
+    } else {
+      setIsDarkMode(true);
+    }
   }, [location, displayLocation]);
 
   return (
@@ -58,7 +69,9 @@ function App() {
       <PageTransition title={pageTitle} />
 
       {isTransitioning ? null : (
-        <div className="relative h-auto w-full">
+        <div
+          className={`relative h-auto w-full ${isDarkMode ? "dark-mode" : ""}`}
+        >
           <CustomCursor />
           <Header />
           <main
@@ -70,7 +83,16 @@ function App() {
                 <Route
                   key={route.path}
                   path={route.path}
-                  element={route.element}
+                  element={
+                    <ErrorBoundary
+                      fallback={<PageErrorFallback />}
+                      onError={(error) => {
+                        console.error(`Page error on ${route.path}:`, error);
+                      }}
+                    >
+                      <Suspense fallback={null}>{route.element}</Suspense>
+                    </ErrorBoundary>
+                  }
                 />
               ))}
               <Route path="*" element={<Navigate to="/" replace />} />

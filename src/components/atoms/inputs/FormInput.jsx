@@ -29,7 +29,7 @@ export const FormInput = ({
         </div>
       )}
       {showErrors && (
-        <div className="errors absolute right-[3rem] bottom-4">
+        <div className="errors absolute right-[3rem] bottom-4 z-2">
           {errors[name] && (
             <span className="error leading-full absolute right-0 bottom-0 text-[0.75rem] whitespace-nowrap text-[#FD7453] opacity-100 transition-all duration-300 ease-in-out">
               {errors[name].message}

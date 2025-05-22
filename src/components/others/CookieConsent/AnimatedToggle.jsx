@@ -1,4 +1,3 @@
-// src/components/CookieConsent/AnimatedToggle.jsx
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 
@@ -73,7 +72,7 @@ const AnimatedToggle = ({
         <div
           ref={knobRef}
           className="absolute top-1 left-1 h-4 w-4 transform rounded-full bg-white shadow-md transition-transform"
-        ></div>
+        />
 
         <input
           ref={inputRef}
