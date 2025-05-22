@@ -30,7 +30,7 @@ export default function SignupForm({ handleTabSwitch }) {
     <>
       I have read and accepted the
       <a
-        href="https://akkeknitwear.com/en/privacy-policy/"
+        href="/privacy-policy"
         target="_blank"
         rel="noopener noreferrer"
         className="leading-full mx-1 text-[14px] font-bold text-[#1d1d1d] md:text-base"

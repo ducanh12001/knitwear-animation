@@ -82,7 +82,7 @@ export const ScrollVelocity = ({
 
     const x = useTransform(baseX, (v) => {
       if (copyWidth === 0) return "0px";
-      return `${wrap(-copyWidth, 0, v)}px`;
+      return `${wrap(-(copyWidth * numCopies), 0, v)}px`;
     });
 
     const directionFactor = useRef(1);

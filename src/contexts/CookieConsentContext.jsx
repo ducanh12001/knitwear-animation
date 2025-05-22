@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import useCookies from "@/hooks/useCookies";
 
-// Default cookie categories
 const DEFAULT_PREFERENCES = {
   necessary: true, // Always active
   functional: false,

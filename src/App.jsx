@@ -26,7 +26,8 @@ function App() {
     startAnimation,
     pageTitle,
   } = usePageTransition();
-  const { modalState, toggleMenu, toggleCartModal } = useModal();
+  const { modalState, toggleMenu, toggleCartModal, toggleLoginModal } =
+    useModal();
   const lenisRef = useSmoothScroll();
 
   useEffect(() => {
@@ -39,6 +40,9 @@ function App() {
       }
       if (modalState.cartModalOpen) {
         toggleCartModal(false);
+      }
+      if (modalState.loginModalOpen) {
+        toggleLoginModal(false);
       }
       startAnimation();
     }

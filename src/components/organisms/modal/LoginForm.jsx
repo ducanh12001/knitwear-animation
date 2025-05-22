@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FormInput } from "../../atoms/inputs/FormInput";
 import { CheckboxInput } from "../../atoms/inputs/CheckboxInput";
+import { Link } from "react-router";
 
 export default function LoginForm({ handleTabSwitch }) {
   const [isChecked, setIsChecked] = useState(false);
@@ -20,7 +21,7 @@ export default function LoginForm({ handleTabSwitch }) {
   });
 
   const onSubmit = (data) => {
-    console.log("Form Data:", data); // Dữ liệu form khi submit
+    console.log("Form Data:", data);
   };
 
   return (
@@ -82,12 +83,12 @@ export default function LoginForm({ handleTabSwitch }) {
             </span>
           </button>
 
-          <a
-            className="goToRecPassword leading-full cursor-pointer text-base text-[#1d1d1d] underline"
-            href="https://akkeknitwear.com/en/password-recovery/"
+          <Link
+            className="leading-full cursor-pointer text-base text-[#1d1d1d] !underline"
+            to="/password-recovery"
           >
             Did you forget your password?
-          </a>
+          </Link>
         </div>
         <div className="bt relative h-auto w-full">
           <div
