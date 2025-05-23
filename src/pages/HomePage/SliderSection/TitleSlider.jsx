@@ -1,18 +1,18 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, EffectCreative, Controller } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/effect-creative";
-import { Link } from "react-router";
-import DecryptedText from "@/components/animations/DecryptedText";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, EffectCreative, Controller } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-creative';
+import { Link } from 'react-router';
+import DecryptedText from '@/components/animations/DecryptedText';
 
 export function TitleSlider({ slides, onSwiper }) {
   return (
     <Swiper
       modules={[Navigation, EffectCreative, Controller]}
       navigation={{
-        prevEl: ".swiper-button-prev",
-        nextEl: ".swiper-button-next",
+        prevEl: '.swiper-button-prev',
+        nextEl: '.swiper-button-next',
       }}
       spaceBetween={0}
       slidesPerView={1}
@@ -20,16 +20,16 @@ export function TitleSlider({ slides, onSwiper }) {
       effect="creative"
       creativeEffect={{
         prev: {
-          translate: [0, "-50%", 0],
+          translate: [0, '-50%', 0],
           scale: 0.8,
           opacity: 0,
-          origin: "center center",
+          origin: 'center center',
         },
         next: {
-          translate: [0, "50%", 0],
+          translate: [0, '50%', 0],
           scale: 0.8,
           opacity: 0,
-          origin: "center center",
+          origin: 'center center',
         },
       }}
       className="titlesSlider !absolute top-0 left-0 !z-25 h-full w-full"

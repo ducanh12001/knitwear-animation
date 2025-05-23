@@ -1,67 +1,67 @@
-import gsap from "gsap";
-import React, { useState } from "react";
-import { useMediaQuery } from "react-responsive";
+import gsap from 'gsap';
+import React, { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 const featuresData = [
   {
-    label: "Wholegarment®",
-    desktop: { top: "15vh", left: "35%" },
-    mobile: { top: "calc(3.75rem + 48px + 80px)", left: "2.5vw" },
+    label: 'Wholegarment®',
+    desktop: { top: '15vh', left: '35%' },
+    mobile: { top: 'calc(3.75rem + 48px + 80px)', left: '2.5vw' },
     des: "WHOLEGARMENT® is the world's first seam-free knitwear technology. It can be described as a 3D printer for textiles. The garments that come out of the machine need only some finishing, but they are almost ready to be worn. This technology allows us to reduce the number of steps that were necessary in traditional knitwear. This means that we are able to reduce yarn waste, as we only order and use as much yarn as we need.",
   },
   {
-    label: "Dyeing Process",
-    desktop: { top: "20vh", left: "56%" },
-    mobile: { top: "calc(3.75rem + 72px + 80px)", left: "auto" },
-    des: "Our garments have been dyed following the DARKNESS technique which gives an iridescent effect of light-dark shadows. The dye gives each garment deep and always different shades. For this reason each piece is one of a kind. We focused our attention on 4 colors in particular, making sure that each color worked when combined with all the others.",
+    label: 'Dyeing Process',
+    desktop: { top: '20vh', left: '56%' },
+    mobile: { top: 'calc(3.75rem + 72px + 80px)', left: 'auto' },
+    des: 'Our garments have been dyed following the DARKNESS technique which gives an iridescent effect of light-dark shadows. The dye gives each garment deep and always different shades. For this reason each piece is one of a kind. We focused our attention on 4 colors in particular, making sure that each color worked when combined with all the others.',
   },
   {
-    label: "Yarn",
-    desktop: { top: "50vh", left: "54%" },
-    mobile: { top: `calc(3.75rem + ${625 / 3}vw + 120px)`, left: "35vw" },
-    des: "The long research conducted by our team led us to the discovery of a yarn that combines wool and Cordura. The latter is a fabric that derives from a particular processing of nylon, thanks to which the material acquires a very resistant grid structure with specific properties. Its main characteristic is that of being considered a highly robust fabric, and therefore resistant to wear and tear with the ability to last over time. The grid structure offers high breathability to water vapor, not generating overheating of the body, but with a limit to its waterproof capacity. In fact, it can be considered a fabric that has the ability to repel medium water, having passed the water column test with a value of 5,000 mm. Its combination with wool has allowed us to create extremely warm, soft and resistant garments, perfect for outdoor clothing.",
+    label: 'Yarn',
+    desktop: { top: '50vh', left: '54%' },
+    mobile: { top: `calc(3.75rem + ${625 / 3}vw + 120px)`, left: '35vw' },
+    des: 'The long research conducted by our team led us to the discovery of a yarn that combines wool and Cordura. The latter is a fabric that derives from a particular processing of nylon, thanks to which the material acquires a very resistant grid structure with specific properties. Its main characteristic is that of being considered a highly robust fabric, and therefore resistant to wear and tear with the ability to last over time. The grid structure offers high breathability to water vapor, not generating overheating of the body, but with a limit to its waterproof capacity. In fact, it can be considered a fabric that has the ability to repel medium water, having passed the water column test with a value of 5,000 mm. Its combination with wool has allowed us to create extremely warm, soft and resistant garments, perfect for outdoor clothing.',
   },
   {
-    label: "Gorpcorec",
-    desktop: { top: "75vh", left: "55%" },
-    mobile: { top: `calc(3.75rem + ${625 / 3}vw + 80px)`, left: "60vw" },
+    label: 'Gorpcorec',
+    desktop: { top: '75vh', left: '55%' },
+    mobile: { top: `calc(3.75rem + ${625 / 3}vw + 80px)`, left: '60vw' },
     des: "Gorpcore is a style inspired by hiking and climbing clothing, but is designed for the city. “Gorp” comes from “Good ol' Raisins and Peanuts”, alluding to the classic dried fruit snacks, which have always been faithful travel companions for hikers. The aesthetic movement took hold during the lockdown periods, when everyone - and especially those who live in the city - expressed, even in style, the need to reconnect with nature. Another fundamental aspect of the Gorpcore style, beyond the ideal techwear for escaping the rain or trekking in style, is its unisex essence: the boundaries between men's and women's clothing are blurred to a new level. ",
   },
 ];
 
 export default function FeaturesSection() {
   const isDesktop = useMediaQuery({
-    query: "(min-width: 768px)",
+    query: '(min-width: 768px)',
   });
   const [selected, setSelected] = useState(0);
 
   const openFeatureModal = (index) => {
     setSelected(index);
-    gsap.set(".akkeworld--features .custom-modal", {
+    gsap.set('.akkeworld--features .custom-modal', {
       autoAlpha: 1,
-      ease: "power2.out",
+      ease: 'power2.out',
     });
-    gsap.to(".akkeworld--features .custom-modal .modal-bg", {
+    gsap.to('.akkeworld--features .custom-modal .modal-bg', {
       autoAlpha: 1,
-      ease: "power2.out",
+      ease: 'power2.out',
     });
-    gsap.to(".akkeworld--features .custom-modal .modal-zoom", {
+    gsap.to('.akkeworld--features .custom-modal .modal-zoom', {
       autoAlpha: 1,
       scale: 1,
-      ease: "power2.out",
+      ease: 'power2.out',
       duration: 0.4,
       delay: 0.2,
     });
   };
 
   const closeFeatureModal = () => {
-    gsap.to(".akkeworld--features .custom-modal .modal-zoom", {
+    gsap.to('.akkeworld--features .custom-modal .modal-zoom', {
       autoAlpha: 0,
       scale: 0.6,
       duration: 0.4,
-      ease: "power2.in",
+      ease: 'power2.in',
     });
-    gsap.set(".akkeworld--features .custom-modal", {
+    gsap.set('.akkeworld--features .custom-modal', {
       autoAlpha: 0,
       delay: 0.6,
     });
@@ -101,9 +101,9 @@ export default function FeaturesSection() {
           {featuresData.map((item, index) => (
             <div
               key={index}
-              className={`dot elAnimation absolute flex items-center justify-start gap-1 md:gap-4 ${index === 0 && "flex-row-reverse"} ${index === 1 && "right-[2.5vw]"}`}
+              className={`dot elAnimation absolute flex items-center justify-start gap-1 md:gap-4 ${index === 0 && 'flex-row-reverse'} ${index === 1 && 'right-[2.5vw]'}`}
               animation={
-                index === 0 ? "ease-left-to-right" : "ease-right-to-left"
+                index === 0 ? 'ease-left-to-right' : 'ease-right-to-left'
               }
               style={{
                 top: isDesktop ? item.desktop.top : item.mobile.top,

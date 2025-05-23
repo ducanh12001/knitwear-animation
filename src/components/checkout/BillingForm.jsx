@@ -1,5 +1,5 @@
-import { CountrySelect } from "../atoms/inputs/CountrySelect";
-import { FormInput } from "../atoms/inputs/FormInput";
+import { CountrySelect } from '../atoms/inputs/CountrySelect';
+import { FormInput } from '../atoms/inputs/FormInput';
 
 export default function BillingForm({ register, errors, handleFieldChange }) {
   return (
@@ -13,7 +13,7 @@ export default function BillingForm({ register, errors, handleFieldChange }) {
           name="billing_first_name"
           placeholder="First name"
           register={register}
-          validation={{ required: "The field cannot be empty" }}
+          validation={{ required: 'The field cannot be empty' }}
           errors={errors}
           showErrors={false}
         />
@@ -22,7 +22,7 @@ export default function BillingForm({ register, errors, handleFieldChange }) {
           name="billing_last_name"
           placeholder="Last name"
           register={register}
-          validation={{ required: "The field cannot be empty" }}
+          validation={{ required: 'The field cannot be empty' }}
           errors={errors}
           showErrors={false}
         />
@@ -32,10 +32,10 @@ export default function BillingForm({ register, errors, handleFieldChange }) {
             name="billing_country"
             id="billing_country"
             register={register}
-            validation={{ required: "Please select a country" }}
+            validation={{ required: 'Please select a country' }}
             errors={errors}
             onChange={(val) => {
-              handleFieldChange("billing_country", val);
+              handleFieldChange('billing_country', val);
             }}
           />
         </div>
@@ -44,7 +44,7 @@ export default function BillingForm({ register, errors, handleFieldChange }) {
           name="billing_state"
           placeholder="Province/Region*"
           register={register}
-          validation={{ required: "The field cannot be empty" }}
+          validation={{ required: 'The field cannot be empty' }}
           errors={errors}
           showErrors={false}
         />
@@ -53,7 +53,7 @@ export default function BillingForm({ register, errors, handleFieldChange }) {
           name="billing_address_1"
           placeholder="Street address"
           register={register}
-          validation={{ required: "The field cannot be empty" }}
+          validation={{ required: 'The field cannot be empty' }}
           errors={errors}
           showErrors={false}
         />
@@ -62,7 +62,7 @@ export default function BillingForm({ register, errors, handleFieldChange }) {
           name="billing_postcode"
           placeholder="Postcode / ZIP"
           register={register}
-          validation={{ required: "The field cannot be empty" }}
+          validation={{ required: 'The field cannot be empty' }}
           errors={errors}
           showErrors={false}
         />
@@ -71,7 +71,7 @@ export default function BillingForm({ register, errors, handleFieldChange }) {
           name="billing_city"
           placeholder="Town / City"
           register={register}
-          validation={{ required: "The field cannot be empty" }}
+          validation={{ required: 'The field cannot be empty' }}
           errors={errors}
           showErrors={false}
         />
@@ -80,7 +80,7 @@ export default function BillingForm({ register, errors, handleFieldChange }) {
           name="billing_phone"
           placeholder="Phone"
           register={register}
-          validation={{ required: "The field cannot be empty" }}
+          validation={{ required: 'The field cannot be empty' }}
           errors={errors}
           showErrors={false}
         />
@@ -91,10 +91,10 @@ export default function BillingForm({ register, errors, handleFieldChange }) {
           placeholder="Email address"
           register={register}
           validation={{
-            required: "The field cannot be empty",
+            required: 'The field cannot be empty',
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "Invalid email address",
+              message: 'Invalid email address',
             },
           }}
           errors={errors}

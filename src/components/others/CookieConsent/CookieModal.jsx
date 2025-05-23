@@ -1,5 +1,5 @@
-import { forwardRef, useState } from "react";
-import CookieAccordion from "./CookieAccordion";
+import { forwardRef, useState } from 'react';
+import CookieAccordion from './CookieAccordion';
 
 const CookieModal = forwardRef(
   (
@@ -10,7 +10,7 @@ const CookieModal = forwardRef(
       onRejectAll,
       onSavePreferences,
       onClose,
-      className = "",
+      className = '',
     },
     ref,
   ) => {
@@ -24,14 +24,14 @@ const CookieModal = forwardRef(
     // Cookie categories with descriptions
     const categories = [
       {
-        id: "necessary",
-        title: "Necessary",
+        id: 'necessary',
+        title: 'Necessary',
         description:
-          "Necessary cookies are required to enable the basic features of this site, such as providing secure log-in or adjusting your consent preferences. These cookies do not store any personally identifiable data.",
+          'Necessary cookies are required to enable the basic features of this site, such as providing secure log-in or adjusting your consent preferences. These cookies do not store any personally identifiable data.',
         cookies: [
           {
-            name: "cookieyes-consent",
-            duration: "1 year",
+            name: 'cookieyes-consent',
+            duration: '1 year',
             description:
               "CookieYes sets this cookie to remember users' consent preferences so that their preferences are respected on subsequent visits to this site. It does not collect or store any personal information about the site visitors.",
           },
@@ -39,51 +39,51 @@ const CookieModal = forwardRef(
         alwaysActive: true,
       },
       {
-        id: "functional",
-        title: "Functional",
+        id: 'functional',
+        title: 'Functional',
         description:
-          "Functional cookies help perform certain functionalities like sharing the content of the website on social media platforms, collecting feedback, and other third-party features.",
+          'Functional cookies help perform certain functionalities like sharing the content of the website on social media platforms, collecting feedback, and other third-party features.',
         cookies: [
           {
-            name: "wp-wpml_current_language",
-            duration: "session",
+            name: 'wp-wpml_current_language',
+            duration: 'session',
             description:
-              "WordPress multilingual plugin sets this cookie to store the current language/language settings.",
+              'WordPress multilingual plugin sets this cookie to store the current language/language settings.',
           },
         ],
       },
       {
-        id: "analytics",
-        title: "Analytics",
+        id: 'analytics',
+        title: 'Analytics',
         description:
-          "Analytical cookies are used to understand how visitors interact with the website. These cookies help provide information on metrics such as the number of visitors, bounce rate, traffic source, etc.",
+          'Analytical cookies are used to understand how visitors interact with the website. These cookies help provide information on metrics such as the number of visitors, bounce rate, traffic source, etc.',
         cookies: [
           {
-            name: "_ga",
-            duration: "1 year 1 month 4 days",
+            name: '_ga',
+            duration: '1 year 1 month 4 days',
             description:
               "Google Analytics sets this cookie to calculate visitor, session and campaign data and track site usage for the site's analytics report. The cookie stores information anonymously and assigns a randomly generated number to recognise unique visitors.",
           },
           {
-            name: "_ga_*",
-            duration: "1 year 1 month 4 days",
+            name: '_ga_*',
+            duration: '1 year 1 month 4 days',
             description:
-              "Google Analytics sets this cookie to store and count page views.",
+              'Google Analytics sets this cookie to store and count page views.',
           },
         ],
       },
       {
-        id: "performance",
-        title: "Performance",
+        id: 'performance',
+        title: 'Performance',
         description:
-          "Performance cookies are used to understand and analyze the key performance indexes of the website which helps in delivering a better user experience for the visitors.",
+          'Performance cookies are used to understand and analyze the key performance indexes of the website which helps in delivering a better user experience for the visitors.',
         cookies: [],
       },
       {
-        id: "advertisement",
-        title: "Advertisement",
+        id: 'advertisement',
+        title: 'Advertisement',
         description:
-          "Advertisement cookies are used to provide visitors with customized advertisements based on the pages you visited previously and to analyze the effectiveness of the ad campaigns.",
+          'Advertisement cookies are used to provide visitors with customized advertisements based on the pages you visited previously and to analyze the effectiveness of the ad campaigns.',
         cookies: [],
       },
     ];
@@ -97,7 +97,7 @@ const CookieModal = forwardRef(
           <div className="flex items-center justify-between border-b border-inherit px-6 py-5.5">
             <h2
               className="text-xl font-bold text-[#1d1d1d]"
-              style={{ wordBreak: "break-word" }}
+              style={{ wordBreak: 'break-word' }}
             >
               Customize Consent Preferences
             </h2>
@@ -169,7 +169,7 @@ const CookieModal = forwardRef(
             <div className="pt-1 pb-3 text-[14px] text-[#1d1d1d]">
               <p>
                 For more information on how Google's third-party cookies operate
-                and handle your data, see:{" "}
+                and handle your data, see:{' '}
                 <a
                   href="https://business.safety.google/privacy"
                   className="text-blue-600 !underline"
@@ -202,7 +202,7 @@ const CookieModal = forwardRef(
             <div className="flex flex-wrap items-center justify-center gap-2 border-t border-inherit px-6 py-5.5">
               <button
                 className="flex-auto cursor-pointer rounded-[25px] border border-[#302F35] p-2 text-[0.8rem] font-medium text-[#302F35] transition-colors hover:bg-gray-100"
-                style={{ overflowWrap: "break-word" }}
+                style={{ overflowWrap: 'break-word' }}
                 onClick={onRejectAll}
               >
                 Reject All
@@ -210,7 +210,7 @@ const CookieModal = forwardRef(
 
               <button
                 className="flex-auto cursor-pointer rounded-[25px] border border-[#302F35] p-2 text-[0.8rem] font-medium text-[#302F35] transition-colors hover:bg-gray-100"
-                style={{ overflowWrap: "break-word" }}
+                style={{ overflowWrap: 'break-word' }}
                 onClick={onSavePreferences}
               >
                 Save My Preferences
@@ -218,7 +218,7 @@ const CookieModal = forwardRef(
 
               <button
                 className="flex-auto cursor-pointer rounded-[25px] border border-[#302F35] bg-[#302F35] p-2 text-[0.8rem] font-medium text-white transition-colors hover:bg-gray-700"
-                style={{ overflowWrap: "break-word" }}
+                style={{ overflowWrap: 'break-word' }}
                 onClick={onAcceptAll}
               >
                 Accept All

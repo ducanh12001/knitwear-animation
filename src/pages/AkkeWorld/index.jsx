@@ -1,9 +1,9 @@
-import FeaturesSection from "./FeaturesSection";
-import FeaturesVideo from "../../assets/features.mp4";
-import AdvSection from "./AdvSection";
-import DecryptedText from "../../components/animations/DecryptedText";
-import { ImagesSection } from "../AkkeLimited/ImagesSection";
-import { useGSAPAnimation } from "../../hooks/useGSAPAnimation";
+import FeaturesSection from './FeaturesSection';
+import FeaturesVideo from '../../assets/features.mp4';
+import AdvSection from './AdvSection';
+import DecryptedText from '../../components/animations/DecryptedText';
+import { ImagesSection } from '../AkkeLimited/ImagesSection';
+import { useGSAPAnimation } from '../../hooks/useGSAPAnimation';
 
 function AkkeWorld() {
   useGSAPAnimation();
@@ -29,22 +29,22 @@ function AkkeWorld() {
       <ImagesSection
         bgColor="#A9AFA4"
         blockTop={{
-          title: "The epitome of italian excellence",
-          des: "AKKE transforms high-performance technical fibers into luxurious garments, knitting a 3D future that embraces craftsmanship and extraordinary functionality. All of our garments are meticulously crafted to welcome your body.",
+          title: 'The epitome of italian excellence',
+          des: 'AKKE transforms high-performance technical fibers into luxurious garments, knitting a 3D future that embraces craftsmanship and extraordinary functionality. All of our garments are meticulously crafted to welcome your body.',
         }}
         blockColumns={{
-          leftTitle: "Research and experiment",
+          leftTitle: 'Research and experiment',
           leftImage:
-            "https://akkeknitwear.com/website/wp-content/uploads/2025/03/world-1.jpg",
-          rightTitle: "Durable and timeless",
+            'https://akkeknitwear.com/website/wp-content/uploads/2025/03/world-1.jpg',
+          rightTitle: 'Durable and timeless',
           rightImage:
-            "https://akkeknitwear.com/website/wp-content/uploads/2025/03/world-2.jpg",
+            'https://akkeknitwear.com/website/wp-content/uploads/2025/03/world-2.jpg',
         }}
         blockFull={{
           image:
-            "https://akkeknitwear.com/website/wp-content/uploads/2025/03/banner2.jpg",
-          des: "The innovation of materials and the study of details push AKKE knitwear beyond the boundaries of the ordinary.",
-          des2: "We want to inspire those who are looking for something more, those who want to experience the unlimited potential of textile creations.",
+            'https://akkeknitwear.com/website/wp-content/uploads/2025/03/banner2.jpg',
+          des: 'The innovation of materials and the study of details push AKKE knitwear beyond the boundaries of the ordinary.',
+          des2: 'We want to inspire those who are looking for something more, those who want to experience the unlimited potential of textile creations.',
         }}
       />
       <FeaturesSection />
@@ -77,7 +77,7 @@ function AkkeWorld() {
             className="gradient absolute top-0 left-0 z-50 h-full w-full"
             style={{
               backgroundImage:
-                "linear-gradient(0deg, #1d1d1d 0%, rgba(29, 29, 29, 0) 26%, rgba(29, 29, 29, 0) 100%)",
+                'linear-gradient(0deg, #1d1d1d 0%, rgba(29, 29, 29, 0) 26%, rgba(29, 29, 29, 0) 100%)',
             }}
           />
         </div>

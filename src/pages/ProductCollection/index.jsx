@@ -1,38 +1,38 @@
-import React from "react";
+import React from 'react';
 import {
   menProducts,
   womenProducts,
-} from "../../common/const/sampleProductList";
-import { ProductCard } from "../HomePage/ProductList/ProductCard";
+} from '../../common/const/sampleProductList';
+import { ProductCard } from '../HomePage/ProductList/ProductCard';
 
 const FILTER_ITEMS = [
   {
-    label: "View all",
-    href: "/product-category/menswear-collection",
+    label: 'View all',
+    href: '/product-category/menswear-collection',
   },
   {
-    label: "Polo",
-    href: "https://akkeknitwear.com/categoria-prodotto/menswear/",
+    label: 'Polo',
+    href: 'https://akkeknitwear.com/categoria-prodotto/menswear/',
   },
   {
-    label: "Hoodie",
-    href: "https://akkeknitwear.com/categoria-prodotto/menswear/men-felpe/",
+    label: 'Hoodie',
+    href: 'https://akkeknitwear.com/categoria-prodotto/menswear/men-felpe/',
   },
   {
-    label: "Knitwear",
-    href: "https://akkeknitwear.com/categoria-prodotto/menswear/men-maglieria/",
+    label: 'Knitwear',
+    href: 'https://akkeknitwear.com/categoria-prodotto/menswear/men-maglieria/',
   },
   {
-    label: "Joggers",
-    href: "https://akkeknitwear.com/categoria-prodotto/menswear/",
+    label: 'Joggers',
+    href: 'https://akkeknitwear.com/categoria-prodotto/menswear/',
   },
   {
-    label: "T-shirt",
-    href: "https://akkeknitwear.com/categoria-prodotto/menswear/",
+    label: 'T-shirt',
+    href: 'https://akkeknitwear.com/categoria-prodotto/menswear/',
   },
   {
-    label: "Accessories",
-    href: "https://akkeknitwear.com/categoria-prodotto/menswear/",
+    label: 'Accessories',
+    href: 'https://akkeknitwear.com/categoria-prodotto/menswear/',
   },
 ];
 
@@ -43,7 +43,7 @@ function ProductCollection({ isMen }) {
         <div className="listing-info relative flex h-auto w-full flex-col items-start justify-start gap-[3rem]">
           <div className="shop-title relative flex h-auto w-full flex-col items-center justify-start pt-[5vh]">
             <h1 className="font-humane leading-full !text-[15vw] font-light uppercase">
-              {isMen ? "Menswear" : "Womenswear"}
+              {isMen ? 'Menswear' : 'Womenswear'}
             </h1>
           </div>
           <div className="shop-filters relative flex h-auto w-full items-start justify-center">
@@ -55,7 +55,7 @@ function ProductCollection({ isMen }) {
                     href={item.href}
                     className="relative box-border block h-auto w-full rounded-[25px] border border-solid border-[#302F35] px-[16px] py-0 hover:bg-[#302f3533] md:border-2 md:px-[3.5rem] md:py-[1rem]"
                     style={{
-                      transition: "background-color 0.35s ease-in-out 0s",
+                      transition: 'background-color 0.35s ease-in-out 0s',
                     }}
                   >
                     <span className="leading-full text-base text-[#1d1d1d] uppercase">

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useCookieConsent } from "@/contexts/CookieConsentContext";
+import { useEffect, useState } from 'react';
+import { useCookieConsent } from '@/contexts/CookieConsentContext';
 
 /**
  * A component that conditionally loads a script based on cookie consent
@@ -29,7 +29,7 @@ const ConsentScript = ({
     const allowed = isAllowed(category);
 
     // Generate a unique ID for the script
-    const scriptId = `consent-script-${src.replace(/[^a-z0-9]/gi, "")}`;
+    const scriptId = `consent-script-${src.replace(/[^a-z0-9]/gi, '')}`;
 
     // Check if script already exists
     let scriptElement = document.getElementById(scriptId);
@@ -37,7 +37,7 @@ const ConsentScript = ({
     if (allowed) {
       // Load the script if allowed and not already loaded
       if (!scriptElement) {
-        scriptElement = document.createElement("script");
+        scriptElement = document.createElement('script');
         scriptElement.id = scriptId;
         scriptElement.src = src;
 

@@ -1,5 +1,5 @@
-import { RadioInput } from "../atoms/inputs/RadioInput";
-import { StripeCardElement } from "../atoms/inputs/StripeCardElement";
+import { RadioInput } from '../atoms/inputs/RadioInput';
+import { StripeCardElement } from '../atoms/inputs/StripeCardElement';
 
 export default function PaymentMethods({
   selectedPayment,
@@ -15,31 +15,31 @@ export default function PaymentMethods({
         id="payment_method_stripe_cc"
         name="payment_method"
         value="stripe_cc"
-        checked={selectedPayment === "stripe_cc"}
-        onChange={() => setSelectedPayment("stripe_cc")}
+        checked={selectedPayment === 'stripe_cc'}
+        onChange={() => setSelectedPayment('stripe_cc')}
         label="Credit card"
       >
         <span className="wc-stripe-card-icons-container float-right inline-block">
           {[
             {
               image:
-                "https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/amex.svg",
-              alt: "Amex",
+                'https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/amex.svg',
+              alt: 'Amex',
             },
             {
               image:
-                "https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/discover.svg",
-              alt: "Discover",
+                'https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/discover.svg',
+              alt: 'Discover',
             },
             {
               image:
-                "https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/visa.svg",
-              alt: "Visa",
+                'https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/visa.svg',
+              alt: 'Visa',
             },
             {
               image:
-                "https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/mastercard.svg",
-              alt: "Mastercard",
+                'https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/mastercard.svg',
+              alt: 'Mastercard',
             },
           ].map((item, index) => (
             <img
@@ -52,10 +52,10 @@ export default function PaymentMethods({
         </span>
       </RadioInput>
 
-      {selectedPayment === "stripe_cc" && (
+      {selectedPayment === 'stripe_cc' && (
         <div
           className="payment_box payment_method_stripe_cc wc-stripe-no-methods relative box-border w-full bg-white p-0 text-[0.92em] leading-[1.5] text-[#515151]"
-          style={{ gridArea: "box" }}
+          style={{ gridArea: 'box' }}
         >
           <div className="wc-stripe_cc-container wc-stripe-gateway-container">
             <div className="wc-stripe_cc-new-method-container">
@@ -85,12 +85,12 @@ export default function PaymentMethods({
         id="payment_method_bacs"
         name="payment_method"
         value="bacs"
-        checked={selectedPayment === "bacs"}
-        onChange={() => setSelectedPayment("bacs")}
+        checked={selectedPayment === 'bacs'}
+        onChange={() => setSelectedPayment('bacs')}
         label="Bank transfer"
       />
 
-      {selectedPayment === "bacs" && (
+      {selectedPayment === 'bacs' && (
         <div className="payment_box payment_method_bacs relative box-border w-full rounded-[2px] bg-[#dcd7e3] p-[1em] leading-[1.5] text-[#515151] before:absolute before:top-[-0.75em] before:left-0 before:mt-[-1em] before:ml-[2em] before:block before:border-[1em] before:border-[transparent_transparent_#dcd7e3_transparent] before:content-['']">
           <p className="text-sm">
             Make your payment via bank transfer. Use your order ID as the reason

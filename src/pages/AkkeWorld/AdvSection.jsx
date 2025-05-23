@@ -1,68 +1,68 @@
-import React, { useState } from "react";
-import gsap from "gsap";
-import { useMediaQuery } from "react-responsive";
-import { Link } from "react-router";
+import React, { useState } from 'react';
+import gsap from 'gsap';
+import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router';
 
 const polaroidData = [
   {
-    label: "Everest",
+    label: 'Everest',
     image:
-      "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-1.jpg",
-    top: "5vh",
-    left: "10vw",
-    labelRight: "2vw",
-    labelLeft: "initial",
+      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-1.jpg',
+    top: '5vh',
+    left: '10vw',
+    labelRight: '2vw',
+    labelLeft: 'initial',
   },
   {
-    label: "Trisul",
+    label: 'Trisul',
     image:
-      "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-2.jpg",
-    top: "20vh",
-    left: "15vw",
-    labelRight: "3vw",
-    labelLeft: "initial",
+      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-2.jpg',
+    top: '20vh',
+    left: '15vw',
+    labelRight: '3vw',
+    labelLeft: 'initial',
   },
   {
-    label: "Kardong",
+    label: 'Kardong',
     image:
-      "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-3.jpg",
-    top: "30vh",
-    left: "8vw",
-    labelRight: "initial",
-    labelLeft: "2vw",
+      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-3.jpg',
+    top: '30vh',
+    left: '8vw',
+    labelRight: 'initial',
+    labelLeft: '2vw',
   },
   {
-    label: "K2",
+    label: 'K2',
     image:
-      "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-4.jpg",
-    top: "8vh",
-    left: "65vw",
-    labelRight: "1vw",
-    labelLeft: "initial",
+      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-4.jpg',
+    top: '8vh',
+    left: '65vw',
+    labelRight: '1vw',
+    labelLeft: 'initial',
   },
   {
-    label: "Nanga Parbat",
+    label: 'Nanga Parbat',
     image:
-      "https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-5.jpg",
-    top: "15vh",
-    left: "62vw",
-    labelRight: "initial",
-    labelLeft: "0",
+      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-5.jpg',
+    top: '15vh',
+    left: '62vw',
+    labelRight: 'initial',
+    labelLeft: '0',
   },
   {
-    label: "Nanga Parbat",
+    label: 'Nanga Parbat',
     image:
-      "https://akkeknitwear.com/website/wp-content/uploads/2023/12/AKKE-ADV-FW232400502.jpg",
-    top: "5vh",
-    left: "10vw",
-    labelRight: "2vw",
-    labelLeft: "initial",
+      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/AKKE-ADV-FW232400502.jpg',
+    top: '5vh',
+    left: '10vw',
+    labelRight: '2vw',
+    labelLeft: 'initial',
   },
 ];
 
 export default function AdvSection() {
   const isDesktop = useMediaQuery({
-    query: "(min-width: 768px)",
+    query: '(min-width: 768px)',
   });
 
   const [selected, setSelected] = useState(0);
@@ -72,17 +72,17 @@ export default function AdvSection() {
     if (isDesktop) {
       handleMouseEnter(index);
     } else {
-      gsap.set(".akkeworld--adv .custom-modal", {
+      gsap.set('.akkeworld--adv .custom-modal', {
         autoAlpha: 1,
       });
-      gsap.to(".akkeworld--adv .custom-modal .modal-bg", {
+      gsap.to('.akkeworld--adv .custom-modal .modal-bg', {
         autoAlpha: 1,
-        ease: "power2.out",
+        ease: 'power2.out',
       });
-      gsap.to(".akkeworld--adv .custom-modal .modal-zoom", {
+      gsap.to('.akkeworld--adv .custom-modal .modal-zoom', {
         autoAlpha: 1,
         scale: 1,
-        ease: "power2.out",
+        ease: 'power2.out',
         duration: 0.4,
         delay: 0.2,
       });
@@ -117,13 +117,13 @@ export default function AdvSection() {
   };
 
   const handleCloseModal = () => {
-    gsap.to(".akkeworld--adv .custom-modal .modal-zoom", {
+    gsap.to('.akkeworld--adv .custom-modal .modal-zoom', {
       autoAlpha: 0,
       scale: 0.6,
       duration: 0.3,
-      ease: "power2.in",
+      ease: 'power2.in',
     });
-    gsap.set(".akkeworld--adv .custom-modal", {
+    gsap.set('.akkeworld--adv .custom-modal', {
       autoAlpha: 0,
       delay: 0.5,
     });
@@ -148,8 +148,8 @@ export default function AdvSection() {
           <path
             className="street fill-none stroke-white stroke-2"
             style={{
-              strokeLinecap: "round",
-              strokeLinejoin: "round",
+              strokeLinecap: 'round',
+              strokeLinejoin: 'round',
             }}
             d="M1,1c54.9,98.7,96.4,103.9,129.5,132.1s-4.4,60.2,52.7,83.4s19.8,30.1-8.1,85.1c-13.8,27.2,46.8,45,75,84
     s71.3,34.9,72.8,65.8s27,24,20.3,30.4c-19.1,18.2-133.9-21.6-115.6,0.6c32.9,40,96.6,17.6,58.1,60.1c-20,22.1-107.7,5.1-143.3,37.4
@@ -192,8 +192,8 @@ export default function AdvSection() {
                 r="15.1"
                 style={{
                   strokeMiterlimit: 10,
-                  transition: "stroke 0.35s ease-in-out",
-                  r: "24px",
+                  transition: 'stroke 0.35s ease-in-out',
+                  r: '24px',
                 }}
               />
               <circle
@@ -201,14 +201,14 @@ export default function AdvSection() {
                 cx={point.cx}
                 cy={point.cy}
                 r="13.3"
-                style={{ r: "16px", transition: "stroke 0.35s ease-in-out" }}
+                style={{ r: '16px', transition: 'stroke 0.35s ease-in-out' }}
               />
               <circle
                 className="before z-1 fill-none stroke-[#A9AFA4] opacity-0 transition-opacity duration-350 ease-in-out group-hover:opacity-100"
                 cx={point.cx}
                 cy={point.cy}
                 r="6"
-                style={{ strokeOpacity: 0, r: "1.25vw" }}
+                style={{ strokeOpacity: 0, r: '1.25vw' }}
               >
                 <animate
                   attributeName="r"
@@ -232,7 +232,7 @@ export default function AdvSection() {
                 cx={point.cx}
                 cy={point.cy}
                 r="6"
-                style={{ strokeOpacity: 0, r: "1.25vw" }}
+                style={{ strokeOpacity: 0, r: '1.25vw' }}
               >
                 <animate
                   attributeName="r"

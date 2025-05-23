@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef } from 'react';
 
 const CookieBanner = forwardRef(
   ({ onCustomize, onAcceptAll, onRejectAll }, ref) => {

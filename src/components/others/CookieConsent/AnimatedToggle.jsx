@@ -1,13 +1,13 @@
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
 
 const AnimatedToggle = ({
   id,
   isChecked,
   onChange,
   disabled = false,
-  label = "",
-  className = "",
+  label = '',
+  className = '',
 }) => {
   const toggleRef = useRef(null);
   const knobRef = useRef(null);
@@ -20,22 +20,22 @@ const AnimatedToggle = ({
         gsap.to(knobRef.current, {
           x: 16,
           duration: 0.1,
-          ease: "power2.out",
+          ease: 'power2.out',
         });
 
         gsap.to(toggleRef.current, {
-          backgroundColor: "rgb(74, 222, 128)",
+          backgroundColor: 'rgb(74, 222, 128)',
           duration: 0.1,
         });
       } else {
         gsap.to(knobRef.current, {
           x: 0,
           duration: 0.1,
-          ease: "power2.out",
+          ease: 'power2.out',
         });
 
         gsap.to(toggleRef.current, {
-          backgroundColor: "rgb(209, 213, 219)",
+          backgroundColor: 'rgb(209, 213, 219)',
           duration: 0.1,
         });
       }
@@ -58,7 +58,7 @@ const AnimatedToggle = ({
       {label && (
         <label
           htmlFor={id}
-          className={`mr-2 text-sm ${disabled ? "text-gray-400" : "text-gray-700"}`}
+          className={`mr-2 text-sm ${disabled ? 'text-gray-400' : 'text-gray-700'}`}
         >
           {label}
         </label>
@@ -66,7 +66,7 @@ const AnimatedToggle = ({
 
       <div
         ref={toggleRef}
-        className={`relative h-6 w-10 rounded-full ${isChecked ? "bg-green-400" : "bg-gray-300"} cursor-pointer transition-colors ${disabled ? "cursor-not-allowed opacity-50" : ""}`}
+        className={`relative h-6 w-10 rounded-full ${isChecked ? 'bg-green-400' : 'bg-gray-300'} cursor-pointer transition-colors ${disabled ? 'cursor-not-allowed opacity-50' : ''}`}
         onClick={disabled ? undefined : handleToggle}
       >
         <div

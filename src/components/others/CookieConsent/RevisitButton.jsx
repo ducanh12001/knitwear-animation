@@ -1,5 +1,5 @@
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
 
 const RevisitButton = ({ onClick }) => {
   const buttonRef = useRef(null);
@@ -13,7 +13,7 @@ const RevisitButton = ({ onClick }) => {
         scale: 1,
         duration: 0.5,
         delay: 0.3,
-        ease: "back.out(1.7)",
+        ease: 'back.out(1.7)',
       },
     );
 
@@ -28,12 +28,12 @@ const RevisitButton = ({ onClick }) => {
 
     const button = buttonRef.current;
     if (button) {
-      button.addEventListener("mouseenter", handleMouseEnter);
-      button.addEventListener("mouseleave", handleMouseLeave);
+      button.addEventListener('mouseenter', handleMouseEnter);
+      button.addEventListener('mouseleave', handleMouseLeave);
 
       return () => {
-        button.removeEventListener("mouseenter", handleMouseEnter);
-        button.removeEventListener("mouseleave", handleMouseLeave);
+        button.removeEventListener('mouseenter', handleMouseEnter);
+        button.removeEventListener('mouseleave', handleMouseLeave);
       };
     }
   }, []);

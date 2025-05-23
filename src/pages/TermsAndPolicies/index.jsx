@@ -1,5 +1,5 @@
-import { PRIVACY_POLICY, TERMS_OF_SALE } from "@/common/const/terms";
-import React from "react";
+import { PRIVACY_POLICY, TERMS_OF_SALE } from '@/common/const/terms';
+import React from 'react';
 
 function TermsAndPolicies({ isTerm = true }) {
   return (
@@ -8,7 +8,7 @@ function TermsAndPolicies({ isTerm = true }) {
         <div className="wrapper relative">
           <div className="title relative z-11 flex h-auto w-full flex-col items-start justify-start">
             <h1 className="font-humane text-[80px] leading-[75%] text-[#302F35] md:text-[6vw]">
-              {isTerm ? "Terms of Sale" : "Privacy Policy"}
+              {isTerm ? 'Terms of Sale' : 'Privacy Policy'}
             </h1>
           </div>
         </div>

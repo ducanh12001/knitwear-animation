@@ -1,18 +1,18 @@
 export function ImagesSection({
   bgColor,
-  blockTop = { title: "", des: "" },
+  blockTop = { title: '', des: '' },
   blockColumns = {
-    leftTitle: "",
-    leftImage: "",
-    rightTitle: "",
-    rightImage: "",
+    leftTitle: '',
+    leftImage: '',
+    rightTitle: '',
+    rightImage: '',
   },
-  blockFull = { image: "", des: "", des2: "" },
+  blockFull = { image: '', des: '', des2: '' },
 }) {
   return (
     <section
       className="relative h-auto w-full pt-[5rem] md:pt-[15vh]"
-      style={{ backgroundColor: bgColor || "inherit" }}
+      style={{ backgroundColor: bgColor || 'inherit' }}
     >
       <div className="relative flex h-auto w-full flex-col items-start justify-start">
         <div className="block-top relative box-border flex h-auto w-full items-start justify-center px-[10vw]">

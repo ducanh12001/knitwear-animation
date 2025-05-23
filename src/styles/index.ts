@@ -1,3 +1,3 @@
-import "./swiper.css";
-import "./animation.css";
-import "./slider.css";
+import './swiper.css';
+import './animation.css';
+import './slider.css';

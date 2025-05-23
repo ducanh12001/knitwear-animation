@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 export const CheckoutErrorNotice = ({ errors, scrollToField }) => {
   const noticeRef = useRef(null);
@@ -13,13 +13,13 @@ export const CheckoutErrorNotice = ({ errors, scrollToField }) => {
     tl.to(noticeRef.current, {
       x: 0,
       duration: 0.6,
-      ease: "power3.out",
+      ease: 'power3.out',
     });
 
     tl.to(noticeRef.current, {
-      x: "100%",
+      x: '100%',
       duration: 0.6,
-      ease: "power3.in",
+      ease: 'power3.in',
       delay: 2.5,
     });
 
@@ -35,18 +35,18 @@ export const CheckoutErrorNotice = ({ errors, scrollToField }) => {
 
   const errorFields = Object.keys(otherErrors).map((fieldName) => {
     const fieldLabel = fieldName
-      .replace("_", " ")
-      .replace("billing", "Billing")
-      .replace("shipping", "Shipping")
-      .replace("first name", "First name")
-      .replace("last name", "Last name")
-      .replace("address 1", "Street address")
-      .replace("postcode", "Postcode / ZIP")
-      .replace("city", "Town / City")
-      .replace("phone", "Phone")
-      .replace("email", "Email address")
-      .replace("state", "Province/Region")
-      .replace("country", "Country / Region");
+      .replace('_', ' ')
+      .replace('billing', 'Billing')
+      .replace('shipping', 'Shipping')
+      .replace('first name', 'First name')
+      .replace('last name', 'Last name')
+      .replace('address 1', 'Street address')
+      .replace('postcode', 'Postcode / ZIP')
+      .replace('city', 'Town / City')
+      .replace('phone', 'Phone')
+      .replace('email', 'Email address')
+      .replace('state', 'Province/Region')
+      .replace('country', 'Country / Region');
 
     return {
       id: fieldName,
@@ -64,7 +64,7 @@ export const CheckoutErrorNotice = ({ errors, scrollToField }) => {
       <div role="alert">
         <ul
           className="woocommerce-error relative box-border flex w-auto flex-col items-start justify-start gap-[0.25rem] bg-[#1d1d1d] !px-8 !py-4"
-          style={{ wordWrap: "break-word" }}
+          style={{ wordWrap: 'break-word' }}
         >
           {errorFields.map((error, index) => (
             <li key={index} data-id={error.id} className="text-[#ff0000]">
@@ -75,7 +75,7 @@ export const CheckoutErrorNotice = ({ errors, scrollToField }) => {
                   scrollToField(error.id);
                 }}
               >
-                <strong className="text-white">{error.label}</strong>{" "}
+                <strong className="text-white">{error.label}</strong>{' '}
                 {error.message}
               </a>
             </li>
@@ -87,11 +87,11 @@ export const CheckoutErrorNotice = ({ errors, scrollToField }) => {
                 href="#wc-stripe-card-element"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToField("wc-stripe-card-element");
+                  scrollToField('wc-stripe-card-element');
                 }}
               >
-                <strong className="text-white">Card details</strong>{" "}
-                {card_error.message || "Please enter valid card details."}
+                <strong className="text-white">Card details</strong>{' '}
+                {card_error.message || 'Please enter valid card details.'}
               </a>
             </li>
           )}

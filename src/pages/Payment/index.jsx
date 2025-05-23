@@ -1,44 +1,44 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
-import { useForm } from "react-hook-form";
-import { useElements, useStripe } from "@stripe/react-stripe-js";
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router';
+import { useForm } from 'react-hook-form';
+import { useElements, useStripe } from '@stripe/react-stripe-js';
 
-import useCart from "@/hooks/useCart";
-import { CheckboxInput } from "@/components/atoms/inputs/CheckboxInput";
-import BillingForm from "@/components/checkout/BillingForm";
-import ShippingForm from "@/components/checkout/ShippingForm";
-import OrderSummary from "@/components/checkout/OrderSummary";
-import PaymentMethods from "@/components/checkout/PaymentMethods";
-import { CheckoutErrorNotice } from "./CheckoutErrorNotice";
+import useCart from '@/hooks/useCart';
+import { CheckboxInput } from '@/components/atoms/inputs/CheckboxInput';
+import BillingForm from '@/components/checkout/BillingForm';
+import ShippingForm from '@/components/checkout/ShippingForm';
+import OrderSummary from '@/components/checkout/OrderSummary';
+import PaymentMethods from '@/components/checkout/PaymentMethods';
+import { CheckoutErrorNotice } from './CheckoutErrorNotice';
 
-const COUNTRIES_WITH_STATES = ["US", "CA", "AU", "MX", "BR", "IN"];
+const COUNTRIES_WITH_STATES = ['US', 'CA', 'AU', 'MX', 'BR', 'IN'];
 
 const DEFAULT_FORM_VALUES = {
-  billing_first_name: "",
-  billing_last_name: "",
-  billing_country: "",
-  billing_state: "",
-  billing_address_1: "",
-  billing_postcode: "",
-  billing_city: "",
-  billing_phone: "",
-  billing_email: "",
+  billing_first_name: '',
+  billing_last_name: '',
+  billing_country: '',
+  billing_state: '',
+  billing_address_1: '',
+  billing_postcode: '',
+  billing_city: '',
+  billing_phone: '',
+  billing_email: '',
   ship_to_different_address: false,
-  shipping_first_name: "",
-  shipping_last_name: "",
-  shipping_country: "",
-  shipping_state: "",
-  shipping_address_1: "",
-  shipping_postcode: "",
-  shipping_city: "",
-  order_comments: "",
-  payment_method: "stripe_cc",
+  shipping_first_name: '',
+  shipping_last_name: '',
+  shipping_country: '',
+  shipping_state: '',
+  shipping_address_1: '',
+  shipping_postcode: '',
+  shipping_city: '',
+  order_comments: '',
+  payment_method: 'stripe_cc',
 };
 
 function Payment() {
   const navigate = useNavigate();
   const [isShipDifferent, setIsShipDifferent] = useState(false);
-  const [selectedPayment, setSelectedPayment] = useState("stripe_cc");
+  const [selectedPayment, setSelectedPayment] = useState('stripe_cc');
   const { cartItems, cartTotal, removeFromCart } = useCart();
 
   const stripe = useStripe();
@@ -56,8 +56,8 @@ function Payment() {
     setValue,
   } = useForm({
     defaultValues: { ...DEFAULT_FORM_VALUES },
-    mode: "onBlur",
-    reValidateMode: "onChange",
+    mode: 'onBlur',
+    reValidateMode: 'onChange',
   });
 
   const scrollToField = (fieldId) => {
@@ -69,7 +69,7 @@ function Payment() {
     if (element) {
       window.scrollTo({
         top: element.getBoundingClientRect().top + window.pageYOffset - 100,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
 
       setTimeout(() => {
@@ -79,9 +79,9 @@ function Payment() {
   };
 
   const allErrors = { ...errors };
-  if (selectedPayment === "stripe_cc" && !cardComplete && cardError) {
+  if (selectedPayment === 'stripe_cc' && !cardComplete && cardError) {
     allErrors.card_error = {
-      type: "manual",
+      type: 'manual',
       message: cardError,
     };
   }
@@ -96,16 +96,16 @@ function Payment() {
   };
 
   const onSubmit = async (data) => {
-    console.log("Order data:", data);
+    console.log('Order data:', data);
 
-    if (selectedPayment === "stripe_cc") {
+    if (selectedPayment === 'stripe_cc') {
       if (!stripe || !elements) {
         // Stripe chưa được tải xong
         return;
       }
       if (!cardComplete) {
-        setCardError("Please enter valid card details.");
-        scrollToField("wc-stripe-card-element");
+        setCardError('Please enter valid card details.');
+        scrollToField('wc-stripe-card-element');
         return;
       }
 
@@ -114,21 +114,21 @@ function Payment() {
 
       try {
         // Tạo payment method với CardElement
-        const cardElement = elements.getElement("card");
+        const cardElement = elements.getElement('card');
         const { error, paymentMethod } = await stripe.createPaymentMethod({
-          type: "card",
+          type: 'card',
           card: cardElement,
         });
 
         if (error) {
-          console.error("[payment error]", error);
+          console.error('[payment error]', error);
           setPaymentError(error.message);
           setIsProcessing(false);
           return;
         }
 
         // Nếu thành công, bạn sẽ có paymentMethod.id
-        console.log("[PaymentMethod]", paymentMethod);
+        console.log('[PaymentMethod]', paymentMethod);
 
         // Trong ứng dụng thực tế, bạn sẽ gửi paymentMethod.id đến server
         // để tạo payment intent và xác nhận thanh toán
@@ -137,12 +137,12 @@ function Payment() {
         // clearCart();
         // navigate('/order-confirmation');
       } catch (err) {
-        console.error("Payment error:", err);
-        setPaymentError("An unexpected error occurred. Please try again.");
+        console.error('Payment error:', err);
+        setPaymentError('An unexpected error occurred. Please try again.');
       }
 
       setIsProcessing(false);
-    } else if (selectedPayment === "bacs") {
+    } else if (selectedPayment === 'bacs') {
       // Xử lý thanh toán chuyển khoản ngân hàng
       // Thường thì sẽ chỉ gửi đơn hàng đến server và đợi xác nhận sau
       // clearCart();
@@ -153,7 +153,7 @@ function Payment() {
   useEffect(() => {
     if (!cartItems || cartItems.length === 0) {
       const redirectTimer = setTimeout(() => {
-        navigate("/cart");
+        navigate('/cart');
       }, 100);
 
       return () => clearTimeout(redirectTimer);
@@ -235,7 +235,7 @@ function Payment() {
                             id="order_comments"
                             placeholder="Order notes"
                             className="leading-full relative box-border h-[120px] w-full resize-none rounded-[14px] border-none bg-white p-4 text-base text-[#1d1d1d] outline-none md:h-[15rem] md:rounded-[25px] md:px-[3rem] md:py-[2rem] md:text-[1.25rem]"
-                            {...register("order_comments")}
+                            {...register('order_comments')}
                           />
                         </div>
                       </div>
@@ -278,7 +278,7 @@ function Payment() {
                           <p className="leading-full text-[14px] text-[#1d1d1d] md:text-base">
                             Your personal data will be used to process your
                             order, support your experience on this website and
-                            for other purposes described in our{" "}
+                            for other purposes described in our{' '}
                             <Link
                               to="/privacy-policy"
                               className="woocommerce-privacy-policy-link font-bold text-[#1d1d1d]"
@@ -297,12 +297,12 @@ function Payment() {
                         className="custom-button relative box-border flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] bg-[#1d1d1d] px-4 transition-colors duration-350 ease-in-out hover:bg-[#616161] md:h-[6rem] md:rounded-[25px] md:px-8"
                         disabled={
                           isProcessing ||
-                          (selectedPayment === "stripe_cc" &&
+                          (selectedPayment === 'stripe_cc' &&
                             (!stripe || !elements))
                         }
                       >
                         <span className="leading-full text-base font-bold text-white md:text-[1.25rem]">
-                          {isProcessing ? "Processing..." : "Place order"}
+                          {isProcessing ? 'Processing...' : 'Place order'}
                         </span>
                       </button>
                     </div>

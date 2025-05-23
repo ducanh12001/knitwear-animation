@@ -2,24 +2,24 @@ import { Suspense, useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router';
 import { ErrorBoundary } from 'react-error-boundary';
 
-import CustomScrollbar from "@/components/others/CustomScrollbar";
-import { Header } from "@/components/organisms/header/Header";
-import Footer from "@/components/organisms/footer/Footer";
-import ScrollCircle from "@/components/others/ScrollCircle";
-import LoginModal from "@/components/organisms/modal/LoginModal";
-import CustomCursor from "@/components/others/CustomCursor";
-import SideMenu from "@/components/others/SideMenu";
-import PageTransition from "@/components/animations/PageTransition";
-import { ROUTES } from "@/common/const/routes";
-import CartModal from "@/components/organisms/modal/CartModal";
-import CookieConsent from "@/components/others/CookieConsent";
-import PageErrorFallback from "@/components/others/PageErrorFallback";
-import { usePageTransition } from "@/hooks/usePageTransition";
-import { useSmoothScroll } from "@/hooks/useSmoothScroll";
-import { useModal } from "@/hooks/useModal";
+import Header from '@/components/organisms/header/Header';
+import LoginModal from '@/components/organisms/modal/LoginModal';
+import PageTransition from '@/components/animations/PageTransition';
+import { ROUTES } from '@/common/const/routes';
+import CartModal from '@/components/organisms/modal/CartModal';
+import { usePageTransition } from '@/hooks/usePageTransition';
+import { useModal } from '@/hooks/useModal';
+import { useSmoothScroll } from '@/hooks/useSmoothScroll';
+import CustomScrollbar from '@/components/others/CustomScrollbar';
+import PageErrorFallback from '@/components/others/PageErrorFallback';
+import SideMenu from '@/components/others/SideMenu';
+import CustomCursor from '@/components/others/CustomCursor';
+import Footer from '@/components/organisms/footer/Footer';
+import ScrollCircle from '@/components/others/ScrollCircle';
+import CookieConsent from '@/components/others/CookieConsent';
 
-import "./App.css";
-import "@/styles/index";
+import './App.css';
+import '@/styles/index';
 
 function App() {
   const {

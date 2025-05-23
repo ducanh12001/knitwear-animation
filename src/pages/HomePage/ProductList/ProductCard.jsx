@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useState } from 'react';
+import { Link } from 'react-router';
 
 export function ProductCard({ product }) {
   const [hoveredColor, setHoveredColor] = useState(null);
@@ -27,7 +27,7 @@ export function ProductCard({ product }) {
                 <div
                   key={index}
                   className={`absolute top-0 left-0 h-auto w-full transition-opacity duration-300 ${
-                    hoveredColor === color.id ? "opacity-100" : "opacity-0"
+                    hoveredColor === color.id ? 'opacity-100' : 'opacity-0'
                   }`}
                 >
                   <img

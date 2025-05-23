@@ -1,8 +1,8 @@
-import { ProductCard } from "./ProductCard";
+import { ProductCard } from './ProductCard';
 import {
   menProducts,
   womenProducts,
-} from "../../../common/const/sampleProductList";
+} from '../../../common/const/sampleProductList';
 
 function ProductList() {
   return (

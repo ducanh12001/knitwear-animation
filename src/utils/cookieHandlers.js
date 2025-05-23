@@ -6,13 +6,13 @@ export const setupGoogleAnalytics = (isAnalyticsAllowed) => {
     function gtag() {
       window.dataLayer.push(arguments);
     }
-    gtag("js", new Date());
-    gtag("config", "YOUR_GA_ID"); // Replace with your GA ID
+    gtag('js', new Date());
+    gtag('config', 'YOUR_GA_ID'); // Replace with your GA ID
 
     // Load the GA script - Check if it already exists to avoid duplicates
-    if (!document.getElementById("google-analytics-script")) {
-      const script = document.createElement("script");
-      script.id = "google-analytics-script";
+    if (!document.getElementById('google-analytics-script')) {
+      const script = document.createElement('script');
+      script.id = 'google-analytics-script';
       script.async = true;
       script.src = `https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID`; // Replace with your GA ID
       document.head.appendChild(script);
@@ -23,25 +23,25 @@ export const setupGoogleAnalytics = (isAnalyticsAllowed) => {
     // Remove Google Analytics if not allowed
     // This doesn't remove previously collected data, but stops new collection
     if (window.dataLayer) {
-      window.dataLayer.push(["ga_disable_YOUR_GA_ID", true]); // Replace with your GA ID
+      window.dataLayer.push(['ga_disable_YOUR_GA_ID', true]); // Replace with your GA ID
     }
 
     // Remove cookies related to GA
     document.cookie =
-      "_ga=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Domain=." +
+      '_ga=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Domain=.' +
       window.location.hostname;
     document.cookie =
-      "_ga_*=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Domain=." +
+      '_ga_*=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Domain=.' +
       window.location.hostname;
     document.cookie =
-      "_gid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Domain=." +
+      '_gid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Domain=.' +
       window.location.hostname;
     document.cookie =
-      "_gat=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Domain=." +
+      '_gat=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Domain=.' +
       window.location.hostname;
 
     // Remove the script if it exists
-    const script = document.getElementById("google-analytics-script");
+    const script = document.getElementById('google-analytics-script');
     if (script) {
       script.parentNode.removeChild(script);
     }
@@ -59,7 +59,7 @@ export const setupFunctionalCookies = (isFunctionalAllowed) => {
   } else {
     // Clean up any functional cookies
     document.cookie =
-      "wp-wpml_current_language=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+      'wp-wpml_current_language=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT;';
     return false;
   }
 };
@@ -104,7 +104,7 @@ export const canLoadScript = (scriptCategory, cookieConsent) => {
 export const openCookiePreferences = () => {
   // This function can be called from anywhere in your app
   // to open the cookie preferences modal
-  const event = new CustomEvent("openCookiePreferences");
+  const event = new CustomEvent('openCookiePreferences');
   window.dispatchEvent(event);
 };
 

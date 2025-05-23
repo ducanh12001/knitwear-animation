@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import { ImageSlider } from "./ImageSlider";
-import { TitleSlider } from "./TitleSlider";
+import { useEffect, useState } from 'react';
+import { ImageSlider } from './ImageSlider';
+import { TitleSlider } from './TitleSlider';
 
 export function SliderSection() {
   const [firstSwiper, setFirstSwiper] = useState(null);
@@ -15,28 +15,28 @@ export function SliderSection() {
 
   const slides = [
     {
-      href: "/product-category/menswear-collection",
-      title: "New Collection",
+      href: '/product-category/menswear-collection',
+      title: 'New Collection',
       desktopImg:
-        "https://akkeknitwear.com/website/wp-content/uploads/2023/10/bannerhome.jpg",
+        'https://akkeknitwear.com/website/wp-content/uploads/2023/10/bannerhome.jpg',
       mobileImg:
-        "https://akkeknitwear.com/website/wp-content/uploads/2023/10/bannerhome-mob.jpg",
+        'https://akkeknitwear.com/website/wp-content/uploads/2023/10/bannerhome-mob.jpg',
     },
     {
-      href: "/product-category/womenswear-collection",
-      title: "Promo Launch 50% off",
+      href: '/product-category/womenswear-collection',
+      title: 'Promo Launch 50% off',
       desktopImg:
-        "https://akkeknitwear.com/website/wp-content/uploads/2023/10/Akke-Banner-2.jpg",
+        'https://akkeknitwear.com/website/wp-content/uploads/2023/10/Akke-Banner-2.jpg',
       mobileImg:
-        "https://akkeknitwear.com/website/wp-content/uploads/2023/10/Akke-Banner-mobile-women.jpg",
+        'https://akkeknitwear.com/website/wp-content/uploads/2023/10/Akke-Banner-mobile-women.jpg',
     },
     {
-      href: "/everest-akke-limited",
-      title: "Everest Akke Limited",
+      href: '/everest-akke-limited',
+      title: 'Everest Akke Limited',
       desktopImg:
-        "https://akkeknitwear.com/website/wp-content/uploads/2023/10/Limited-Akke-Everest.jpg",
+        'https://akkeknitwear.com/website/wp-content/uploads/2023/10/Limited-Akke-Everest.jpg',
       mobileImg:
-        "https://akkeknitwear.com/website/wp-content/uploads/2023/11/AkkeWorld-1-1.jpg",
+        'https://akkeknitwear.com/website/wp-content/uploads/2023/11/AkkeWorld-1-1.jpg',
     },
   ];
 

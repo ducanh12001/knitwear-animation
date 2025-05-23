@@ -1,16 +1,16 @@
 // src/components/AnalyticsExample.jsx
-import { useState, useEffect } from "react";
-import { useCookieConsent } from "../context/CookieConsentContext";
-import ConsentScript from "./CookieConsent/ConsentScript";
-import { openCookiePreferences } from "../utils/cookieHandlers";
+import { useState, useEffect } from 'react';
+import { useCookieConsent } from '../context/CookieConsentContext';
+import ConsentScript from './CookieConsent/ConsentScript';
+import { openCookiePreferences } from '../utils/cookieHandlers';
 
 const AnalyticsExample = () => {
   const { isAllowed } = useCookieConsent();
-  const [analyticsStatus, setAnalyticsStatus] = useState("disabled");
+  const [analyticsStatus, setAnalyticsStatus] = useState('disabled');
 
   // Check analytics status
   useEffect(() => {
-    setAnalyticsStatus(isAllowed("analytics") ? "enabled" : "disabled");
+    setAnalyticsStatus(isAllowed('analytics') ? 'enabled' : 'disabled');
   }, [isAllowed]);
 
   return (
@@ -23,10 +23,10 @@ const AnalyticsExample = () => {
           cookie consent.
         </p>
         <p className="mt-2 font-medium">
-          Analytics status:{" "}
+          Analytics status:{' '}
           <span
             className={
-              analyticsStatus === "enabled" ? "text-green-600" : "text-red-600"
+              analyticsStatus === 'enabled' ? 'text-green-600' : 'text-red-600'
             }
           >
             {analyticsStatus}
@@ -34,15 +34,15 @@ const AnalyticsExample = () => {
         </p>
       </div>
 
-      {isAllowed("analytics") ? (
+      {isAllowed('analytics') ? (
         // This will only render the component for the Google Analytics script if analytics is allowed
         <>
           <ConsentScript
             category="analytics"
             src={`https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID`} // Replace with your GA ID
             attributes={{ async: true }}
-            onLoad={() => console.log("Google Analytics script loaded")}
-            onError={() => console.error("Failed to load Google Analytics")}
+            onLoad={() => console.log('Google Analytics script loaded')}
+            onError={() => console.error('Failed to load Google Analytics')}
           />
 
           <p className="mb-4 text-green-600">

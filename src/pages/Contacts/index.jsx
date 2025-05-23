@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router';
 
 export default function Contacts() {
   const [isChecked, setIsChecked] = useState(false);
@@ -11,17 +11,17 @@ export default function Contacts() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      "contact-firstname": "",
-      "contact-lastname": "",
-      "contact-mail": "",
-      "contact-order": "",
-      "contact-message": "",
-      "contact-privacy": false,
+      'contact-firstname': '',
+      'contact-lastname': '',
+      'contact-mail': '',
+      'contact-order': '',
+      'contact-message': '',
+      'contact-privacy': false,
     },
   });
 
   const onSubmit = (data) => {
-    console.log("Form Data:", data);
+    console.log('Form Data:', data);
   };
 
   return (
@@ -37,7 +37,7 @@ export default function Contacts() {
               <div className="wp-block-group relative mb-8 box-border flex w-full">
                 <div className="wp-block-group__inner-container relative flex h-auto w-full flex-col gap-2">
                   <p className="leading-full text-[1.25rem] text-white">
-                    Our Customer Service is active from Monday to Thursday{" "}
+                    Our Customer Service is active from Monday to Thursday{' '}
                   </p>
                   <p className="leading-full text-[1.25rem] text-white">
                     9:00 – 13:00 / 14:00 – 18:00 (Italian time)
@@ -60,7 +60,7 @@ export default function Contacts() {
               name="contact-firstname"
               placeholder="Name *"
               register={register}
-              validation={{ required: "The field cannot be empty" }}
+              validation={{ required: 'The field cannot be empty' }}
               errors={errors}
             />
 
@@ -68,7 +68,7 @@ export default function Contacts() {
               name="contact-lastname"
               placeholder="Surname *"
               register={register}
-              validation={{ required: "The field cannot be empty" }}
+              validation={{ required: 'The field cannot be empty' }}
               errors={errors}
             />
 
@@ -78,10 +78,10 @@ export default function Contacts() {
               placeholder="Email address *"
               register={register}
               validation={{
-                required: "The field cannot be empty",
+                required: 'The field cannot be empty',
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Enter a valid email address",
+                  message: 'Enter a valid email address',
                 },
               }}
               errors={errors}
@@ -99,7 +99,7 @@ export default function Contacts() {
                 name="contact-message"
                 placeholder="Message"
                 className="leading-full relative z-2 box-border h-[120px] w-full resize-none rounded-[14px] border border-[#e1e1e1] bg-transparent px-[1rem] py-[1rem] text-[1.25rem] text-[#e1e1e1] outline-none lg:h-[200px] xl:h-[300px] xl:rounded-[25px] xl:px-[3rem]"
-                {...register("contact-message")}
+                {...register('contact-message')}
               />
             </div>
             <div className="form-item custom-checkbox relative mt-4 h-auto w-auto md:max-xl:col-span-2 md:max-xl:mt-0 xl:mt-[2.5rem]">
@@ -109,14 +109,14 @@ export default function Contacts() {
                   id="contact-privacy"
                   name="contact-privacy"
                   className="invisible hidden opacity-0"
-                  {...register("contact-privacy", {
-                    required: "Accept our privacy policy",
+                  {...register('contact-privacy', {
+                    required: 'Accept our privacy policy',
                   })}
                   onChange={() => setIsChecked(!isChecked)}
                 />
                 <div className="custom-check relative flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border border-[#e1e1e1] xl:h-[2rem] xl:w-[2rem] xl:rounded-[0.6rem]">
                   <div
-                    className={`inner-check relative h-3 w-3 bg-[#e1e1e1] mask-[url('/src/assets/check.svg')] mask-no-repeat opacity-0 transition-opacity duration-200 ease-in-out xl:h-[1.5rem] xl:w-[1.5rem] ${isChecked ? "opacity-100" : "opacity-0"}`}
+                    className={`inner-check relative h-3 w-3 bg-[#e1e1e1] mask-[url('/src/assets/check.svg')] mask-no-repeat opacity-0 transition-opacity duration-200 ease-in-out xl:h-[1.5rem] xl:w-[1.5rem] ${isChecked ? 'opacity-100' : 'opacity-0'}`}
                   />
                 </div>
                 <span className="leading-full flex-1 basis-[100%] text-[14px] text-[#e1e1e1] xl:basis-auto xl:text-base">
@@ -131,9 +131,9 @@ export default function Contacts() {
                   provided by New ESSE Maglieria s.r.l.
                 </span>
                 <div className="errors absolute -bottom-4 left-[3rem]">
-                  {errors["contact-privacy"] && (
+                  {errors['contact-privacy'] && (
                     <span className="error leading-full absolute bottom-0 left-0 text-[0.75rem] whitespace-nowrap text-[#FD7453] opacity-100 transition-opacity duration-300 ease-in-out">
-                      {errors["contact-privacy"].message}
+                      {errors['contact-privacy'].message}
                     </span>
                   )}
                 </div>
@@ -162,7 +162,7 @@ export default function Contacts() {
 }
 
 const FormInput = ({
-  type = "text",
+  type = 'text',
   name,
   placeholder,
   register,

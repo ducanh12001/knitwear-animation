@@ -1,5 +1,5 @@
-import { CountrySelect } from "../atoms/inputs/CountrySelect";
-import { FormInput } from "../atoms/inputs/FormInput";
+import { CountrySelect } from '../atoms/inputs/CountrySelect';
+import { FormInput } from '../atoms/inputs/FormInput';
 
 export default function ShippingForm({ register, errors, handleFieldChange }) {
   return (
@@ -10,7 +10,7 @@ export default function ShippingForm({ register, errors, handleFieldChange }) {
           placeholder="First name"
           register={register}
           validation={{
-            required: "The field cannot be empty",
+            required: 'The field cannot be empty',
           }}
           errors={errors}
           showErrors={false}
@@ -21,7 +21,7 @@ export default function ShippingForm({ register, errors, handleFieldChange }) {
           placeholder="Last name"
           register={register}
           validation={{
-            required: "The field cannot be empty",
+            required: 'The field cannot be empty',
           }}
           errors={errors}
           showErrors={false}
@@ -33,11 +33,11 @@ export default function ShippingForm({ register, errors, handleFieldChange }) {
             id="shipping_country"
             register={register}
             validation={{
-              required: "Please select a country",
+              required: 'Please select a country',
             }}
             errors={errors}
             onChange={(val) => {
-              handleFieldChange("shipping_country", val);
+              handleFieldChange('shipping_country', val);
             }}
           />
         </div>
@@ -47,7 +47,7 @@ export default function ShippingForm({ register, errors, handleFieldChange }) {
           placeholder="Province/Region*"
           register={register}
           validation={{
-            required: "The field cannot be empty",
+            required: 'The field cannot be empty',
           }}
           errors={errors}
           showErrors={false}
@@ -58,7 +58,7 @@ export default function ShippingForm({ register, errors, handleFieldChange }) {
           placeholder="Street address"
           register={register}
           validation={{
-            required: "The field cannot be empty",
+            required: 'The field cannot be empty',
           }}
           errors={errors}
           showErrors={false}
@@ -69,7 +69,7 @@ export default function ShippingForm({ register, errors, handleFieldChange }) {
           placeholder="Postcode / ZIP"
           register={register}
           validation={{
-            required: "The field cannot be empty",
+            required: 'The field cannot be empty',
           }}
           errors={errors}
           showErrors={false}
@@ -80,7 +80,7 @@ export default function ShippingForm({ register, errors, handleFieldChange }) {
           placeholder="Town / City"
           register={register}
           validation={{
-            required: "The field cannot be empty",
+            required: 'The field cannot be empty',
           }}
           errors={errors}
           showErrors={false}

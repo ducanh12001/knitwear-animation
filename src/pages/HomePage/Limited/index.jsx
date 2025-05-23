@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import gsap from "gsap";
-import { Link } from "react-router";
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { Link } from 'react-router';
 
 function Limited() {
   const sectionRef = useRef(null);
@@ -37,34 +36,34 @@ function Limited() {
           x: moveX,
           y: moveY,
           duration: 0.5,
-          ease: "power2.out",
+          ease: 'power2.out',
         });
 
         gsap.to(title, {
           x: -moveX,
           y: -moveY,
           duration: 0.5,
-          ease: "power2.out",
+          ease: 'power2.out',
         });
       } else {
         gsap.to(image, {
           x: 0,
           y: 0,
           duration: 0.5,
-          ease: "power2.out",
+          ease: 'power2.out',
         });
 
         gsap.to(title, {
           x: 0,
           y: 0,
           duration: 0.5,
-          ease: "power2.out",
+          ease: 'power2.out',
         });
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (

@@ -1,5 +1,5 @@
-import { FormInput } from "@/components/atoms/inputs/FormInput";
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
+import { FormInput } from '@/components/atoms/inputs/FormInput';
 
 function PasswordRecovery() {
   const {
@@ -8,12 +8,12 @@ function PasswordRecovery() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      "recovery-user": "",
+      'recovery-user': '',
     },
   });
 
   const onSubmit = (data) => {
-    console.log("Form Data:", data);
+    console.log('Form Data:', data);
   };
 
   return (
@@ -33,7 +33,7 @@ function PasswordRecovery() {
             placeholder="Username/Email address"
             register={register}
             validation={{
-              required: "The field cannot be empty",
+              required: 'The field cannot be empty',
             }}
             errors={errors}
           />

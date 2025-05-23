@@ -1,8 +1,8 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Controller, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Link } from "react-router";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Controller, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Link } from 'react-router';
 
 export function ImageSlider({ slides, onSwiper }) {
   return (

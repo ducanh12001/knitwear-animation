@@ -1,12 +1,12 @@
-import { useMediaQuery } from "react-responsive";
-import { Link } from "react-router";
-import { useForm } from "react-hook-form";
-import useCart from "../../hooks/useCart";
-import { FormInput } from "../../components/atoms/inputs/FormInput";
+import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router';
+import { useForm } from 'react-hook-form';
+import useCart from '../../hooks/useCart';
+import { FormInput } from '../../components/atoms/inputs/FormInput';
 
 function Cart() {
   const isSP = useMediaQuery({
-    query: "(width < 768px)",
+    query: '(width < 768px)',
   });
 
   const { cartItems, cartTotal, removeFromCart } = useCart();
@@ -17,12 +17,12 @@ function Cart() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      "coupon-code": "",
+      'coupon-code': '',
     },
   });
 
   const onApplyCoupon = (data) => {
-    console.log("Applying coupon:", data["coupon-code"]);
+    console.log('Applying coupon:', data['coupon-code']);
     // Logic xử lý coupon code ở đây
   };
 
@@ -31,7 +31,7 @@ function Cart() {
       <section className="cart--section-intro relative box-border h-auto w-full px-[5vw] pt-[8rem] xl:pt-[calc(10vh+10rem)]">
         <div className="wrapper relative">
           <div
-            className={`section-empty absolute top-0 z-11 flex h-auto w-full flex-col items-start justify-start ${cartItems.length > 0 ? "invisible opacity-0" : "visible opacity-100"}`}
+            className={`section-empty absolute top-0 z-11 flex h-auto w-full flex-col items-start justify-start ${cartItems.length > 0 ? 'invisible opacity-0' : 'visible opacity-100'}`}
           >
             <h2 className="font-humane text-[6vw] leading-[75%] text-[#FD7453]">
               Empty cart
@@ -40,7 +40,7 @@ function Cart() {
         </div>
       </section>
       <section
-        className={`cart--section-table relative box-border h-auto min-h-[calc(90vh-10rem)] w-full px-[12px] pb-[5rem] md:px-[5vw] md:pb-[10vh] ${cartItems.length > 0 ? "visible opacity-100" : "invisible opacity-0"}`}
+        className={`cart--section-table relative box-border h-auto min-h-[calc(90vh-10rem)] w-full px-[12px] pb-[5rem] md:px-[5vw] md:pb-[10vh] ${cartItems.length > 0 ? 'visible opacity-100' : 'invisible opacity-0'}`}
       >
         <div className="wrapper relative flex w-full flex-col gap-[5rem] xl:grid xl:grid-cols-[66%_auto] xl:gap-[2rem]">
           <div className="relative flex w-full flex-col gap-[4rem]">
@@ -62,12 +62,12 @@ function Cart() {
                     style={{
                       gridTemplateAreas: isSP
                         ? `"title title" "image info" "delete delete"`
-                        : "initial",
+                        : 'initial',
                     }}
                   >
                     <div
                       className="product-title relative"
-                      style={{ gridArea: isSP ? "title" : "initial" }}
+                      style={{ gridArea: isSP ? 'title' : 'initial' }}
                     >
                       <h3 className="text-[1.5rem] leading-[75%] text-[#FD7453]">
                         {item.title}
@@ -75,7 +75,7 @@ function Cart() {
                     </div>
                     <div
                       className="product-image relative h-auto w-full"
-                      style={{ gridArea: isSP ? "image" : "initial" }}
+                      style={{ gridArea: isSP ? 'image' : 'initial' }}
                     >
                       <div className="image relative h-auto w-full">
                         <img
@@ -87,7 +87,7 @@ function Cart() {
                     </div>
                     <div
                       className="product-info relative flex h-auto w-full flex-col items-start justify-start gap-[0.75rem] md:gap-[1.25rem]"
-                      style={{ gridArea: isSP ? "info" : "initial" }}
+                      style={{ gridArea: isSP ? 'info' : 'initial' }}
                     >
                       <div className="row relative flex w-full items-center justify-between md:w-[20rem]">
                         <span className="label leading-full text-[#1d1d1d]">
@@ -118,14 +118,14 @@ function Cart() {
                           Subtotal
                         </span>
                         <span className="value leading-full flex flex-col items-end justify-start text-[#1d1d1d]">
-                          €{" "}
+                          €{' '}
                           {(parseFloat(item.price) * item.quantity).toFixed(2)}
                         </span>
                       </div>
                     </div>
                     <div
                       className="product-delete grid-area relative"
-                      style={{ gridArea: isSP ? "delete" : "initial" }}
+                      style={{ gridArea: isSP ? 'delete' : 'initial' }}
                     >
                       <div
                         className="remove-product leading-full relative flex cursor-pointer items-center justify-end gap-2 text-[#1d1d1d] md:justify-start"
@@ -156,7 +156,7 @@ function Cart() {
                   placeholder="Code"
                   register={register}
                   validation={{
-                    required: "The field cannot be empty",
+                    required: 'The field cannot be empty',
                   }}
                   errors={errors}
                 />

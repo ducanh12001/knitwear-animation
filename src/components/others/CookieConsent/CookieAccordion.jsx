@@ -1,4 +1,4 @@
-import AnimatedToggle from "./AnimatedToggle";
+import AnimatedToggle from './AnimatedToggle';
 
 const CookieAccordion = ({
   category,
@@ -13,7 +13,7 @@ const CookieAccordion = ({
         <div className="relative mr-5.5 cursor-pointer" onClick={onToggle}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`absolute top-2 h-4 w-4 text-[#1d1d1d] transition-all duration-200 ease-in-out ${isExpanded ? "rotate-90" : "rotate-0"}`}
+            className={`absolute top-2 h-4 w-4 text-[#1d1d1d] transition-all duration-200 ease-in-out ${isExpanded ? 'rotate-90' : 'rotate-0'}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -56,7 +56,7 @@ const CookieAccordion = ({
       </div>
 
       <div
-        className={`mb-4 overflow-hidden px-5.5 transition-all duration-200 ease-in-out ${isExpanded ? "block h-auto" : "hidden h-0"}`}
+        className={`mb-4 overflow-hidden px-5.5 transition-all duration-200 ease-in-out ${isExpanded ? 'block h-auto' : 'hidden h-0'}`}
       >
         <div className="rounded-[6px] bg-[#f4f4f4] px-[10px] py-[15px] text-[12px] text-[#212121]">
           {category.cookies && category.cookies.length > 0 ? (

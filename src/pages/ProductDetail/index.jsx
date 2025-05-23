@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import {
   menProducts,
   womenProducts,
-} from "../../common/const/sampleProductList";
-import { ProductCard } from "../HomePage/ProductList/ProductCard";
-import { ProductSection } from "../../components/pages/product-detail/ProductSection";
+} from '../../common/const/sampleProductList';
+import { ProductCard } from '../HomePage/ProductList/ProductCard';
+import { ProductSection } from '../../components/pages/product-detail/ProductSection';
 
 function ProductDetail() {
   const { id } = useParams();
@@ -19,7 +19,7 @@ function ProductDetail() {
       if (paramProduct) {
         setProduct(paramProduct);
       } else {
-        console.error("Product not found");
+        console.error('Product not found');
       }
     }
   }, [id]);
