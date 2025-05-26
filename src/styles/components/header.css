@@ -1,0 +1,14 @@
+header.scrolled {
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+header.scrolled-mob {
+  background-color: #1d1d1d;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.dark-mode header.scrolled-mob {
+  background-color: #e1e1e1;
+  transition: background-color 0.5s ease-in-out;
+}

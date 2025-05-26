@@ -25,7 +25,7 @@
 }
 
 .product-middle .swiper .swiper-pagination .swiper-pagination-bullet::after {
-  content: "";
+  content: '';
   position: relative;
   width: 0.5rem;
   height: 0.5rem;

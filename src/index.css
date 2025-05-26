@@ -1,60 +1,61 @@
-@import "https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap";
-@import "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Permanent+Marker&display=swap";
-@import "tailwindcss";
+@import 'https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Permanent+Marker&display=swap';
+@import 'tailwindcss';
 
 @font-face {
-  font-family: "Humane Grotesque";
-  src: url("./assets/fonts/Humane/Humane-Thin.woff2") format("woff2");
+  font-family: 'Humane Grotesque';
+  src: url('./assets/fonts/Humane/Humane-Thin.woff2') format('woff2');
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Humane Grotesque";
-  src: url("./assets/fonts/Humane/Humane-ExtraLight.woff2") format("woff2");
+  font-family: 'Humane Grotesque';
+  src: url('./assets/fonts/Humane/Humane-ExtraLight.woff2') format('woff2');
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Humane Grotesque";
-  src: url("./assets/fonts/Humane/Humane-Light.woff2") format("woff2");
+  font-family: 'Humane Grotesque';
+  src: url('./assets/fonts/Humane/Humane-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Humane Grotesque";
-  src: url("./assets/fonts/Humane/Humane-Regular.woff2") format("woff2");
+  font-family: 'Humane Grotesque';
+  src: url('./assets/fonts/Humane/Humane-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Humane Grotesque";
-  src: url("./assets/fonts/Humane/Humane-Medium.woff2") format("woff2");
+  font-family: 'Humane Grotesque';
+  src: url('./assets/fonts/Humane/Humane-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Humane Grotesque";
-  src: url("./assets/fonts/Humane/Humane-SemiBold.woff2") format("woff2");
+  font-family: 'Humane Grotesque';
+  src: url('./assets/fonts/Humane/Humane-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Humane Grotesque";
-  src: url("./assets/fonts/Humane/Humane-Bold.woff2") format("woff2");
+  font-family: 'Humane Grotesque';
+  src: url('./assets/fonts/Humane/Humane-Bold.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
 }
 
 @theme {
-  --font-humane: "Humane Grotesque", sans-serif;
-  --font-permanent-marker: "Permanent Marker", cursive;
-  --text-h2: 15vw;
+  --font-humane: 'Humane Grotesque', sans-serif;
+  --font-permanent-marker: 'Permanent Marker', cursive;
+  --color-primary: #1d1d1d;
+  --color-secondary: #fd7453;
   --leading-full: 100%;
 }
 
@@ -71,7 +72,7 @@ html::-webkit-scrollbar {
 }
 
 :root {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 

@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+@import './swiper.css';
+@import './animation.css';
+@import './slider.css';
+@import './components/index.css';
