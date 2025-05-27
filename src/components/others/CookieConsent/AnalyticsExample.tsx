@@ -9,7 +9,6 @@ const AnalyticsExample: FC = () => {
     'enabled' | 'disabled'
   >('disabled');
 
-  // Check analytics status
   useEffect(() => {
     setAnalyticsStatus(isAllowed('analytics') ? 'enabled' : 'disabled');
   }, [isAllowed]);

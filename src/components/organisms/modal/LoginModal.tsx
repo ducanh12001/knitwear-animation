@@ -80,7 +80,7 @@ const LoginModal = () => {
           </div>
         </div>
         <div
-          className="wrapper relative h-full w-full grow overflow-y-scroll overscroll-contain"
+          className="relative h-full w-full grow overflow-y-scroll overscroll-contain"
           data-lenis-prevent
           style={{ scrollbarWidth: 'none' }}
         >

@@ -5,7 +5,7 @@ interface HeatIndicatorProps {
 const HeatIndicator: React.FC<HeatIndicatorProps> = ({ isMobile }) => {
   return (
     <div
-      className={`product-heat ${isMobile ? 'mobile' : 'desktop'} relative h-auto w-full flex-col items-start justify-start gap-[1rem] md:flex`}
+      className={`${isMobile ? 'mobile' : 'desktop'} relative h-auto w-full flex-col items-start justify-start gap-[1rem] md:flex`}
     >
       <span className="leading-full text-primary text-base font-bold uppercase">
         Calore

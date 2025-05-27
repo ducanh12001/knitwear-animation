@@ -273,14 +273,14 @@ const AdvSection: FC = () => {
         {polaroidData.map((item, index) => (
           <div
             key={index}
-            className="polaroid absolute box-border h-auto w-[18vw] scale-80 rotate-0 bg-white px-[1vw] pt-[1vw] pb-[3.5vw] opacity-0"
+            className="absolute box-border h-auto w-[18vw] scale-80 rotate-0 bg-white px-[1vw] pt-[1vw] pb-[3.5vw] opacity-0"
             style={{
               top: item.top,
               left: item.left,
             }}
             data-order={index}
           >
-            <div className="frame relative h-auto w-full">
+            <div className="relative h-auto w-full">
               <img
                 className="block h-auto w-full"
                 src={item.image}
@@ -322,7 +322,7 @@ const AdvSection: FC = () => {
           </h2>
           <div className="columns relative grid h-auto w-full grid-cols-2">
             <div className="column relative h-auto w-full">
-              <div className="cat relative flex h-auto w-full items-start justify-center">
+              <div className="relative flex h-auto w-full items-start justify-center">
                 <Link
                   to="/product-category/menswear-collection"
                   className="relative block h-full w-[90%] md:w-[33vw]"
@@ -349,7 +349,7 @@ const AdvSection: FC = () => {
               </div>
             </div>
             <div className="column relative h-auto w-full">
-              <div className="cat relative mt-[15vh] flex h-auto w-full items-start justify-center">
+              <div className="relative mt-[15vh] flex h-auto w-full items-start justify-center">
                 <Link
                   to="/product-category/womenswear-collection"
                   className="relative block h-full w-[90%] md:w-[33vw]"

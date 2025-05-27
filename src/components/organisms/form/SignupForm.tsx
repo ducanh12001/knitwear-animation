@@ -152,10 +152,10 @@ const SignupForm: FC<SignupFormProps> = ({ handleTabSwitch }) => {
         />
       </div>
       <div className="signin-submit relative flex h-full w-full flex-col items-center justify-between gap-[2rem]">
-        <div className="tp relative flex h-auto w-full flex-col items-center justify-start gap-4 md:gap-[2rem]">
+        <div className="relative flex h-auto w-full flex-col items-center justify-start gap-4 md:gap-[2rem]">
           <button
             type="submit"
-            className={`send-login bg-secondary relative flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] px-4 transition-all duration-350 ease-in-out hover:bg-[#fd5932] md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
+            className={`bg-secondary relative flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] px-4 transition-all duration-350 ease-in-out hover:bg-[#fd5932] md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
               isSubmitting
                 ? 'cursor-not-allowed bg-gray-400 opacity-70'
                 : 'bg-secondary cursor-pointer hover:bg-[#fd5932]'
@@ -166,9 +166,9 @@ const SignupForm: FC<SignupFormProps> = ({ handleTabSwitch }) => {
             </span>
           </button>
         </div>
-        <div className="bt relative h-auto w-full">
+        <div className="relative h-auto w-full">
           <div
-            className={`send-login bg-primary relative flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] px-4 transition-all duration-350 ease-in-out hover:bg-[#616161] md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
+            className={`bg-primary relative flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] px-4 transition-all duration-350 ease-in-out hover:bg-[#616161] md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
               isSubmitting
                 ? 'cursor-not-allowed bg-gray-500 opacity-70'
                 : 'bg-primary cursor-pointer hover:bg-[#616161]'

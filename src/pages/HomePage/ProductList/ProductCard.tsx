@@ -70,23 +70,23 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
               </div>
             </div>
             <div className="product-price relative h-auto w-full">
-              <div className="price group-hover:visibility-hidden visibility-visible flex h-auto w-full flex-col items-center justify-end opacity-100 transition-opacity duration-500 ease-in-out group-hover:opacity-0">
+              <div className="group-hover:visibility-hidden visibility-visible flex h-auto w-full flex-col items-center justify-end opacity-100 transition-opacity duration-500 ease-in-out group-hover:opacity-0">
                 {product.price?.sale ? (
                   <>
-                    <span className="regular text-secondary line-through">
+                    <span className="text-secondary line-through">
                       € {product.price.regular}
                     </span>
-                    <span className="sale text-primary text-2xl">
+                    <span className="text-primary text-2xl">
                       € {product.price.sale}
                     </span>
                   </>
                 ) : (
-                  <span className="regular leading-full text-primary text-[1.25rem]">
+                  <span className="leading-full text-primary text-[1.25rem]">
                     € {product.price?.regular}
                   </span>
                 )}
               </div>
-              <div className="button absolute top-0 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                 <div className="bg-primary relative box-border rounded-3xl px-14 py-4">
                   <span className="text-xs whitespace-nowrap text-white uppercase">
                     Discover now

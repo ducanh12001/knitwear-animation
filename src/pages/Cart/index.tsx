@@ -95,35 +95,31 @@ const Cart: FC = () => {
                       className="product-info relative flex h-auto w-full flex-col items-start justify-start gap-[0.75rem] md:gap-[1.25rem]"
                       style={{ gridArea: isSP ? 'info' : 'initial' }}
                     >
-                      <div className="row relative flex w-full items-center justify-between md:w-[20rem]">
-                        <span className="label leading-full text-primary">
+                      <div className="relative flex w-full items-center justify-between md:w-[20rem]">
+                        <span className="leading-full text-primary">
                           Amount
                         </span>
-                        <span className="value leading-full text-primary">
+                        <span className="leading-full text-primary">
                           {item.quantity}
                         </span>
                       </div>
-                      <div className="row relative flex w-full items-center justify-between md:w-[20rem]">
-                        <span className="label leading-full text-primary">
-                          Size
-                        </span>
-                        <span className="value leading-full text-primary">
+                      <div className="relative flex w-full items-center justify-between md:w-[20rem]">
+                        <span className="leading-full text-primary">Size</span>
+                        <span className="leading-full text-primary">
                           {item.size}
                         </span>
                       </div>
-                      <div className="row relative flex w-full items-center justify-between md:w-[20rem]">
-                        <span className="label leading-full text-primary">
-                          Price
-                        </span>
-                        <span className="value leading-full text-primary">
+                      <div className="relative flex w-full items-center justify-between md:w-[20rem]">
+                        <span className="leading-full text-primary">Price</span>
+                        <span className="leading-full text-primary">
                           € {item.price}
                         </span>
                       </div>
-                      <div className="row relative mt-[1.5rem] flex w-full items-center justify-between md:w-[20rem]">
-                        <span className="label leading-full text-primary">
+                      <div className="relative mt-[1.5rem] flex w-full items-center justify-between md:w-[20rem]">
+                        <span className="leading-full text-primary">
                           Subtotal
                         </span>
-                        <span className="value leading-full text-primary flex flex-col items-end justify-start">
+                        <span className="leading-full text-primary flex flex-col items-end justify-start">
                           €{' '}
                           {(parseFloat(item.price) * item.quantity).toFixed(2)}
                         </span>
@@ -152,7 +148,7 @@ const Cart: FC = () => {
             </div>
           </div>
           <div className="cart-total relative flex h-auto w-full flex-col items-start justify-start gap-[4rem] overflow-hidden">
-            <div className="cont relative flex h-auto w-full flex-col items-start justify-start gap-[4rem]">
+            <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[4rem]">
               <form
                 onSubmit={handleSubmit(onApplyCoupon)}
                 className="cart--coupon relative flex w-full flex-col items-start justify-start gap-4"
@@ -171,25 +167,25 @@ const Cart: FC = () => {
               <div className="cart--totals relative flex w-full flex-col items-start justify-start gap-8">
                 <div className="relative flex h-auto w-full flex-col items-start justify-start">
                   <div className="sub-total border-primary/50 relative flex w-full items-center justify-between border-b py-[1.25rem]">
-                    <span className="title leading-full text-primary text-base md:text-[1.25rem]">
+                    <span className="leading-full text-primary text-base md:text-[1.25rem]">
                       Subtotal
                     </span>
-                    <span className="value leading-full text-primary text-base md:text-[1.25rem]">
+                    <span className="leading-full text-primary text-base md:text-[1.25rem]">
                       € {cartTotal}
                     </span>
                   </div>
                   <div className="last-total relative flex w-full items-center justify-between py-[1.25rem]">
-                    <span className="title leading-full text-primary text-base md:text-[1.25rem]">
+                    <span className="leading-full text-primary text-base md:text-[1.25rem]">
                       Total
                     </span>
-                    <span className="value leading-full text-primary text-base md:text-[1.25rem]">
+                    <span className="leading-full text-primary text-base md:text-[1.25rem]">
                       € {cartTotal}
                     </span>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="link relative h-auto w-full">
+            <div className="relative h-auto w-full">
               <Button
                 as="link"
                 to="/checkout"

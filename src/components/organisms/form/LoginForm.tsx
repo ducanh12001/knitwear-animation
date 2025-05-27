@@ -97,11 +97,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleTabSwitch }) => {
         />
       </div>
       <div className="login-submit relative flex h-full w-full flex-col items-center justify-between gap-[2rem]">
-        <div className="tp relative flex h-auto w-full flex-col items-center justify-start gap-4 md:gap-[2rem]">
+        <div className="relative flex h-auto w-full flex-col items-center justify-start gap-4 md:gap-[2rem]">
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`send-login relative flex h-[48px] w-full items-center justify-center rounded-[14px] px-4 transition-all duration-350 ease-in-out md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
+            className={`relative flex h-[48px] w-full items-center justify-center rounded-[14px] px-4 transition-all duration-350 ease-in-out md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
               isSubmitting
                 ? 'cursor-not-allowed bg-gray-400 opacity-70'
                 : 'bg-secondary cursor-pointer hover:bg-[#fd5932]'
@@ -119,9 +119,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleTabSwitch }) => {
             Did you forget your password?
           </div>
         </div>
-        <div className="bt relative h-auto w-full">
+        <div className="relative h-auto w-full">
           <div
-            className={`send-login relative flex h-[48px] w-full items-center justify-center rounded-[14px] px-4 transition-all duration-350 ease-in-out md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
+            className={`relative flex h-[48px] w-full items-center justify-center rounded-[14px] px-4 transition-all duration-350 ease-in-out md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
               isSubmitting
                 ? 'cursor-not-allowed bg-gray-500 opacity-70'
                 : 'bg-primary cursor-pointer hover:bg-[#616161]'

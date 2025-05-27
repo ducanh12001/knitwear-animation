@@ -80,7 +80,7 @@ const FeaturesSection: FC = () => {
 
   return (
     <section className="akkeworld--features">
-      <div className="wrapper relative h-auto w-full overflow-hidden bg-[#e1e1e1] py-[3.75rem] md:bg-inherit md:py-0">
+      <div className="relative h-auto w-full overflow-hidden bg-[#e1e1e1] py-[3.75rem] md:bg-inherit md:py-0">
         <div className="title relative top-0 left-0 z-15 mb-[2.5rem] translate-y-0 text-center md:absolute md:top-1/2 md:left-[5vw] md:mb-0 md:-translate-y-1/2 md:text-left">
           <h2
             className="elAnimation font-humane m-0 text-[90px] leading-[75%] text-[#A9AFA4] uppercase md:text-[12vw]"

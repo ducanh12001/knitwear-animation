@@ -297,7 +297,7 @@ const Payment = () => {
                 <h3 className="font-humane leading-full text-secondary mb-[3rem] text-[6rem] md:text-[6vw]">
                   Payment
                 </h3>
-                <div className="wrapper relative box-border h-auto w-full">
+                <div className="relative box-border h-auto w-full">
                   <div
                     id="payment"
                     className="woocommerce-checkout-payment relative rounded-[5px] bg-transparent"

@@ -35,7 +35,7 @@ const ProductDetail: FC = () => {
           <h2 className="font-humane leading-full text-secondary mb-[5vh] text-[15vw] md:text-[8vw]">
             You may like it
           </h2>
-          <div className="list relative grid h-auto w-full grid-cols-2 gap-8 md:grid-cols-4">
+          <div className="relative grid h-auto w-full grid-cols-2 gap-8 md:grid-cols-4">
             {Array(4)
               .fill(menProducts[0])
               .map((product) => (

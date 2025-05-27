@@ -50,7 +50,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ isMobile }) => {
   return details.map((detail, index) => (
     <div
       key={index}
-      className={`product-details ${isMobile ? 'mobile' : 'desktop'} relative h-auto w-full flex-col items-start justify-start gap-[1rem] md:flex`}
+      className={`${isMobile ? 'mobile' : 'desktop'} relative h-auto w-full flex-col items-start justify-start gap-[1rem] md:flex`}
     >
       <span className="leading-full text-primary text-base font-bold uppercase">
         {detail.title}
@@ -66,11 +66,11 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ isMobile }) => {
         ))}
       </ul>
       {index === 1 && (
-        <div className="icons relative mt-2 flex h-auto w-full items-center justify-start gap-[0.75rem]">
+        <div className="relative mt-2 flex h-auto w-full items-center justify-start gap-[0.75rem]">
           {CARE_INSTRUCTIONS.map((instruction) => (
             <div
               key={instruction.id}
-              className={`icon bg-primary relative h-6 w-6 mask-no-repeat`}
+              className={`bg-primary relative h-6 w-6 mask-no-repeat`}
               title={instruction.alt}
               style={{
                 maskImage: `url('${instruction.icon}')`,

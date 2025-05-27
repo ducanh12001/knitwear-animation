@@ -59,11 +59,11 @@ const AkkeWorld: FC = () => {
         </div>
       </section>
       <section className="akkeworld--image-full relative h-auto w-full">
-        <div className="wrapper relative h-auto w-full">
-          <div className="image relative z-10 h-auto w-full">
+        <div className="relative h-auto w-full">
+          <div className="relative z-10 h-auto w-full">
             <img src={World4} alt="" className="block h-auto w-full" />
           </div>
-          <div className="title absolute top-1/2 left-1/2 z-15 -translate-1/2">
+          <div className="absolute top-1/2 left-1/2 z-15 -translate-1/2">
             <h2 className="font-humane text-[90px] leading-[75%] whitespace-nowrap text-white uppercase md:text-[12vw]">
               <DecryptedText
                 text="42°54’21.60” N 13°11’42.00”E"

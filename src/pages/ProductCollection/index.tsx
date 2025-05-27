@@ -38,10 +38,10 @@ interface ProductCollectionProps {
 
 function ProductCollection({ isMen }: ProductCollectionProps) {
   return (
-    <section className="shop-list relative box-border h-auto w-full px-[5vw] pt-[5rem] pb-[10vh] md:pt-[calc(6rem+5vh)]">
-      <div className="wrapper relative flex h-auto w-full flex-col items-start justify-start gap-[2.5rem] md:gap-[6rem]">
-        <div className="listing-info relative flex h-auto w-full flex-col items-start justify-start gap-[3rem]">
-          <div className="shop-title relative flex h-auto w-full flex-col items-center justify-start pt-[5vh]">
+    <section className="relative box-border h-auto w-full px-[5vw] pt-[5rem] pb-[10vh] md:pt-[calc(6rem+5vh)]">
+      <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[2.5rem] md:gap-[6rem]">
+        <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[3rem]">
+          <div className="relative flex h-auto w-full flex-col items-center justify-start pt-[5vh]">
             <h1 className="font-humane leading-full !text-[15vw] font-light uppercase">
               {isMen ? 'Menswear' : 'Womenswear'}
             </h1>
@@ -67,8 +67,8 @@ function ProductCollection({ isMen }: ProductCollectionProps) {
             </ul>
           </div>
         </div>
-        <div className="list relative h-auto w-full">
-          <div className="wrapper relative grid h-auto w-full grid-cols-2 gap-x-0 gap-y-[8rem] md:grid-cols-4 md:gap-x-[2rem]">
+        <div className="relative h-auto w-full">
+          <div className="relative grid h-auto w-full grid-cols-2 gap-x-0 gap-y-[8rem] md:grid-cols-4 md:gap-x-[2rem]">
             {Array(10)
               .fill(null)
               .flatMap(() => (isMen ? menProducts : womenProducts))

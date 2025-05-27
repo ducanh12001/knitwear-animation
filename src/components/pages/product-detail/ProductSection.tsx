@@ -132,7 +132,7 @@ const ProductSection: FC<ProductSectionProps> = ({
       ref={sectionRef}
     >
       <div
-        className="wrapper relative flex h-auto w-full flex-col items-start justify-start gap-0 md:grid md:gap-[2rem]"
+        className="relative flex h-auto w-full flex-col items-start justify-start gap-0 md:grid md:gap-[2rem]"
         style={{
           gridTemplateColumns:
             '1fr calc(1150 * (100vh - (6rem + 5vh)) / 1440) 1fr',
