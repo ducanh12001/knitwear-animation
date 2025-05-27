@@ -1,4 +1,6 @@
 import type { FC } from 'react';
+import Banner3 from '@/assets/images/banner/banner-3.jpg';
+import Banner3Sp from '@/assets/images/banner/banner-3-sp.jpg';
 
 interface IntroSectionProps {
   isSP: boolean;
@@ -10,11 +12,7 @@ const IntroSection: FC<IntroSectionProps> = ({ isSP }) => {
       <div className="relative h-full w-full">
         <img
           className="block h-full w-full object-cover object-center"
-          src={
-            isSP
-              ? 'https://akkeknitwear.com/website/wp-content/uploads/2023/11/AkkeWorld-1-2.jpg'
-              : 'https://akkeknitwear.com/website/wp-content/uploads/2023/11/AkkeWorld-1.jpg'
-          }
+          src={isSP ? Banner3Sp : Banner3}
         />
       </div>
     </section>

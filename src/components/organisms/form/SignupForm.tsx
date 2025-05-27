@@ -141,7 +141,7 @@ const SignupForm: FC<SignupFormProps> = ({ handleTabSwitch }) => {
                 to="/privacy-policy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="leading-full mx-1 text-[14px] font-bold text-[#1d1d1d] md:text-base"
+                className="leading-full text-primary mx-1 text-[14px] font-bold md:text-base"
               >
                 Privacy Policy
               </Link>
@@ -152,13 +152,13 @@ const SignupForm: FC<SignupFormProps> = ({ handleTabSwitch }) => {
         />
       </div>
       <div className="signin-submit relative flex h-full w-full flex-col items-center justify-between gap-[2rem]">
-        <div className="tp relative flex h-auto w-full flex-col items-center justify-start gap-4 md:gap-[2rem]">
+        <div className="relative flex h-auto w-full flex-col items-center justify-start gap-4 md:gap-[2rem]">
           <button
             type="submit"
-            className={`send-login relative flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] bg-[#FD7453] px-4 transition-all duration-350 ease-in-out hover:bg-[#fd5932] md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
+            className={`bg-secondary relative flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] px-4 transition-all duration-350 ease-in-out hover:bg-[#fd5932] md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
               isSubmitting
                 ? 'cursor-not-allowed bg-gray-400 opacity-70'
-                : 'cursor-pointer bg-[#FD7453] hover:bg-[#fd5932]'
+                : 'bg-secondary cursor-pointer hover:bg-[#fd5932]'
             }`}
           >
             <span className="leading-full text-base text-white md:text-[1.25rem]">
@@ -166,12 +166,12 @@ const SignupForm: FC<SignupFormProps> = ({ handleTabSwitch }) => {
             </span>
           </button>
         </div>
-        <div className="bt relative h-auto w-full">
+        <div className="relative h-auto w-full">
           <div
-            className={`send-login relative flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] bg-[#1d1d1d] px-4 transition-all duration-350 ease-in-out hover:bg-[#616161] md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
+            className={`bg-primary relative flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] px-4 transition-all duration-350 ease-in-out hover:bg-[#616161] md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
               isSubmitting
                 ? 'cursor-not-allowed bg-gray-500 opacity-70'
-                : 'cursor-pointer bg-[#1d1d1d] hover:bg-[#616161]'
+                : 'bg-primary cursor-pointer hover:bg-[#616161]'
             }`}
             onClick={() => handleTabSwitch('login')}
           >

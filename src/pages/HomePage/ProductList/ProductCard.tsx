@@ -16,7 +16,6 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
     <div
       className="product-card home-rel-product relative h-auto w-full"
       data-id={product.id}
-      data-url={product.url}
     >
       <div className="product-wrapper relative h-full w-full">
         <Link
@@ -66,21 +65,29 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
                   ))}
                 </div>
               </div>
-              <div className="product-description relative w-[80%] text-base text-[#1d1d1d]">
+              <div className="product-description text-primary relative w-[80%] text-base">
                 <p>{product.description}</p>
               </div>
             </div>
             <div className="product-price relative h-auto w-full">
-              <div className="price group-hover:visibility-hidden visibility-visible flex h-auto w-full flex-col items-center justify-end opacity-100 transition-opacity duration-500 ease-in-out group-hover:opacity-0">
-                <span className="text-[#FD7453] line-through">
-                  € {product.price.regular}
-                </span>
-                <span className="text-2xl font-bold text-[#1d1d1d]">
-                  € {product.price.sale}
-                </span>
+              <div className="group-hover:visibility-hidden visibility-visible flex h-auto w-full flex-col items-center justify-end opacity-100 transition-opacity duration-500 ease-in-out group-hover:opacity-0">
+                {product.price?.sale ? (
+                  <>
+                    <span className="text-secondary line-through">
+                      € {product.price.regular}
+                    </span>
+                    <span className="text-primary text-2xl">
+                      € {product.price.sale}
+                    </span>
+                  </>
+                ) : (
+                  <span className="leading-full text-primary text-[1.25rem]">
+                    € {product.price?.regular}
+                  </span>
+                )}
               </div>
-              <div className="button absolute top-0 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
-                <div className="relative box-border rounded-3xl bg-[#1d1d1d] px-14 py-4">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+                <div className="bg-primary relative box-border rounded-3xl px-14 py-4">
                   <span className="text-xs whitespace-nowrap text-white uppercase">
                     Discover now
                   </span>

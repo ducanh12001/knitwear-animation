@@ -1,4 +1,3 @@
-import type { StripeCardElementChangeEvent } from '@stripe/stripe-js';
 import type { ReactNode } from 'react';
 import type {
   UseFormRegister,
@@ -56,10 +55,4 @@ export interface CountrySelectProps<TFormData extends FieldValues = FieldValues>
   id?: string;
   value?: string;
   onChange?: (value: string) => void;
-
-}
-
-export interface StripeCardElementProps {
-  onCardChange?: (event: StripeCardElementChangeEvent) => void;
-  error?: string | null;
 }

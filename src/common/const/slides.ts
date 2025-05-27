@@ -1,36 +1,33 @@
-import CorduraF1 from '@/assets/images/CorduraF-1.jpg';
+import Men1 from '@/assets/images/slides/column/men-1.jpg';
+import Men2 from '@/assets/images/slides/column/men-2.jpg';
+import Men3 from '@/assets/images/slides/column/men-3.jpg';
+import Men4 from '@/assets/images/slides/column/men-4.jpg';
+import Men5 from '@/assets/images/slides/column/men-5.jpg';
+import Men6 from '@/assets/images/slides/column/men-6.jpg';
 
-export const imageSlides = [
+export const colSlideImages = [
   {
-    img: CorduraF1,
-    alt: 'Everest sweater front view - Cordura side',
+    img: Men1,
+    alt: 'Everest sweater front view - Men 1',
   },
   {
-    img: 'https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraR-1.jpg',
+    img: Men2,
     alt: 'Everest sweater back view - Cordura side',
   },
   {
-    img: 'https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CachemireD1-1.jpg',
+    img: Men3,
     alt: 'Everest sweater detail 1 - Cashmere side',
   },
   {
-    img: 'https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CachemireD2-1.jpg',
+    img: Men4,
     alt: 'Everest sweater detail 2 - Cashmere side',
   },
   {
-    img: 'https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraD2-1.jpg',
+    img: Men5,
     alt: 'Everest sweater detail 2 - Cordura side',
   },
   {
-    img: 'https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraD1-1.jpg',
+    img: Men6,
     alt: 'Everest sweater detail 1 - Cordura side',
-  },
-  {
-    img: 'https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraF-1.jpg',
-    alt: 'Everest sweater front view - Cordura side',
-  },
-  {
-    img: 'https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2405DV4_CorduraR-1.jpg',
-    alt: 'Everest sweater back view - Cordura side',
   },
 ];

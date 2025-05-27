@@ -23,7 +23,7 @@ const CookieAccordion: FC<CookieAccordionProps> = ({
         <div className="relative mr-5.5 cursor-pointer" onClick={onToggle}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`absolute top-2 h-4 w-4 text-[#1d1d1d] transition-all duration-200 ease-in-out ${isExpanded ? 'rotate-90' : 'rotate-0'}`}
+            className={`text-primary absolute top-2 h-4 w-4 transition-all duration-200 ease-in-out ${isExpanded ? 'rotate-90' : 'rotate-0'}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

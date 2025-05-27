@@ -45,7 +45,7 @@ const RevisitButton: FC<RevisitButtonProps> = ({ onClick }) => {
 
   return (
     <div
-      className="cky-btn-revisit-wrapper fixed bottom-4 left-4 z-999 flex h-[45px] w-[45px] items-center justify-center rounded-full bg-[#1d1d1d]"
+      className="cky-btn-revisit-wrapper bg-primary fixed bottom-4 left-4 z-999 flex h-[45px] w-[45px] items-center justify-center rounded-full"
       data-tooltip="Consent Preferences"
       ref={buttonRef}
     >

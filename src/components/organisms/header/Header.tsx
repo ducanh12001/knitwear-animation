@@ -48,7 +48,7 @@ const Header: React.FC = () => {
         ]}
       />
 
-      <div className="header-wrapper relative box-border flex h-auto w-full items-start justify-between px-[5vw] text-[1.2rem]">
+      <div className="header-wrapper relative box-border flex h-auto w-full items-start justify-between gap-4 px-[5vw] text-[1.2rem]">
         <div className="left relative flex w-auto items-start justify-start gap-[1.5rem] xl:gap-[6rem]">
           <div className="logo relative h-[4rem] w-[4.3rem] md:max-xl:w-[8rem] xl:h-[6rem] xl:w-[13rem]">
             <Link
@@ -107,10 +107,10 @@ const Header: React.FC = () => {
           </div>
         </div>
         <div className="right relative flex w-auto items-start justify-end gap-[3rem]">
-          <div className="nav relative flex items-start justify-end gap-[10rem]">
+          <div className="relative flex items-start justify-end gap-[10rem]">
             <ul
               id="menu-right-menu"
-              className="menu leading-full relative hidden items-center justify-start gap-[1rem] text-[1.6rem] uppercase xl:flex"
+              className="leading-full relative hidden items-center justify-start gap-[1rem] text-[1.6rem] uppercase xl:flex"
             >
               <li>
                 <Link to="/akkeworld" style={{ color: COLORS.primary }}>
@@ -149,20 +149,20 @@ const Header: React.FC = () => {
             onClick={handleToggle}
             aria-label="Toggle menu"
           >
-            <div className="hamburger-wrapper relative h-full">
-              <div className="span__wrapper top absolute top-0 left-0 h-[1px] w-full">
+            <div className="relative h-full">
+              <div className="top absolute top-0 left-0 h-[1px] w-full">
                 <span
                   className="js-header-background absolute top-0 left-0 h-full w-full"
                   style={{ backgroundColor: textColor }}
                 />
               </div>
-              <div className="span__wrapper center absolute top-2 left-0 h-[1px] w-full">
+              <div className="center absolute top-2 left-0 h-[1px] w-full">
                 <span
                   className="js-header-background absolute top-0 left-0 h-full w-full"
                   style={{ backgroundColor: textColor }}
                 />
               </div>
-              <div className="span__wrapper bottom absolute bottom-0 left-0 h-[1px] w-full">
+              <div className="bottom absolute bottom-0 left-0 h-[1px] w-full">
                 <span
                   className="js-header-background absolute top-0 left-0 h-full w-full"
                   style={{ backgroundColor: textColor }}

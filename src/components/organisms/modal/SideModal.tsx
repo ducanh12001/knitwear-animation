@@ -6,14 +6,13 @@ import {
   type RefObject,
 } from 'react';
 import gsap from 'gsap';
-import Lenis from 'lenis';
+import { useLenis } from 'lenis/react';
 
 interface SideModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
   closeRef: RefObject<HTMLDivElement | null>;
-  lenis: Lenis | null;
   className?: string;
   animate?: boolean;
 }
@@ -23,10 +22,11 @@ const SideModal: FC<SideModalProps> = ({
   onClose,
   children,
   closeRef,
-  lenis,
   className = '',
   animate = true,
 }) => {
+  const lenis = useLenis();
+
   const modalRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -36,7 +36,7 @@ const SideModal: FC<SideModalProps> = ({
     const animations: gsap.core.Tween[] = [];
 
     if (isOpen) {
-      if (lenis) lenis.stop();
+      lenis?.stop();
 
       animations.push(
         gsap.set(modalRef.current, { autoAlpha: 1 }),
@@ -60,7 +60,7 @@ const SideModal: FC<SideModalProps> = ({
         }),
       );
     } else {
-      if (lenis) lenis.start();
+      lenis?.start();
 
       animations.push(
         gsap.to(closeRef.current, {
@@ -101,7 +101,7 @@ const SideModal: FC<SideModalProps> = ({
     >
       <div
         ref={bgRef}
-        className="absolute top-0 left-0 h-full w-full bg-[#1d1d1d]/85 opacity-0"
+        className="bg-primary/85 absolute top-0 left-0 h-full w-full opacity-0"
         onClick={onClose}
       />
       <div

@@ -1,6 +1,6 @@
 import { useState, useEffect, type FC } from 'react';
 import { openCookiePreferences } from '@/utils/cookieHandlers';
-import { useCookieConsent } from '@/contexts/CookieConsentContext';
+import { useCookieConsent } from '@/contexts/cookie/CookieConsentContext';
 import ConsentScript from '@/components/others/CookieConsent/ConsentScript';
 
 const AnalyticsExample: FC = () => {
@@ -9,7 +9,6 @@ const AnalyticsExample: FC = () => {
     'enabled' | 'disabled'
   >('disabled');
 
-  // Check analytics status
   useEffect(() => {
     setAnalyticsStatus(isAllowed('analytics') ? 'enabled' : 'disabled');
   }, [isAllowed]);

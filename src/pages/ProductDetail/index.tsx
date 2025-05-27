@@ -32,13 +32,15 @@ const ProductDetail: FC = () => {
       />
       <section className="product--related-section relative box-border h-auto w-full p-[5vw]">
         <div className="relative flex h-auto w-full flex-col items-start justify-start">
-          <h2 className="font-humane leading-full mb-[5vh] text-[15vw] text-[#FD7453] md:text-[8vw]">
+          <h2 className="font-humane leading-full text-secondary mb-[5vh] text-[15vw] md:text-[8vw]">
             You may like it
           </h2>
-          <div className="list relative grid h-auto w-full grid-cols-2 gap-8 md:grid-cols-4">
-            {menProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+          <div className="relative grid h-auto w-full grid-cols-2 gap-8 md:grid-cols-4">
+            {Array(4)
+              .fill(menProducts[0])
+              .map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
           </div>
         </div>
       </section>

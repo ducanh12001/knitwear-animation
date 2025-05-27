@@ -4,7 +4,6 @@ import type {
   StripeCardElementChangeEvent,
   StripeCardElementOptions,
 } from '@stripe/stripe-js';
-import type { StripeCardElementProps } from '@/types';
 
 const CARD_ELEMENT_OPTIONS: StripeCardElementOptions = {
   style: {
@@ -24,6 +23,11 @@ const CARD_ELEMENT_OPTIONS: StripeCardElementOptions = {
   },
   hidePostalCode: true,
 };
+
+interface StripeCardElementProps {
+  onCardChange?: (event: StripeCardElementChangeEvent) => void;
+  error?: string | null;
+}
 
 export const StripeCardElement: React.FC<StripeCardElementProps> = ({
   onCardChange,
@@ -57,7 +61,7 @@ export const StripeCardElement: React.FC<StripeCardElementProps> = ({
         <CardElement options={CARD_ELEMENT_OPTIONS} onChange={handleChange} />
       </div>
 
-      {error && <div className="mt-2 text-sm text-[#FD7453]">{error}</div>}
+      {error && <div className="text-secondary mt-2 text-sm">{error}</div>}
     </div>
   );
 };

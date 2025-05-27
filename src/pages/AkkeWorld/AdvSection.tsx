@@ -3,6 +3,17 @@ import { useState } from 'react';
 import gsap from 'gsap';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router';
+import { CloseButton } from '@/components/atoms/buttons/CloseButton';
+
+import Adv1 from '@/assets/images/banner/adv-1.jpg';
+import Adv2 from '@/assets/images/banner/adv-2.jpg';
+import Adv3 from '@/assets/images/banner/adv-3.jpg';
+import Adv4 from '@/assets/images/banner/adv-4.jpg';
+import Adv5 from '@/assets/images/banner/adv-5.jpg';
+import Adv6 from '@/assets/images/banner/adv-6.jpg';
+import Adv7 from '@/assets/images/banner/adv-7.jpg';
+import Adv8 from '@/assets/images/banner/adv-8.jpg';
+import Adv9 from '@/assets/images/banner/adv-9.jpg';
 
 interface Polaroid {
   label: string;
@@ -16,8 +27,7 @@ interface Polaroid {
 const polaroidData: Polaroid[] = [
   {
     label: 'Everest',
-    image:
-      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-1.jpg',
+    image: Adv1,
     top: '5vh',
     left: '10vw',
     labelRight: '2vw',
@@ -25,8 +35,7 @@ const polaroidData: Polaroid[] = [
   },
   {
     label: 'Trisul',
-    image:
-      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-2.jpg',
+    image: Adv2,
     top: '20vh',
     left: '15vw',
     labelRight: '3vw',
@@ -34,8 +43,7 @@ const polaroidData: Polaroid[] = [
   },
   {
     label: 'Kardong',
-    image:
-      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-3.jpg',
+    image: Adv3,
     top: '30vh',
     left: '8vw',
     labelRight: 'initial',
@@ -43,8 +51,7 @@ const polaroidData: Polaroid[] = [
   },
   {
     label: 'K2',
-    image:
-      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-4.jpg',
+    image: Adv4,
     top: '8vh',
     left: '65vw',
     labelRight: '1vw',
@@ -52,8 +59,7 @@ const polaroidData: Polaroid[] = [
   },
   {
     label: 'Nanga Parbat',
-    image:
-      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-5.jpg',
+    image: Adv5,
     top: '15vh',
     left: '62vw',
     labelRight: 'initial',
@@ -61,8 +67,7 @@ const polaroidData: Polaroid[] = [
   },
   {
     label: 'Nanga Parbat',
-    image:
-      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/AKKE-ADV-FW232400502.jpg',
+    image: Adv6,
     top: '5vh',
     left: '10vw',
     labelRight: '2vw',
@@ -140,7 +145,7 @@ const AdvSection: FC = () => {
   };
 
   return (
-    <section className="akkeworld--adv relative h-auto w-full bg-[#1d1d1d]">
+    <section className="akkeworld--adv bg-primary relative h-auto w-full">
       <div
         className="road elAnimation absolute top-0 left-1/2 z-15 h-full -translate-x-1/2 xl:h-[60%]"
         data-animation="road"
@@ -268,21 +273,21 @@ const AdvSection: FC = () => {
         {polaroidData.map((item, index) => (
           <div
             key={index}
-            className="polaroid absolute box-border h-auto w-[18vw] scale-80 rotate-0 bg-white px-[1vw] pt-[1vw] pb-[3.5vw] opacity-0"
+            className="absolute box-border h-auto w-[18vw] scale-80 rotate-0 bg-white px-[1vw] pt-[1vw] pb-[3.5vw] opacity-0"
             style={{
               top: item.top,
               left: item.left,
             }}
             data-order={index}
           >
-            <div className="frame relative h-auto w-full">
+            <div className="relative h-auto w-full">
               <img
                 className="block h-auto w-full"
                 src={item.image}
                 alt={item.label}
               />
               <span
-                className="font-permanent-marker leading-full absolute -bottom-[1.75vw] translate-y-1/2 text-[2rem] text-[#1d1d1d]"
+                className="font-permanent-marker leading-full text-primary absolute -bottom-[1.75vw] translate-y-1/2 text-[2rem]"
                 style={{ left: item.labelLeft, right: item.labelRight }}
               >
                 {item.label}
@@ -317,7 +322,7 @@ const AdvSection: FC = () => {
           </h2>
           <div className="columns relative grid h-auto w-full grid-cols-2">
             <div className="column relative h-auto w-full">
-              <div className="cat relative flex h-auto w-full items-start justify-center">
+              <div className="relative flex h-auto w-full items-start justify-center">
                 <Link
                   to="/product-category/menswear-collection"
                   className="relative block h-full w-[90%] md:w-[33vw]"
@@ -328,10 +333,7 @@ const AdvSection: FC = () => {
                   >
                     <div className="imageScale">
                       <div className="relative h-auto w-full transition-transform duration-1000 ease-in-out">
-                        <img
-                          src="https://akkeknitwear.com/website/wp-content/uploads/2025/03/uomo.jpg"
-                          className="block h-auto w-full"
-                        />
+                        <img src={Adv7} className="block h-auto w-full" />
                       </div>
                     </div>
                   </div>
@@ -347,7 +349,7 @@ const AdvSection: FC = () => {
               </div>
             </div>
             <div className="column relative h-auto w-full">
-              <div className="cat relative mt-[15vh] flex h-auto w-full items-start justify-center">
+              <div className="relative mt-[15vh] flex h-auto w-full items-start justify-center">
                 <Link
                   to="/product-category/womenswear-collection"
                   className="relative block h-full w-[90%] md:w-[33vw]"
@@ -358,10 +360,7 @@ const AdvSection: FC = () => {
                   >
                     <div className="imageScale">
                       <div className="relative h-auto w-full transition-transform duration-1000 ease-in-out">
-                        <img
-                          src="https://akkeknitwear.com/website/wp-content/uploads/2025/03/donna.jpg"
-                          className="h-atuo block w-full"
-                        />
+                        <img src={Adv8} className="h-atuo block w-full" />
                       </div>
                     </div>
                   </div>
@@ -390,10 +389,7 @@ const AdvSection: FC = () => {
                   >
                     <div className="imageScale">
                       <div className="relative h-auto w-full transition-transform duration-1000 ease-in-out">
-                        <img
-                          src="https://akkeknitwear.com/website/wp-content/uploads/2023/11/LIMITED.jpg"
-                          className="block h-auto w-full"
-                        />
+                        <img src={Adv9} className="block h-auto w-full" />
                       </div>
                     </div>
                   </div>
@@ -413,18 +409,12 @@ const AdvSection: FC = () => {
       </div>
       <div className="custom-modal mobile invisible fixed top-0 left-0 z-999 h-full w-full opacity-0">
         <div
-          className="modal-bg absolute top-0 left-0 h-full w-full bg-[#1d1d1d]/85 opacity-0"
+          className="modal-bg bg-primary/85 absolute top-0 left-0 h-full w-full opacity-0"
           onClick={handleCloseModal}
         />
         <div className="modal-zoom invisible absolute top-1/2 left-1/2 h-auto w-[90%] -translate-1/2 scale-60 bg-white opacity-0 md:w-[50vw]">
           <div className="modal-close absolute top-auto right-4 bottom-4 z-45">
-            <div
-              className="close-cross relative h-5 w-5 cursor-pointer md:h-12 md:w-12"
-              onClick={handleCloseModal}
-            >
-              <div className="icon absolute top-1/2 left-1/2 h-[3px] w-full -translate-1/2 rotate-45 bg-[#1d1d1d]" />
-              <div className="icon absolute top-1/2 left-1/2 h-[3px] w-full -translate-1/2 -rotate-45 bg-[#1d1d1d]" />
-            </div>
+            <CloseButton onClick={handleCloseModal} />
           </div>
           <div className="relative box-border h-auto w-full px-[2vw] pt-[2vw] pb-[5rem]">
             <div className="relative flex h-auto w-full flex-col items-start justify-start gap-4">
@@ -434,7 +424,7 @@ const AdvSection: FC = () => {
                   alt={polaroidData[selected].label}
                   className="block h-auto w-full"
                 />
-                <span className="font-permanent-marker leading-full absolute -bottom-[2.5rem] left-0 translate-y-1/2 text-[2rem] text-[#1d1d1d]">
+                <span className="font-permanent-marker leading-full text-primary absolute -bottom-[2.5rem] left-0 translate-y-1/2 text-[2rem]">
                   {polaroidData[selected].label}
                 </span>
               </div>

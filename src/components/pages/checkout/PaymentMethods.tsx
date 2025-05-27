@@ -1,7 +1,8 @@
 import type { FC } from 'react';
+import type { StripeCardElementChangeEvent } from '@stripe/stripe-js';
 import { RadioInput } from '@/components/atoms/inputs/RadioInput';
 import { StripeCardElement } from '@/components/atoms/inputs/StripeCardElement';
-import type { StripeCardElementChangeEvent } from '@stripe/stripe-js';
+import { PAYMENT_CARDS } from '@/common/const/payment';
 
 interface PaymentMethodsProps {
   selectedPayment: string;
@@ -20,7 +21,6 @@ const PaymentMethods: FC<PaymentMethodsProps> = ({
 }) => {
   return (
     <ul className="wc_payment_methods payment_methods methods relative m-0 flex flex-col items-start justify-start gap-2 text-left md:gap-4">
-      {/* Credit Card Payment Method */}
       <RadioInput
         id="payment_method_stripe_cc"
         name="payment_method"
@@ -30,28 +30,7 @@ const PaymentMethods: FC<PaymentMethodsProps> = ({
         label="Credit card"
       >
         <span className="wc-stripe-card-icons-container float-right inline-block">
-          {[
-            {
-              image:
-                'https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/amex.svg',
-              alt: 'Amex',
-            },
-            {
-              image:
-                'https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/discover.svg',
-              alt: 'Discover',
-            },
-            {
-              image:
-                'https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/visa.svg',
-              alt: 'Visa',
-            },
-            {
-              image:
-                'https://akkeknitwear.com/website/wp-content/plugins/woo-stripe-payment/assets/img/cards/mastercard.svg',
-              alt: 'Mastercard',
-            },
-          ].map((item, index) => (
+          {PAYMENT_CARDS.map((item, index) => (
             <img
               key={index}
               className="wc-stripe-card-icon amex relative -mt-[2px] ml-[2px] inline h-[26px] max-h-[26px] w-[43px] max-w-[43px] align-middle"
@@ -80,7 +59,7 @@ const PaymentMethods: FC<PaymentMethodsProps> = ({
                 />
 
                 {paymentError && (
-                  <div className="mt-2 text-sm text-[#FD7453]">
+                  <div className="text-secondary mt-2 text-sm">
                     {paymentError}
                   </div>
                 )}

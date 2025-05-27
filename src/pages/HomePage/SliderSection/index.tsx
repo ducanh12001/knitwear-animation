@@ -3,6 +3,13 @@ import type Swiper from 'swiper';
 import ImageSlider from '@/pages/HomePage/SliderSection/ImageSlider';
 import TitleSlider from '@/pages/HomePage/SliderSection/TitleSlider';
 
+import Banner1 from '@/assets/images/banner/banner-1.jpg';
+import Banner1Sp from '@/assets/images/banner/banner-1-sp.jpg';
+import Banner2 from '@/assets/images/banner/banner-2.jpg';
+import Banner2Sp from '@/assets/images/banner/banner-2-sp.jpg';
+import Banner3 from '@/assets/images/banner/banner-3.jpg';
+import Banner3Sp from '@/assets/images/banner/banner-3-sp.jpg';
+
 export interface SlideData {
   href: string;
   title: string;
@@ -25,26 +32,20 @@ export function SliderSection() {
     {
       href: '/product-category/menswear-collection',
       title: 'New Collection',
-      desktopImg:
-        'https://akkeknitwear.com/website/wp-content/uploads/2023/10/bannerhome.jpg',
-      mobileImg:
-        'https://akkeknitwear.com/website/wp-content/uploads/2023/10/bannerhome-mob.jpg',
+      desktopImg: Banner1,
+      mobileImg: Banner1Sp,
     },
     {
       href: '/product-category/womenswear-collection',
       title: 'Promo Launch 50% off',
-      desktopImg:
-        'https://akkeknitwear.com/website/wp-content/uploads/2023/10/Akke-Banner-2.jpg',
-      mobileImg:
-        'https://akkeknitwear.com/website/wp-content/uploads/2023/10/Akke-Banner-mobile-women.jpg',
+      desktopImg: Banner2,
+      mobileImg: Banner2Sp,
     },
     {
       href: '/everest-akke-limited',
       title: 'Everest Akke Limited',
-      desktopImg:
-        'https://akkeknitwear.com/website/wp-content/uploads/2023/10/Limited-Akke-Everest.jpg',
-      mobileImg:
-        'https://akkeknitwear.com/website/wp-content/uploads/2023/11/AkkeWorld-1-1.jpg',
+      desktopImg: Banner3,
+      mobileImg: Banner3Sp,
     },
   ];
 

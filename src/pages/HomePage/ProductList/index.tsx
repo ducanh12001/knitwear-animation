@@ -17,9 +17,11 @@ const ProductList: FC = () => {
             className="elAnimation relative grid h-auto w-full grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4"
             data-animation="ease-stagger-list"
           >
-            {menProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+            {Array(4)
+              .fill(menProducts[0])
+              .map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
           </div>
         </div>
         <div className="relative flex h-auto w-full flex-col items-center justify-start">
@@ -33,9 +35,11 @@ const ProductList: FC = () => {
             className="elAnimation relative grid h-auto w-full grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4"
             data-animation="ease-stagger-list"
           >
-            {womenProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+            {Array(4)
+              .fill(womenProducts[0])
+              .map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
           </div>
         </div>
       </div>

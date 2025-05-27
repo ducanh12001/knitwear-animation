@@ -110,10 +110,10 @@ const CookieModal = forwardRef<HTMLDivElement, CookieModalProps>(
         ref={ref}
         className={`cky-modal fixed top-1/2 left-1/2 z-999 mx-auto box-border w-full max-w-[calc(100%-16px)] -translate-x-1/2 translate-y-full rounded-lg lg:w-[845px] lg:max-w-full ${className}`}
       >
-        <div className="relative flex max-h-[80vh] w-full flex-col overflow-hidden rounded-lg border border-[#F4F4F4] bg-white text-[#1d1d1d] shadow-xl">
+        <div className="text-primary relative flex max-h-[80vh] w-full flex-col overflow-hidden rounded-lg border border-[#F4F4F4] bg-white shadow-xl">
           <div className="flex items-center justify-between border-b border-inherit px-6 py-5.5">
             <h2
-              className="text-xl font-bold text-[#1d1d1d]"
+              className="text-primary text-xl font-bold"
               style={{ wordBreak: 'break-word' }}
             >
               Customize Consent Preferences
@@ -135,7 +135,7 @@ const CookieModal = forwardRef<HTMLDivElement, CookieModalProps>(
             className="box-border flex-1 overflow-auto border-inherit px-6"
             data-lenis-prevent
           >
-            <div className="py-3 text-[0.8rem] text-[#1d1d1d]">
+            <div className="text-primary py-3 text-[0.8rem]">
               <p>
                 We use cookies to help you navigate efficiently and perform
                 certain functions. You will find detailed information about all
@@ -173,7 +173,7 @@ const CookieModal = forwardRef<HTMLDivElement, CookieModalProps>(
                   your browser as they are essential for enabling the basic
                   functionalities of the site. ...
                   <button
-                    className="cursor-pointer whitespace-nowrap text-[#FD7453] hover:underline"
+                    className="text-secondary cursor-pointer whitespace-nowrap hover:underline"
                     onClick={() => setShowFullDescription(true)}
                     aria-label="Show more"
                   >
@@ -183,7 +183,7 @@ const CookieModal = forwardRef<HTMLDivElement, CookieModalProps>(
               )}
             </div>
 
-            <div className="pt-1 pb-3 text-[14px] text-[#1d1d1d]">
+            <div className="text-primary pt-1 pb-3 text-[14px]">
               <p>
                 For more information on how Google's third-party cookies operate
                 and handle your data, see:{' '}

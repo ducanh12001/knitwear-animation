@@ -165,13 +165,13 @@ export const CountrySelect = <TFormData extends FieldValues = FieldValues>({
             (isLoading ? 'Loading countries...' : 'Select country')}
         </span>
         <div
-          className={`select--arrow absolute top-1/2 right-[1rem] h-[12px] w-[12px] -translate-y-1/2 ${isOpen ? 'rotate-0' : '-rotate-90'} bg-[#1d1d1d] mask-[url('/src/assets/arrow.svg')] mask-no-repeat transition-transform duration-300 md:right-[2rem] md:h-4 md:w-4`}
+          className={`select--arrow absolute top-1/2 right-[1rem] h-[12px] w-[12px] -translate-y-1/2 ${isOpen ? 'rotate-0' : '-rotate-90'} bg-primary mask-[url('/src/assets/arrow.svg')] mask-no-repeat transition-transform duration-300 md:right-[2rem] md:h-4 md:w-4`}
         />
       </div>
 
       {errors[name] && (
-        <div className="errors absolute bottom-[-1rem] left-0">
-          <span className="error leading-full absolute bottom-0 left-0 text-[0.75rem] whitespace-nowrap text-[#FD7453] opacity-100 transition-all duration-300 ease-in-out">
+        <div className="absolute bottom-[-1rem] left-0">
+          <span className="leading-full text-secondary absolute bottom-0 left-0 text-[0.75rem] whitespace-nowrap opacity-100 transition-all duration-300 ease-in-out">
             {errors[name].message as string}
           </span>
         </div>
@@ -190,7 +190,7 @@ export const CountrySelect = <TFormData extends FieldValues = FieldValues>({
           <div className="search-on-select relative h-auto w-full">
             <input
               type="text"
-              className="search-on-select-input relative box-border h-[3rem] w-full rounded-[15px] border-0 bg-[#e1e1e1] px-[2rem] py-4 leading-[1rem] text-[#1d1d1d] outline-none"
+              className="search-on-select-input text-primary relative box-border h-[3rem] w-full rounded-[15px] border-0 bg-[#e1e1e1] px-[2rem] py-4 leading-[1rem] outline-none"
               placeholder="Search"
               value={searchTerm}
               onChange={handleInputChange}
@@ -208,11 +208,11 @@ export const CountrySelect = <TFormData extends FieldValues = FieldValues>({
                 <span className="text-gray-500">Loading...</span>
               </div>
             ) : filteredCountries.length > 0 ? (
-              <div className="wrp relative flex h-auto w-full flex-col items-start justify-start">
+              <div className="relative flex h-auto w-full flex-col items-start justify-start">
                 {filteredCountries.map((country) => (
                   <span
                     key={country.value}
-                    className="relative box-border w-full cursor-pointer bg-transparent px-[2rem] py-[0.75rem] leading-[1rem] text-[#1d1d1d] hover:bg-[#f5f5f5]"
+                    className="text-primary relative box-border w-full cursor-pointer bg-transparent px-[2rem] py-[0.75rem] leading-[1rem] hover:bg-[#f5f5f5]"
                     onClick={() => handleSelect(country)}
                   >
                     {country.label}

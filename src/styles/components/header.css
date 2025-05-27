@@ -4,7 +4,7 @@ header.scrolled {
 }
 
 header.scrolled-mob {
-  background-color: #1d1d1d;
+  background-color: var(--color-primary);
   transition: background-color 0.5s ease-in-out;
 }
 
