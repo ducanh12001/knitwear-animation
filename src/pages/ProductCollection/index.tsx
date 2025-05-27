@@ -1,8 +1,5 @@
-import {
-  menProducts,
-  womenProducts,
-} from '@/common/const/sampleProductList';
-import  ProductCard  from '@/pages/HomePage/ProductList/ProductCard';
+import { menProducts, womenProducts } from '@/common/const/sampleProductList';
+import ProductCard from '@/pages/HomePage/ProductList/ProductCard';
 
 const FILTER_ITEMS = [
   {
@@ -11,27 +8,27 @@ const FILTER_ITEMS = [
   },
   {
     label: 'Polo',
-    href: 'https://akkeknitwear.com/categoria-prodotto/menswear/',
+    href: '/product-category/menswear-collection',
   },
   {
     label: 'Hoodie',
-    href: 'https://akkeknitwear.com/categoria-prodotto/menswear/men-felpe/',
+    href: '/product-category/menswear-collection',
   },
   {
     label: 'Knitwear',
-    href: 'https://akkeknitwear.com/categoria-prodotto/menswear/men-maglieria/',
+    href: '/product-category/menswear-collection',
   },
   {
     label: 'Joggers',
-    href: 'https://akkeknitwear.com/categoria-prodotto/menswear/',
+    href: '/product-category/menswear-collection',
   },
   {
     label: 'T-shirt',
-    href: 'https://akkeknitwear.com/categoria-prodotto/menswear/',
+    href: '/product-category/menswear-collection',
   },
   {
     label: 'Accessories',
-    href: 'https://akkeknitwear.com/categoria-prodotto/menswear/',
+    href: '/product-category/menswear-collection',
   },
 ];
 
@@ -61,7 +58,7 @@ function ProductCollection({ isMen }: ProductCollectionProps) {
                       transition: 'background-color 0.35s ease-in-out 0s',
                     }}
                   >
-                    <span className="leading-full text-base text-[#1d1d1d] uppercase">
+                    <span className="leading-full text-primary text-base uppercase">
                       {item.label}
                     </span>
                   </a>

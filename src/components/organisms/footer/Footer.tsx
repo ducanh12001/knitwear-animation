@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
               </button>
               <div className="absolute right-0 -bottom-2 w-full">
                 {errors.email && (
-                  <span className="absolute right-0 text-xs text-[#FD7453]">
+                  <span className="text-secondary absolute right-0 text-xs">
                     {errors.email.message}
                   </span>
                 )}

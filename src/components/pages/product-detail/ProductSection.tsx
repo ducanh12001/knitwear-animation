@@ -10,6 +10,7 @@ import { imageSlides } from '@/common/const/slides';
 import type { Product } from '@/types';
 import ProductDetails from '@/components/pages/product-detail/ProductDetails';
 import HeatIndicator from '@/components/pages/product-detail/HeatIndicator';
+import { Button } from '@/components/atoms/buttons/Button';
 
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -209,13 +210,13 @@ const ProductSection: FC<ProductSectionProps> = ({
             ))}
             <div className="swiper-button-prev absolute top-1/2 !left-[5vw] !m-0 flex !h-4 !w-4 -translate-y-1/2 rotate-90 cursor-pointer items-center justify-center md:!h-[3rem] md:!w-[3rem]">
               <div
-                className="h-full w-full bg-[#1d1d1d] mask-[url('/src/assets/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
+                className="bg-primary h-full w-full mask-[url('/src/assets/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
                 aria-hidden="true"
               />
             </div>
             <div className="swiper-button-next absolute top-1/2 !right-[5vw] !m-0 flex !h-4 !w-4 -translate-y-1/2 -rotate-90 cursor-pointer items-center justify-center md:!h-[3rem] md:!w-[3rem]">
               <div
-                className="h-full w-full bg-[#1d1d1d] mask-[url('/src/assets/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
+                className="bg-primary h-full w-full mask-[url('/src/assets/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
                 aria-hidden="true"
               />
             </div>
@@ -242,15 +243,15 @@ const ProductSection: FC<ProductSectionProps> = ({
                 <div className="left relative flex h-auto w-auto flex-col items-start justify-end">
                   {product.price?.sale ? (
                     <>
-                      <span className="regular leading-full text-[#FD7453] line-through">
+                      <span className="regular leading-full text-secondary line-through">
                         € {product.price.regular}
                       </span>
-                      <span className="sale leading-full text-[2rem] text-[#1d1d1d]">
+                      <span className="sale leading-full text-primary text-[2rem]">
                         € {product.price.sale}
                       </span>
                     </>
                   ) : (
-                    <span className="regular leading-full text-[2rem] text-[#1d1d1d]">
+                    <span className="regular leading-full text-primary text-[2rem]">
                       € {product.price?.regular}
                     </span>
                   )}
@@ -258,7 +259,7 @@ const ProductSection: FC<ProductSectionProps> = ({
               </div>
 
               <div className="product-colors-variations relative flex h-auto w-full flex-col items-start justify-start gap-[1rem]">
-                <span className="leading-full relative flex h-auto w-full items-center justify-start gap-[0.5rem] text-base font-bold text-[#1d1d1d] uppercase">
+                <span className="leading-full text-primary relative flex h-auto w-full items-center justify-start gap-[0.5rem] text-base font-bold uppercase">
                   Color
                   <span className="font-normal normal-case">Natural/Taupe</span>
                 </span>
@@ -300,7 +301,7 @@ const ProductSection: FC<ProductSectionProps> = ({
 
               <div className="product-variations relative flex h-auto w-full flex-col items-start justify-start gap-[1rem]">
                 <div className="top relative flex h-auto w-full items-center justify-between">
-                  <span className="label leading-full relative flex items-center justify-start gap-[0.5rem] font-bold text-[#1d1d1d] uppercase">
+                  <span className="label leading-full text-primary relative flex items-center justify-start gap-[0.5rem] font-bold uppercase">
                     Size
                   </span>
                   <button className="sizes-guide-btn relative w-auto">
@@ -320,7 +321,7 @@ const ProductSection: FC<ProductSectionProps> = ({
                         className={`relative box-border flex h-[3rem] w-[3rem] items-center justify-center rounded-full border-2 border-solid transition-all duration-350 ease-in-out xl:h-[4rem] xl:w-[4rem] ${
                           selectedSize === index
                             ? `border-[${themeColor}]`
-                            : 'border-[#1d1d1d]'
+                            : 'border-primary'
                         } ${index % 2 === 1 ? 'cursor-not-allowed opacity-20' : 'cursor-pointer opacity-100'}`}
                         key={index}
                         onClick={() => handleSizeSelect(index)}
@@ -332,7 +333,7 @@ const ProductSection: FC<ProductSectionProps> = ({
                           className={`leading-full relative flex h-[2.5rem] w-[2.5rem] items-center justify-center rounded-full text-[0.75rem] transition-colors duration-350 ease-in-out xl:h-[3.25rem] xl:w-[3.25rem] xl:text-base ${
                             selectedSize === index
                               ? `bg-[${themeColor}] text-white`
-                              : 'bg-transparent text-[#1d1d1d]'
+                              : 'text-primary bg-transparent'
                           }`}
                         >
                           {size}
@@ -355,23 +356,15 @@ const ProductSection: FC<ProductSectionProps> = ({
 
             <div className="product-bottom relative flex h-auto w-full flex-col items-start justify-start gap-[1rem]">
               <div className="product-button relative flex h-auto w-full items-start justify-start">
-                <button
-                  id="add2cart"
-                  className={`custom-button relative flex h-[48px] w-full items-center bg-[${themeColor}] justify-center rounded-[14px] px-[1rem] md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
-                    selectedSize < 0
-                      ? `cursor-not-allowed opacity-50 hover:bg-[${themeColor}]`
-                      : `cursor-pointer opacity-100 hover:bg-[${hoverColor}]`
-                  }`}
-                  onClick={handleAddToCart}
+                <Button
                   disabled={selectedSize < 0}
-                  aria-label={
-                    selectedSize < 0 ? 'Select a size first' : 'Add to Cart'
-                  }
+                  className="font-bold uppercase"
+                  onClick={handleAddToCart}
+                  bgColor={`bg-[${themeColor}]`}
+                  hoverColor={`hover:bg-[${hoverColor}]`}
                 >
-                  <span className="leading-full relative text-base font-bold whitespace-nowrap text-white uppercase md:text-[1.25rem]">
-                    Add to Cart
-                  </span>
-                </button>
+                  Add to Cart
+                </Button>
               </div>
             </div>
 

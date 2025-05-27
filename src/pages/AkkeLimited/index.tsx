@@ -36,7 +36,6 @@ const AkkeLimited = () => {
       <ProductSection
         product={{
           id: 452123,
-          url: 'https://akkeknitwear.com/prodotto/indrasan-mf2415gc1-acid-lime/',
           title: 'Everest',
           image:
             'https://akkeknitwear.com/website/wp-content/uploads/2023/11/MF2415GC1_AcidLime_1-2.jpg',

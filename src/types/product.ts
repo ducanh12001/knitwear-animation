@@ -8,7 +8,6 @@ export interface ProductColor {
 
 export interface Product {
   id: number;
-  url: string;
   title: string;
   image: string;
   description: string;
@@ -17,24 +16,4 @@ export interface Product {
     sale?: string;
   };
   colors: ProductColor[];
-}
-
-export interface ProductSectionProps {
-  product: Product;
-  themeColor?: string;
-  hoverColor?: string;
-  sectionClass?: string;
-}
-
-export interface ProductDetailsProps {
-  isMobile: boolean;
-}
-
-export interface HeatIndicatorProps {
-  isMobile: boolean;
-}
-
-export interface ProductDetail {
-  title: string;
-  items: string[];
 }

@@ -17,7 +17,7 @@ const BillingForm: FC<BillingFormProps> = ({
 }) => {
   return (
     <div className="woocommerce-billing-fields relative h-auto w-full">
-      <h3 className="font-humane leading-full mb-[3rem] text-[6rem] text-[#FD7453] md:text-[6vw]">
+      <h3 className="font-humane leading-full text-secondary mb-[3rem] text-[6rem] md:text-[6vw]">
         Billing details
       </h3>
 

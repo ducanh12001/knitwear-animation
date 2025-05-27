@@ -52,14 +52,14 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ isMobile }) => {
       key={index}
       className={`product-details ${isMobile ? 'mobile' : 'desktop'} relative h-auto w-full flex-col items-start justify-start gap-[1rem] md:flex`}
     >
-      <span className="leading-full text-base font-bold text-[#1d1d1d] uppercase">
+      <span className="leading-full text-primary text-base font-bold uppercase">
         {detail.title}
       </span>
       <ul className="relative flex h-auto w-full flex-col">
         {detail.items.map((text, index) => (
           <li
             key={index}
-            className="relative flex items-start justify-start gap-[0.3rem] text-base leading-[1.2rem] text-[#1d1d1d] before:text-[1.5rem] before:leading-[1rem] before:content-['·']"
+            className="text-primary relative flex items-start justify-start gap-[0.3rem] text-base leading-[1.2rem] before:text-[1.5rem] before:leading-[1rem] before:content-['·']"
           >
             {text}
           </li>
@@ -70,7 +70,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ isMobile }) => {
           {CARE_INSTRUCTIONS.map((instruction) => (
             <div
               key={instruction.id}
-              className={`icon relative h-6 w-6 bg-[#1d1d1d] mask-no-repeat`}
+              className={`icon bg-primary relative h-6 w-6 mask-no-repeat`}
               title={instruction.alt}
               style={{
                 maskImage: `url('${instruction.icon}')`,

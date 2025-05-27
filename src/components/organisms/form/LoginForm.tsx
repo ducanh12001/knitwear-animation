@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useForm, type Path, type RegisterOptions } from 'react-hook-form';
-import { Link } from 'react-router';
 import type { TabType } from '@/types';
 import { CheckboxInput } from '@/components/atoms/inputs/CheckboxInput';
 import { FormInput } from '@/components/atoms/inputs/FormInput';
+import { useModalAwareNavigation } from '@/hooks/useModalAwareNavigation';
 
 interface LoginFormData {
   'login-user': string;
@@ -43,6 +43,7 @@ const defaultValues: LoginFormData = {
 };
 
 const LoginForm: React.FC<LoginFormProps> = ({ handleTabSwitch }) => {
+  const { navigate } = useModalAwareNavigation();
   const [isChecked, setIsChecked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -103,7 +104,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleTabSwitch }) => {
             className={`send-login relative flex h-[48px] w-full items-center justify-center rounded-[14px] px-4 transition-all duration-350 ease-in-out md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
               isSubmitting
                 ? 'cursor-not-allowed bg-gray-400 opacity-70'
-                : 'cursor-pointer bg-[#FD7453] hover:bg-[#fd5932]'
+                : 'bg-secondary cursor-pointer hover:bg-[#fd5932]'
             }`}
           >
             <span className="leading-full text-base text-white md:text-[1.25rem]">
@@ -111,19 +112,19 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleTabSwitch }) => {
             </span>
           </button>
 
-          <Link
-            className="leading-full cursor-pointer text-base text-[#1d1d1d] !underline"
-            to="/password-recovery"
+          <div
+            className="leading-full text-primary cursor-pointer text-base !underline"
+            onClick={() => navigate('/password-recovery')}
           >
             Did you forget your password?
-          </Link>
+          </div>
         </div>
         <div className="bt relative h-auto w-full">
           <div
             className={`send-login relative flex h-[48px] w-full items-center justify-center rounded-[14px] px-4 transition-all duration-350 ease-in-out md:h-[6rem] md:rounded-[25px] md:px-[2rem] ${
               isSubmitting
                 ? 'cursor-not-allowed bg-gray-500 opacity-70'
-                : 'cursor-pointer bg-[#1d1d1d] hover:bg-[#616161]'
+                : 'bg-primary cursor-pointer hover:bg-[#616161]'
             }`}
             onClick={() => handleTabSwitch('signup')}
           >

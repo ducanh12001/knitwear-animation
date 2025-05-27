@@ -28,18 +28,16 @@ const FormInput = <TFormData extends FieldValues = FieldValues>({
   className = '',
 }: FormInputProps<TFormData>) => {
   return (
-    <div
-      className={`form-item relative flex h-auto w-full flex-col ${className}`}
-    >
+    <div className={`relative flex h-auto w-full flex-col ${className}`}>
       <input
         type={type}
         placeholder={placeholder}
         className="leading-full relative z-2 box-border h-[48px] w-full resize-none rounded-[14px] border border-[#e1e1e1] bg-transparent px-[1rem] text-[1.25rem] text-[#e1e1e1] outline-none xl:h-[4rem] xl:rounded-[25px] xl:px-[3rem]"
         {...register(name, validation)}
       />
-      <div className="errors absolute right-[3rem] bottom-4 z-2">
+      <div className="absolute right-[3rem] bottom-4 z-2">
         {errors[name] && (
-          <span className="error leading-full absolute right-0 bottom-0 text-[0.75rem] whitespace-nowrap text-[#FD7453] opacity-100 transition-all duration-300 ease-in-out">
+          <span className="leading-full text-secondary absolute right-0 bottom-0 text-[0.75rem] whitespace-nowrap opacity-100 transition-all duration-300 ease-in-out">
             {errors[name]?.message as string}
           </span>
         )}
@@ -99,8 +97,8 @@ const Contacts: FC = () => {
 
   return (
     <section className="contacts--form-section relative h-auto w-full xl:h-screen">
-      <div className="relative flex h-full w-full flex-col items-start justify-start bg-[#1d1d1d] pb-[2.5rem] xl:flex-row xl:pb-0">
-        <div className="left relative flex h-full w-full flex-col xl:w-[55%] xl:flex-row-reverse">
+      <div className="bg-primary relative flex h-full w-full flex-col items-start justify-start pb-[2.5rem] xl:flex-row xl:pb-0">
+        <div className="relative flex h-full w-full flex-col xl:w-[55%] xl:flex-row-reverse">
           <div className="relative hidden h-full w-[42vh] bg-[#A9AFA4] mask-[url(/src/assets/contact-bg.svg)] mask-no-repeat xl:block" />
           <div className="relative box-border flex w-full flex-col items-center justify-start gap-8 bg-[#A9AFA4] pt-[7.5rem] pr-[5vw] pl-[5vw] xl:w-[calc(100%-42vh)] xl:flex-row xl:gap-0 xl:pt-0 xl:pr-0">
             <div className="center relative flex h-auto w-full flex-col gap-4">
@@ -121,12 +119,12 @@ const Contacts: FC = () => {
                 Contact us via the form
               </p>
             </div>
-            <div className="relative mx-[-2px] mb-[-2px] block h-[calc(124*(100vw+4px)/300)] w-[calc(100vw+4px)] bg-[#1d1d1d] mask-[url(/src/assets/contact-bg2.svg)] mask-no-repeat xl:hidden" />
+            <div className="bg-primary relative mx-[-2px] mb-[-2px] block h-[calc(124*(100vw+4px)/300)] w-[calc(100vw+4px)] mask-[url(/src/assets/contact-bg2.svg)] mask-no-repeat xl:hidden" />
           </div>
         </div>
-        <div className="right relative flex h-full w-full items-center justify-center pt-[2rem] xl:w-[45%] xl:pt-0">
+        <div className="relative flex h-full w-full items-center justify-center pt-[2rem] xl:w-[45%] xl:pt-0">
           <form
-            className="form relative mx-auto flex h-auto w-[90%] flex-col items-center justify-start gap-[1.25rem] md:max-xl:grid md:max-xl:grid-cols-2 xl:mx-0 xl:w-auto xl:items-start xl:pr-[5vw]"
+            className="relative mx-auto flex h-auto w-[90%] flex-col items-center justify-start gap-[1.25rem] md:max-xl:grid md:max-xl:grid-cols-2 xl:mx-0 xl:w-auto xl:items-start xl:pr-[5vw]"
             onSubmit={handleSubmit(onSubmit)}
           >
             <FormInput<ContactFormData>
@@ -199,7 +197,7 @@ const Contacts: FC = () => {
                 </span>
                 <div className="errors absolute -bottom-4 left-[3rem]">
                   {errors['contact-privacy'] && (
-                    <span className="error leading-full absolute bottom-0 left-0 text-[0.75rem] whitespace-nowrap text-[#FD7453] opacity-100 transition-opacity duration-300 ease-in-out">
+                    <span className="error leading-full text-secondary absolute bottom-0 left-0 text-[0.75rem] whitespace-nowrap opacity-100 transition-opacity duration-300 ease-in-out">
                       {errors['contact-privacy'].message}
                     </span>
                   )}
@@ -219,7 +217,7 @@ const Contacts: FC = () => {
                 className={`btn relative flex h-[48px] w-full items-center justify-center gap-4 rounded-[14px] transition-colors duration-350 ease-in-out xl:h-[6rem] ${
                   isSubmitting
                     ? 'cursor-not-allowed bg-gray-400 opacity-70'
-                    : 'cursor-pointer bg-[#FD7453] hover:bg-[#fd5932]'
+                    : 'bg-secondary cursor-pointer hover:bg-[#fd5932]'
                 }`}
               >
                 <span className="leading-full text-base text-[#e1e1e1] uppercase xl:text-[1.25rem]">

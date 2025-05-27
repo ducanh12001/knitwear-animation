@@ -8,7 +8,7 @@ function HomePage() {
   useGSAPAnimation();
 
   return (
-    <div className="homepage overflow-hidden">
+    <div className="overflow-hidden">
       <SliderSection />
       <Roadmap />
       <ProductList />

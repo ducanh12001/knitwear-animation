@@ -13,6 +13,3 @@ export interface ModalContextType {
 
 export type TabType = 'login' | 'signup';
 
-export interface LoginFormProps {
-  handleTabSwitch: (tab: TabType) => void;
-}

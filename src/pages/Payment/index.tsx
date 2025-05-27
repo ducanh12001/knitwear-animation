@@ -7,11 +7,12 @@ import type { StripeCardElementChangeEvent } from '@stripe/stripe-js';
 
 import useCart from '@/hooks/useCart';
 import { CheckboxInput } from '@/components/atoms/inputs/CheckboxInput';
-import BillingForm from '@/components/checkout/BillingForm';
-import ShippingForm from '@/components/checkout/ShippingForm';
-import OrderSummary from '@/components/checkout/OrderSummary';
-import PaymentMethods from '@/components/checkout/PaymentMethods';
+import BillingForm from '@/components/pages/checkout/BillingForm';
+import ShippingForm from '@/components/pages/checkout/ShippingForm';
+import OrderSummary from '@/components/pages/checkout/OrderSummary';
+import PaymentMethods from '@/components/pages/checkout/PaymentMethods';
 import CheckoutErrorNotice from '@/pages/Payment/CheckoutErrorNotice';
+import { Button } from '@/components/atoms/buttons/Button';
 
 const DEFAULT_FORM_VALUES = {
   billing_first_name: '',
@@ -235,7 +236,7 @@ const Payment = () => {
                   {/* Ship to different address checkbox */}
                   <div className="relative w-full">
                     <div className="woocommerce-shipping-fields">
-                      <h3 className="leading-full relative mb-[3rem] flex w-full items-start justify-start text-[1.25rem] font-medium text-[#1d1d1d]">
+                      <h3 className="leading-full text-primary relative mb-[3rem] flex w-full items-start justify-start text-[1.25rem] font-medium">
                         <CheckboxInput
                           name="ship_to_different_address"
                           register={register}
@@ -265,7 +266,7 @@ const Payment = () => {
                           <textarea
                             id="order_comments"
                             placeholder="Order notes"
-                            className="leading-full relative box-border h-[120px] w-full resize-none rounded-[14px] border-none bg-white p-4 text-base text-[#1d1d1d] outline-none md:h-[15rem] md:rounded-[25px] md:px-[3rem] md:py-[2rem] md:text-[1.25rem]"
+                            className="leading-full text-primary relative box-border h-[120px] w-full resize-none rounded-[14px] border-none bg-white p-4 text-base outline-none md:h-[15rem] md:rounded-[25px] md:px-[3rem] md:py-[2rem] md:text-[1.25rem]"
                             {...register('order_comments')}
                           />
                         </div>
@@ -293,7 +294,7 @@ const Payment = () => {
 
               {/* Payment Methods Column */}
               <div className="checkout-column relative box-border h-auto w-full self-start overflow-hidden">
-                <h3 className="font-humane leading-full mb-[3rem] text-[6rem] text-[#FD7453] md:text-[6vw]">
+                <h3 className="font-humane leading-full text-secondary mb-[3rem] text-[6rem] md:text-[6vw]">
                   Payment
                 </h3>
                 <div className="wrapper relative box-border h-auto w-full">
@@ -313,13 +314,13 @@ const Payment = () => {
                     <div className="form-row place-order mt-8 mb-[6px] flex flex-col items-start justify-start gap-8">
                       <div className="woocommerce-terms-and-conditions-wrapper relative">
                         <div className="woocommerce-privacy-policy-text">
-                          <p className="leading-full text-[14px] text-[#1d1d1d] md:text-base">
+                          <p className="leading-full text-primary text-[14px] md:text-base">
                             Your personal data will be used to process your
                             order, support your experience on this website and
                             for other purposes described in our{' '}
                             <Link
                               to="/privacy-policy"
-                              className="woocommerce-privacy-policy-link font-bold text-[#1d1d1d]"
+                              className="woocommerce-privacy-policy-link text-primary font-bold"
                               target="_blank"
                               rel="noopener noreferrer"
                             >
@@ -330,19 +331,17 @@ const Payment = () => {
                         </div>
                       </div>
 
-                      <button
+                      <Button
                         type="submit"
-                        className="custom-button relative box-border flex h-[48px] w-full cursor-pointer items-center justify-center rounded-[14px] bg-[#1d1d1d] px-4 transition-colors duration-350 ease-in-out hover:bg-[#616161] md:h-[6rem] md:rounded-[25px] md:px-8"
                         disabled={
                           isProcessing ||
                           (selectedPayment === 'stripe_cc' &&
                             (!stripe || !elements))
                         }
+                        className="font-bold"
                       >
-                        <span className="leading-full text-base font-bold text-white md:text-[1.25rem]">
-                          {isProcessing ? 'Processing...' : 'Place order'}
-                        </span>
-                      </button>
+                        {isProcessing ? 'Processing...' : 'Place order'}
+                      </Button>
                     </div>
                   </div>
                 </div>

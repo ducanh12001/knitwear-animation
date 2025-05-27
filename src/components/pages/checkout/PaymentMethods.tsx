@@ -80,7 +80,7 @@ const PaymentMethods: FC<PaymentMethodsProps> = ({
                 />
 
                 {paymentError && (
-                  <div className="mt-2 text-sm text-[#FD7453]">
+                  <div className="text-secondary mt-2 text-sm">
                     {paymentError}
                   </div>
                 )}

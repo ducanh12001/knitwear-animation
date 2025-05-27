@@ -23,12 +23,12 @@ export const RadioInput: React.FC<RadioInputProps> = ({
       />
       <label
         htmlFor={id}
-        className="relative flex h-auto w-full items-center justify-start gap-2 text-base leading-[120%] text-[#1d1d1d] md:gap-4 md:text-[1.25rem]"
+        className="text-primary relative flex h-auto w-full items-center justify-start gap-2 text-base leading-[120%] md:gap-4 md:text-[1.25rem]"
         style={{ gridArea: 'label' }}
       >
-        <div className="custom-check relative flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-[#1d1d1d] md:h-[1.5rem] md:w-[1.5rem]">
+        <div className="custom-check border-primary relative flex h-4 w-4 shrink-0 items-center justify-center rounded-full border md:h-[1.5rem] md:w-[1.5rem]">
           {checked && (
-            <div className="inner absolute top-1/2 left-1/2 h-[10px] w-[10px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#1d1d1d] md:h-[1.125rem] md:w-[1.125rem]" />
+            <div className="inner bg-primary absolute top-1/2 left-1/2 h-[10px] w-[10px] -translate-x-1/2 -translate-y-1/2 rounded-full md:h-[1.125rem] md:w-[1.125rem]" />
           )}
         </div>
         {label}

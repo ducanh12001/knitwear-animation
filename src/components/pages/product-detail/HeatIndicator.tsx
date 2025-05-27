@@ -7,7 +7,7 @@ const HeatIndicator: React.FC<HeatIndicatorProps> = ({ isMobile }) => {
     <div
       className={`product-heat ${isMobile ? 'mobile' : 'desktop'} relative h-auto w-full flex-col items-start justify-start gap-[1rem] md:flex`}
     >
-      <span className="leading-full text-base font-bold text-[#1d1d1d] uppercase">
+      <span className="leading-full text-primary text-base font-bold uppercase">
         Calore
       </span>
       <div className="circles relative flex h-auto w-full items-center justify-start gap-[0.25rem]">
@@ -20,7 +20,7 @@ const HeatIndicator: React.FC<HeatIndicatorProps> = ({ isMobile }) => {
         ))}
         {!isMobile && (
           <div className="circle_plus">
-            <span className="leading-full flex items-center justify-center text-base font-bold text-[#1d1d1d] uppercase">
+            <span className="leading-full text-primary flex items-center justify-center text-base font-bold uppercase">
               +
             </span>
           </div>

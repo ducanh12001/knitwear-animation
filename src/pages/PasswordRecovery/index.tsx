@@ -45,7 +45,7 @@ const PasswordRecovery = () => {
           <div className="w-full md:w-auto">
             <button
               type="submit"
-              className="relative box-border flex h-12 w-full cursor-pointer items-center justify-center rounded-[14px] bg-[#FD7453] px-4 transition-colors duration-350 ease-in-out md:h-[5rem] md:rounded-[25px] md:px-8"
+              className="bg-secondary relative box-border flex h-12 w-full cursor-pointer items-center justify-center rounded-[14px] px-4 transition-colors duration-350 ease-in-out md:h-[5rem] md:rounded-[25px] md:px-8"
             >
               <span className="leading-full text-base whitespace-nowrap text-white md:text-xl">
                 Recover

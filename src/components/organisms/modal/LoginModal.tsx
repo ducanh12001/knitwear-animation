@@ -1,17 +1,13 @@
 import { useRef } from 'react';
 import { gsap } from 'gsap';
-import type Lenis from 'lenis';
 import type { TabType } from '@/types';
 import { useModal } from '@/hooks/useModal';
-import LoginForm from '@/components/organisms/modal/LoginForm';
-import SignupForm from '@/components/organisms/modal/SignupForm';
-import SideModal from '@/components/shared/SideModal';
+import LoginForm from '@/components/organisms/form/LoginForm';
+import SignupForm from '@/components/organisms/form/SignupForm';
+import SideModal from '@/components/organisms/modal/SideModal';
+import { CloseButton } from '@/components/atoms/buttons/CloseButton';
 
-interface LoginModalProps {
-  lenis: Lenis | null;
-}
-
-const LoginModal = ({ lenis }: LoginModalProps) => {
+const LoginModal = () => {
   const closeRef = useRef(null);
   const loginTitleRef = useRef(null);
   const signupTitleRef = useRef(null);
@@ -61,7 +57,6 @@ const LoginModal = ({ lenis }: LoginModalProps) => {
     <SideModal
       isOpen={modalState.loginModalOpen}
       onClose={onClose}
-      lenis={lenis}
       closeRef={closeRef}
     >
       <div className="relative z-20 box-border flex h-full w-full flex-col items-start justify-start gap-[2rem] px-[12px] py-[1rem] md:p-[1.25rem]">
@@ -81,13 +76,7 @@ const LoginModal = ({ lenis }: LoginModalProps) => {
             </span>
           </div>
           <div ref={closeRef} className="login-close absolute top-0 right-0">
-            <div
-              className="relative h-[20px] w-[20px] cursor-pointer md:h-[3rem] md:w-[3rem]"
-              onClick={onClose}
-            >
-              <div className="icon absolute top-1/2 left-1/2 h-[3px] w-full -translate-1/2 rotate-45 bg-[#1d1d1d]"></div>
-              <div className="icon absolute top-1/2 left-1/2 h-[3px] w-full -translate-1/2 -rotate-45 bg-[#1d1d1d]"></div>
-            </div>
+            <CloseButton onClick={onClose} />
           </div>
         </div>
         <div

@@ -1,40 +1,51 @@
 import { useState, useEffect } from 'react';
+import type Lenis from 'lenis';
+import { useLenis } from 'lenis/react';
 
 const CustomScrollbar: React.FC = () => {
   const [scrollHeight, setScrollHeight] = useState(0);
   const [scrollTop, setScrollTop] = useState(0);
 
+  const lenis = useLenis();
+
   useEffect(() => {
-    const handleScroll = () => {
+    if (!lenis) return;
+
+    const handleScroll = (lenis: Lenis) => {
+      const { scroll, limit } = lenis;
+
       // Tính chiều cao và vị trí của thanh cuộn
       const windowHeight = window.innerHeight; // Chiều cao viewport
       const documentHeight = document.documentElement.scrollHeight; // Chiều cao toàn bộ nội dung
-      const scrollPosition = window.scrollY; // Vị trí scroll hiện tại
 
       // Tính chiều cao của thanh cuộn (dựa trên tỷ lệ viewport/tổng nội dung)
       const trackHeight = windowHeight; // Chiều cao track = chiều cao viewport
-      const contentHeight = documentHeight - windowHeight; // Nội dung có thể cuộn
       const scrollHeightPercent = (trackHeight / documentHeight) * 100 * 0.5; // Chiều cao thanh cuộn (%)
 
       // Tính vị trí của thanh cuộn (dựa trên vị trí scroll hiện tại)
       const scrollTopPercent =
-        contentHeight > 0
-          ? (scrollPosition / contentHeight) * (100 - scrollHeightPercent)
-          : 0;
+        limit > 0 ? (scroll / limit) * (100 - scrollHeightPercent) : 0;
 
       setScrollHeight(scrollHeightPercent);
       setScrollTop(scrollTopPercent);
     };
+    lenis.on('scroll', handleScroll);
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-    handleScroll();
+    const handleResize = () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollHeightPercent = (windowHeight / documentHeight) * 100 * 0.5;
+      setScrollHeight(scrollHeightPercent);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
+      lenis.off('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [lenis]);
 
   return (
     <div

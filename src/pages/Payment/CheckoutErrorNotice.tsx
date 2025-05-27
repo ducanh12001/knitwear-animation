@@ -71,7 +71,7 @@ const CheckoutErrorNotice: FC<CheckoutErrorNoticeProps> = ({
     >
       <div role="alert">
         <ul
-          className="woocommerce-error relative box-border flex w-auto flex-col items-start justify-start gap-[0.25rem] bg-[#1d1d1d] !px-8 !py-4"
+          className="woocommerce-error bg-primary relative box-border flex w-auto flex-col items-start justify-start gap-[0.25rem] !px-8 !py-4"
           style={{ wordWrap: 'break-word' }}
         >
           {errorFields.map((error, index) => (

@@ -1,7 +1,7 @@
-import type { FC } from 'react';
+import { useState, type FC } from 'react';
 import gsap from 'gsap';
-import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { CloseButton } from '@/components/atoms/buttons/CloseButton';
 
 interface Feature {
   label: string;
@@ -33,7 +33,7 @@ const featuresData: Feature[] = [
     label: 'Gorpcorec',
     desktop: { top: '75vh', left: '55%' },
     mobile: { top: `calc(3.75rem + ${625 / 3}vw + 80px)`, left: '60vw' },
-    des: "Gorpcore is a style inspired by hiking and climbing clothing, but is designed for the city. \"Gorp\" comes from \"Good ol' Raisins and Peanuts\", alluding to the classic dried fruit snacks, which have always been faithful travel companions for hikers. The aesthetic movement took hold during the lockdown periods, when everyone - and especially those who live in the city - expressed, even in style, the need to reconnect with nature. Another fundamental aspect of the Gorpcore style, beyond the ideal techwear for escaping the rain or trekking in style, is its unisex essence: the boundaries between men's and women's clothing are blurred to a new level. ",
+    des: 'Gorpcore is a style inspired by hiking and climbing clothing, but is designed for the city. "Gorp" comes from "Good ol\' Raisins and Peanuts", alluding to the classic dried fruit snacks, which have always been faithful travel companions for hikers. The aesthetic movement took hold during the lockdown periods, when everyone - and especially those who live in the city - expressed, even in style, the need to reconnect with nature. Another fundamental aspect of the Gorpcore style, beyond the ideal techwear for escaping the rain or trekking in style, is its unisex essence: the boundaries between men\'s and women\'s clothing are blurred to a new level. ',
   },
 ];
 
@@ -119,14 +119,14 @@ const FeaturesSection: FC = () => {
               }}
             >
               <div
-                className="circle relative box-border flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border-1 border-[#1d1d1d] transition-all duration-350 ease-in-out md:h-[2.5vw] md:w-[2.5vw] md:border-2 md:border-[#A9AFA4]"
+                className="circle border-primary relative box-border flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border-1 transition-all duration-350 ease-in-out md:h-[2.5vw] md:w-[2.5vw] md:border-2 md:border-[#A9AFA4]"
                 onClick={() => {
                   openFeatureModal(index);
                 }}
               >
-                <div className="inner relative h-[calc(100%-6px)] w-[calc(100%-6px)] rounded-full bg-[#1d1d1d] transition-all duration-350 ease-in-out md:h-[calc(100%-8px)] md:w-[calc(100%-8px)] md:bg-[#A9AFA4]" />
+                <div className="inner bg-primary relative h-[calc(100%-6px)] w-[calc(100%-6px)] rounded-full transition-all duration-350 ease-in-out md:h-[calc(100%-8px)] md:w-[calc(100%-8px)] md:bg-[#A9AFA4]" />
               </div>
-              <span className="leading-full cursor-pointer text-[11px] font-bold whitespace-nowrap text-[#1d1d1d] uppercase md:text-base md:font-normal md:whitespace-normal">
+              <span className="leading-full text-primary cursor-pointer text-[11px] font-bold whitespace-nowrap uppercase md:text-base md:font-normal md:whitespace-normal">
                 {item.label}
               </span>
             </div>
@@ -135,25 +135,19 @@ const FeaturesSection: FC = () => {
       </div>
       <div className="custom-modal invisible fixed top-0 left-0 z-999 h-full w-full opacity-0">
         <div
-          className="modal-bg absolute top-0 left-0 h-full w-full bg-[#1d1d1d]/85 opacity-0"
+          className="modal-bg bg-primary/85 absolute top-0 left-0 h-full w-full opacity-0"
           onClick={closeFeatureModal}
         />
         <div className="modal-zoom invisible absolute top-1/2 left-1/2 h-auto w-[90%] -translate-1/2 scale-60 bg-white opacity-0 md:w-[50vw]">
           <div className="modal-close absolute top-4 right-4 z-45">
-            <div
-              className="close-cross relative h-5 w-5 cursor-pointer md:h-12 md:w-12"
-              onClick={closeFeatureModal}
-            >
-              <div className="icon absolute top-1/2 left-1/2 h-[3px] w-full -translate-1/2 rotate-45 bg-[#1d1d1d]" />
-              <div className="icon absolute top-1/2 left-1/2 h-[3px] w-full -translate-1/2 -rotate-45 bg-[#1d1d1d]" />
-            </div>
+            <CloseButton onClick={closeFeatureModal} />
           </div>
           <div className="featuresTexts relative box-border h-auto w-full px-[5vw] py-[3rem] md:py-[5rem]">
             <div className="relative flex h-auto w-full flex-col items-start justify-start gap-4">
-              <h3 className="font-humane m-0 text-[15vw] leading-[75%] text-[#FD7453] uppercase md:text-[5vw]">
+              <h3 className="font-humane text-secondary m-0 text-[15vw] leading-[75%] uppercase md:text-[5vw]">
                 {featuresData[selected].label}
               </h3>
-              <p className="text-base leading-[1.25rem] text-[#1d1d1d]">
+              <p className="text-primary text-base leading-[1.25rem]">
                 {featuresData[selected].des}
               </p>
             </div>

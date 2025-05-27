@@ -3,6 +3,7 @@ import { useState } from 'react';
 import gsap from 'gsap';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router';
+import { CloseButton } from '@/components/atoms/buttons/CloseButton';
 
 interface Polaroid {
   label: string;
@@ -140,7 +141,7 @@ const AdvSection: FC = () => {
   };
 
   return (
-    <section className="akkeworld--adv relative h-auto w-full bg-[#1d1d1d]">
+    <section className="akkeworld--adv bg-primary relative h-auto w-full">
       <div
         className="road elAnimation absolute top-0 left-1/2 z-15 h-full -translate-x-1/2 xl:h-[60%]"
         data-animation="road"
@@ -282,7 +283,7 @@ const AdvSection: FC = () => {
                 alt={item.label}
               />
               <span
-                className="font-permanent-marker leading-full absolute -bottom-[1.75vw] translate-y-1/2 text-[2rem] text-[#1d1d1d]"
+                className="font-permanent-marker leading-full text-primary absolute -bottom-[1.75vw] translate-y-1/2 text-[2rem]"
                 style={{ left: item.labelLeft, right: item.labelRight }}
               >
                 {item.label}
@@ -413,18 +414,12 @@ const AdvSection: FC = () => {
       </div>
       <div className="custom-modal mobile invisible fixed top-0 left-0 z-999 h-full w-full opacity-0">
         <div
-          className="modal-bg absolute top-0 left-0 h-full w-full bg-[#1d1d1d]/85 opacity-0"
+          className="modal-bg bg-primary/85 absolute top-0 left-0 h-full w-full opacity-0"
           onClick={handleCloseModal}
         />
         <div className="modal-zoom invisible absolute top-1/2 left-1/2 h-auto w-[90%] -translate-1/2 scale-60 bg-white opacity-0 md:w-[50vw]">
           <div className="modal-close absolute top-auto right-4 bottom-4 z-45">
-            <div
-              className="close-cross relative h-5 w-5 cursor-pointer md:h-12 md:w-12"
-              onClick={handleCloseModal}
-            >
-              <div className="icon absolute top-1/2 left-1/2 h-[3px] w-full -translate-1/2 rotate-45 bg-[#1d1d1d]" />
-              <div className="icon absolute top-1/2 left-1/2 h-[3px] w-full -translate-1/2 -rotate-45 bg-[#1d1d1d]" />
-            </div>
+            <CloseButton onClick={handleCloseModal} />
           </div>
           <div className="relative box-border h-auto w-full px-[2vw] pt-[2vw] pb-[5rem]">
             <div className="relative flex h-auto w-full flex-col items-start justify-start gap-4">
@@ -434,7 +429,7 @@ const AdvSection: FC = () => {
                   alt={polaroidData[selected].label}
                   className="block h-auto w-full"
                 />
-                <span className="font-permanent-marker leading-full absolute -bottom-[2.5rem] left-0 translate-y-1/2 text-[2rem] text-[#1d1d1d]">
+                <span className="font-permanent-marker leading-full text-primary absolute -bottom-[2.5rem] left-0 translate-y-1/2 text-[2rem]">
                   {polaroidData[selected].label}
                 </span>
               </div>

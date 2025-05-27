@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { useCookieConsent } from '@/contexts/CookieConsentContext';
+import { useCookieConsent } from '@/contexts/cookie/CookieConsentContext';
 import { applyAllCookiePreferences } from '@/utils/cookieHandlers';
 import type { KeyofCookiePreferences } from '@/types';
 import CookieBanner from '@/components/others/CookieConsent/CookieBanner';

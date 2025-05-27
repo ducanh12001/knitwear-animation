@@ -1,5 +1,5 @@
 import { useEffect, type FC } from 'react';
-import { useCookieConsent } from '@/contexts/CookieConsentContext';
+import { useCookieConsent } from '@/contexts/cookie/CookieConsentContext';
 import type { KeyofCookiePreferences } from '@/types';
 
 /**
