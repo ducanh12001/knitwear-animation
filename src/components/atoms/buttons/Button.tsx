@@ -8,7 +8,6 @@ interface BaseButtonProps {
   loading?: boolean;
   className?: string;
   bgColor?: string;
-  hoverColor?: string;
 }
 
 interface ButtonAsButtonProps extends BaseButtonProps {
@@ -30,15 +29,12 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   loading = false,
   className = '',
-  bgColor = 'bg-secondary',
-  hoverColor = 'hover:bg-secondary-hover',
+  bgColor = 'var(--color-secondary)',
   ...props
 }) => {
   const baseClasses = cn(
-    'relative box-border flex h-[48px] w-full items-center justify-center rounded-[14px] px-4 transition-colors duration-300 ease-in-out md:h-[5rem] md:rounded-[25px] md:px-8',
+    'relative box-border flex h-[48px] w-full items-center justify-center rounded-[14px] px-4 transition-colors duration-300 ease-in-out md:h-[5rem] md:rounded-[25px] md:px-8 hover:opacity-90',
     'text-base whitespace-nowrap text-white md:text-[1.25rem]',
-    bgColor,
-    hoverColor,
     disabled || loading
       ? 'cursor-not-allowed opacity-50'
       : 'cursor-pointer opacity-100',
@@ -68,6 +64,9 @@ export const Button: React.FC<ButtonProps> = ({
       className={baseClasses}
       onClick={disabled || loading ? undefined : onClick}
       disabled={disabled || loading}
+      style={{
+        backgroundColor: bgColor,
+      }}
     >
       {children}
     </button>

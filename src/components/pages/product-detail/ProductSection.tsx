@@ -21,14 +21,12 @@ gsap.registerPlugin(ScrollTrigger);
 interface ProductSectionProps {
   product: Product;
   themeColor?: string;
-  hoverColor?: string;
   sectionClass?: string;
 }
 
 const ProductSection: FC<ProductSectionProps> = ({
   product,
-  themeColor = '#FD7453',
-  hoverColor = '#FD5932',
+  themeColor = 'var(--color-primary)',
   sectionClass = '',
 }) => {
   const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
@@ -318,23 +316,27 @@ const ProductSection: FC<ProductSectionProps> = ({
                   >
                     {sizes.map((size, index) => (
                       <button
-                        className={`relative box-border flex h-[3rem] w-[3rem] items-center justify-center rounded-full border-2 border-solid transition-all duration-350 ease-in-out xl:h-[4rem] xl:w-[4rem] ${
-                          selectedSize === index
-                            ? `border-[${themeColor}]`
-                            : 'border-primary'
-                        } ${index % 2 === 1 ? 'cursor-not-allowed opacity-20' : 'cursor-pointer opacity-100'}`}
+                        className={`relative box-border flex h-[3rem] w-[3rem] items-center justify-center rounded-full border-2 border-solid transition-all duration-350 ease-in-out xl:h-[4rem] xl:w-[4rem] ${index % 2 === 1 ? 'cursor-not-allowed opacity-20' : 'cursor-pointer opacity-100'}`}
                         key={index}
                         onClick={() => handleSizeSelect(index)}
                         aria-checked={selectedSize === index}
                         aria-label={`Size ${size}`}
                         onKeyDown={(e) => handleSizeKeyDown(e, index)}
+                        style={{
+                          borderColor:
+                            selectedSize === index
+                              ? themeColor
+                              : 'var(--color-primary)',
+                        }}
                       >
                         <div
-                          className={`leading-full relative flex h-[2.5rem] w-[2.5rem] items-center justify-center rounded-full text-[0.75rem] transition-colors duration-350 ease-in-out xl:h-[3.25rem] xl:w-[3.25rem] xl:text-base ${
-                            selectedSize === index
-                              ? `bg-[${themeColor}] text-white`
-                              : 'text-primary bg-transparent'
-                          }`}
+                          className={`leading-full relative flex h-[2.5rem] w-[2.5rem] items-center justify-center rounded-full text-[0.75rem] transition-colors duration-350 ease-in-out xl:h-[3.25rem] xl:w-[3.25rem] xl:text-base ${selectedSize === index ? `text-white` : 'text-primary'}`}
+                          style={{
+                            backgroundColor:
+                              selectedSize === index
+                                ? themeColor
+                                : 'transparent',
+                          }}
                         >
                           {size}
                         </div>
@@ -357,8 +359,7 @@ const ProductSection: FC<ProductSectionProps> = ({
                   disabled={selectedSize < 0}
                   className="font-bold uppercase"
                   onClick={handleAddToCart}
-                  bgColor={`bg-[${themeColor}]`}
-                  hoverColor={`hover:bg-[${hoverColor}]`}
+                  bgColor={themeColor}
                 >
                   Add to Cart
                 </Button>
