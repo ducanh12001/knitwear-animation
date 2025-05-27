@@ -3,6 +3,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from 'react-router';
 
+import Road1 from '@/assets/images/banner/road-1.jpg';
+import Road2 from '@/assets/images/banner/road-2.jpg';
+import Road3 from '@/assets/images/banner/road-3.jpg';
+
 gsap.registerPlugin(ScrollTrigger);
 
 function Roadmap() {
@@ -52,7 +56,7 @@ function Roadmap() {
           >
             <div className="imageScale">
               <img
-                src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-1-1.jpg"
+                src={Road1}
                 className="block h-auto w-[33vw]"
                 alt="Akke Knitwear 1"
               />
@@ -149,7 +153,7 @@ function Roadmap() {
                 <div className="imageScale">
                   <div className="relative h-auto w-full">
                     <img
-                      src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-2-1.jpg"
+                      src={Road2}
                       className="block h-auto w-full"
                       alt="Akke Knitwear 2"
                     />
@@ -180,7 +184,7 @@ function Roadmap() {
                 <div className="imageScale">
                   <div className="relative h-auto w-full">
                     <img
-                      src="https://akkeknitwear.com/website/wp-content/uploads/2023/10/akke-3-1.jpg"
+                      src={Road3}
                       className="block h-auto w-full"
                       alt="Akke Knitwear 3"
                     />

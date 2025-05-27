@@ -6,6 +6,13 @@ import AdvSection from '@/pages/AkkeWorld/AdvSection';
 import ImagesSection from '@/pages/AkkeLimited/ImagesSection';
 import FeaturesVideo from '@/assets/features.mp4';
 
+import WorldBanner from '@/assets/images/banner/world-banner.jpg';
+import WorldBannerSp from '@/assets/images/banner/world-banner-sp.jpg';
+import World1 from '@/assets/images/banner/world-1.jpg';
+import World2 from '@/assets/images/banner/world-2.jpg';
+import World3 from '@/assets/images/banner/world-3.jpg';
+import World4 from '@/assets/images/banner/world-4.jpg';
+
 const AkkeWorld: FC = () => {
   useGSAPAnimation();
 
@@ -15,14 +22,14 @@ const AkkeWorld: FC = () => {
         <div className="desktop relative h-full w-full">
           <img
             className="block h-full w-full object-cover object-center"
-            src="https://akkeknitwear.com/website/wp-content/uploads/2025/03/bannerworld.jpg"
+            src={WorldBanner}
             alt=""
           />
         </div>
         <div className="mobile relative h-full w-full">
           <img
             className="block h-full w-full object-cover object-center"
-            src="https://akkeknitwear.com/website/wp-content/uploads/2025/03/bannerworld-mob.jpg"
+            src={WorldBannerSp}
             alt=""
           />
         </div>
@@ -35,15 +42,12 @@ const AkkeWorld: FC = () => {
         }}
         blockColumns={{
           leftTitle: 'Research and experiment',
-          leftImage:
-            'https://akkeknitwear.com/website/wp-content/uploads/2025/03/world-1.jpg',
+          leftImage: World1,
           rightTitle: 'Durable and timeless',
-          rightImage:
-            'https://akkeknitwear.com/website/wp-content/uploads/2025/03/world-2.jpg',
+          rightImage: World2,
         }}
         blockFull={{
-          image:
-            'https://akkeknitwear.com/website/wp-content/uploads/2025/03/banner2.jpg',
+          image: World3,
           des: 'The innovation of materials and the study of details push AKKE knitwear beyond the boundaries of the ordinary.',
           des2: 'We want to inspire those who are looking for something more, those who want to experience the unlimited potential of textile creations.',
         }}
@@ -57,11 +61,7 @@ const AkkeWorld: FC = () => {
       <section className="akkeworld--image-full relative h-auto w-full">
         <div className="wrapper relative h-auto w-full">
           <div className="image relative z-10 h-auto w-full">
-            <img
-              src="https://akkeknitwear.com/website/wp-content/uploads/2025/03/full.jpg"
-              alt=""
-              className="block h-auto w-full"
-            />
+            <img src={World4} alt="" className="block h-auto w-full" />
           </div>
           <div className="title absolute top-1/2 left-1/2 z-15 -translate-1/2">
             <h2 className="font-humane text-[90px] leading-[75%] whitespace-nowrap text-white uppercase md:text-[12vw]">

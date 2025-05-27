@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useMediaQuery } from 'react-responsive';
 import useCart from '@/hooks/useCart';
 import { useModal } from '@/hooks/useModal';
-import { imageSlides } from '@/common/const/slides';
+import { colSlideImages } from '@/common/const/slides';
 import type { Product } from '@/types';
 import ProductDetails from '@/components/pages/product-detail/ProductDetails';
 import HeatIndicator from '@/components/pages/product-detail/HeatIndicator';
@@ -49,7 +49,7 @@ const ProductSection: FC<ProductSectionProps> = ({
 
   const handleImageLoaded = useCallback(() => {
     imagesLoadedCountRef.current += 1;
-    if (imagesLoadedCountRef.current >= imageSlides.length) {
+    if (imagesLoadedCountRef.current >= colSlideImages.length) {
       setImagesLoaded(true);
     }
   }, []);
@@ -166,7 +166,7 @@ const ProductSection: FC<ProductSectionProps> = ({
         {/* Middle Column - Images */}
         <div className="product-middle relative h-auto w-full">
           <div className="images relative hidden h-auto w-full flex-col items-start justify-start gap-[1.25rem] pt-[calc(6rem+5vh)] md:flex">
-            {imageSlides.map((slide, index) => (
+            {colSlideImages.map((slide, index) => (
               <div
                 key={index}
                 className="relative w-full md:w-[calc(1150*(100vh-(6rem+5vh))/1440)]"
@@ -198,7 +198,7 @@ const ProductSection: FC<ProductSectionProps> = ({
                 `<span class="${className} swiper-pagination-bullet"></span>`,
             }}
           >
-            {imageSlides.map((slide, index) => (
+            {colSlideImages.map((slide, index) => (
               <SwiperSlide key={index}>
                 <img
                   src={slide.img}
@@ -346,10 +346,7 @@ const ProductSection: FC<ProductSectionProps> = ({
 
               <div className="product-description relative w-full">
                 <p className="text-primary leading-full">
-                  Production limited to 100 items worldwide. This reversible
-                  garment is created using 8 strands of wool/Cordura in a
-                  natural colour (side A), combined with 4 strands of pure
-                  cashmere in taupe (side B).
+                  {product.description}
                 </p>
               </div>
             </div>

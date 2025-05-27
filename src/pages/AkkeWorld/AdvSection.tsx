@@ -5,6 +5,16 @@ import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router';
 import { CloseButton } from '@/components/atoms/buttons/CloseButton';
 
+import Adv1 from '@/assets/images/banner/adv-1.jpg';
+import Adv2 from '@/assets/images/banner/adv-2.jpg';
+import Adv3 from '@/assets/images/banner/adv-3.jpg';
+import Adv4 from '@/assets/images/banner/adv-4.jpg';
+import Adv5 from '@/assets/images/banner/adv-5.jpg';
+import Adv6 from '@/assets/images/banner/adv-6.jpg';
+import Adv7 from '@/assets/images/banner/adv-7.jpg';
+import Adv8 from '@/assets/images/banner/adv-8.jpg';
+import Adv9 from '@/assets/images/banner/adv-9.jpg';
+
 interface Polaroid {
   label: string;
   image: string;
@@ -17,8 +27,7 @@ interface Polaroid {
 const polaroidData: Polaroid[] = [
   {
     label: 'Everest',
-    image:
-      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-1.jpg',
+    image: Adv1,
     top: '5vh',
     left: '10vw',
     labelRight: '2vw',
@@ -26,8 +35,7 @@ const polaroidData: Polaroid[] = [
   },
   {
     label: 'Trisul',
-    image:
-      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-2.jpg',
+    image: Adv2,
     top: '20vh',
     left: '15vw',
     labelRight: '3vw',
@@ -35,8 +43,7 @@ const polaroidData: Polaroid[] = [
   },
   {
     label: 'Kardong',
-    image:
-      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-3.jpg',
+    image: Adv3,
     top: '30vh',
     left: '8vw',
     labelRight: 'initial',
@@ -44,8 +51,7 @@ const polaroidData: Polaroid[] = [
   },
   {
     label: 'K2',
-    image:
-      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-4.jpg',
+    image: Adv4,
     top: '8vh',
     left: '65vw',
     labelRight: '1vw',
@@ -53,8 +59,7 @@ const polaroidData: Polaroid[] = [
   },
   {
     label: 'Nanga Parbat',
-    image:
-      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/akke-adv-5.jpg',
+    image: Adv5,
     top: '15vh',
     left: '62vw',
     labelRight: 'initial',
@@ -62,8 +67,7 @@ const polaroidData: Polaroid[] = [
   },
   {
     label: 'Nanga Parbat',
-    image:
-      'https://akkeknitwear.com/website/wp-content/uploads/2023/12/AKKE-ADV-FW232400502.jpg',
+    image: Adv6,
     top: '5vh',
     left: '10vw',
     labelRight: '2vw',
@@ -329,10 +333,7 @@ const AdvSection: FC = () => {
                   >
                     <div className="imageScale">
                       <div className="relative h-auto w-full transition-transform duration-1000 ease-in-out">
-                        <img
-                          src="https://akkeknitwear.com/website/wp-content/uploads/2025/03/uomo.jpg"
-                          className="block h-auto w-full"
-                        />
+                        <img src={Adv7} className="block h-auto w-full" />
                       </div>
                     </div>
                   </div>
@@ -359,10 +360,7 @@ const AdvSection: FC = () => {
                   >
                     <div className="imageScale">
                       <div className="relative h-auto w-full transition-transform duration-1000 ease-in-out">
-                        <img
-                          src="https://akkeknitwear.com/website/wp-content/uploads/2025/03/donna.jpg"
-                          className="h-atuo block w-full"
-                        />
+                        <img src={Adv8} className="h-atuo block w-full" />
                       </div>
                     </div>
                   </div>
@@ -391,10 +389,7 @@ const AdvSection: FC = () => {
                   >
                     <div className="imageScale">
                       <div className="relative h-auto w-full transition-transform duration-1000 ease-in-out">
-                        <img
-                          src="https://akkeknitwear.com/website/wp-content/uploads/2023/11/LIMITED.jpg"
-                          className="block h-auto w-full"
-                        />
+                        <img src={Adv9} className="block h-auto w-full" />
                       </div>
                     </div>
                   </div>

@@ -3,6 +3,9 @@ import gsap from 'gsap';
 import { useMediaQuery } from 'react-responsive';
 import { CloseButton } from '@/components/atoms/buttons/CloseButton';
 
+import ModelImage from '@/assets/images/banner/model.jpg';
+import ModelImageSp from '@/assets/images/banner/model-sp.png';
+
 interface Feature {
   label: string;
   desktop: { top: string; left: string };
@@ -90,19 +93,11 @@ const FeaturesSection: FC = () => {
           className="image elAnimation desktop relative z-10 h-auto w-full"
           data-animation="ease-bottom-to-top-scaled"
         >
-          <img
-            src="https://akkeknitwear.com/website/wp-content/uploads/2023/11/AkkeWorld-6.jpg"
-            alt=""
-            className="block h-auto w-full"
-          />
+          <img src={ModelImage} alt="" className="block h-auto w-full" />
         </div>
         <div className="image mobile">
           <div className="relative mx-auto w-[80%]">
-            <img
-              src="https://akkeknitwear.com/website/wp-content/uploads/2023/11/akkeworld.png"
-              alt=""
-              className="w-full"
-            />
+            <img src={ModelImageSp} alt="" className="w-full" />
           </div>
         </div>
         <div className="dots absolute top-0 left-0 z-20 w-full">
