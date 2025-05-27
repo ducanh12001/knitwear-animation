@@ -145,8 +145,7 @@ const CartModal: FC = () => {
           </Button>
           <Button
             disabled={cartItems.length === 0}
-            bgColor="bg-primary"
-            hoverColor="hover:bg-primary-hover"
+            bgColor="var(--color-primary)"
             className="justify-between"
             onClick={() => {
               navigate('/cart');

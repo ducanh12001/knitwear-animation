@@ -62,7 +62,6 @@ const AkkeLimited = () => {
           ],
         }}
         themeColor="#93A7A8"
-        hoverColor="#82999a"
         sectionClass="bg-[#e1e1e1] pt-[10vh]"
       />
     </div>
