@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import useCookies from '@/hooks/useCookies';
+import useCookies from '@/hooks/others/useCookies';
 import type {
   CookieConsentContextValue,
   CookieOptions,

@@ -34,7 +34,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const baseClasses = cn(
     'relative box-border flex h-[48px] w-full items-center justify-center rounded-[14px] px-4 transition-colors duration-300 ease-in-out md:h-[5rem] md:rounded-[25px] md:px-8 hover:opacity-90',
-    'text-base whitespace-nowrap text-white md:text-[1.25rem]',
+    'text-base whitespace-nowrap text-white md:text-xl',
     disabled || loading
       ? 'cursor-not-allowed opacity-50'
       : 'cursor-pointer opacity-100',

@@ -24,7 +24,7 @@ export interface FormInputProps<TFormData extends FieldValues = FieldValues>
   showPassword?: boolean;
   setShowPassword?: (show: boolean) => void;
   showErrors?: boolean;
-  className?: string;
+  inputClassName?: string;
 }
 
 export interface CheckboxInputProps<TFormData extends FieldValues = FieldValues>

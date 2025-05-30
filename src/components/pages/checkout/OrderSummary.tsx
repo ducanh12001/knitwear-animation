@@ -39,7 +39,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
                   </div>
                 </div>
                 <div className="top relative flex h-auto w-full flex-col items-start justify-start gap-2">
-                  <h3 className="leading-full text-secondary mb-8 text-[1.5rem]">
+                  <h3 className="leading-full text-secondary mb-8 text-2xl">
                     {item.title}
                   </h3>
                   <div className="row relative flex h-auto w-full items-center justify-between">
@@ -92,18 +92,18 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
           </div>
           {/* Order Totals */}
           <div className="row cart-subtotal border-primary/50 relative flex w-full items-center justify-between border-b py-4 md:py-[1.5rem]">
-            <span className="value text-primary text-base leading-[120%] md:text-[1.25rem]">
+            <span className="value text-primary text-base leading-[120%] md:text-xl">
               Subtotal
             </span>
-            <span className="value text-primary text-base leading-[120%] md:text-[1.25rem]">
+            <span className="value text-primary text-base leading-[120%] md:text-xl">
               € {cartTotal}
             </span>
           </div>
           <div className="row order-total border-primary/50 relative flex w-full items-center justify-between border-b py-4 md:py-[1.5rem]">
-            <span className="value text-primary text-base leading-[120%] md:text-[1.25rem]">
+            <span className="value text-primary text-base leading-[120%] md:text-xl">
               Total
             </span>
-            <span className="value text-primary text-base leading-[120%] md:text-[1.25rem]">
+            <span className="value text-primary text-base leading-[120%] md:text-xl">
               € {cartTotal}
             </span>
           </div>

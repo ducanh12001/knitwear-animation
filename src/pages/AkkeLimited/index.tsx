@@ -1,5 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
-import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
+import { useGSAPAnimation } from '@/hooks/others/useGSAPAnimation';
 import ProductSection from '@/components/pages/product-detail/ProductSection';
 import ImagesSection from '@/pages/AkkeLimited/ImagesSection';
 import IntroSection from '@/pages/AkkeLimited/IntroSection';

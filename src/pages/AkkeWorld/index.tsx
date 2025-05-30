@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
+import { useGSAPAnimation } from '@/hooks/others/useGSAPAnimation';
 import DecryptedText from '@/components/animations/DecryptedText';
 import FeaturesSection from '@/pages/AkkeWorld/FeaturesSection';
 import AdvSection from '@/pages/AkkeWorld/AdvSection';

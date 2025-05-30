@@ -59,7 +59,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ isMobile }) => {
         {detail.items.map((text, index) => (
           <li
             key={index}
-            className="text-primary relative flex items-start justify-start gap-[0.3rem] text-base leading-[1.2rem] before:text-[1.5rem] before:leading-[1rem] before:content-['·']"
+            className="text-primary relative flex items-start justify-start gap-[0.3rem] text-base leading-[1.2rem] before:text-2xl before:leading-[1rem] before:content-['·']"
           >
             {text}
           </li>

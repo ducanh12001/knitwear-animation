@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { gsap } from 'gsap';
 import type { TabType } from '@/types';
-import { useModal } from '@/hooks/useModal';
+import { useModal } from '@/hooks/others/useModal';
 import LoginForm from '@/components/organisms/form/LoginForm';
 import SignupForm from '@/components/organisms/form/SignupForm';
 import SideModal from '@/components/organisms/modal/SideModal';

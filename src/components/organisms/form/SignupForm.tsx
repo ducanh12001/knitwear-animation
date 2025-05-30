@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { FormInput } from '@/components/atoms/inputs/FormInput';
 import { CheckboxInput } from '@/components/atoms/inputs/CheckboxInput';
 import type { TabType } from '@/types';
+import { MESSAGES } from '@/common/const/validation';
 
 interface SignupFormData {
   'signin-name': string;
@@ -20,34 +21,34 @@ interface SignupFormProps {
 
 const validationRules = {
   'signin-name': {
-    required: 'The field cannot be empty',
+    required: MESSAGES.REQUIRED,
   },
   'signin-surname': {
-    required: 'The field cannot be empty',
+    required: MESSAGES.REQUIRED,
   },
   'signin-username': {
-    required: 'The field cannot be empty',
+    required: MESSAGES.REQUIRED,
     minLength: {
       value: 3,
-      message: 'Username must be at least 3 characters',
+      message: MESSAGES.MIN_LENGTH('Username', 3),
     },
   },
   'signin-mail': {
-    required: 'The field cannot be empty',
+    required: MESSAGES.REQUIRED,
     pattern: {
       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-      message: 'Enter a valid email address',
+      message: MESSAGES.INVALID_EMAIL,
     },
   },
   'signin-password': {
-    required: 'The field cannot be empty',
+    required: MESSAGES.REQUIRED,
     minLength: {
       value: 6,
-      message: 'Password must be at least 6 characters',
+      message: MESSAGES.MIN_LENGTH('Password', 6),
     },
   },
   'signin-privacy': {
-    required: 'Accept our privacy policy',
+    required: MESSAGES.ACCEPT_PRIVACY,
   },
 } as const;
 
@@ -161,7 +162,7 @@ const SignupForm: FC<SignupFormProps> = ({ handleTabSwitch }) => {
                 : 'bg-secondary cursor-pointer hover:bg-[#fd5932]'
             }`}
           >
-            <span className="leading-full text-base text-white md:text-[1.25rem]">
+            <span className="leading-full text-base text-white md:text-xl">
               Sign up
             </span>
           </button>
@@ -175,7 +176,7 @@ const SignupForm: FC<SignupFormProps> = ({ handleTabSwitch }) => {
             }`}
             onClick={() => handleTabSwitch('login')}
           >
-            <span className="leading-full text-base whitespace-nowrap text-white md:text-[1.25rem]">
+            <span className="leading-full text-base whitespace-nowrap text-white md:text-xl">
               Do you already have an account? Log in
             </span>
           </div>

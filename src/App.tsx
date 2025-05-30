@@ -4,7 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ReactLenis from 'lenis/react';
 
 import { ROUTES, whiteRoutes } from '@/common/const/routes';
-import { usePageTransition } from '@/hooks/usePageTransition';
+import { usePageTransition } from '@/hooks/others/usePageTransition';
 
 import Header from '@/components/organisms/header/Header';
 import LoginModal from '@/components/organisms/modal/LoginModal';

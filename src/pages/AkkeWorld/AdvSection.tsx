@@ -305,7 +305,7 @@ const AdvSection: FC = () => {
             ADV Campaign
           </h2>
           <h3
-            className="elAnimation text-base leading-[75%] text-[#A9AFA4] uppercase md:text-[1.25rem]"
+            className="elAnimation text-base leading-[75%] text-[#A9AFA4] uppercase md:text-xl"
             data-animation="ease-right-to-left"
           >
             Spring Summer 2025

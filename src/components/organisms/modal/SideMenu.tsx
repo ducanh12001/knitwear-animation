@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { Link } from 'react-router';
 import { useLenis } from 'lenis/react';
-import { useModal } from '@/hooks/useModal';
+import { useModal } from '@/hooks/others/useModal';
 
 const menuLinks = [
   {

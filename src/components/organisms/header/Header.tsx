@@ -2,9 +2,9 @@ import React, { useRef, useMemo } from 'react';
 import { Link, useLocation } from 'react-router';
 import { getPageTitle } from '@/common/functions';
 import { whiteRoutes } from '@/common/const/routes';
-import { useHeaderAnimation } from '@/hooks/useHeaderAnimation';
-import { useModal } from '@/hooks/useModal';
-import useCart from '@/hooks/useCart';
+import { useHeaderAnimation } from '@/hooks/others/useHeaderAnimation';
+import { useModal } from '@/hooks/others/useModal';
+import useCart from '@/hooks/others/useCart';
 import ScrollVelocity from '@/components/animations/ScrollVelocity';
 
 const Header: React.FC = () => {

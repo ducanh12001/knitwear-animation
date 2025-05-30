@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useForm } from 'react-hook-form';
-import useCart from '@/hooks/useCart';
+import useCart from '@/hooks/others/useCart';
 import { FormInput } from '@/components/atoms/inputs/FormInput';
 import { Button } from '@/components/atoms/buttons/Button';
 import { CloseButton } from '@/components/atoms/buttons/CloseButton';
@@ -75,7 +75,7 @@ const Cart: FC = () => {
                       className="product-title relative"
                       style={{ gridArea: isSP ? 'title' : 'initial' }}
                     >
-                      <h3 className="text-secondary text-[1.5rem] leading-[75%]">
+                      <h3 className="text-secondary text-2xl leading-[75%]">
                         {item.title}
                       </h3>
                     </div>
@@ -167,18 +167,18 @@ const Cart: FC = () => {
               <div className="cart--totals relative flex w-full flex-col items-start justify-start gap-8">
                 <div className="relative flex h-auto w-full flex-col items-start justify-start">
                   <div className="sub-total border-primary/50 relative flex w-full items-center justify-between border-b py-[1.25rem]">
-                    <span className="leading-full text-primary text-base md:text-[1.25rem]">
+                    <span className="leading-full text-primary text-base md:text-xl">
                       Subtotal
                     </span>
-                    <span className="leading-full text-primary text-base md:text-[1.25rem]">
+                    <span className="leading-full text-primary text-base md:text-xl">
                       € {cartTotal}
                     </span>
                   </div>
                   <div className="last-total relative flex w-full items-center justify-between py-[1.25rem]">
-                    <span className="leading-full text-primary text-base md:text-[1.25rem]">
+                    <span className="leading-full text-primary text-base md:text-xl">
                       Total
                     </span>
-                    <span className="leading-full text-primary text-base md:text-[1.25rem]">
+                    <span className="leading-full text-primary text-base md:text-xl">
                       € {cartTotal}
                     </span>
                   </div>

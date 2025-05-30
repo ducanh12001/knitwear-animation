@@ -1,4 +1,4 @@
-import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
+import { useGSAPAnimation } from '@/hooks/others/useGSAPAnimation';
 import Limited from '@/pages/HomePage/Limited';
 import ProductList from '@/pages/HomePage/ProductList';
 import Roadmap from '@/pages/HomePage/Roadmap';

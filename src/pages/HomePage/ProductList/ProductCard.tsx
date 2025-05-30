@@ -81,7 +81,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
                     </span>
                   </>
                 ) : (
-                  <span className="leading-full text-primary text-[1.25rem]">
+                  <span className="leading-full text-primary text-xl">
                     € {product.price?.regular}
                   </span>
                 )}

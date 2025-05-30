@@ -4,8 +4,8 @@ import { Navigation, Pagination } from 'swiper/modules';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useMediaQuery } from 'react-responsive';
-import useCart from '@/hooks/useCart';
-import { useModal } from '@/hooks/useModal';
+import useCart from '@/hooks/others/useCart';
+import { useModal } from '@/hooks/others/useModal';
 import { colSlideImages } from '@/common/const/slides';
 import type { Product } from '@/types';
 import ProductDetails from '@/components/pages/product-detail/ProductDetails';
@@ -330,7 +330,7 @@ const ProductSection: FC<ProductSectionProps> = ({
                         }}
                       >
                         <div
-                          className={`leading-full relative flex h-[2.5rem] w-[2.5rem] items-center justify-center rounded-full text-[0.75rem] transition-colors duration-350 ease-in-out xl:h-[3.25rem] xl:w-[3.25rem] xl:text-base ${selectedSize === index ? `text-white` : 'text-primary'}`}
+                          className={`leading-full relative flex h-[2.5rem] w-[2.5rem] items-center justify-center rounded-full text-xs transition-colors duration-350 ease-in-out xl:h-[3.25rem] xl:w-[3.25rem] xl:text-base ${selectedSize === index ? `text-white` : 'text-primary'}`}
                           style={{
                             backgroundColor:
                               selectedSize === index

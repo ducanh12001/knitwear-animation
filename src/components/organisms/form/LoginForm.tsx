@@ -3,7 +3,8 @@ import { useForm, type Path, type RegisterOptions } from 'react-hook-form';
 import type { TabType } from '@/types';
 import { CheckboxInput } from '@/components/atoms/inputs/CheckboxInput';
 import { FormInput } from '@/components/atoms/inputs/FormInput';
-import { useModalAwareNavigation } from '@/hooks/useModalAwareNavigation';
+import { useModalAwareNavigation } from '@/hooks/others/useModalAwareNavigation';
+import { MESSAGES } from '@/common/const/validation';
 
 interface LoginFormData {
   'login-user': string;
@@ -20,17 +21,17 @@ const validationRules: Record<
   RegisterOptions<LoginFormData, Path<LoginFormData>>
 > = {
   'login-user': {
-    required: 'The field cannot be empty',
+    required: MESSAGES.REQUIRED,
     pattern: {
       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-      message: 'The email is invalid',
+      message: MESSAGES.INVALID_EMAIL,
     },
   },
   'login-password': {
-    required: 'The field cannot be empty',
+    required: MESSAGES.REQUIRED,
     minLength: {
       value: 6,
-      message: 'Password must be at least 6 characters',
+      message: MESSAGES.MIN_LENGTH('Password', 6),
     },
   },
   'login-remember': {},
@@ -107,7 +108,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleTabSwitch }) => {
                 : 'bg-secondary cursor-pointer hover:bg-[#fd5932]'
             }`}
           >
-            <span className="leading-full text-base text-white md:text-[1.25rem]">
+            <span className="leading-full text-base text-white md:text-xl">
               Login
             </span>
           </button>
@@ -128,7 +129,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleTabSwitch }) => {
             }`}
             onClick={() => handleTabSwitch('signup')}
           >
-            <span className="leading-full text-base whitespace-nowrap text-white md:text-[1.25rem]">
+            <span className="leading-full text-base whitespace-nowrap text-white md:text-xl">
               Do not have an account? Sign up
             </span>
           </div>
