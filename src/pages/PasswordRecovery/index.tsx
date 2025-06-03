@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { FormInput } from '@/components/atoms/inputs/FormInput';
+import { VALIDATION } from '@/constant/validation';
 
 interface PasswordRecoveryForm {
   'recovery-user': string;
@@ -36,9 +37,7 @@ const PasswordRecovery = () => {
             name="recovery-user"
             placeholder="Username/Email address"
             register={register}
-            validation={{
-              required: 'The field cannot be empty',
-            }}
+            validation={VALIDATION.REQUIRED}
             errors={errors}
           />
 

@@ -17,7 +17,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
       className="product-card home-rel-product relative h-auto w-full"
       data-id={product.id}
     >
-      <div className="product-wrapper relative h-full w-full">
+      <div className="relative h-full w-full">
         <Link
           to={`/product-category/${product.id}`}
           className="group relative flex h-full w-full flex-col gap-8"
@@ -29,7 +29,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
               alt={product.title}
               className="block h-full w-full"
             />
-            <div className="image-variant absolute top-0 left-0 h-auto w-full">
+            <div className="absolute top-0 left-0 h-auto w-full">
               {product.colors.map((color, index) => (
                 <div
                   key={index}
@@ -48,12 +48,12 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
             </div>
           </div>
           <div className="product-info relative flex h-full w-full grow flex-col items-start justify-between gap-4">
-            <div className="product-texts relative flex h-auto w-full flex-col items-center justify-start text-center">
-              <div className="product-title relative">
+            <div className="relative flex h-auto w-full flex-col items-center justify-start text-center">
+              <div className="relative">
                 <h3 className="font-humane group-hover:visibility-hidden visibility-visible text-[3rem] font-normal text-[#302F35] uppercase opacity-100 transition-opacity duration-500 ease-in-out group-hover:opacity-0 md:text-[4vw]">
                   {product.title}
                 </h3>
-                <div className="product-colors absolute top-1/2 left-1/2 flex w-auto -translate-1/2 items-center justify-center gap-4 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+                <div className="absolute top-1/2 left-1/2 flex w-auto -translate-1/2 items-center justify-center gap-4 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                   {product.colors.map((color, index) => (
                     <div
                       key={index}
@@ -65,7 +65,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
                   ))}
                 </div>
               </div>
-              <div className="product-description text-primary relative w-[80%] text-base">
+              <div className="text-primary relative w-[80%] text-base">
                 <p>{product.description}</p>
               </div>
             </div>
@@ -81,7 +81,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
                     </span>
                   </>
                 ) : (
-                  <span className="leading-full text-primary text-[1.25rem]">
+                  <span className="leading-full text-primary text-xl">
                     € {product.price?.regular}
                   </span>
                 )}

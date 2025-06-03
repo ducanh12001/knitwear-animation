@@ -7,6 +7,7 @@ export default function PageTransition({ title }: PageTransitionProps) {
     <div
       id="pageTransition"
       className="invisible fixed top-0 left-0 z-200 h-full w-full opacity-0"
+      aria-hidden="true"
     >
       <div
         className="color-1 relative h-full w-full bg-[#302F35]"

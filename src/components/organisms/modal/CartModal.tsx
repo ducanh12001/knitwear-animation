@@ -1,10 +1,10 @@
 import { useRef, type FC } from 'react';
-import { useModal } from '@/hooks/useModal';
-import useCart from '@/hooks/useCart';
+import { useModal } from '@/hooks/others/useModal';
+import useCart from '@/hooks/others/useCart';
 import SideModal from '@/components/organisms/modal/SideModal';
 import { Button } from '@/components/atoms/buttons/Button';
 import { CloseButton } from '@/components/atoms/buttons/CloseButton';
-import { useModalAwareNavigation } from '@/hooks/useModalAwareNavigation';
+import { useModalAwareNavigation } from '@/hooks/others/useModalAwareNavigation';
 
 const CartModal: FC = () => {
   const { navigate } = useModalAwareNavigation();
@@ -29,7 +29,7 @@ const CartModal: FC = () => {
             <span className="font-humane relative w-auto text-[3em] leading-[75%] text-[#302F35] md:text-[6vw]">
               Items added to cart
             </span>
-            <span className="leading-full text-primary relative w-auto text-[20px] md:text-[1.5rem] md:leading-[75%]">
+            <span className="leading-full text-primary relative w-auto text-[20px] md:text-2xl md:leading-[75%]">
               ({cartItems.length})
             </span>
           </div>
@@ -67,7 +67,7 @@ const CartModal: FC = () => {
                       </div>
                       <div className="item-info relative flex w-auto flex-col items-start justify-between gap-[1.25rem]">
                         <div className="top relative flex h-auto w-full flex-col gap-[0.75rem]">
-                          <h3 className="mb-[1.25rem] text-[1.5rem] leading-[75%] text-[#302F35]">
+                          <h3 className="mb-[1.25rem] text-2xl leading-[75%] text-[#302F35]">
                             {item.title}
                           </h3>
                           <div className="row relative flex h-auto w-full items-center justify-between">
@@ -156,7 +156,7 @@ const CartModal: FC = () => {
           </Button>
 
           <span
-            className="leading-full text-primary relative mt-2 w-auto cursor-pointer text-base underline md:mt-8 md:text-[1.25rem]"
+            className="leading-full text-primary relative mt-2 w-auto cursor-pointer text-base underline md:mt-8 md:text-xl"
             onClick={onClose}
           >
             Continue shopping

@@ -7,14 +7,16 @@ import {
 } from 'react';
 import gsap from 'gsap';
 import { useLenis } from 'lenis/react';
+import { useGSAP } from '@gsap/react';
 
 interface SideModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
-  closeRef: RefObject<HTMLDivElement | null>;
+  closeRef?: RefObject<HTMLDivElement | null>;
   className?: string;
   animate?: boolean;
+  width?: string;
 }
 
 const SideModal: FC<SideModalProps> = ({
@@ -24,89 +26,117 @@ const SideModal: FC<SideModalProps> = ({
   closeRef,
   className = '',
   animate = true,
+  width = '95vw',
 }) => {
   const lenis = useLenis();
-
   const modalRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  const { contextSafe } = useGSAP();
+
+  const openModal = contextSafe(() => {
     if (!animate) return;
-    const animations: gsap.core.Tween[] = [];
 
-    if (isOpen) {
-      lenis?.stop();
+    lenis?.stop();
 
-      animations.push(
-        gsap.set(modalRef.current, { autoAlpha: 1 }),
-        gsap.to(bgRef.current, {
-          autoAlpha: 1,
-          duration: 0.4,
-          ease: 'power2.out',
-        }),
-        gsap.to(panelRef.current, {
+    const tl = gsap.timeline();
+
+    tl.set(modalRef.current, { autoAlpha: 1 })
+      .to(bgRef.current, {
+        autoAlpha: 1,
+        duration: 0.4,
+        ease: 'power2.out',
+      })
+      .to(
+        panelRef.current,
+        {
           x: 0,
           scaleX: 1,
           duration: 0.3,
-          delay: 0.4,
           ease: 'power2.out',
-        }),
-        gsap.to(closeRef.current, {
+        },
+        0.4,
+      );
+    if (closeRef?.current) {
+      tl.to(
+        closeRef.current,
+        {
           autoAlpha: 1,
           duration: 0.3,
-          delay: 0.4,
           ease: 'power2.out',
-        }),
-      );
-    } else {
-      lenis?.start();
-
-      animations.push(
-        gsap.to(closeRef.current, {
-          autoAlpha: 0,
-          duration: 0.3,
-          ease: 'power2.out',
-        }),
-        gsap.to(panelRef.current, {
-          x: '100%',
-          scaleX: 0.95,
-          duration: 0.5,
-          ease: 'power2.out',
-        }),
-        gsap.to(bgRef.current, {
-          autoAlpha: 0,
-          duration: 0.4,
-          delay: 0.3,
-          ease: 'power2.out',
-          onComplete: () => {
-            gsap.set(modalRef.current, {
-              opacity: 0,
-              visibility: 'hidden',
-            });
-          },
-        }),
+        },
+        `<`,
       );
     }
+  });
 
-    return () => {
-      animations.forEach((anim) => anim.kill());
-    };
-  }, [isOpen, animate, lenis, closeRef]);
+  const closeModal = contextSafe(() => {
+    if (!animate) return;
+
+    lenis?.start();
+
+    const tl = gsap.timeline();
+
+    if (closeRef?.current) {
+      tl.to(closeRef.current, {
+        autoAlpha: 0,
+        duration: 0.3,
+        ease: 'power2.out',
+      });
+    }
+
+    tl.to(
+      panelRef.current,
+      {
+        x: '100%',
+        scaleX: 0.95,
+        duration: 0.5,
+        ease: 'power2.out',
+      },
+      '<',
+    ).to(
+      bgRef.current,
+      {
+        autoAlpha: 0,
+        duration: 0.4,
+        ease: 'power2.out',
+        onComplete: () => {
+          gsap.set(modalRef.current, { autoAlpha: 0 });
+        },
+      },
+      0.3,
+    );
+  });
+
+  useEffect(() => {
+    if (isOpen) {
+      openModal();
+    } else {
+      closeModal();
+    }
+  }, [isOpen, openModal, closeModal]);
 
   return (
     <div
       ref={modalRef}
       className={`invisible fixed top-0 left-0 z-155 h-full w-full overflow-hidden opacity-0 ${className}`}
+      role="dialog"
+      aria-modal="true"
+      aria-hidden={!isOpen}
     >
       <div
         ref={bgRef}
         className="bg-primary/85 absolute top-0 left-0 h-full w-full opacity-0"
         onClick={onClose}
+        aria-label="Close modal"
       />
       <div
         ref={panelRef}
-        className="absolute top-0 right-0 z-20 h-full w-[95vw] origin-top-right translate-x-[100%] scale-x-95 overflow-hidden bg-[#e1e1e1] md:w-[35vw]"
+        className="absolute top-0 right-0 z-20 h-full origin-top-right translate-x-[100%] scale-x-95 overflow-hidden bg-[#e1e1e1] md:!w-[35vw]"
+        style={{
+          width,
+        }}
       >
         {children}
       </div>

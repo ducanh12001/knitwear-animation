@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState, type FC } from 'react';
 import { Link } from 'react-router';
 import { useForm } from 'react-hook-form';
+import { VALIDATION } from '@/constant/validation';
 import type { FooterSection } from '@/types';
 
 interface NewsletterFormData {
@@ -34,7 +35,7 @@ const footerLinks: FooterSection[] = [
   },
 ];
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
   const [success, setSuccess] = useState<boolean>(false);
 
   const {
@@ -87,11 +88,8 @@ const Footer: React.FC = () => {
                 placeholder="EMAIL"
                 className="relative box-border h-full w-full rounded-3xl border-0 bg-transparent px-8 py-4 text-xl text-white outline-none placeholder:text-white/70"
                 {...register('email', {
-                  required: 'The field cannot be empty',
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: 'Please enter a valid address',
-                  },
+                  ...VALIDATION.REQUIRED,
+                  ...VALIDATION.EMAIL,
                 })}
               />
               <button

@@ -171,7 +171,7 @@ export const CountrySelect = <TFormData extends FieldValues = FieldValues>({
 
       {errors[name] && (
         <div className="absolute bottom-[-1rem] left-0">
-          <span className="leading-full text-secondary absolute bottom-0 left-0 text-[0.75rem] whitespace-nowrap opacity-100 transition-all duration-300 ease-in-out">
+          <span className="leading-full text-secondary absolute bottom-0 left-0 text-xs whitespace-nowrap opacity-100 transition-all duration-300 ease-in-out">
             {errors[name].message as string}
           </span>
         </div>

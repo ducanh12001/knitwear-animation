@@ -10,6 +10,27 @@ import Banner2Sp from '@/assets/images/banner/banner-2-sp.jpg';
 import Banner3 from '@/assets/images/banner/banner-3.jpg';
 import Banner3Sp from '@/assets/images/banner/banner-3-sp.jpg';
 
+const slides: SlideData[] = [
+  {
+    href: '/product-category/menswear-collection',
+    title: 'New Collection',
+    desktopImg: Banner1,
+    mobileImg: Banner1Sp,
+  },
+  {
+    href: '/product-category/womenswear-collection',
+    title: 'Promo Launch 50% off',
+    desktopImg: Banner2,
+    mobileImg: Banner2Sp,
+  },
+  {
+    href: '/everest-akke-limited',
+    title: 'Everest Akke Limited',
+    desktopImg: Banner3,
+    mobileImg: Banner3Sp,
+  },
+];
+
 export interface SlideData {
   href: string;
   title: string;
@@ -27,27 +48,6 @@ export function SliderSection() {
       secondSwiper.controller.control = firstSwiper;
     }
   }, [firstSwiper, secondSwiper]);
-
-  const slides: SlideData[] = [
-    {
-      href: '/product-category/menswear-collection',
-      title: 'New Collection',
-      desktopImg: Banner1,
-      mobileImg: Banner1Sp,
-    },
-    {
-      href: '/product-category/womenswear-collection',
-      title: 'Promo Launch 50% off',
-      desktopImg: Banner2,
-      mobileImg: Banner2Sp,
-    },
-    {
-      href: '/everest-akke-limited',
-      title: 'Everest Akke Limited',
-      desktopImg: Banner3,
-      mobileImg: Banner3Sp,
-    },
-  ];
 
   return (
     <section className="homepage--slider relative h-screen w-full">

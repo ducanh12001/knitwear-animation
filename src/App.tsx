@@ -1,10 +1,10 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useCallback, useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router';
 import { ErrorBoundary } from 'react-error-boundary';
 import ReactLenis from 'lenis/react';
 
-import { ROUTES, whiteRoutes } from '@/common/const/routes';
-import { usePageTransition } from '@/hooks/usePageTransition';
+import { ROUTES, whiteRoutes } from '@/constant/routes';
+import { usePageTransition } from '@/hooks/others/usePageTransition';
 
 import Header from '@/components/organisms/header/Header';
 import LoginModal from '@/components/organisms/modal/LoginModal';
@@ -20,6 +20,18 @@ import CookieConsent from '@/components/others/CookieConsent';
 
 import './App.css';
 import '@/styles/index.css';
+import type { LenisOptions } from 'lenis';
+
+const LENIS_OPTIONS: LenisOptions = {
+  duration: 1.2,
+  easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  touchMultiplier: 1,
+  syncTouch: true,
+  wheelMultiplier: 1,
+  lerp: 0.1,
+  smoothWheel: true,
+  syncTouchLerp: 0.1,
+};
 
 function App() {
   const {
@@ -27,36 +39,31 @@ function App() {
     displayLocation,
     isTransitioning,
     startAnimation,
+    cleanup,
     pageTitle,
   } = usePageTransition();
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const updateDarkMode = useCallback((pathname: string) => {
+    const isWhiteRoute = whiteRoutes.some((route) => pathname === route);
+    setIsDarkMode(!isWhiteRoute);
+  }, []);
 
   useEffect(() => {
     if (location.pathname !== displayLocation.pathname) {
       startAnimation();
     }
+    updateDarkMode(location.pathname);
+  }, [location, displayLocation, startAnimation, updateDarkMode]);
 
-    if (whiteRoutes.some((route) => location.pathname === route)) {
-      setIsDarkMode(false);
-    } else {
-      setIsDarkMode(true);
-    }
-  }, [location, displayLocation]);
+  useEffect(() => {
+    return () => {
+      cleanup();
+    };
+  }, [cleanup]);
 
   return (
-    <ReactLenis
-      root
-      options={{
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        touchMultiplier: 1,
-        syncTouch: true,
-        wheelMultiplier: 1,
-        lerp: 0.1,
-        smoothWheel: true,
-        syncTouchLerp: 0.1,
-      }}
-    >
+    <ReactLenis root options={LENIS_OPTIONS}>
       <div className="overflow-hidden">
         <CookieConsent />
         <LoginModal />
@@ -65,7 +72,7 @@ function App() {
 
         <PageTransition title={pageTitle} />
 
-        {isTransitioning ? null : (
+        {!isTransitioning && (
           <div
             className={`relative h-auto w-full ${isDarkMode ? 'dark-mode' : ''}`}
           >

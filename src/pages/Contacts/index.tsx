@@ -1,13 +1,9 @@
 import type { FC } from 'react';
 import { useState } from 'react';
-import {
-  useForm,
-  type FieldValues,
-  type Path,
-  type RegisterOptions,
-} from 'react-hook-form';
+import { useForm, type Path, type RegisterOptions } from 'react-hook-form';
 import { Link } from 'react-router';
-import type { FormInputProps } from '@/types';
+import { FormInput } from '@/components/atoms/inputs/FormInput';
+import { MESSAGES } from '@/constant/validation';
 
 interface ContactFormData {
   'contact-firstname': string;
@@ -18,55 +14,27 @@ interface ContactFormData {
   'contact-privacy': boolean;
 }
 
-const FormInput = <TFormData extends FieldValues = FieldValues>({
-  type = 'text',
-  name,
-  placeholder,
-  register,
-  validation,
-  errors,
-  className = '',
-}: FormInputProps<TFormData>) => {
-  return (
-    <div className={`relative flex h-auto w-full flex-col ${className}`}>
-      <input
-        type={type}
-        placeholder={placeholder}
-        className="leading-full relative z-2 box-border h-[48px] w-full resize-none rounded-[14px] border border-[#e1e1e1] bg-transparent px-[1rem] text-[1.25rem] text-[#e1e1e1] outline-none xl:h-[4rem] xl:rounded-[25px] xl:px-[3rem]"
-        {...register(name, validation)}
-      />
-      <div className="absolute right-[3rem] bottom-4 z-2">
-        {errors[name] && (
-          <span className="leading-full text-secondary absolute right-0 bottom-0 text-[0.75rem] whitespace-nowrap opacity-100 transition-all duration-300 ease-in-out">
-            {errors[name]?.message as string}
-          </span>
-        )}
-      </div>
-    </div>
-  );
-};
-
 const validationRules: Record<
   keyof ContactFormData,
   RegisterOptions<ContactFormData, Path<ContactFormData>>
 > = {
   'contact-firstname': {
-    required: 'The field cannot be empty',
+    required: MESSAGES.REQUIRED,
   },
   'contact-lastname': {
-    required: 'The field cannot be empty',
+    required: MESSAGES.REQUIRED,
   },
   'contact-mail': {
-    required: 'The field cannot be empty',
+    required: MESSAGES.REQUIRED,
     pattern: {
       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-      message: 'Enter a valid email address',
+      message: MESSAGES.INVALID_EMAIL,
     },
   },
   'contact-order': {},
   'contact-message': {},
   'contact-privacy': {
-    required: 'Accept our privacy policy',
+    required: MESSAGES.ACCEPT_PRIVACY,
   },
 };
 
@@ -107,15 +75,15 @@ const Contacts: FC = () => {
               </h1>
               <div className="wp-block-group relative mb-8 box-border flex w-full">
                 <div className="wp-block-group__inner-container relative flex h-auto w-full flex-col gap-2">
-                  <p className="leading-full text-[1.25rem] text-white">
+                  <p className="leading-full text-xl text-white">
                     Our Customer Service is active from Monday to Thursday{' '}
                   </p>
-                  <p className="leading-full text-[1.25rem] text-white">
+                  <p className="leading-full text-xl text-white">
                     9:00 – 13:00 / 14:00 – 18:00 (Italian time)
                   </p>
                 </div>
               </div>
-              <p className="leading-full text-[1.25rem] text-white">
+              <p className="leading-full text-xl text-white">
                 Contact us via the form
               </p>
             </div>
@@ -133,6 +101,7 @@ const Contacts: FC = () => {
               register={register}
               validation={validationRules['contact-firstname']}
               errors={errors}
+              inputClassName="border border-[#e1e1e1] bg-transparent text-xl text-[#e1e1e1] xl:h-[4rem] xl:rounded-[25px] xl:px-[3rem]"
             />
 
             <FormInput<ContactFormData>
@@ -141,6 +110,7 @@ const Contacts: FC = () => {
               register={register}
               validation={validationRules['contact-lastname']}
               errors={errors}
+              inputClassName="border border-[#e1e1e1] bg-transparent text-xl text-[#e1e1e1] xl:h-[4rem] xl:rounded-[25px] xl:px-[3rem]"
             />
 
             <FormInput<ContactFormData>
@@ -150,6 +120,7 @@ const Contacts: FC = () => {
               register={register}
               validation={validationRules['contact-mail']}
               errors={errors}
+              inputClassName="border border-[#e1e1e1] bg-transparent text-xl text-[#e1e1e1] xl:h-[4rem] xl:rounded-[25px] xl:px-[3rem]"
             />
 
             <FormInput<ContactFormData>
@@ -158,12 +129,13 @@ const Contacts: FC = () => {
               register={register}
               validation={validationRules['contact-order']}
               errors={errors}
+              inputClassName="border border-[#e1e1e1] bg-transparent text-xl text-[#e1e1e1] xl:h-[4rem] xl:rounded-[25px] xl:px-[3rem]"
             />
 
             <div className="form-item relative flex h-auto w-full flex-col md:max-xl:col-span-2">
               <textarea
                 placeholder="Message"
-                className="leading-full relative z-2 box-border h-[120px] w-full resize-none rounded-[14px] border border-[#e1e1e1] bg-transparent px-[1rem] py-[1rem] text-[1.25rem] text-[#e1e1e1] outline-none lg:h-[200px] xl:h-[300px] xl:rounded-[25px] xl:px-[3rem]"
+                className="leading-full relative z-2 box-border h-[120px] w-full resize-none rounded-[14px] border border-[#e1e1e1] bg-transparent px-[1rem] py-[1rem] text-xl text-[#e1e1e1] outline-none lg:h-[200px] xl:h-[300px] xl:rounded-[25px] xl:px-[3rem]"
                 {...register('contact-message')}
               />
             </div>
@@ -197,7 +169,7 @@ const Contacts: FC = () => {
                 </span>
                 <div className="errors absolute -bottom-4 left-[3rem]">
                   {errors['contact-privacy'] && (
-                    <span className="error leading-full text-secondary absolute bottom-0 left-0 text-[0.75rem] whitespace-nowrap opacity-100 transition-opacity duration-300 ease-in-out">
+                    <span className="error leading-full text-secondary absolute bottom-0 left-0 text-xs whitespace-nowrap opacity-100 transition-opacity duration-300 ease-in-out">
                       {errors['contact-privacy'].message}
                     </span>
                   )}
@@ -220,7 +192,7 @@ const Contacts: FC = () => {
                     : 'bg-secondary cursor-pointer hover:bg-[#fd5932]'
                 }`}
               >
-                <span className="leading-full text-base text-[#e1e1e1] uppercase xl:text-[1.25rem]">
+                <span className="leading-full text-base text-[#e1e1e1] uppercase xl:text-xl">
                   {isSubmitting ? 'Sending...' : 'Send'}
                 </span>
               </button>

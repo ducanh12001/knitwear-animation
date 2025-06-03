@@ -48,7 +48,7 @@ function Roadmap() {
 
   return (
     <section className="relative flex h-auto w-full flex-col items-start justify-start gap-[15vh] bg-[#A9AFA4] py-[15vh]">
-      <div className="top relative grid h-auto w-full grid-cols-2">
+      <div className="relative grid h-auto w-full grid-cols-2">
         <div className="image relative flex h-auto w-full items-start justify-end">
           <div
             className="elAnimation inner-image overflow-hidden"
@@ -64,7 +64,7 @@ function Roadmap() {
           </div>
         </div>
         <div className="text relative h-auto w-full pt-[5vh]">
-          <div className="inner-text relative flex h-auto w-full translate-x-0 flex-col items-end justify-start md:translate-x-[-5vw]">
+          <div className="relative flex h-auto w-full translate-x-0 flex-col items-end justify-start md:translate-x-[-5vw]">
             <div className="relative w-full">
               <h2
                 className="elAnimation text-[20px] leading-[120%] tracking-normal text-white md:text-[3vw] md:tracking-[-2px]"
@@ -75,7 +75,7 @@ function Roadmap() {
               </h2>
             </div>
             <div
-              className="elAnimation discover-button relative mt-[5rem] hidden h-auto w-auto md:block"
+              className="elAnimation relative mt-[5rem] hidden h-auto w-auto md:block"
               data-animation="ease-scale"
             >
               <Link
@@ -83,7 +83,7 @@ function Roadmap() {
                 className="relative block h-full w-full cursor-pointer"
                 to="/akkeworld"
               >
-                <div className="back-track absolute top-0 left-0 h-full w-full">
+                <div className="absolute top-0 left-0 h-full w-full">
                   <svg
                     viewBox="0 0 434.86865234375 104.68115234375"
                     className="relative block h-full w-full overflow-visible"
@@ -128,20 +128,17 @@ function Roadmap() {
           </div>
         </div>
       </div>
-      <div className="button-element relative mx-auto my-0 block h-auto w-auto md:hidden">
-        <Link
-          className="button-container relative block h-full w-full"
-          to="/akkeworld"
-        >
-          <div className="back-track absolute top-0 left-0 h-full w-full" />
+      <div className="relative mx-auto my-0 block h-auto w-auto md:hidden">
+        <Link className="relative block h-full w-full" to="/akkeworld">
+          <div className="absolute top-0 left-0 h-full w-full" />
           <span className="leading-full relative box-border block px-[3.75vw] py-[2.3vw] text-[1.75rem] text-white uppercase">
             Discover Akke World
           </span>
         </Link>
       </div>
-      <div className="bottom relative z-20 mt-[2.5rem] grid h-auto w-full grid-cols-2 md:mt-0">
-        <div className="column relative h-auto w-full">
-          <div className="cat relative flex h-auto w-full items-start justify-center">
+      <div className="relative z-20 mt-[2.5rem] grid h-auto w-full grid-cols-2 md:mt-0">
+        <div className="relative h-auto w-full">
+          <div className="relative flex h-auto w-full items-start justify-center">
             <Link
               to="/product-category/menswear-collection"
               className="relative block h-full w-[45vw] md:w-[33vw]"
@@ -160,7 +157,7 @@ function Roadmap() {
                   </div>
                 </div>
               </div>
-              <div className="column-text absolute top-1/2 left-0 z-15 flex h-auto w-full -translate-y-1/2 flex-col items-center justify-center">
+              <div className="absolute top-1/2 left-0 z-15 flex h-auto w-full -translate-y-1/2 flex-col items-center justify-center">
                 <h2
                   className="elAnimation font-humane leading-full text-[12vw] font-extralight text-white uppercase"
                   data-animation="ease-bottom-to-top"
@@ -171,8 +168,8 @@ function Roadmap() {
             </Link>
           </div>
         </div>
-        <div className="column relative h-auto w-full">
-          <div className="cat relative mt-[15vh] flex h-auto w-full items-start justify-center">
+        <div className="relative h-auto w-full">
+          <div className="relative mt-[15vh] flex h-auto w-full items-start justify-center">
             <Link
               to="/product-category/womenswear-collection"
               className="relative block h-full w-[45vw] md:w-[33vw]"
@@ -191,7 +188,7 @@ function Roadmap() {
                   </div>
                 </div>
               </div>
-              <div className="column-text absolute top-1/2 left-0 z-15 flex h-auto w-full -translate-y-1/2 flex-col items-center justify-center">
+              <div className="absolute top-1/2 left-0 z-15 flex h-auto w-full -translate-y-1/2 flex-col items-center justify-center">
                 <h2
                   className="elAnimation font-humane leading-full text-[12vw] font-extralight text-white uppercase"
                   data-animation="ease-bottom-to-top"

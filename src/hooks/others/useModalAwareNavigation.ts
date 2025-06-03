@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useNavigate, type NavigateOptions, type To } from 'react-router';
-import { useModal } from '@/hooks/useModal';
+import { useModal } from '@/hooks/others/useModal';
 
 export const useModalAwareNavigation = () => {
   const navigate = useNavigate();

@@ -1,112 +1,104 @@
-import { useEffect } from 'react';
-import { gsap } from 'gsap';
-import { Link } from 'react-router';
-import { useLenis } from 'lenis/react';
-import { useModal } from '@/hooks/useModal';
+import { useCallback, useMemo, type FC } from 'react';
+import { useModal } from '@/hooks/others/useModal';
+import { useModalAwareNavigation } from '@/hooks/others/useModalAwareNavigation';
+import SideModal from '@/components/organisms/modal/SideModal';
+import type { LanguageOption, MenuLink } from '@/types';
 
-const menuLinks = [
+const MENU_LINKS: MenuLink[] = [
   {
+    id: 'menswear',
     label: 'Menswear',
     path: '/product-category/menswear-collection',
   },
   {
+    id: 'womenswear',
     label: 'Womenswear',
     path: '/product-category/womenswear-collection',
   },
   {
+    id: 'everest-limited',
     label: 'Everest Akke Limited',
     path: '/everest-akke-limited',
   },
   {
+    id: 'akkeworld',
     label: 'Akkeworld',
     path: '/akkeworld',
   },
   {
+    id: 'contacts',
     label: 'Contacts',
     path: '/contacts',
   },
 ];
 
-const SideMenu: React.FC = () => {
-  const lenis = useLenis();
-  const { modalState } = useModal();
+const LANGUAGE_OPTIONS: LanguageOption[] = [
+  { code: 'it', label: 'Italiano' },
+  { code: 'en', label: 'English', active: true },
+];
 
-  useEffect(() => {
-    if (modalState.menuOpen) {
-      lenis?.stop();
-      gsap.set('#menu-mobile', {
-        autoAlpha: 1,
-      });
-      gsap.to('.menu-mobile-bg', {
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power2.out',
-      });
-      gsap.to('.menu-mobile-panel', {
-        x: 0,
-        scaleX: 1,
-        duration: 0.6,
-        ease: 'power2.out',
-      });
-    } else {
-      lenis?.start();
-      gsap.to('.menu-mobile-bg', {
-        opacity: 0,
-        duration: 0.25,
-        ease: 'power2.out',
-      });
-      gsap.to('.menu-mobile-panel', {
-        x: '100%',
-        scaleX: 0.95,
-        duration: 0.25,
-        ease: 'power2.out',
-      });
-      gsap.set('#menu-mobile', {
-        autoAlpha: 0,
-        delay: 0.3,
-      });
-    }
-  }, [modalState.menuOpen, lenis]);
+const SideMenu: FC = () => {
+  const { modalState, toggleMenu } = useModal();
+  const { navigate } = useModalAwareNavigation();
+
+  const memoizedMenuLinks = useMemo(() => MENU_LINKS, []);
+  const memoizedLanguageOptions = useMemo(() => LANGUAGE_OPTIONS, []);
+
+  const handleClose = useCallback(() => {
+    toggleMenu(false);
+  }, [toggleMenu]);
 
   return (
-    <div
-      id="menu-mobile"
-      className="invisible fixed top-0 left-0 z-145 block h-full w-full overflow-hidden opacity-0 xl:hidden"
+    <SideModal
+      isOpen={modalState.menuOpen}
+      onClose={handleClose}
+      className="!z-145 xl:hidden"
+      width="97.5vw"
     >
-      <div className="menu-mobile-bg bg-primary/85 absolute top-0 left-0 h-full w-full opacity-0" />
-      <div className="menu-mobile-panel absolute top-0 right-0 z-20 h-full w-[97.5vw] origin-top-right translate-x-full scale-x-95 overflow-hidden bg-[#e1e1e1] pt-[100px] uppercase">
-        <ul id="menu-menu-mobile-inglese">
-          {menuLinks.map((link, index) => (
+      <nav
+        className="h-full w-full overflow-auto bg-[#e1e1e1] pt-[100px] uppercase"
+        role="navigation"
+        aria-label="Main navigation menu"
+        data-lenis-prevent
+        style={{ scrollbarWidth: 'none' }}
+      >
+        <ul>
+          {memoizedMenuLinks.map((link, index) => (
             <li key={index}>
-              <Link
-                to={link.path}
-                className="font-humane text-primary block border-t border-t-[#868686]/10 px-[5vw] py-1 text-[4.4rem]"
+              <div
+                className="font-humane text-primary hover:text-secondary block cursor-pointer border-t border-t-[#868686]/10 px-[5vw] py-1 text-[4.4rem]"
+                onClick={() => navigate(link.path)}
               >
                 {link.label}
-              </Link>
+              </div>
             </li>
           ))}
         </ul>
         <div>
-          <ul className="font-humane text-primary flex border-t border-b border-[#868686]/10 text-[3rem] uppercase">
-            <li>
-              <Link data-lang="it" to="/" className="px-[5vw] py-1">
-                Italiano
-              </Link>
-            </li>
-            <li>
-              <Link
-                data-lang="en"
-                to="/"
-                className="text-secondary px-[5vw] py-1"
-              >
-                English
-              </Link>
-            </li>
+          <ul
+            className="font-humane text-primary flex border-t border-b border-[#868686]/10 text-[3rem] uppercase"
+            role="list"
+            aria-label="Language selection"
+          >
+            {memoizedLanguageOptions.map((lang) => (
+              <li key={lang.code}>
+                <div
+                  data-lang={lang.code}
+                  className={`hover:text-secondary cursor-pointer px-[5vw] py-1 transition-colors duration-200 ${
+                    lang.active ? 'text-secondary' : ''
+                  }`}
+                  aria-label={`Switch to ${lang.label}`}
+                  aria-current={lang.active ? 'true' : 'false'}
+                  onClick={() => navigate('/')}
+                >
+                  {lang.label}
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
-      </div>
-    </div>
+      </nav>
+    </SideModal>
   );
 };
 
