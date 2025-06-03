@@ -1,11 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router';
-import { useForm } from 'react-hook-form';
-import { useElements, useStripe } from '@stripe/react-stripe-js';
-import type { SubmitHandler, FieldErrors } from 'react-hook-form';
-import type { StripeCardElementChangeEvent } from '@stripe/stripe-js';
+import { Link } from 'react-router';
 
-import useCart from '@/hooks/useCart';
 import { CheckboxInput } from '@/components/atoms/inputs/CheckboxInput';
 import BillingForm from '@/components/pages/checkout/BillingForm';
 import ShippingForm from '@/components/pages/checkout/ShippingForm';
@@ -13,190 +7,31 @@ import OrderSummary from '@/components/pages/checkout/OrderSummary';
 import PaymentMethods from '@/components/pages/checkout/PaymentMethods';
 import CheckoutErrorNotice from '@/pages/Payment/CheckoutErrorNotice';
 import { Button } from '@/components/atoms/buttons/Button';
-
-const DEFAULT_FORM_VALUES = {
-  billing_first_name: '',
-  billing_last_name: '',
-  billing_country: '',
-  billing_state: '',
-  billing_address_1: '',
-  billing_postcode: '',
-  billing_city: '',
-  billing_phone: '',
-  billing_email: '',
-  ship_to_different_address: false,
-  shipping_first_name: '',
-  shipping_last_name: '',
-  shipping_country: '',
-  shipping_state: '',
-  shipping_address_1: '',
-  shipping_postcode: '',
-  shipping_city: '',
-  order_comments: '',
-  payment_method: 'stripe_cc',
-};
-
-export interface PaymentForm {
-  billing_first_name: string;
-  billing_last_name: string;
-  billing_country: string;
-  billing_state: string;
-  billing_address_1: string;
-  billing_postcode: string;
-  billing_city: string;
-  billing_phone: string;
-  billing_email: string;
-  ship_to_different_address: boolean;
-  shipping_first_name: string;
-  shipping_last_name: string;
-  shipping_country: string;
-  shipping_state: string;
-  shipping_address_1: string;
-  shipping_postcode: string;
-  shipping_city: string;
-  order_comments: string;
-  payment_method: string;
-}
+import { usePayment } from '@/hooks/pages/usePayment';
 
 const Payment = () => {
-  const navigate = useNavigate();
-  const [isShipDifferent, setIsShipDifferent] = useState(false);
-  const [selectedPayment, setSelectedPayment] = useState('stripe_cc');
-  const { cartItems, cartTotal, removeFromCart } = useCart();
-
-  const stripe = useStripe();
-  const elements = useElements();
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [paymentError, setPaymentError] = useState<string | null>(null);
-  const [cardComplete, setCardComplete] = useState(false);
-  const [cardError, setCardError] = useState<string | null>(null);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
-    trigger,
-    setValue,
-  } = useForm<PaymentForm>({
-    defaultValues: { ...DEFAULT_FORM_VALUES },
-    mode: 'onBlur',
-    reValidateMode: 'onChange',
-  });
-
-  const scrollToField = (fieldId: string) => {
-    const element =
-      document.getElementById(fieldId) ||
-      document.querySelector(`[name="${fieldId}"]`) ||
-      document.querySelector(`[data-id="${fieldId}"]`);
-
-    if (element) {
-      window.scrollTo({
-        top: element.getBoundingClientRect().top + window.pageYOffset - 100,
-        behavior: 'smooth',
-      });
-
-      setTimeout(() => {
-        (element as HTMLElement).focus();
-      }, 500);
-    }
-  };
-
-  const allErrors = { ...errors } as FieldErrors<PaymentForm> & {
-    card_error?: { type: string; message: string };
-  };
-  if (selectedPayment === 'stripe_cc' && !cardComplete && cardError) {
-    allErrors.card_error = {
-      type: 'manual',
-      message: cardError,
-    };
-  }
-
-  const handleCardChange = (event: StripeCardElementChangeEvent) => {
-    setCardComplete(event.complete);
-    if (event.error) {
-      setCardError(event.error.message ?? '');
-    } else {
-      setCardError('');
-    }
-  };
-
-  const onSubmit: SubmitHandler<PaymentForm> = async (data) => {
-    console.log('Order data:', data);
-
-    if (selectedPayment === 'stripe_cc') {
-      if (!stripe || !elements) {
-        // Stripe chưa được tải xong
-        return;
-      }
-      if (!cardComplete) {
-        setCardError('Please enter valid card details.');
-        scrollToField('wc-stripe-card-element');
-        return;
-      }
-
-      setIsProcessing(true);
-      setPaymentError(null);
-
-      try {
-        // Tạo payment method với CardElement
-        const cardElement = elements.getElement('card');
-        if (!cardElement) {
-          setCardError('Card element not found.');
-          setIsProcessing(false);
-          return;
-        }
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
-          type: 'card',
-          card: cardElement,
-        });
-
-        if (error) {
-          console.error('[payment error]', error);
-          setPaymentError(error.message ?? '');
-          setIsProcessing(false);
-          return;
-        }
-
-        // Nếu thành công, bạn sẽ có paymentMethod.id
-        console.log('[PaymentMethod]', paymentMethod);
-
-        // Trong ứng dụng thực tế, bạn sẽ gửi paymentMethod.id đến server
-        // để tạo payment intent và xác nhận thanh toán
-
-        // Reset giỏ hàng và chuyển hướng đến trang xác nhận thanh toán
-        // clearCart();
-        // navigate('/order-confirmation');
-      } catch (err) {
-        console.error('Payment error:', err);
-        setPaymentError('An unexpected error occurred. Please try again.');
-      }
-
-      setIsProcessing(false);
-    } else if (selectedPayment === 'bacs') {
-      // Xử lý thanh toán chuyển khoản ngân hàng
-      // Thường thì sẽ chỉ gửi đơn hàng đến server và đợi xác nhận sau
-      // clearCart();
-      // navigate('/order-confirmation');
-    }
-  };
-
-  useEffect(() => {
-    if (!cartItems || cartItems.length === 0) {
-      const redirectTimer = setTimeout(() => {
-        navigate('/cart');
-      }, 100);
-
-      return () => clearTimeout(redirectTimer);
-    }
-  }, [cartItems, navigate]);
-
-  const handleFieldChange = async (
-    fieldName: keyof PaymentForm,
-    value: string,
-  ) => {
-    setValue(fieldName, value);
-    await trigger(fieldName);
-  };
+    onSubmit,
+    allErrors,
+    scrollToField,
+    handleFieldChange,
+    isShipDifferent,
+    setIsShipDifferent,
+    selectedPayment,
+    setSelectedPayment,
+    cartItems,
+    cartTotal,
+    removeFromCart,
+    handleCardChange,
+    isProcessing,
+    paymentError,
+    cardError,
+    stripe,
+    elements,
+  } = usePayment();
 
   if (!cartItems || cartItems.length === 0) {
     return (
@@ -236,7 +71,7 @@ const Payment = () => {
                   {/* Ship to different address checkbox */}
                   <div className="relative w-full">
                     <div className="woocommerce-shipping-fields">
-                      <h3 className="leading-full text-primary relative mb-[3rem] flex w-full items-start justify-start text-[1.25rem] font-medium">
+                      <h3 className="leading-full text-primary relative mb-[3rem] flex w-full items-start justify-start text-xl font-medium">
                         <CheckboxInput
                           name="ship_to_different_address"
                           register={register}
@@ -266,7 +101,7 @@ const Payment = () => {
                           <textarea
                             id="order_comments"
                             placeholder="Order notes"
-                            className="leading-full text-primary relative box-border h-[120px] w-full resize-none rounded-[14px] border-none bg-white p-4 text-base outline-none md:h-[15rem] md:rounded-[25px] md:px-[3rem] md:py-[2rem] md:text-[1.25rem]"
+                            className="leading-full text-primary relative box-border h-[120px] w-full resize-none rounded-[14px] border-none bg-white p-4 text-base outline-none md:h-[15rem] md:rounded-[25px] md:px-[3rem] md:py-[2rem] md:text-xl"
                             {...register('order_comments')}
                           />
                         </div>

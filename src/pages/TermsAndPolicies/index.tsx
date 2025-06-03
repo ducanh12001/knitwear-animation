@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { PRIVACY_POLICY, TERMS_OF_SALE } from '@/common/const/terms';
+import { PRIVACY_POLICY, TERMS_OF_SALE } from '@/constant/mock-datas/terms';
 
 interface TermsAndPoliciesProps {
   isTerm?: boolean;
@@ -19,7 +19,7 @@ interface Section {
 const TermsAndPolicies: FC<TermsAndPoliciesProps> = ({ isTerm = true }) => {
   return (
     <>
-      <section className="legal--section-intro relative box-border h-auto w-full px-[5vw] pt-[8rem] md:pt-[calc(10vh+10rem)]">
+      <section className="relative box-border h-auto w-full px-[5vw] pt-[8rem] md:pt-[calc(10vh+10rem)]">
         <div className="relative">
           <div className="relative z-11 flex h-auto w-full flex-col items-start justify-start">
             <h1 className="font-humane text-[80px] leading-[75%] text-[#302F35] md:text-[6vw]">
@@ -28,7 +28,7 @@ const TermsAndPolicies: FC<TermsAndPoliciesProps> = ({ isTerm = true }) => {
           </div>
         </div>
       </section>
-      <section className="legal--section-content relative box-border h-auto w-full px-[5vw] pt-[4rem] pb-[5rem] md:pt-[5rem]">
+      <section className="relative box-border h-auto w-full px-[5vw] pt-[4rem] pb-[5rem] md:pt-[5rem]">
         <div className="relative flex h-auto w-full flex-col gap-[3rem]">
           {(isTerm ? TERMS_OF_SALE : PRIVACY_POLICY).map(
             (section: Section, index: number) => (

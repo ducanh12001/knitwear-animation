@@ -1,13 +1,13 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, type FC } from 'react';
 import { Link, useLocation } from 'react-router';
-import { getPageTitle } from '@/common/functions';
-import { whiteRoutes } from '@/common/const/routes';
-import { useHeaderAnimation } from '@/hooks/useHeaderAnimation';
-import { useModal } from '@/hooks/useModal';
-import useCart from '@/hooks/useCart';
+import { getPageTitle } from '@/constant/functions';
+import { whiteRoutes } from '@/constant/routes';
+import { useHeaderAnimation } from '@/hooks/others/useHeaderAnimation';
+import { useModal } from '@/hooks/others/useModal';
+import useCart from '@/hooks/others/useCart';
 import ScrollVelocity from '@/components/animations/ScrollVelocity';
 
-const Header: React.FC = () => {
+const Header: FC = () => {
   const location = useLocation();
   const headerRef = useRef<HTMLElement>(null);
 
@@ -25,12 +25,6 @@ const Header: React.FC = () => {
 
   const handleToggle = () => {
     toggleMenu(!modalState.menuOpen);
-  };
-
-  const COLORS = {
-    primary: '#FD7453',
-    white: '#fff',
-    black: '#1d1d1d',
   };
 
   const textStyle: React.CSSProperties = {
@@ -113,7 +107,7 @@ const Header: React.FC = () => {
               className="leading-full relative hidden items-center justify-start gap-[1rem] text-[1.6rem] uppercase xl:flex"
             >
               <li>
-                <Link to="/akkeworld" style={{ color: COLORS.primary }}>
+                <Link to="/akkeworld" className="text-secondary">
                   Akkeworld
                 </Link>
               </li>
@@ -136,9 +130,7 @@ const Header: React.FC = () => {
                   <span className="js-header-color" style={textStyle}>
                     Cart
                   </span>
-                  <div style={{ color: COLORS.primary }}>
-                    ({cartItems.length})
-                  </div>
+                  <div className="text-secondary">({cartItems.length})</div>
                 </div>
               </li>
             </ul>

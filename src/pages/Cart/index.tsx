@@ -1,36 +1,27 @@
 import type { FC } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { useForm } from 'react-hook-form';
-import useCart from '@/hooks/useCart';
 import { FormInput } from '@/components/atoms/inputs/FormInput';
 import { Button } from '@/components/atoms/buttons/Button';
 import { CloseButton } from '@/components/atoms/buttons/CloseButton';
-
-interface CouponFormData {
-  'coupon-code': string;
-}
+import { useCartPage } from '@/hooks/pages/useCart';
+import type { CouponFormData } from '@/types';
+import { VALIDATION } from '@/constant/validation';
+import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
 
 const Cart: FC = () => {
   const isSP = useMediaQuery({
-    query: '(width < 768px)',
+    query: `(width < ${DESKTOP_BREAKPOINT}px)`,
   });
-
-  const { cartItems, cartTotal, removeFromCart } = useCart();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<CouponFormData>({
-    defaultValues: {
-      'coupon-code': '',
-    },
-  });
-
-  const onApplyCoupon = (data: CouponFormData) => {
-    console.log('Applying coupon:', data);
-    // Logic xử lý coupon code ở đây
-  };
+    cartItems,
+    cartTotal,
+    removeFromCart,
+    onApplyCoupon,
+  } = useCartPage();
 
   return (
     <>
@@ -75,7 +66,7 @@ const Cart: FC = () => {
                       className="product-title relative"
                       style={{ gridArea: isSP ? 'title' : 'initial' }}
                     >
-                      <h3 className="text-secondary text-[1.5rem] leading-[75%]">
+                      <h3 className="text-secondary text-2xl leading-[75%]">
                         {item.title}
                       </h3>
                     </div>
@@ -157,9 +148,7 @@ const Cart: FC = () => {
                   name="coupon-code"
                   placeholder="Code"
                   register={register}
-                  validation={{
-                    required: 'The field cannot be empty',
-                  }}
+                  validation={VALIDATION.REQUIRED}
                   errors={errors}
                 />
                 <Button type="submit">Apply coupon</Button>
@@ -167,18 +156,18 @@ const Cart: FC = () => {
               <div className="cart--totals relative flex w-full flex-col items-start justify-start gap-8">
                 <div className="relative flex h-auto w-full flex-col items-start justify-start">
                   <div className="sub-total border-primary/50 relative flex w-full items-center justify-between border-b py-[1.25rem]">
-                    <span className="leading-full text-primary text-base md:text-[1.25rem]">
+                    <span className="leading-full text-primary text-base md:text-xl">
                       Subtotal
                     </span>
-                    <span className="leading-full text-primary text-base md:text-[1.25rem]">
+                    <span className="leading-full text-primary text-base md:text-xl">
                       € {cartTotal}
                     </span>
                   </div>
                   <div className="last-total relative flex w-full items-center justify-between py-[1.25rem]">
-                    <span className="leading-full text-primary text-base md:text-[1.25rem]">
+                    <span className="leading-full text-primary text-base md:text-xl">
                       Total
                     </span>
-                    <span className="leading-full text-primary text-base md:text-[1.25rem]">
+                    <span className="leading-full text-primary text-base md:text-xl">
                       € {cartTotal}
                     </span>
                   </div>

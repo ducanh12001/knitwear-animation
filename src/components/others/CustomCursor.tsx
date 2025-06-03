@@ -31,6 +31,6 @@ const CustomCursor: React.FC = () => {
       />
     </div>
   );
-}
+};
 
 export default CustomCursor;

@@ -107,7 +107,10 @@ export const applyAllCookiePreferences = (preferences: {
 };
 
 // A utility function to check if a script is allowed to be loaded
-export const canLoadScript = (scriptCategory: string, cookieConsent: { isAllowed: (scriptCategory: string) => boolean }) => {
+export const canLoadScript = (
+  scriptCategory: string,
+  cookieConsent: { isAllowed: (scriptCategory: string) => boolean },
+) => {
   return cookieConsent.isAllowed(scriptCategory);
 };
 

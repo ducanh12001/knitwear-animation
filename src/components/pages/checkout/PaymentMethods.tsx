@@ -2,11 +2,12 @@ import type { FC } from 'react';
 import type { StripeCardElementChangeEvent } from '@stripe/stripe-js';
 import { RadioInput } from '@/components/atoms/inputs/RadioInput';
 import { StripeCardElement } from '@/components/atoms/inputs/StripeCardElement';
-import { PAYMENT_CARDS } from '@/common/const/payment';
+import { PAYMENT_CARDS } from '@/constant/mock-datas/payment';
+import type { PaymentMethod } from '@/types';
 
 interface PaymentMethodsProps {
-  selectedPayment: string;
-  setSelectedPayment: (method: string) => void;
+  selectedPayment: PaymentMethod;
+  setSelectedPayment: (method: PaymentMethod) => void;
   cardError?: string | null;
   handleCardChange?: (event: StripeCardElementChangeEvent) => void;
   paymentError?: string | null;

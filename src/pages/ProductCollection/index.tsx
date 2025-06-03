@@ -1,4 +1,7 @@
-import { menProducts, womenProducts } from '@/common/const/sampleProductList';
+import {
+  menProducts,
+  womenProducts,
+} from '@/constant/mock-datas/sampleProductList';
 import ProductCard from '@/pages/HomePage/ProductList/ProductCard';
 
 const FILTER_ITEMS = [

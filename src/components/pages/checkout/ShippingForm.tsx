@@ -2,7 +2,18 @@ import type { FC } from 'react';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { CountrySelect } from '@/components/atoms/inputs/CountrySelect';
 import { FormInput } from '@/components/atoms/inputs/FormInput';
-import type { PaymentForm } from '@/pages/Payment';
+import { VALIDATION } from '@/constant/validation';
+import type { PaymentForm } from '@/types';
+
+const validationRules = {
+  shipping_first_name: VALIDATION.REQUIRED,
+  shipping_last_name: VALIDATION.REQUIRED,
+  shipping_country: VALIDATION.REQUIRED,
+  shipping_state: VALIDATION.REQUIRED,
+  shipping_address_1: VALIDATION.REQUIRED,
+  shipping_postcode: VALIDATION.REQUIRED,
+  shipping_city: VALIDATION.REQUIRED,
+} as const;
 
 interface ShippingFormProps {
   register: UseFormRegister<PaymentForm>;
@@ -22,9 +33,7 @@ const ShippingForm: FC<ShippingFormProps> = ({
           name="shipping_first_name"
           placeholder="First name"
           register={register}
-          validation={{
-            required: 'The field cannot be empty',
-          }}
+          validation={validationRules.shipping_first_name}
           errors={errors}
           showErrors={false}
         />
@@ -33,9 +42,7 @@ const ShippingForm: FC<ShippingFormProps> = ({
           name="shipping_last_name"
           placeholder="Last name"
           register={register}
-          validation={{
-            required: 'The field cannot be empty',
-          }}
+          validation={validationRules.shipping_last_name}
           errors={errors}
           showErrors={false}
         />
@@ -45,9 +52,7 @@ const ShippingForm: FC<ShippingFormProps> = ({
             name="shipping_country"
             id="shipping_country"
             register={register}
-            validation={{
-              required: 'Please select a country',
-            }}
+            validation={validationRules.shipping_country}
             errors={errors}
             onChange={(val) => {
               handleFieldChange('shipping_country', val);
@@ -59,9 +64,7 @@ const ShippingForm: FC<ShippingFormProps> = ({
           name="shipping_state"
           placeholder="Province/Region*"
           register={register}
-          validation={{
-            required: 'The field cannot be empty',
-          }}
+          validation={validationRules.shipping_state}
           errors={errors}
           showErrors={false}
         />
@@ -70,9 +73,7 @@ const ShippingForm: FC<ShippingFormProps> = ({
           name="shipping_address_1"
           placeholder="Street address"
           register={register}
-          validation={{
-            required: 'The field cannot be empty',
-          }}
+          validation={validationRules.shipping_address_1}
           errors={errors}
           showErrors={false}
         />
@@ -81,9 +82,7 @@ const ShippingForm: FC<ShippingFormProps> = ({
           name="shipping_postcode"
           placeholder="Postcode / ZIP"
           register={register}
-          validation={{
-            required: 'The field cannot be empty',
-          }}
+          validation={validationRules.shipping_postcode}
           errors={errors}
           showErrors={false}
         />
@@ -92,9 +91,7 @@ const ShippingForm: FC<ShippingFormProps> = ({
           name="shipping_city"
           placeholder="Town / City"
           register={register}
-          validation={{
-            required: 'The field cannot be empty',
-          }}
+          validation={validationRules.shipping_city}
           errors={errors}
           showErrors={false}
         />

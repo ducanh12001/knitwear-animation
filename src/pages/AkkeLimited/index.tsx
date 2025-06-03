@@ -1,9 +1,10 @@
 import { useMediaQuery } from 'react-responsive';
-import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
+import { useGSAPAnimation } from '@/hooks/others/useGSAPAnimation';
 import ProductSection from '@/components/pages/product-detail/ProductSection';
 import ImagesSection from '@/pages/AkkeLimited/ImagesSection';
 import IntroSection from '@/pages/AkkeLimited/IntroSection';
-import { menProducts } from '@/common/const/sampleProductList';
+import { menProducts } from '@/constant/mock-datas/sampleProductList';
+import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
 
 import Everest2 from '@/assets/images/banner/everest-2.jpg';
 import Everest3 from '@/assets/images/banner/everest-3.jpg';
@@ -11,7 +12,7 @@ import Everest4 from '@/assets/images/banner/everest-4.jpg';
 
 const AkkeLimited = () => {
   const isSP = useMediaQuery({
-    query: '(width < 768px)',
+    query: `(width < ${DESKTOP_BREAKPOINT}px)`,
   });
 
   useGSAPAnimation();

@@ -24,3 +24,7 @@ export interface CartContextType {
   updateQuantity: (index: number, quantity: number) => void;
   clearCart: () => void;
 }
+
+export interface CouponFormData {
+  'coupon-code': string;
+}

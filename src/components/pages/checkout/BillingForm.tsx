@@ -2,7 +2,26 @@ import type { FC } from 'react';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { CountrySelect } from '@/components/atoms/inputs/CountrySelect';
 import { FormInput } from '@/components/atoms/inputs/FormInput';
-import type { PaymentForm } from '@/pages/Payment';
+import { VALIDATION } from '@/constant/validation';
+import type { PaymentForm } from '@/types';
+
+const validationRules = {
+  billing_first_name: VALIDATION.REQUIRED,
+  billing_last_name: VALIDATION.REQUIRED,
+  billing_country: VALIDATION.REQUIRED,
+  billing_state: VALIDATION.REQUIRED,
+  billing_address_1: VALIDATION.REQUIRED,
+  billing_postcode: VALIDATION.REQUIRED,
+  billing_city: VALIDATION.REQUIRED,
+  billing_phone: {
+    ...VALIDATION.REQUIRED,
+    ...VALIDATION.PHONE,
+  },
+  billing_email: {
+    ...VALIDATION.REQUIRED,
+    ...VALIDATION.EMAIL,
+  },
+} as const;
 
 interface BillingFormProps {
   register: UseFormRegister<PaymentForm>;
@@ -26,7 +45,7 @@ const BillingForm: FC<BillingFormProps> = ({
           name="billing_first_name"
           placeholder="First name"
           register={register}
-          validation={{ required: 'The field cannot be empty' }}
+          validation={validationRules['billing_first_name']}
           errors={errors}
           showErrors={false}
         />
@@ -35,7 +54,7 @@ const BillingForm: FC<BillingFormProps> = ({
           name="billing_last_name"
           placeholder="Last name"
           register={register}
-          validation={{ required: 'The field cannot be empty' }}
+          validation={validationRules['billing_last_name']}
           errors={errors}
           showErrors={false}
         />
@@ -45,7 +64,7 @@ const BillingForm: FC<BillingFormProps> = ({
             name="billing_country"
             id="billing_country"
             register={register}
-            validation={{ required: 'Please select a country' }}
+            validation={validationRules['billing_country']}
             errors={errors}
             onChange={(val) => {
               handleFieldChange('billing_country', val);
@@ -57,7 +76,7 @@ const BillingForm: FC<BillingFormProps> = ({
           name="billing_state"
           placeholder="Province/Region*"
           register={register}
-          validation={{ required: 'The field cannot be empty' }}
+          validation={validationRules['billing_state']}
           errors={errors}
           showErrors={false}
         />
@@ -66,7 +85,7 @@ const BillingForm: FC<BillingFormProps> = ({
           name="billing_address_1"
           placeholder="Street address"
           register={register}
-          validation={{ required: 'The field cannot be empty' }}
+          validation={validationRules['billing_address_1']}
           errors={errors}
           showErrors={false}
         />
@@ -75,7 +94,7 @@ const BillingForm: FC<BillingFormProps> = ({
           name="billing_postcode"
           placeholder="Postcode / ZIP"
           register={register}
-          validation={{ required: 'The field cannot be empty' }}
+          validation={validationRules['billing_postcode']}
           errors={errors}
           showErrors={false}
         />
@@ -84,7 +103,7 @@ const BillingForm: FC<BillingFormProps> = ({
           name="billing_city"
           placeholder="Town / City"
           register={register}
-          validation={{ required: 'The field cannot be empty' }}
+          validation={validationRules['billing_city']}
           errors={errors}
           showErrors={false}
         />
@@ -93,7 +112,7 @@ const BillingForm: FC<BillingFormProps> = ({
           name="billing_phone"
           placeholder="Phone"
           register={register}
-          validation={{ required: 'The field cannot be empty' }}
+          validation={validationRules['billing_phone']}
           errors={errors}
           showErrors={false}
         />
@@ -103,13 +122,7 @@ const BillingForm: FC<BillingFormProps> = ({
           type="email"
           placeholder="Email address"
           register={register}
-          validation={{
-            required: 'The field cannot be empty',
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'Invalid email address',
-            },
-          }}
+          validation={validationRules['billing_email']}
           errors={errors}
           showErrors={false}
         />

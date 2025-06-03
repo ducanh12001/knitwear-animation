@@ -4,17 +4,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useMediaQuery } from 'react-responsive';
 import { useLenis } from 'lenis/react';
 import type Lenis from 'lenis';
+import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ScrollCircle: React.FC = () => {
   const isSP = useMediaQuery({
-    query: '(width < 768px)',
+    query: `(width < ${DESKTOP_BREAKPOINT}px)`,
   });
   const circleRef = useRef<SVGCircleElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef<number>(0);
   const lenis = useLenis();
+
+  const progressAnimationRef = useRef<gsap.core.Tween | null>(null);
+  const arrowAnimationsRef = useRef<Set<gsap.core.Tween>>(new Set());
 
   useEffect(() => {
     if (!lenis) return;
@@ -25,7 +29,7 @@ const ScrollCircle: React.FC = () => {
 
     if (!circle || !arrow) return;
 
-    const progressAnimation = gsap.to(circle, {
+    progressAnimationRef.current = gsap.to(circle, {
       scrollTrigger: {
         trigger: 'body',
         start: 'top top',
@@ -40,19 +44,26 @@ const ScrollCircle: React.FC = () => {
     const handleLenisScroll = (lenisInstance: Lenis) => {
       const { scroll, limit } = lenisInstance;
 
+      arrowAnimationsRef.current.forEach((anim) => anim.kill());
+      arrowAnimationsRef.current.clear();
+
+      let newAnimation: gsap.core.Tween;
+
       if (scroll <= 0) {
-        gsap.to(arrow, { rotation: 0, duration: 0.3 });
+        newAnimation = gsap.to(arrow, { rotation: 0, duration: 0.3 });
       } else if (scroll >= limit - 10) {
-        gsap.to(arrow, { rotation: 180, duration: 0.3 });
+        newAnimation = gsap.to(arrow, { rotation: 180, duration: 0.3 });
       } else {
         if (scroll > lastScrollY.current) {
-          gsap.to(arrow, { rotation: 0, duration: 0.3 });
+          newAnimation = gsap.to(arrow, { rotation: 0, duration: 0.3 });
           header?.classList.add(isSP ? 'scrolled-mob' : 'scrolled');
         } else {
-          gsap.to(arrow, { rotation: 180, duration: 0.3 });
+          newAnimation = gsap.to(arrow, { rotation: 180, duration: 0.3 });
           header?.classList.remove(isSP ? 'scrolled-mob' : 'scrolled');
         }
       }
+
+      arrowAnimationsRef.current.add(newAnimation);
       lastScrollY.current = scroll;
     };
 
@@ -67,8 +78,23 @@ const ScrollCircle: React.FC = () => {
     return () => {
       clearTimeout(timeoutId);
       lenis.off('scroll', handleLenisScroll);
-      progressAnimation.kill();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+      if (progressAnimationRef.current) {
+        progressAnimationRef.current.kill();
+        progressAnimationRef.current = null;
+      }
+
+      arrowAnimationsRef.current.forEach((anim) => anim.kill());
+      arrowAnimationsRef.current.clear();
+
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (
+          trigger.trigger === document.body ||
+          trigger.vars.trigger === 'body'
+        ) {
+          trigger.kill();
+        }
+      });
     };
   }, [isSP, lenis]);
 

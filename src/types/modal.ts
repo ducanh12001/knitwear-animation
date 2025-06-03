@@ -12,4 +12,3 @@ export interface ModalContextType {
 }
 
 export type TabType = 'login' | 'signup';
-
