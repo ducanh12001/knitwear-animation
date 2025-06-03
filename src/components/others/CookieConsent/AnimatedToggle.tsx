@@ -52,7 +52,9 @@ const AnimatedToggle: FC<AnimatedToggleProps> = ({
     }
   }, [isChecked]);
 
-  const handleToggle = (e: MouseEvent<HTMLDivElement> | ChangeEvent<HTMLInputElement>) => {
+  const handleToggle = (
+    e: MouseEvent<HTMLDivElement> | ChangeEvent<HTMLInputElement>,
+  ) => {
     e.stopPropagation();
     if (!disabled && onChange) {
       onChange(!isChecked);
