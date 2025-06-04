@@ -72,12 +72,9 @@ function ProductCollection({ isMen }: ProductCollectionProps) {
         </div>
         <div className="relative h-auto w-full">
           <div className="relative grid h-auto w-full grid-cols-2 gap-x-0 gap-y-[8rem] md:grid-cols-4 md:gap-x-[2rem]">
-            {Array(10)
-              .fill(null)
-              .flatMap(() => (isMen ? menProducts : womenProducts))
-              .map((product, index) => (
-                <ProductCard key={`${product.id}-${index}`} product={product} />
-              ))}
+            {(isMen ? menProducts : womenProducts).map((product, index) => (
+              <ProductCard key={`${product.id}-${index}`} product={product} />
+            ))}
           </div>
         </div>
       </div>

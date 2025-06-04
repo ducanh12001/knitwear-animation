@@ -43,24 +43,6 @@ const AkkeLimited = () => {
           description:
             'Production limited to 100 items worldwide. This reversible garment is created using 8 strands of wool/Cordura in a natural colour (side A), combined with 4 strands of pure cashmere in taupe (side B).',
           price: { regular: '850.00' },
-          colors: [
-            {
-              id: 452,
-              hex: '#b9cb5f',
-              active: true,
-              url: '',
-            },
-            {
-              id: 2377,
-              hex: '#003b84',
-              url: '',
-            },
-            {
-              id: 425,
-              hex: '#d4ccc8',
-              url: '',
-            },
-          ],
         }}
         themeColor="#93A7A8"
         sectionClass="bg-[#e1e1e1] pt-[10vh]"

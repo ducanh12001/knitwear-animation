@@ -1,9 +1,8 @@
 export interface ProductColor {
-  id: number;
-  hex: string;
-  url: string;
+  id: string | number;
+  image: string;
+  hex?: string;
   name?: string;
-  active?: boolean;
 }
 
 export interface Product {
@@ -16,4 +15,5 @@ export interface Product {
     sale?: string;
   };
   colors: ProductColor[];
+  slides?: { img: string; alt: string }[];
 }

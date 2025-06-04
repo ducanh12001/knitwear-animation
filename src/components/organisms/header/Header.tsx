@@ -6,6 +6,25 @@ import { useHeaderAnimation } from '@/hooks/others/useHeaderAnimation';
 import { useModal } from '@/hooks/others/useModal';
 import useCart from '@/hooks/others/useCart';
 import ScrollVelocity from '@/components/animations/ScrollVelocity';
+import type { MenuLink } from '@/types';
+
+const MENU_LINKS: MenuLink[] = [
+  {
+    id: 'menswear',
+    label: 'Menswear',
+    path: '/product-category/menswear-collection',
+  },
+  {
+    id: 'womenswear',
+    label: 'Womenswear',
+    path: '/product-category/womenswear-collection',
+  },
+  {
+    id: 'limited',
+    label: 'Limited',
+    path: '/everest-akke-limited',
+  },
+];
 
 const Header: FC = () => {
   const location = useLocation();
@@ -55,29 +74,15 @@ const Header: FC = () => {
           <div className="nav relative flex h-auto w-auto flex-col items-start justify-start gap-[1rem]">
             <ul
               id="menu-left-menu"
-              className="menu leading-full relative hidden items-center justify-start gap-[1rem] text-[1.6rem] uppercase xl:flex"
+              className="leading-full relative hidden items-center justify-start gap-[1rem] text-[1.6rem] uppercase xl:flex"
             >
-              <li>
-                <Link
-                  to="/product-category/menswear-collection"
-                  style={textStyle}
-                >
-                  Menswear
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/product-category/womenswear-collection"
-                  style={textStyle}
-                >
-                  Womenswear
-                </Link>
-              </li>
-              <li>
-                <Link to="/everest-akke-limited" style={textStyle}>
-                  Limited
-                </Link>
-              </li>
+              {MENU_LINKS.map((link) => (
+                <li>
+                  <Link to={link.path} style={textStyle}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
             <div
               className={`breadcrumb relative hidden h-auto w-auto xl:block ${location.pathname === '/' ? 'invisible opacity-0' : ''}`}
