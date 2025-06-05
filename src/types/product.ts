@@ -6,8 +6,9 @@ export interface ProductColor {
 }
 
 export interface Product {
-  id: number;
+  id: string | number;
   title: string;
+  gender: 'male' | 'female';
   image: string;
   description: string;
   price: {

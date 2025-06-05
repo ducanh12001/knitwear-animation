@@ -77,7 +77,7 @@ const Limited: FC = () => {
         className="elAnimation relative h-auto w-full"
         data-animation="ease-bottom-to-top-scaled"
       >
-        <Link to="/everest-akke-limited" className="relative block w-full">
+        <Link to="/everest-okke-limited" className="relative block w-full">
           <div className="image-back mobile relative h-auto w-full">
             <img src={Limited1} className="w-full" />
           </div>
@@ -89,7 +89,7 @@ const Limited: FC = () => {
               ref={titleRef}
               className="font-humane leading-full relative text-[20vw] font-medium whitespace-nowrap text-white uppercase"
             >
-              Everest Akke Limited
+              Everest Okke Limited
             </h2>
           </div>
           <div

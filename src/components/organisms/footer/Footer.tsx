@@ -10,12 +10,12 @@ interface NewsletterFormData {
 
 const footerLinks: FooterSection[] = [
   {
-    title: 'AKKE Knitwear',
+    title: 'OKKE Knitwear',
     links: [
       { label: 'Menswear', path: '/product-category/menswear-collection' },
       { label: 'Womenswear', path: '/product-category/womenswear-collection' },
-      { label: 'Everest Akke Limited', path: '/everest-akke-limited' },
-      { label: 'Akkeworld', path: '/akkeworld' },
+      { label: 'Everest Okke Limited', path: '/everest-okke-limited' },
+      { label: 'Okkeworld', path: '/okkeworld' },
       { label: 'Contacts', path: '/contacts' },
     ],
   },

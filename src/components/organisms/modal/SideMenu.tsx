@@ -17,13 +17,13 @@ const MENU_LINKS: MenuLink[] = [
   },
   {
     id: 'everest-limited',
-    label: 'Everest Akke Limited',
-    path: '/everest-akke-limited',
+    label: 'Everest Okke Limited',
+    path: '/everest-okke-limited',
   },
   {
-    id: 'akkeworld',
-    label: 'Akkeworld',
-    path: '/akkeworld',
+    id: 'okkeworld',
+    label: 'Okkeworld',
+    path: '/okkeworld',
   },
   {
     id: 'contacts',

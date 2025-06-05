@@ -11,9 +11,9 @@ interface SEOProps {
 }
 
 export const SEO: React.FC<SEOProps> = ({
-  title = 'AKKE Knitwear - Premium Italian Fashion',
-  description = 'Discover AKKE Knitwear premium collection. High-quality Italian fashion with sustainable materials and timeless design.',
-  keywords = 'AKKE knitwear, Italian fashion, premium clothing, sustainable fashion, luxury knitwear',
+  title = 'OKKE Knitwear - Premium Italian Fashion',
+  description = 'Discover OKKE Knitwear premium collection. High-quality Italian fashion with sustainable materials and timeless design.',
+  keywords = 'OKKE knitwear, Italian fashion, premium clothing, sustainable fashion, luxury knitwear',
   image = 'https://yourdomain.com/og-image.jpg',
   url = window.location.href,
   type = 'website',
@@ -32,7 +32,7 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="og:url" content={url} />
-      <meta property="og:site_name" content="AKKE Knitwear" />
+      <meta property="og:site_name" content="OKKE Knitwear" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
