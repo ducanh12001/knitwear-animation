@@ -19,10 +19,10 @@ export const useSmoothScroll = (options: LenisOptions = {}) => {
 
     lenisRef.current = lenis;
 
-    function raf(time: number) {
+    const raf = (time: number) => {
       lenis.raf(time);
       requestAnimationFrame(raf);
-    }
+    };
 
     const rafId = requestAnimationFrame(raf);
 

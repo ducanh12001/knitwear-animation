@@ -2,7 +2,7 @@ interface PageTransitionProps {
   title: string;
 }
 
-export default function PageTransition({ title }: PageTransitionProps) {
+const PageTransition = ({ title }: PageTransitionProps) => {
   return (
     <div
       id="pageTransition"
@@ -25,4 +25,6 @@ export default function PageTransition({ title }: PageTransitionProps) {
       </div>
     </div>
   );
-}
+};
+
+export default PageTransition;

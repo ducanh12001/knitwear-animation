@@ -4,7 +4,7 @@ import ProductList from '@/pages/HomePage/ProductList';
 import Roadmap from '@/pages/HomePage/Roadmap';
 import { SliderSection } from '@/pages/HomePage/SliderSection';
 
-function HomePage() {
+const HomePage = () => {
   useGSAPAnimation();
 
   return (
@@ -15,6 +15,6 @@ function HomePage() {
       <Limited />
     </div>
   );
-}
+};
 
 export default HomePage;

@@ -39,7 +39,7 @@ interface ProductCollectionProps {
   isMen: boolean;
 }
 
-function ProductCollection({ isMen }: ProductCollectionProps) {
+const ProductCollection = ({ isMen }: ProductCollectionProps) => {
   return (
     <section className="relative box-border h-auto w-full px-[5vw] pt-[5rem] pb-[10vh] md:pt-[calc(6rem+5vh)]">
       <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[2.5rem] md:gap-[6rem]">
@@ -80,6 +80,6 @@ function ProductCollection({ isMen }: ProductCollectionProps) {
       </div>
     </section>
   );
-}
+};
 
 export default ProductCollection;
