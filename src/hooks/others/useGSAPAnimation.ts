@@ -133,7 +133,7 @@ export const useGSAPAnimation = () => {
           }
 
           const roadG = document.querySelectorAll(
-            '.page-akkeworld .road svg g',
+            '.page-okkeworld .road svg g',
           ) as NodeListOf<SVGGElement>;
 
           if (roadG && roadG.length > 0) {

@@ -18,11 +18,9 @@ const ProductDetail: FC = () => {
             You may like it
           </h2>
           <div className="relative grid h-auto w-full grid-cols-2 gap-8 md:grid-cols-4">
-            {Array(4)
-              .fill(menProducts[0])
-              .map((product, index) => (
-                <ProductCard key={index} product={product} />
-              ))}
+            {menProducts.slice(0, 4).map((product, index) => (
+              <ProductCard key={index} product={product} />
+            ))}
           </div>
         </div>
       </section>

@@ -1,14 +1,14 @@
 export interface ProductColor {
-  id: number;
-  hex: string;
-  url: string;
+  id: string | number;
+  image: string;
+  hex?: string;
   name?: string;
-  active?: boolean;
 }
 
 export interface Product {
-  id: number;
+  id: string | number;
   title: string;
+  gender: 'male' | 'female';
   image: string;
   description: string;
   price: {
@@ -16,4 +16,5 @@ export interface Product {
     sale?: string;
   };
   colors: ProductColor[];
+  slides?: { img: string; alt: string }[];
 }

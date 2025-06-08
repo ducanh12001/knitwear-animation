@@ -1,5 +1,5 @@
 import { CloseButton } from '@/components/atoms/buttons/CloseButton';
-import type { Polaroid } from '@/pages/AkkeWorld/AdvSection';
+import type { Polaroid } from '@/pages/OkkeWorld/AdvSection';
 import React, { type FC } from 'react';
 
 interface PolaroidDataProps {

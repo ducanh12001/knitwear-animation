@@ -1,5 +1,5 @@
 export interface MenuLink {
-  id?: string;
+  id?: string | number;
   label: string;
   path: string;
 }

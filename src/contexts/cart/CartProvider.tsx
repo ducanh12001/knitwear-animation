@@ -7,7 +7,7 @@ import type {
 } from '@/types';
 import CartContext from '@/contexts/cart/CartContext';
 
-const CART_STORAGE_KEY = 'akke_cart_items';
+const CART_STORAGE_KEY = 'okke_cart_items';
 
 const CartProvider = ({ children }: ProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {

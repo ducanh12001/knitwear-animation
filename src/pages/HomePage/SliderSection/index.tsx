@@ -24,8 +24,8 @@ const slides: SlideData[] = [
     mobileImg: Banner2Sp,
   },
   {
-    href: '/everest-akke-limited',
-    title: 'Everest Akke Limited',
+    href: '/everest-okke-limited',
+    title: 'Everest Okke Limited',
     desktopImg: Banner3,
     mobileImg: Banner3Sp,
   },

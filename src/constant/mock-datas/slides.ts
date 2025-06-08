@@ -5,7 +5,12 @@ import Men4 from '@/assets/images/slides/column/men-4.jpg';
 import Men5 from '@/assets/images/slides/column/men-5.jpg';
 import Men6 from '@/assets/images/slides/column/men-6.jpg';
 
-export const colSlideImages = [
+import Women1 from '@/assets/images/slides/column/women-1.jpg';
+import Women2 from '@/assets/images/slides/column/women-2.jpg';
+import Women3 from '@/assets/images/slides/column/women-3.jpg';
+import Women4 from '@/assets/images/slides/column/women-4.jpg';
+
+export const menColImages = [
   {
     img: Men1,
     alt: 'Everest sweater front view - Men 1',
@@ -29,5 +34,24 @@ export const colSlideImages = [
   {
     img: Men6,
     alt: 'Everest sweater detail 1 - Cordura side',
+  },
+];
+
+export const womenColImages = [
+  {
+    img: Women1,
+    alt: 'Everest sweater front view - Men 1',
+  },
+  {
+    img: Women2,
+    alt: 'Everest sweater back view - Cordura side',
+  },
+  {
+    img: Women3,
+    alt: 'Everest sweater detail 1 - Cashmere side',
+  },
+  {
+    img: Women4,
+    alt: 'Everest sweater detail 2 - Cashmere side',
   },
 ];

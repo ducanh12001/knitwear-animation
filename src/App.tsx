@@ -1,6 +1,7 @@
 import { Suspense, useCallback, useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router';
 import { ErrorBoundary } from 'react-error-boundary';
+import type { LenisOptions } from 'lenis';
 import ReactLenis from 'lenis/react';
 
 import { ROUTES, whiteRoutes } from '@/constant/routes';
@@ -20,7 +21,6 @@ import CookieConsent from '@/components/others/CookieConsent';
 
 import './App.css';
 import '@/styles/index.css';
-import type { LenisOptions } from 'lenis';
 
 const LENIS_OPTIONS: LenisOptions = {
   duration: 1.2,
