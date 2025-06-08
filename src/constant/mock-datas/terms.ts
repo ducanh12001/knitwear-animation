@@ -91,8 +91,8 @@ export const TERMS_OF_SALE = [
     orderedList: [
       'All contents published on the abc.com website including documents, logos, images, graphics, videos, their arrangement and their adaptations are subject to intellectual property laws and protected by copyright. It is not permitted to copy, alter, translate, distribute, use, archive or publish these contents on other sites without prior written authorization from New Esse Maglieria srl. Any content and contributions made by third parties are marked as such.',
       'Downloading, viewing and printing the contents of this website is permitted for personal use only and excludes the user from having any rights or claims over such material.',
-      'The AKKE brand is a registered trademark owned by New Esse Maglieria srl.',
-      'New Esse Maglieria srl uses the AKKE brand as the company ID with which it presents itself to the market.',
+      'The OKKE brand is a registered trademark owned by New Esse Maglieria srl.',
+      'New Esse Maglieria srl uses the OKKE brand as the company ID with which it presents itself to the market.',
     ],
   },
   {

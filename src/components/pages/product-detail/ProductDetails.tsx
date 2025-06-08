@@ -36,7 +36,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ isMobile }) => {
       items: [
         'Struttura in mezza maglia inglese',
         'Capo double face',
-        'Bandierina logo “AKKE” double face',
+        'Bandierina logo “OKKE” double face',
         'Collo vulcano con calature a vista',
         '8 fili di lana e cordura 2-48 mixati a 4 fili di puro cashmere 2-28',
       ],

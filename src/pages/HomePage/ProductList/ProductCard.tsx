@@ -39,7 +39,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
                 >
                   <img
                     key={index}
-                    src={color.url}
+                    src={color.image}
                     alt={product.title}
                     className="block h-full w-full"
                   />

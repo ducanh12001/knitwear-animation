@@ -4,14 +4,14 @@ import { Navigation, Pagination } from 'swiper/modules';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useMediaQuery } from 'react-responsive';
+
 import useCart from '@/hooks/others/useCart';
 import { useModal } from '@/hooks/others/useModal';
-import { colSlideImages } from '@/constant/mock-datas/slides';
+import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
 import type { Product } from '@/types';
 import ProductDetails from '@/components/pages/product-detail/ProductDetails';
 import HeatIndicator from '@/components/pages/product-detail/HeatIndicator';
 import { Button } from '@/components/atoms/buttons/Button';
-import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
 
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -48,7 +48,7 @@ const ProductSection: FC<ProductSectionProps> = ({
 
   const handleImageLoaded = useCallback(() => {
     imagesLoadedCountRef.current += 1;
-    if (imagesLoadedCountRef.current >= colSlideImages.length) {
+    if (imagesLoadedCountRef.current >= (product.slides?.length || 0)) {
       setImagesLoaded(true);
     }
   }, []);
@@ -165,7 +165,7 @@ const ProductSection: FC<ProductSectionProps> = ({
         {/* Middle Column - Images */}
         <div className="product-middle relative h-auto w-full">
           <div className="images relative hidden h-auto w-full flex-col items-start justify-start gap-[1.25rem] pt-[calc(6rem+5vh)] md:flex">
-            {colSlideImages.map((slide, index) => (
+            {product.slides?.map((slide, index) => (
               <div
                 key={index}
                 className="relative w-full md:w-[calc(1150*(100vh-(6rem+5vh))/1440)]"
@@ -197,7 +197,7 @@ const ProductSection: FC<ProductSectionProps> = ({
                 `<span class="${className} swiper-pagination-bullet"></span>`,
             }}
           >
-            {colSlideImages.map((slide, index) => (
+            {product.slides?.map((slide, index) => (
               <SwiperSlide key={index}>
                 <img
                   src={slide.img}

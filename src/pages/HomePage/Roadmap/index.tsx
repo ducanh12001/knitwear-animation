@@ -58,7 +58,7 @@ function Roadmap() {
               <img
                 src={Road1}
                 className="block h-auto w-[33vw]"
-                alt="Akke Knitwear 1"
+                alt="Okke Knitwear 1"
               />
             </div>
           </div>
@@ -70,7 +70,7 @@ function Roadmap() {
                 className="elAnimation text-[20px] leading-[120%] tracking-normal text-white md:text-[3vw] md:tracking-[-2px]"
                 data-animation="ease-bottom-to-top"
               >
-                AKKE is technical innovation and yarn evolution, a new space
+                OKKE is technical innovation and yarn evolution, a new space
                 between fashion and functionality.
               </h2>
             </div>
@@ -81,7 +81,7 @@ function Roadmap() {
               <Link
                 ref={discoverLinkRef}
                 className="relative block h-full w-full cursor-pointer"
-                to="/akkeworld"
+                to="/okkeworld"
               >
                 <div className="absolute top-0 left-0 h-full w-full">
                   <svg
@@ -121,7 +121,7 @@ function Roadmap() {
                   </svg>
                 </div>
                 <span className="leading-full relative box-border block px-[3.75vw] py-[2.3vw] text-[1.75rem] text-white uppercase">
-                  Discover Akke World
+                  Discover Okke World
                 </span>
               </Link>
             </div>
@@ -129,10 +129,10 @@ function Roadmap() {
         </div>
       </div>
       <div className="relative mx-auto my-0 block h-auto w-auto md:hidden">
-        <Link className="relative block h-full w-full" to="/akkeworld">
+        <Link className="relative block h-full w-full" to="/okkeworld">
           <div className="absolute top-0 left-0 h-full w-full" />
           <span className="leading-full relative box-border block px-[3.75vw] py-[2.3vw] text-[1.75rem] text-white uppercase">
-            Discover Akke World
+            Discover Okke World
           </span>
         </Link>
       </div>
@@ -152,7 +152,7 @@ function Roadmap() {
                     <img
                       src={Road2}
                       className="block h-auto w-full"
-                      alt="Akke Knitwear 2"
+                      alt="Okke Knitwear 2"
                     />
                   </div>
                 </div>
@@ -183,7 +183,7 @@ function Roadmap() {
                     <img
                       src={Road3}
                       className="block h-auto w-full"
-                      alt="Akke Knitwear 3"
+                      alt="Okke Knitwear 3"
                     />
                   </div>
                 </div>

@@ -1,5 +1,5 @@
-import AkkeLimited from '@/pages/AkkeLimited';
-import AkkeWorld from '@/pages/AkkeWorld';
+import OkkeLimited from '@/pages/OkkeLimited';
+import OkkeWorld from '@/pages/OkkeWorld';
 import Cart from '@/pages/Cart';
 import Contacts from '@/pages/Contacts';
 import HomePage from '@/pages/HomePage';
@@ -12,7 +12,7 @@ import TermsAndPolicies from '@/pages/TermsAndPolicies';
 export const ROUTES = [
   {
     path: '/',
-    title: 'Akke Knitwear',
+    title: 'Okke Knitwear',
     element: <HomePage />,
   },
   {
@@ -26,14 +26,14 @@ export const ROUTES = [
     element: <ProductCollection isMen={false} />,
   },
   {
-    path: '/everest-akke-limited',
-    title: 'Everest Akke Limited',
-    element: <AkkeLimited />,
+    path: '/everest-okke-limited',
+    title: 'Everest Okke Limited',
+    element: <OkkeLimited />,
   },
   {
-    path: '/akkeworld',
-    title: 'Akkeworld',
-    element: <AkkeWorld />,
+    path: '/okkeworld',
+    title: 'Okkeworld',
+    element: <OkkeWorld />,
   },
   {
     path: '/contacts',
@@ -74,7 +74,7 @@ export const ROUTES = [
 
 export const whiteRoutes = [
   '/',
-  '/everest-akke-limited',
-  '/akkeworld',
+  '/everest-okke-limited',
+  '/okkeworld',
   '/contacts',
 ];
