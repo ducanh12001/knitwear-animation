@@ -3,7 +3,6 @@ import { useGSAPAnimation } from '@/hooks/others/useGSAPAnimation';
 import ProductSection from '@/components/pages/product-detail/ProductSection';
 import ImagesSection from '@/pages/OkkeLimited/ImagesSection';
 import IntroSection from '@/pages/OkkeLimited/IntroSection';
-import { menProducts } from '@/constant/mock-datas/sampleProductList';
 import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
 
 import Everest2 from '@/assets/images/banner/everest-2.jpg';
@@ -38,14 +37,57 @@ const OkkeLimited = () => {
       />
       <ProductSection
         product={{
-          ...menProducts[0],
-          title: 'Everest',
-          description:
-            'Production limited to 100 items worldwide. This reversible garment is created using 8 strands of wool/Cordura in a natural colour (side A), combined with 4 strands of pure cashmere in taupe (side B).',
-          price: { regular: '850.00' },
+          id: 1,
+          gender: 'male',
+          title: 'Tephra',
+          image: '/src/assets/images/products/tephra_blu_MS2415PL6-BLU-1.jpg',
+          description: 'Essential polo in organic cotton.',
+          price: { regular: '69.00' },
+          colors: [
+            {
+              id: 'blu',
+              image:
+                '/src/assets/images/products/tephra_blu_MS2415PL6-BLU-1.jpg',
+              hex: '#1E40AF',
+              name: 'Blu',
+            },
+            {
+              id: 'avorio',
+              image:
+                '/src/assets/images/products/tephra_avorio_MS2415PL6-AVORIO-1.jpg',
+              hex: '#FEF7ED',
+              name: 'Avorio',
+            },
+          ],
+          slides: [
+            {
+              img: '/src/assets/images/slides/column/men-1.jpg',
+              alt: 'Everest sweater front view - Men 1',
+            },
+            {
+              img: '/src/assets/images/slides/column/men-2.jpg',
+              alt: 'Everest sweater back view - Cordura side',
+            },
+            {
+              img: '/src/assets/images/slides/column/men-3.jpg',
+              alt: 'Everest sweater detail 1 - Cashmere side',
+            },
+            {
+              img: '/src/assets/images/slides/column/men-4.jpg',
+              alt: 'Everest sweater detail 2 - Cashmere side',
+            },
+            {
+              img: '/src/assets/images/slides/column/men-5.jpg',
+              alt: 'Everest sweater detail 2 - Cordura side',
+            },
+            {
+              img: '/src/assets/images/slides/column/men-6.jpg',
+              alt: 'Everest sweater detail 1 - Cordura side',
+            },
+          ],
         }}
         themeColor="#93A7A8"
-        sectionClass="bg-[#e1e1e1] pt-[10vh]"
+        sectionClass="bg-[#e1e1e1]"
       />
     </div>
   );

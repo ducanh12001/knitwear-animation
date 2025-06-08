@@ -1,0 +1,1636 @@
+[
+  {
+    "id": 1,
+    "gender": "male",
+    "title": "Tephra",
+    "image": "/src/assets/images/products/tephra_blu_MS2415PL6-BLU-1.jpg",
+    "description": "Essential polo in organic cotton.",
+    "price": { "regular": "69.00" },
+    "colors": [
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/tephra_blu_MS2415PL6-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      },
+      {
+        "id": "avorio",
+        "image": "/src/assets/images/products/tephra_avorio_MS2415PL6-AVORIO-1.jpg",
+        "hex": "#FEF7ED",
+        "name": "Avorio"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "gender": "male",
+    "title": "Diorite",
+    "image": "/src/assets/images/products/diorite_bianco_4-SEASON-MS2407CA23-4SE-BIANCO-1.jpg",
+    "description": "Cotton and cashmere cardigan.",
+    "price": { "regular": "129.00" },
+    "colors": [
+      {
+        "id": "bianco",
+        "image": "/src/assets/images/products/diorite_bianco_4-SEASON-MS2407CA23-4SE-BIANCO-1.jpg",
+        "hex": "#FFFFFF",
+        "name": "Bianco"
+      },
+      {
+        "id": "nero",
+        "image": "/src/assets/images/products/diorite_nero_4-SEASON-MS2407CA23-4SE-NERO-1.jpg",
+        "hex": "#000000",
+        "name": "Nero"
+      },
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/diorite_blu_4-SEASON-MS2407CA23-4SE-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "gender": "male",
+    "title": "Septaria",
+    "image": "/src/assets/images/products/septaria_blu_4-SEASON-MS2407GC22-4SE-BLU-1.jpg",
+    "description": "Crewneck sweater in cotton and cashmere.",
+    "price": { "regular": "109.00" },
+    "colors": [
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/septaria_blu_4-SEASON-MS2407GC22-4SE-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      },
+      {
+        "id": "nero",
+        "image": "/src/assets/images/products/septaria_nero_4-SEASON-MS2407GC22-4SE-NERO-1.jpg",
+        "hex": "#000000",
+        "name": "Nero"
+      },
+      {
+        "id": "bianco",
+        "image": "/src/assets/images/products/septaria_bianco_4-SEASON-MS2407GC22-4SE-BIANCO-1.jpg",
+        "hex": "#FFFFFF",
+        "name": "Bianco"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "gender": "male",
+    "title": "Arenaria",
+    "image": "/src/assets/images/products/arenaria_beige_4-SEASON-MS2415GC19-4SE-BEIGE-1.jpg",
+    "description": "Lightweight crewneck sweater.",
+    "price": { "regular": "95.00" },
+    "colors": [
+      {
+        "id": "beige",
+        "image": "/src/assets/images/products/arenaria_beige_4-SEASON-MS2415GC19-4SE-BEIGE-1.jpg",
+        "hex": "#F5F5DC",
+        "name": "Beige"
+      },
+      {
+        "id": "nero",
+        "image": "/src/assets/images/products/arenaria_nero_4-SEASON-MS2415GC19-4SE-NERO-1.jpg",
+        "hex": "#000000",
+        "name": "Nero"
+      },
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/arenaria_blu_4-SEASON-MS2415GC19-4SE-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      },
+      {
+        "id": "bianco",
+        "image": "/src/assets/images/products/arenaria_bianco_4-SEASON-MS2415GC19-4SE-BIANCO-1.jpg",
+        "hex": "#FFFFFF",
+        "name": "Bianco"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "gender": "male",
+    "title": "Travertine",
+    "image": "/src/assets/images/products/travertine_bianco_4-SEASON-MS2415GC20-4SE-BIANCO-1.jpg",
+    "description": "Cotton and cashmere T-shirt.",
+    "price": { "regular": "82.00" },
+    "colors": [
+      {
+        "id": "bianco",
+        "image": "/src/assets/images/products/travertine_bianco_4-SEASON-MS2415GC20-4SE-BIANCO-1.jpg",
+        "hex": "#FFFFFF",
+        "name": "Bianco"
+      },
+      {
+        "id": "beige",
+        "image": "/src/assets/images/products/travertine_beige_4-SEASON-MS2415GC20-4SE-BEIGE-1.jpg",
+        "hex": "#F5F5DC",
+        "name": "Beige"
+      },
+      {
+        "id": "nero",
+        "image": "/src/assets/images/products/travertine_nero_4-SEASON-MS2415GC20-4SE-NERO-1.jpg",
+        "hex": "#000000",
+        "name": "Nero"
+      },
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/travertine_blu_4-SEASON-MS2415GC20-4SE-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "gender": "male",
+    "title": "Slate",
+    "image": "/src/assets/images/products/slate_nero_4-SEASON-MS2415GC21-4SE-NERO-1.jpg",
+    "description": "Crewneck sweater in cotton and cashmere.",
+    "price": { "regular": "95.00" },
+    "colors": [
+      {
+        "id": "nero",
+        "image": "/src/assets/images/products/slate_nero_4-SEASON-MS2415GC21-4SE-NERO-1.jpg",
+        "hex": "#000000",
+        "name": "Nero"
+      },
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/slate_blu_4-SEASON-MS2415GC21-4SE-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      },
+      {
+        "id": "bianco",
+        "image": "/src/assets/images/products/slate_bianco_4-SEASON-MS2415GC21-4SE-BIANCO-1.jpg",
+        "hex": "#FFFFFF",
+        "name": "Bianco"
+      },
+      {
+        "id": "beige",
+        "image": "/src/assets/images/products/slate_beige_4-SEASON-MS2415GC21-4SE-BEIGE-1.jpg",
+        "hex": "#F5F5DC",
+        "name": "Beige"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "gender": "male",
+    "title": "Schist",
+    "image": "/src/assets/images/products/schist_beige_4-SEASON-MS2418GC32-4SE-BEIGE-1.jpg",
+    "description": "Crewneck sweater in ultrafine wool.",
+    "price": { "regular": "95.00" },
+    "colors": [
+      {
+        "id": "beige",
+        "image": "/src/assets/images/products/schist_beige_4-SEASON-MS2418GC32-4SE-BEIGE-1.jpg",
+        "hex": "#F5F5DC",
+        "name": "Beige"
+      },
+      {
+        "id": "grigio",
+        "image": "/src/assets/images/products/schist_grigio_4-SEASON-MS2418GC32-4SE-GRIGIO-1.jpg",
+        "hex": "#808080",
+        "name": "Grigio"
+      },
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/schist_blu_4-SEASON-MS2418GC32-4SE-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "gender": "male",
+    "title": "Lava",
+    "image": "/src/assets/images/products/lava_multi-1_HIGH-ALTITUDE-MS2403GC27-HI-1.jpg",
+    "description": "Multicolor silk and cotton sweater.",
+    "price": { "regular": "189.00" },
+    "colors": [
+      {
+        "id": "multi-1",
+        "image": "/src/assets/images/products/lava_multi-1_HIGH-ALTITUDE-MS2403GC27-HI-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Multi"
+      },
+      {
+        "id": "multi-2",
+        "image": "/src/assets/images/products/lava_multi-2_HIGH-ALTITUDE-MS2403GC28-HI-1.jpg",
+        "hex": "#8B5A3C",
+        "name": "Multi"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "gender": "male",
+    "title": "Basalt",
+    "image": "/src/assets/images/products/basalt_azzurro_HIGH-ALTITUDE-MS2405GC25-HI-AZZURRO-1.jpg",
+    "description": "Hand-dyed cashmere crewneck sweater.",
+    "price": { "regular": "189.00" },
+    "colors": [
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/basalt_azzurro_HIGH-ALTITUDE-MS2405GC25-HI-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      },
+      {
+        "id": "arancione",
+        "image": "/src/assets/images/products/basalt_arancione_HIGH-ALTITUDE-MS2405GC25-HI-ARANCIONE-1.jpg",
+        "hex": "#FF8C00",
+        "name": "Arancione"
+      },
+      {
+        "id": "marrone",
+        "image": "/src/assets/images/products/basalt_marrone_HIGH-ALTITUDE-MS2405GC25-HI-MARRONE-1.jpg",
+        "hex": "#8B4513",
+        "name": "Marrone"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "gender": "male",
+    "title": "Gabbro",
+    "image": "/src/assets/images/products/gabbro_blu_HIGH-ALTITUDE-MS2405LU26-HI-BLU-1.jpg",
+    "description": "Zip-up mock neck sweater in cotton with contrast details.",
+    "price": { "regular": "129.00" },
+    "colors": [
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/gabbro_blu_HIGH-ALTITUDE-MS2405LU26-HI-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      },
+      {
+        "id": "beige",
+        "image": "/src/assets/images/products/gabbro_beige_HIGH-ALTITUDE-MS2405LU26-HI-BEIGE-1.jpg",
+        "hex": "#F5F5DC",
+        "name": "Beige"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "gender": "male",
+    "title": "lopolith",
+    "image": "/src/assets/images/products/lopolith_azzurro_MS2405GC17-AZZURRO-1.jpg",
+    "description": "Crewneck in hemp and bamboo.",
+    "price": { "regular": "99.00" },
+    "colors": [
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/lopolith_azzurro_MS2405GC17-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      },
+      {
+        "id": "beige",
+        "image": "/src/assets/images/products/lopolith_beige_MS2405GC17-BEIGE-1.jpg",
+        "hex": "#F5F5DC",
+        "name": "Beige"
+      },
+      {
+        "id": "arancio",
+        "image": "/src/assets/images/products/lopolith_arancio_MS2405GC17-ARANCIO-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Arancio"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "gender": "male",
+    "title": "Catlinite",
+    "image": "/src/assets/images/products/catlinite_arancio_MS2407GC9-ARANCIO-1.jpg",
+    "description": "Crewneck sweater with contrast detail.",
+    "price": { "regular": "109.00" },
+    "colors": [
+      {
+        "id": "arancio",
+        "image": "/src/assets/images/products/catlinite_arancio_MS2407GC9-ARANCIO-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Arancio"
+      },
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/catlinite_azzurro_MS2407GC9-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      },
+      {
+        "id": "marrone",
+        "image": "/src/assets/images/products/catlinite_marrone_MS2407GC9-MARRONE-1.jpg",
+        "hex": "#8B4513",
+        "name": "Marrone"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "gender": "male",
+    "title": "Palagonite",
+    "image": "/src/assets/images/products/palagonite_marrone_MS2407GC10-MARRONE-1.jpg",
+    "description": "Structured crewneck with a technical detail.",
+    "price": { "regular": "99.00" },
+    "colors": [
+      {
+        "id": "marrone",
+        "image": "/src/assets/images/products/palagonite_marrone_MS2407GC10-MARRONE-1.jpg",
+        "hex": "#8B4513",
+        "name": "Marrone"
+      },
+      {
+        "id": "avorio",
+        "image": "/src/assets/images/products/palagonite_avorio_MS2407GC10-AVORIO-1.jpg",
+        "hex": "#FEF7ED",
+        "name": "Avorio"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "gender": "male",
+    "title": "Skarn",
+    "image": "/src/assets/images/products/skarn_blu_MS2415GC1-BLU-1.jpg",
+    "description": "Crewneck in organic cotton with lace-like details",
+    "price": { "regular": "85.00" },
+    "colors": [
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/skarn_blu_MS2415GC1-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      },
+      {
+        "id": "avorio",
+        "image": "/src/assets/images/products/skarn_avorio_MS2415GC1-AVORIO-1.jpg",
+        "hex": "#FEF7ED",
+        "name": "Avorio"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "gender": "male",
+    "title": "Akrose",
+    "image": "/src/assets/images/products/akrose_azzurro_MS2415GC7-AZZURRO-1.jpg",
+    "description": "Crewneck sweater in organic cotton.",
+    "price": { "regular": "72.00" },
+    "colors": [
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/akrose_azzurro_MS2415GC7-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      },
+      {
+        "id": "marrone",
+        "image": "/src/assets/images/products/akrose_marrone_MS2415GC7-MARRONE-1.jpg",
+        "hex": "#8B4513",
+        "name": "Marrone"
+      },
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/akrose_blu_MS2415GC7-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      },
+      {
+        "id": "avorio",
+        "image": "/src/assets/images/products/akrose_avorio_MS2415GC7-AVORIO-1.jpg",
+        "hex": "#FEF7ED",
+        "name": "Avorio"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "gender": "male",
+    "title": "Lhotse",
+    "image": "/src/assets/images/products/lhotse_turtledove_MF2415GC2_Turtledove_1-1.jpg",
+    "description": "Long-sleeve crew-neck pullover with patch",
+    "price": { "regular": "" },
+    "colors": [
+      {
+        "id": "turtledove",
+        "image": "/src/assets/images/products/lhotse_turtledove_MF2415GC2_Turtledove_1-1.jpg",
+        "hex": "#D3D3D3",
+        "name": "Turtledove"
+      },
+      {
+        "id": "indigo",
+        "image": "/src/assets/images/products/lhotse_indigo_LHOTSE-INDIGO-1.jpg",
+        "hex": "#4B0082",
+        "name": "Indigo"
+      },
+      {
+        "id": "asphalt",
+        "image": "/src/assets/images/products/lhotse_asphalt_MF2415GC2_Asphalt_1-1.jpg",
+        "hex": "#2F2F2F",
+        "name": "Asphalt"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "gender": "male",
+    "title": "Kaolinite",
+    "image": "/src/assets/images/products/kaolinite_arancio_MS2407SH14-ARANCIO-1.jpg",
+    "description": "Organic cotton shorts with perforated details.",
+    "price": { "regular": "72.00" },
+    "colors": [
+      {
+        "id": "arancio",
+        "image": "/src/assets/images/products/kaolinite_arancio_MS2407SH14-ARANCIO-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Arancio"
+      },
+      {
+        "id": "multicolor",
+        "image": "/src/assets/images/products/kaolinite_multicolor_MS2407SH14-MULTICOLOR-1.jpg",
+        "hex": "#FF6B6B",
+        "name": "Multicolor"
+      },
+      {
+        "id": "marrone",
+        "image": "/src/assets/images/products/kaolinite_marrone_MS2407SH14-MARRONE-1.jpg",
+        "hex": "#8B4513",
+        "name": "Marrone"
+      },
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/kaolinite_azzurro_MS2407SH14-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/men-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-5.jpg",
+        "alt": "Everest sweater detail 2 - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/men-6.jpg",
+        "alt": "Everest sweater detail 1 - Cordura side"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "gender": "male",
+    "title": "Unakite",
+    "image": "/src/assets/images/products/unakite_azzurro_MS2415GC2-AZZURRO-1.jpg",
+    "description": "Organic cotton T-shirt with front logo.",
+    "price": { "regular": "62.00" },
+    "colors": [
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/unakite_azzurro_MS2415GC2-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      },
+      {
+        "id": "avorio",
+        "image": "/src/assets/images/products/unakite_avorio_MS2415GC2-AVORIO-1.jpg",
+        "hex": "#FEF7ED",
+        "name": "Avorio"
+      },
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/unakite_blu_MS2415GC2-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "gender": "female",
+    "title": "Moonmilk",
+    "image": "/src/assets/images/products/moonmilk_arancio_WS2407SK13-ARANCIO-1.jpg",
+    "description": "Gonna in maglia con dettagli traforati.",
+    "price": { "regular": "49.00" },
+    "colors": [
+      {
+        "id": "arancio",
+        "image": "/src/assets/images/products/moonmilk_arancio_WS2407SK13-ARANCIO-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Arancio"
+      },
+      {
+        "id": "multicolor",
+        "image": "/src/assets/images/products/moonmilk_multicolor_WS2407SK13-Multicolor-1.jpg",
+        "hex": "#FF6B6B",
+        "name": "Multicolor"
+      },
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/moonmilk_azzurro_WS2407SK13-Azzurro-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "gender": "female",
+    "title": "Moonmilk",
+    "image": "/src/assets/images/products/moonmilk_azzurro_WS2407SK13-Azzurro-1.jpg",
+    "description": "Gonna in maglia con dettagli traforati.",
+    "price": { "regular": "49.00" },
+    "colors": [
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/moonmilk_azzurro_WS2407SK13-Azzurro-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      },
+      {
+        "id": "multicolor",
+        "image": "/src/assets/images/products/moonmilk_multicolor_WS2407SK13-Multicolor-1.jpg",
+        "hex": "#FF6B6B",
+        "name": "Multicolor"
+      },
+      {
+        "id": "arancio",
+        "image": "/src/assets/images/products/moonmilk_arancio_WS2407SK13-ARANCIO-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Arancio"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "gender": "female",
+    "title": "Dunite",
+    "image": "/src/assets/images/products/dunite_arancio_WS2415TOP5-ARANCIO-1.jpg",
+    "description": "Top corto con dettagli traforati.",
+    "price": { "regular": "49.00" },
+    "colors": [
+      {
+        "id": "arancio",
+        "image": "/src/assets/images/products/dunite_arancio_WS2415TOP5-ARANCIO-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Arancio"
+      },
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/dunite_blu_WS2415TOP5-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "gender": "female",
+    "title": "Dunite",
+    "image": "/src/assets/images/products/dunite_blu_WS2415TOP5-BLU-1.jpg",
+    "description": "Top corto con dettagli traforati.",
+    "price": { "regular": "49.00" },
+    "colors": [
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/dunite_blu_WS2415TOP5-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      },
+      {
+        "id": "arancio",
+        "image": "/src/assets/images/products/dunite_arancio_WS2415TOP5-ARANCIO-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Arancio"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "gender": "female",
+    "title": "Lopolith",
+    "image": "/src/assets/images/products/lopolith_arancio_WS2405GC18-ARANCIO-1.jpg",
+    "description": "Maglia in canapa e viscosa bamboo.",
+    "price": { "regular": "99.00" },
+    "colors": [
+      {
+        "id": "arancio",
+        "image": "/src/assets/images/products/lopolith_arancio_WS2405GC18-ARANCIO-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Arancio"
+      },
+      {
+        "id": "beige",
+        "image": "/src/assets/images/products/lopolith_beige_WS2405GC18-BEIGE-1.jpg",
+        "hex": "#F5F5DC",
+        "name": "Beige"
+      },
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/lopolith_azzurro_WS2405GC18-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "gender": "female",
+    "title": "Lopolith",
+    "image": "/src/assets/images/products/lopolith_azzurro_WS2405GC18-AZZURRO-1.jpg",
+    "description": "Maglia in canapa e viscosa bamboo.",
+    "price": { "regular": "99.00" },
+    "colors": [
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/lopolith_azzurro_WS2405GC18-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      },
+      {
+        "id": "beige",
+        "image": "/src/assets/images/products/lopolith_beige_WS2405GC18-BEIGE-1.jpg",
+        "hex": "#F5F5DC",
+        "name": "Beige"
+      },
+      {
+        "id": "arancio",
+        "image": "/src/assets/images/products/lopolith_arancio_WS2405GC18-ARANCIO-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Arancio"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "gender": "female",
+    "title": "Lopolith",
+    "image": "/src/assets/images/products/lopolith_beige_WS2405GC18-BEIGE-1.jpg",
+    "description": "Maglia in canapa e viscosa bamboo.",
+    "price": { "regular": "99.00" },
+    "colors": [
+      {
+        "id": "beige",
+        "image": "/src/assets/images/products/lopolith_beige_WS2405GC18-BEIGE-1.jpg",
+        "hex": "#F5F5DC",
+        "name": "Beige"
+      },
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/lopolith_azzurro_WS2405GC18-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      },
+      {
+        "id": "arancio",
+        "image": "/src/assets/images/products/lopolith_arancio_WS2405GC18-ARANCIO-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Arancio"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "gender": "female",
+    "title": "Kaolinite",
+    "image": "/src/assets/images/products/kaolinite_marrone_WS2415DR4-MARRONE-1.jpg",
+    "description": "Abito smanicato con dettagli traforati.",
+    "price": { "regular": "72.00" },
+    "colors": [
+      {
+        "id": "marrone",
+        "image": "/src/assets/images/products/kaolinite_marrone_WS2415DR4-MARRONE-1.jpg",
+        "hex": "#8B4513",
+        "name": "Marrone"
+      },
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/kaolinite_azzurro_WS2415DR4-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "gender": "female",
+    "title": "Kaolinite",
+    "image": "/src/assets/images/products/kaolinite_azzurro_WS2415DR4-AZZURRO-1.jpg",
+    "description": "Abito smanicato con dettagli traforati.",
+    "price": { "regular": "72.00" },
+    "colors": [
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/kaolinite_azzurro_WS2415DR4-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      },
+      {
+        "id": "marrone",
+        "image": "/src/assets/images/products/kaolinite_marrone_WS2415DR4-MARRONE-1.jpg",
+        "hex": "#8B4513",
+        "name": "Marrone"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "gender": "female",
+    "title": "Grisein",
+    "image": "/src/assets/images/products/grisein_blu_WS2407PA15-BLU-1.jpg",
+    "description": "Pantalone morbido con tasche.",
+    "price": { "regular": "89.00" },
+    "colors": [
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/grisein_blu_WS2407PA15-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      },
+      {
+        "id": "marrone",
+        "image": "/src/assets/images/products/grisein_marrone_WS2407PA15-MARRONE-1.jpg",
+        "hex": "#8B4513",
+        "name": "Marrone"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "gender": "female",
+    "title": "Grisein",
+    "image": "/src/assets/images/products/grisein_marrone_WS2407PA15-MARRONE-1.jpg",
+    "description": "Pantalone morbido con tasche.",
+    "price": { "regular": "89.00" },
+    "colors": [
+      {
+        "id": "marrone",
+        "image": "/src/assets/images/products/grisein_marrone_WS2407PA15-MARRONE-1.jpg",
+        "hex": "#8B4513",
+        "name": "Marrone"
+      },
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/grisein_blu_WS2407PA15-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "gender": "female",
+    "title": "Unakite",
+    "image": "/src/assets/images/products/unakite_avorio_WS2415GC2-AVORIO-1.jpg",
+    "description": "T-shirt minimal con logo ricamato.",
+    "price": { "regular": "62.00" },
+    "colors": [
+      {
+        "id": "avorio",
+        "image": "/src/assets/images/products/unakite_avorio_WS2415GC2-AVORIO-1.jpg",
+        "hex": "#FEF7ED",
+        "name": "Avorio"
+      },
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/unakite_blu_WS2415GC2-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      },
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/unakite_azzurro_WS2415GC2-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "gender": "female",
+    "title": "Unakite",
+    "image": "/src/assets/images/products/unakite_azzurro_WS2415GC2-AZZURRO-1.jpg",
+    "description": "T-shirt minimal con logo ricamato.",
+    "price": { "regular": "62.00" },
+    "colors": [
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/unakite_azzurro_WS2415GC2-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      },
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/unakite_blu_WS2415GC2-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      },
+      {
+        "id": "avorio",
+        "image": "/src/assets/images/products/unakite_avorio_WS2415GC2-AVORIO-1.jpg",
+        "hex": "#FEF7ED",
+        "name": "Avorio"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "gender": "female",
+    "title": "Unakite",
+    "image": "/src/assets/images/products/unakite_blu_WS2415GC2-BLU-1.jpg",
+    "description": "T-shirt minimal con logo ricamato.",
+    "price": { "regular": "62.00" },
+    "colors": [
+      {
+        "id": "blu",
+        "image": "/src/assets/images/products/unakite_blu_WS2415GC2-BLU-1.jpg",
+        "hex": "#1E40AF",
+        "name": "Blu"
+      },
+      {
+        "id": "azzurro",
+        "image": "/src/assets/images/products/unakite_azzurro_WS2415GC2-AZZURRO-1.jpg",
+        "hex": "#87CEEB",
+        "name": "Azzurro"
+      },
+      {
+        "id": "avorio",
+        "image": "/src/assets/images/products/unakite_avorio_WS2415GC2-AVORIO-1.jpg",
+        "hex": "#FEF7ED",
+        "name": "Avorio"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "gender": "female",
+    "title": "Dolomia",
+    "image": "/src/assets/images/products/dolomia_arancio_WS2415GC3-ARANCIO-1.jpg",
+    "description": "T-shirt ampia con grafica ispirata alla montagna.",
+    "price": { "regular": "69.00" },
+    "colors": [
+      {
+        "id": "arancio",
+        "image": "/src/assets/images/products/dolomia_arancio_WS2415GC3-ARANCIO-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Arancio"
+      },
+      {
+        "id": "marrone",
+        "image": "/src/assets/images/products/dolomia_marrone_WS2415GC3-MARRONE-1-1.jpg",
+        "hex": "#8B4513",
+        "name": "Marrone"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "gender": "female",
+    "title": "Dolomia",
+    "image": "/src/assets/images/products/dolomia_marrone_WS2415GC3-MARRONE-1-1.jpg",
+    "description": "T-shirt ampia con grafica ispirata alla montagna.",
+    "price": { "regular": "69.00" },
+    "colors": [
+      {
+        "id": "marrone",
+        "image": "/src/assets/images/products/dolomia_marrone_WS2415GC3-MARRONE-1-1.jpg",
+        "hex": "#8B4513",
+        "name": "Marrone"
+      },
+      {
+        "id": "arancio",
+        "image": "/src/assets/images/products/dolomia_arancio_WS2415GC3-ARANCIO-1.jpg",
+        "hex": "#FF6B35",
+        "name": "Arancio"
+      }
+    ],
+    "slides": [
+      {
+        "img": "/src/assets/images/slides/column/women-1.jpg",
+        "alt": "Everest sweater front view - Men 1"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-2.jpg",
+        "alt": "Everest sweater back view - Cordura side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-3.jpg",
+        "alt": "Everest sweater detail 1 - Cashmere side"
+      },
+      {
+        "img": "/src/assets/images/slides/column/women-4.jpg",
+        "alt": "Everest sweater detail 2 - Cashmere side"
+      }
+    ]
+  }
+]

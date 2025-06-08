@@ -1,11 +1,22 @@
-import type { FC } from 'react';
-import {
-  menProducts,
-  womenProducts,
-} from '@/constant/mock-datas/sampleProductList';
+import { useEffect, useState } from 'react';
 import ProductCard from '@/pages/HomePage/ProductList/ProductCard';
+import type { Product } from '@/types';
 
-const ProductList: FC = () => {
+const ProductList = () => {
+  const [menProducts, setMenProducts] = useState([]);
+  const [womenProducts, setWomenProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('/src/constant/mock-datas/sampleProductList.json')
+      .then((res) => res.json())
+      .then((data) => {
+        setMenProducts(data.filter((item: Product) => item.gender === 'male'));
+        setWomenProducts(
+          data.filter((item: Product) => item.gender === 'female'),
+        );
+      });
+  }, []);
+
   return (
     <section className="relative h-auto w-full bg-[#e1e1e1] px-[5vw] py-[10vh]">
       <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[15vh]">

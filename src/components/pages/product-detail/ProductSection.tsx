@@ -88,11 +88,6 @@ const ProductSection: FC<ProductSectionProps> = ({
   const handleAddToCart = () => {
     if (selectedSize >= 0) {
       addToCart(product, sizes[selectedSize], selectedColor, 1);
-      console.log(
-        `Added ${product.title}, size ${sizes[selectedSize]}, color ${
-          product.colors?.[selectedColor]?.hex
-        } to cart`,
-      );
       toggleCartModal(true);
     }
   };
@@ -127,7 +122,7 @@ const ProductSection: FC<ProductSectionProps> = ({
 
   return (
     <section
-      className={`product--shop-section relative h-auto w-full ${sectionClass}`}
+      className={`product--shop-section relative h-auto w-full pt-[10vh] ${sectionClass}`}
       ref={sectionRef}
     >
       <div
@@ -140,7 +135,7 @@ const ProductSection: FC<ProductSectionProps> = ({
         {/* Left Column */}
         <div
           ref={productLeftRef}
-          className="product-left relative box-border h-auto w-full pt-[6rem] pr-[5vw] pl-[5vw] md:sticky md:!top-[10rem] md:!h-[100vh] md:pt-0 md:pr-0"
+          className="product-left relative box-border h-auto w-full pt-[6rem] pr-[5vw] pl-[5vw] md:sticky md:pt-0 md:pr-0"
         >
           <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[3rem]">
             <div className="product-top relative flex h-auto w-full flex-col items-start justify-start gap-[1rem]">
@@ -164,7 +159,7 @@ const ProductSection: FC<ProductSectionProps> = ({
 
         {/* Middle Column - Images */}
         <div className="product-middle relative h-auto w-full">
-          <div className="images relative hidden h-auto w-full flex-col items-start justify-start gap-[1.25rem] pt-[calc(6rem+5vh)] md:flex">
+          <div className="images relative hidden h-auto w-full flex-col items-start justify-start gap-[1.25rem] md:flex">
             {product.slides?.map((slide, index) => (
               <div
                 key={index}
@@ -225,7 +220,7 @@ const ProductSection: FC<ProductSectionProps> = ({
         {/* Right Column */}
         <div
           ref={productRightRef}
-          className="product-right relative box-border h-auto w-full py-[2rem] pr-[5vw] pl-[5vw] md:sticky md:!top-[10rem] md:!h-[100vh] md:py-0 md:pl-0"
+          className="product-right relative box-border h-auto w-full py-[2rem] pr-[5vw] pl-[5vw] md:sticky md:py-0 md:pl-0"
         >
           <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[3.75rem]">
             <div className="product-top relative flex h-auto w-full flex-col items-start justify-start gap-[2rem]">

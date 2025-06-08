@@ -1,8 +1,6 @@
-import {
-  menProducts,
-  womenProducts,
-} from '@/constant/mock-datas/sampleProductList';
+import { useEffect, useState } from 'react';
 import ProductCard from '@/pages/HomePage/ProductList/ProductCard';
+import type { Product } from '@/types';
 
 const FILTER_ITEMS = [
   {
@@ -40,6 +38,20 @@ interface ProductCollectionProps {
 }
 
 const ProductCollection = ({ isMen }: ProductCollectionProps) => {
+  const [menProducts, setMenProducts] = useState<Product[]>([]);
+  const [womenProducts, setWomenProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    fetch('/src/constant/mock-datas/sampleProductList.json')
+      .then((res) => res.json())
+      .then((data) => {
+        setMenProducts(data.filter((item: Product) => item.gender === 'male'));
+        setWomenProducts(
+          data.filter((item: Product) => item.gender === 'female'),
+        );
+      });
+  }, []);
+
   return (
     <section className="relative box-border h-auto w-full px-[5vw] pt-[5rem] pb-[10vh] md:pt-[calc(6rem+5vh)]">
       <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[2.5rem] md:gap-[6rem]">
