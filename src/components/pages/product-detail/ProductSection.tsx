@@ -51,7 +51,7 @@ const ProductSection: FC<ProductSectionProps> = ({
     if (imagesLoadedCountRef.current >= (product.slides?.length || 0)) {
       setImagesLoaded(true);
     }
-  }, []);
+  }, [product.slides]);
 
   useEffect(() => {
     if (isSP) return;

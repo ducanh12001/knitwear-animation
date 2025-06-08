@@ -1,12 +1,12 @@
 export interface ProductColor {
-  id: string | number;
+  id: string;
   image: string;
   hex?: string;
   name?: string;
 }
 
 export interface Product {
-  id: string | number;
+  id: number;
   title: string;
   gender: 'male' | 'female';
   image: string;

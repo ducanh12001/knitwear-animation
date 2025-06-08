@@ -18,6 +18,7 @@ import CustomCursor from '@/components/others/CustomCursor';
 import Footer from '@/components/organisms/footer/Footer';
 import ScrollCircle from '@/components/others/ScrollCircle';
 import CookieConsent from '@/components/others/CookieConsent';
+import { PageLoadingFallback } from '@/components/others/PageLoadingFallback';
 
 import './App.css';
 import '@/styles/index.css';
@@ -33,7 +34,7 @@ const LENIS_OPTIONS: LenisOptions = {
   syncTouchLerp: 0.1,
 };
 
-function App() {
+const App = () => {
   const {
     location,
     displayLocation,
@@ -94,7 +95,9 @@ function App() {
                           console.error(`Page error on ${route.path}:`, error);
                         }}
                       >
-                        <Suspense fallback={null}>{route.element}</Suspense>
+                        <Suspense fallback={<PageLoadingFallback />}>
+                          {route.element}
+                        </Suspense>
                       </ErrorBoundary>
                     }
                   />
@@ -110,6 +113,6 @@ function App() {
       </div>
     </ReactLenis>
   );
-}
+};
 
 export default App;

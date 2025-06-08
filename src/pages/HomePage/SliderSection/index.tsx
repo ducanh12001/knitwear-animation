@@ -38,7 +38,7 @@ export interface SlideData {
   mobileImg: string;
 }
 
-export function SliderSection() {
+export const SliderSection = () => {
   const [firstSwiper, setFirstSwiper] = useState<Swiper | null>(null);
   const [secondSwiper, setSecondSwiper] = useState<Swiper | null>(null);
 
@@ -57,4 +57,4 @@ export function SliderSection() {
       </div>
     </section>
   );
-}
+};

@@ -1,13 +1,15 @@
-import OkkeLimited from '@/pages/OkkeLimited';
-import OkkeWorld from '@/pages/OkkeWorld';
-import Cart from '@/pages/Cart';
-import Contacts from '@/pages/Contacts';
-import HomePage from '@/pages/HomePage';
-import PasswordRecovery from '@/pages/PasswordRecovery';
-import Payment from '@/pages/Payment';
-import ProductCollection from '@/pages/ProductCollection';
-import ProductDetail from '@/pages/ProductDetail';
-import TermsAndPolicies from '@/pages/TermsAndPolicies';
+import { lazy } from 'react';
+
+const HomePage = lazy(() => import('@/pages/HomePage'));
+const ProductCollection = lazy(() => import('@/pages/ProductCollection'));
+const ProductDetail = lazy(() => import('@/pages/ProductDetail'));
+const OkkeLimited = lazy(() => import('@/pages/OkkeLimited'));
+const OkkeWorld = lazy(() => import('@/pages/OkkeWorld'));
+const Contacts = lazy(() => import('@/pages/Contacts'));
+const Cart = lazy(() => import('@/pages/Cart'));
+const Payment = lazy(() => import('@/pages/Payment'));
+const TermsAndPolicies = lazy(() => import('@/pages/TermsAndPolicies'));
+const PasswordRecovery = lazy(() => import('@/pages/PasswordRecovery'));
 
 export const ROUTES = [
   {

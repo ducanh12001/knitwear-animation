@@ -9,7 +9,7 @@ import Road3 from '@/assets/images/banner/road-3.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Roadmap() {
+const Roadmap = () => {
   const discoverLinkRef = useRef<HTMLAnchorElement | null>(null);
   const ellipseRef = useRef<SVGEllipseElement | null>(null);
 
@@ -222,6 +222,6 @@ function Roadmap() {
       </div>
     </section>
   );
-}
+};
 
 export default Roadmap;
