@@ -3,10 +3,6 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { Link } from 'react-router';
 
-import Limited1 from '@/assets/images/banner/limited-1.jpg';
-import Limited2 from '@/assets/images/banner/limited-2.jpg';
-import Limited3 from '@/assets/images/banner/limited-3.png';
-
 const Limited: FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const imageRef = useRef<HTMLDivElement | null>(null);
@@ -79,10 +75,10 @@ const Limited: FC = () => {
       >
         <Link to="/everest-okke-limited" className="relative block w-full">
           <div className="image-back mobile relative h-auto w-full">
-            <img src={Limited1} className="w-full" />
+            <img src="/images/banner/limited-1.jpg" className="w-full" />
           </div>
           <div className="image-back desktop relative h-auto w-full">
-            <img src={Limited2} className="w-full" />
+            <img src="/images/banner/limited-2.jpg" className="w-full" />
           </div>
           <div className="title absolute top-1/2 left-1/2 -translate-1/2">
             <h2
@@ -96,7 +92,7 @@ const Limited: FC = () => {
             ref={imageRef}
             className="image-front desktop absolute top-0 left-0 h-auto w-full"
           >
-            <img src={Limited3} className="w-full" />
+            <img src="/images/banner/limited-3.png" className="w-full" />
           </div>
         </Link>
       </div>

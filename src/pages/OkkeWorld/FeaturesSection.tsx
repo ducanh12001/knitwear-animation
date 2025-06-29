@@ -7,9 +7,6 @@ import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
 import { FEATURES_DATA } from '@/constant/featuresData';
 import FeatureModal from '@/components/organisms/modal/FeatureModal';
 
-import ModelImage from '@/assets/images/banner/model.jpg';
-import ModelImageSp from '@/assets/images/banner/model-sp.png';
-
 const FeaturesSection: FC = () => {
   const isDesktop = useMediaQuery({
     query: `(min-width: ${DESKTOP_BREAKPOINT}px)`,
@@ -77,11 +74,15 @@ const FeaturesSection: FC = () => {
           className="image elAnimation desktop relative z-10 h-auto w-full"
           data-animation="ease-bottom-to-top-scaled"
         >
-          <img src={ModelImage} alt="" className="block h-auto w-full" />
+          <img
+            src="/images/banner/model.jpg"
+            alt=""
+            className="block h-auto w-full"
+          />
         </div>
         <div className="image mobile">
           <div className="relative mx-auto w-[80%]">
-            <img src={ModelImageSp} alt="" className="w-full" />
+            <img src="/images/banner/model-sp.png" alt="" className="w-full" />
           </div>
         </div>
         <div className="dots absolute top-0 left-0 z-20 w-full">

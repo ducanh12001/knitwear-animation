@@ -1,25 +1,20 @@
 import type { PaymentForm } from '@/types';
 
-import Amex from '@/assets/images/payment/amex.svg';
-import Discover from '@/assets/images/payment/discover.svg';
-import Visa from '@/assets/images/payment/visa.svg';
-import Mastercard from '@/assets/images/payment/mastercard.svg';
-
 export const PAYMENT_CARDS = [
   {
-    image: Amex,
+    image: '/images/payment/amex.svg',
     alt: 'Amex',
   },
   {
-    image: Discover,
+    image: '/images/payment/discover.svg',
     alt: 'Discover',
   },
   {
-    image: Visa,
+    image: '/images/payment/visa.svg',
     alt: 'Visa',
   },
   {
-    image: Mastercard,
+    image: '/images/payment/mastercard.svg',
     alt: 'Mastercard',
   },
 ];

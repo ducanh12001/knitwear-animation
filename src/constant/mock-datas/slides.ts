@@ -1,57 +1,45 @@
-import Men1 from '@/assets/images/slides/column/men-1.jpg';
-import Men2 from '@/assets/images/slides/column/men-2.jpg';
-import Men3 from '@/assets/images/slides/column/men-3.jpg';
-import Men4 from '@/assets/images/slides/column/men-4.jpg';
-import Men5 from '@/assets/images/slides/column/men-5.jpg';
-import Men6 from '@/assets/images/slides/column/men-6.jpg';
-
-import Women1 from '@/assets/images/slides/column/women-1.jpg';
-import Women2 from '@/assets/images/slides/column/women-2.jpg';
-import Women3 from '@/assets/images/slides/column/women-3.jpg';
-import Women4 from '@/assets/images/slides/column/women-4.jpg';
-
 export const menColImages = [
   {
-    img: Men1,
+    img: '/images/slides/column/men-1.jpg',
     alt: 'Everest sweater front view - Men 1',
   },
   {
-    img: Men2,
+    img: '/images/slides/column/men-2.jpg',
     alt: 'Everest sweater back view - Cordura side',
   },
   {
-    img: Men3,
+    img: '/images/slides/column/men-3.jpg',
     alt: 'Everest sweater detail 1 - Cashmere side',
   },
   {
-    img: Men4,
+    img: '/images/slides/column/men-4.jpg',
     alt: 'Everest sweater detail 2 - Cashmere side',
   },
   {
-    img: Men5,
+    img: '/images/slides/column/men-5.jpg',
     alt: 'Everest sweater detail 2 - Cordura side',
   },
   {
-    img: Men6,
+    img: '/images/slides/column/men-6.jpg',
     alt: 'Everest sweater detail 1 - Cordura side',
   },
 ];
 
 export const womenColImages = [
   {
-    img: Women1,
+    img: '/images/slides/column/women-1.jpg',
     alt: 'Everest sweater front view - Men 1',
   },
   {
-    img: Women2,
+    img: '/images/slides/column/women-2.jpg',
     alt: 'Everest sweater back view - Cordura side',
   },
   {
-    img: Women3,
+    img: '/images/slides/column/women-3.jpg',
     alt: 'Everest sweater detail 1 - Cashmere side',
   },
   {
-    img: Women4,
+    img: '/images/slides/column/women-4.jpg',
     alt: 'Everest sweater detail 2 - Cashmere side',
   },
 ];

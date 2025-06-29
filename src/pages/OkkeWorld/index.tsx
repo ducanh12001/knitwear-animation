@@ -6,13 +6,6 @@ import AdvSection from '@/pages/OkkeWorld/AdvSection';
 import ImagesSection from '@/pages/OkkeLimited/ImagesSection';
 import FeaturesVideo from '@/assets/features.mp4';
 
-import WorldBanner from '@/assets/images/banner/world-banner.jpg';
-import WorldBannerSp from '@/assets/images/banner/world-banner-sp.jpg';
-import World1 from '@/assets/images/banner/world-1.jpg';
-import World2 from '@/assets/images/banner/world-2.jpg';
-import World3 from '@/assets/images/banner/world-3.jpg';
-import World4 from '@/assets/images/banner/world-4.jpg';
-
 const OkkeWorld: FC = () => {
   useGSAPAnimation();
 
@@ -22,15 +15,15 @@ const OkkeWorld: FC = () => {
         <div className="desktop relative h-full w-full">
           <img
             className="block h-full w-full object-cover object-center"
-            src={WorldBanner}
-            alt=""
+            src="/images/banner/world-banner.jpg"
+            alt="world banner"
           />
         </div>
         <div className="mobile relative h-full w-full">
           <img
             className="block h-full w-full object-cover object-center"
-            src={WorldBannerSp}
-            alt=""
+            src="/images/banner/world-banner-sp.jpg"
+            alt="world banner"
           />
         </div>
       </section>
@@ -42,12 +35,12 @@ const OkkeWorld: FC = () => {
         }}
         blockColumns={{
           leftTitle: 'Research and experiment',
-          leftImage: World1,
+          leftImage: '/images/banner/world-1.jpg',
           rightTitle: 'Durable and timeless',
-          rightImage: World2,
+          rightImage: '/images/banner/world-2.jpg',
         }}
         blockFull={{
-          image: World3,
+          image: '/images/banner/world-3.jpg',
           des: 'The innovation of materials and the study of details push OKKE knitwear beyond the boundaries of the ordinary.',
           des2: 'We want to inspire those who are looking for something more, those who want to experience the unlimited potential of textile creations.',
         }}
@@ -61,7 +54,11 @@ const OkkeWorld: FC = () => {
       <section className="okkeworld--image-full relative h-auto w-full">
         <div className="relative h-auto w-full">
           <div className="relative z-10 h-auto w-full">
-            <img src={World4} alt="" className="block h-auto w-full" />
+            <img
+              src="/images/banner/world-4.jpg"
+              alt="world banner"
+              className="block h-auto w-full"
+            />
           </div>
           <div className="absolute top-1/2 left-1/2 z-15 -translate-1/2">
             <h2 className="font-humane text-[90px] leading-[75%] whitespace-nowrap text-white uppercase md:text-[12vw]">

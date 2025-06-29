@@ -179,7 +179,7 @@ const Cart: FC = () => {
                 as="link"
                 to="/checkout"
                 disabled={cartItems.length === 0}
-                className="font-bold uppercase"
+                className="bg-primary font-bold uppercase"
               >
                 Proceed to payment
               </Button>

@@ -10,10 +10,6 @@ import ProductSection from '@/components/pages/product-detail/ProductSection';
 import ImagesSection from '@/pages/OkkeLimited/ImagesSection';
 import IntroSection from '@/pages/OkkeLimited/IntroSection';
 
-import Everest2 from '@/assets/images/banner/everest-2.jpg';
-import Everest3 from '@/assets/images/banner/everest-3.jpg';
-import Everest4 from '@/assets/images/banner/everest-4.jpg';
-
 const OkkeLimited = () => {
   const isSP = useMediaQuery({
     query: `(width < ${DESKTOP_BREAKPOINT}px)`,
@@ -40,12 +36,12 @@ const OkkeLimited = () => {
         }}
         blockColumns={{
           leftTitle: 'Only 100 Items',
-          leftImage: Everest2,
+          leftImage: '/images/banner/everest-2.jpg',
           rightTitle: 'Double Face',
-          rightImage: Everest3,
+          rightImage: '/images/banner/everest-3.jpg',
         }}
         blockFull={{
-          image: Everest4,
+          image: '/images/banner/everest-4.jpg',
           des: 'Un maglione double face che chiede di diventare parte integrante del tuo abbigliamento tecnico, regalandoti adattabilità, resistenza e durevolezza, ma anche un capo che entra nella quotidianità con la sua traspirabilità, la sua leggerezza e indiscusse qualità estetiche.',
         }}
       />

@@ -2,21 +2,12 @@ import { useState, useRef, useMemo, type FC } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useMediaQuery } from 'react-responsive';
+
 import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
 import CollectionLink from '@/components/pages/okke-world/CollectionLink';
-import PolaroidModal from '@/components/organisms/modal/PolaroidModal';
 import PolaroidCard from '@/components/pages/okke-world/PolaroidCard';
+import PolaroidModal from '@/components/organisms/modal/PolaroidModal';
 import RoadSvg from '@/components/pages/okke-world/RoadSvg';
-
-import Adv1 from '@/assets/images/banner/adv-1.jpg';
-import Adv2 from '@/assets/images/banner/adv-2.jpg';
-import Adv3 from '@/assets/images/banner/adv-3.jpg';
-import Adv4 from '@/assets/images/banner/adv-4.jpg';
-import Adv5 from '@/assets/images/banner/adv-5.jpg';
-import Adv6 from '@/assets/images/banner/adv-6.jpg';
-import Adv7 from '@/assets/images/banner/adv-7.jpg';
-import Adv8 from '@/assets/images/banner/adv-8.jpg';
-import Adv9 from '@/assets/images/banner/adv-9.jpg';
 
 export interface Polaroid {
   id: string;
@@ -46,7 +37,7 @@ const POLAROIDS_DATA: Polaroid[] = [
   {
     id: 'everest-1',
     label: 'Everest',
-    image: Adv1,
+    image: '/images/banner/adv-1.jpg',
     alt: 'Everest mountain landscape',
     position: { top: '5vh', left: '10vw' },
     labelPosition: { right: '2vw', left: 'initial' },
@@ -54,7 +45,7 @@ const POLAROIDS_DATA: Polaroid[] = [
   {
     id: 'trisul',
     label: 'Trisul',
-    image: Adv2,
+    image: '/images/banner/adv-2.jpg',
     alt: 'Trisul mountain peak',
     position: { top: '20vh', left: '15vw' },
     labelPosition: { right: '3vw', left: 'initial' },
@@ -62,7 +53,7 @@ const POLAROIDS_DATA: Polaroid[] = [
   {
     id: 'kardong',
     label: 'Kardong',
-    image: Adv3,
+    image: '/images/banner/adv-3.jpg',
     alt: 'Kardong mountain view',
     position: { top: '30vh', left: '8vw' },
     labelPosition: { right: 'initial', left: '2vw' },
@@ -70,7 +61,7 @@ const POLAROIDS_DATA: Polaroid[] = [
   {
     id: 'k2',
     label: 'K2',
-    image: Adv4,
+    image: '/images/banner/adv-4.jpg',
     alt: 'K2 mountain summit',
     position: { top: '8vh', left: '65vw' },
     labelPosition: { right: '1vw', left: 'initial' },
@@ -78,7 +69,7 @@ const POLAROIDS_DATA: Polaroid[] = [
   {
     id: 'nanga-parbat-1',
     label: 'Nanga Parbat',
-    image: Adv5,
+    image: '/images/banner/adv-5.jpg',
     alt: 'Nanga Parbat mountain range',
     position: { top: '15vh', left: '62vw' },
     labelPosition: { right: 'initial', left: '0' },
@@ -86,7 +77,7 @@ const POLAROIDS_DATA: Polaroid[] = [
   {
     id: 'nanga-parbat-2',
     label: 'Nanga Parbat',
-    image: Adv6,
+    image: '/images/banner/adv-6.jpg',
     alt: 'Nanga Parbat scenic view',
     position: { top: '5vh', left: '10vw' },
     labelPosition: { right: '2vw', left: 'initial' },
@@ -97,14 +88,14 @@ const COLLECTION_LINKS: CollectionLinkType[] = [
   {
     id: 'menswear',
     to: '/product-category/menswear-collection',
-    image: Adv7,
+    image: '/images/banner/adv-7.jpg',
     title: 'Menswear',
     alt: "Men's collection showcase",
   },
   {
     id: 'womenswear',
     to: '/product-category/womenswear-collection',
-    image: Adv8,
+    image: '/images/banner/adv-8.jpg',
     title: 'Womenswear',
     alt: "Women's collection showcase",
     className: 'mt-[15vh]',
@@ -112,7 +103,7 @@ const COLLECTION_LINKS: CollectionLinkType[] = [
   {
     id: 'everest-limited',
     to: '/everest-okke-limited',
-    image: Adv9,
+    image: '/images/banner/adv-9.jpg',
     title: 'Everest Okke Limited',
     alt: 'Everest limited edition collection',
   },

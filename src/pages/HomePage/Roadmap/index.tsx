@@ -3,10 +3,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from 'react-router';
 
-import Road1 from '@/assets/images/banner/road-1.jpg';
-import Road2 from '@/assets/images/banner/road-2.jpg';
-import Road3 from '@/assets/images/banner/road-3.jpg';
-
 gsap.registerPlugin(ScrollTrigger);
 
 const Roadmap = () => {
@@ -56,7 +52,7 @@ const Roadmap = () => {
           >
             <div className="imageScale">
               <img
-                src={Road1}
+                src="/images/banner/road-1.jpg"
                 className="block h-auto w-[33vw]"
                 alt="Okke Knitwear 1"
               />
@@ -150,7 +146,7 @@ const Roadmap = () => {
                 <div className="imageScale">
                   <div className="relative h-auto w-full">
                     <img
-                      src={Road2}
+                      src="/images/banner/road-2.jpg"
                       className="block h-auto w-full"
                       alt="Okke Knitwear 2"
                     />
@@ -181,7 +177,7 @@ const Roadmap = () => {
                 <div className="imageScale">
                   <div className="relative h-auto w-full">
                     <img
-                      src={Road3}
+                      src="/images/banner/road-3.jpg"
                       className="block h-auto w-full"
                       alt="Okke Knitwear 3"
                     />

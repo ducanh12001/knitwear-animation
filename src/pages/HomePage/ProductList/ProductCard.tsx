@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router';
-import { motion, AnimatePresence } from 'framer-motion';
 import type { Product } from '@/types';
 
 interface ProductCardProps {
@@ -21,41 +20,29 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           className="group relative flex h-full w-full flex-col gap-8"
           onMouseLeave={() => setHoveredColor(null)}
         >
-          <div className="product-image relative h-auto w-full overflow-hidden">
-            <motion.img
+          <div className="product-image relative h-auto w-full">
+            <img
               src={product.image}
               alt={product.title}
               className="block h-full w-full"
-              initial={{ scale: 1 }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
             />
 
             <div className="absolute top-0 left-0 h-auto w-full">
-              <AnimatePresence>
-                {product.colors.map(
-                  (color) =>
-                    hoveredColor === color.id && (
-                      <motion.div
-                        key={color.id}
-                        className="absolute top-0 left-0 h-auto w-full"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <motion.img
-                          src={color.image}
-                          alt={product.title}
-                          className="block h-full w-full"
-                          initial={{ scale: 1.05 }}
-                          animate={{ scale: 1.05 }}
-                          transition={{ duration: 0.3 }}
-                        />
-                      </motion.div>
-                    ),
-                )}
-              </AnimatePresence>
+              {product.colors.map((color, index) => (
+                <div
+                  key={index}
+                  className={`absolute top-0 left-0 h-auto w-full transition-opacity duration-300 ${
+                    hoveredColor === color.id ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <img
+                    key={index}
+                    src={color.image}
+                    alt={product.title}
+                    className="block h-full w-full"
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
