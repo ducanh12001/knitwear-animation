@@ -80,26 +80,6 @@ The website is built with React + TypeScript, Vite, GSAP animations, Context API
 - **TypeScript** - Type safety
 - **Prettier** - Code formatting
 
-## Project Structure
-
-```
-src/
-├── components/           # React components
-│   ├── atoms/           # Basic components (Button, Input, etc.)
-│   ├── organisms/       # Complex components (Header, Footer, Modal)
-│   ├── pages/           # Page-specific components
-│   └── others/          # Utility components (Cookie, SEO, etc.)
-├── contexts/            # React Context providers
-├── hooks/               # Custom React hooks
-├── pages/               # Main page components
-├── services/            # API services
-├── types/               # TypeScript type definitions
-├── utils/               # Utility functions
-├── constant/            # Constants, routes, validation
-├── assets/              # Images, fonts, videos
-└── styles/              # Global styles
-```
-
 ## Installation & Setup
 
 ### System Requirements
@@ -161,36 +141,17 @@ npm run build
 npm run preview
 ```
 
-### Deploy to Vercel/Netlify
-- Connect repository
-- Set build command: `npm run build`
-- Set output directory: `dist`
-
-## Contributing
-
-1. Fork the repository
-2. Create feature branch: `git checkout -b feature/new-feature`
-3. Commit changes: `git commit -am 'Add new feature'`
-4. Push branch: `git push origin feature/new-feature`
-5. Create Pull Request
-
 ### Code Standards
 - Use TypeScript strict mode
 - Follow ESLint rules
 - Write meaningful commit messages
-- Add tests for new features
-
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Support
 
 If you have issues or questions, please:
-- Create an issue on GitHub
 - Contact the development team
 - Check detailed documentation
 
 ---
 
-**Made with ❤️ by Development Team**
+**Made with ❤️ by DA**
