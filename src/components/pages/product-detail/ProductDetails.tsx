@@ -6,25 +6,25 @@ const CARE_INSTRUCTIONS = [
   {
     id: 'ironing',
     name: 'Ironing',
-    icon: '/src/assets/ironing.svg',
+    icon: '/ironing.svg',
     alt: 'Iron at medium temperature',
   },
   {
     id: 'bleaching',
     name: 'Bleaching',
-    icon: '/src/assets/bleaching.svg',
+    icon: '/bleaching.svg',
     alt: 'Do not bleach',
   },
   {
     id: 'washing',
     name: 'Washing',
-    icon: '/src/assets/washing.svg',
+    icon: '/washing.svg',
     alt: 'Machine wash cold',
   },
   {
     id: 'hanging',
     name: 'Hanging',
-    icon: '/src/assets/hanging.svg',
+    icon: '/hanging.svg',
     alt: 'Hang to dry',
   },
 ];

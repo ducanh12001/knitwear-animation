@@ -210,13 +210,13 @@ const ProductSection: FC<ProductSectionProps> = ({
             ))}
             <div className="swiper-button-prev absolute top-1/2 !left-[5vw] !m-0 flex !h-4 !w-4 -translate-y-1/2 rotate-90 cursor-pointer items-center justify-center md:!h-[3rem] md:!w-[3rem]">
               <div
-                className="bg-primary h-full w-full mask-[url('/src/assets/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
+                className="bg-primary h-full w-full mask-[url('/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
                 aria-hidden="true"
               />
             </div>
             <div className="swiper-button-next absolute top-1/2 !right-[5vw] !m-0 flex !h-4 !w-4 -translate-y-1/2 -rotate-90 cursor-pointer items-center justify-center md:!h-[3rem] md:!w-[3rem]">
               <div
-                className="bg-primary h-full w-full mask-[url('/src/assets/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
+                className="bg-primary h-full w-full mask-[url('/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
                 aria-hidden="true"
               />
             </div>

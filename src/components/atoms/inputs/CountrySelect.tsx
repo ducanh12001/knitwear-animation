@@ -165,7 +165,7 @@ export const CountrySelect = <TFormData extends FieldValues = FieldValues>({
             (isLoading ? 'Loading countries...' : 'Select country')}
         </span>
         <div
-          className={`select--arrow absolute top-1/2 right-[1rem] h-[12px] w-[12px] -translate-y-1/2 ${isOpen ? 'rotate-0' : '-rotate-90'} bg-primary mask-[url('/src/assets/arrow.svg')] mask-no-repeat transition-transform duration-300 md:right-[2rem] md:h-4 md:w-4`}
+          className={`select--arrow absolute top-1/2 right-[1rem] h-[12px] w-[12px] -translate-y-1/2 ${isOpen ? 'rotate-0' : '-rotate-90'} bg-primary mask-[url('/arrow.svg')] mask-no-repeat transition-transform duration-300 md:right-[2rem] md:h-4 md:w-4`}
         />
       </div>
 

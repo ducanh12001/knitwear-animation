@@ -26,7 +26,7 @@ export const CheckboxInput = <TFormData extends FieldValues = FieldValues>({
         />
         <div className="custom-check border-primary relative flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border md:h-[2rem] md:w-[2rem] md:rounded-[0.6rem]">
           <div
-            className={`inner-check bg-primary relative h-3 w-3 mask-[url('/src/assets/check.svg')] mask-no-repeat transition-opacity duration-200 ease-in-out md:h-[1.5rem] md:w-[1.5rem] ${isChecked ? 'opacity-100' : 'opacity-0'}`}
+            className={`inner-check bg-primary relative h-3 w-3 mask-[url('/check.svg')] mask-no-repeat transition-opacity duration-200 ease-in-out md:h-[1.5rem] md:w-[1.5rem] ${isChecked ? 'opacity-100' : 'opacity-0'}`}
           />
         </div>
         <span className="leading-full text-primary flex-1 basis-[100%] text-[14px] md:basis-auto md:text-base">

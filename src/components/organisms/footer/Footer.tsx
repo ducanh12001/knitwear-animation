@@ -96,7 +96,7 @@ const Footer: FC = () => {
                 type="submit"
                 className="relative flex h-16 w-16 cursor-pointer items-center justify-center text-white"
               >
-                <div className="relative h-6 w-6 -rotate-90 bg-[#302F35] mask-[url('/src/assets/arrow.svg')] mask-no-repeat" />
+                <div className="relative h-6 w-6 -rotate-90 bg-[#302F35] mask-[url('/arrow.svg')] mask-no-repeat" />
               </button>
               <div className="absolute right-0 -bottom-2 w-full">
                 {errors.email && (

@@ -4,7 +4,6 @@ import DecryptedText from '@/components/animations/DecryptedText';
 import FeaturesSection from '@/pages/OkkeWorld/FeaturesSection';
 import AdvSection from '@/pages/OkkeWorld/AdvSection';
 import ImagesSection from '@/pages/OkkeLimited/ImagesSection';
-import FeaturesVideo from '@/assets/features.mp4';
 
 const OkkeWorld: FC = () => {
   useGSAPAnimation();
@@ -48,7 +47,7 @@ const OkkeWorld: FC = () => {
       <FeaturesSection />
       <section className="okkeworld--video relative box-border h-auto w-full bg-black p-8 md:px-[10vw] md:py-[10vh]">
         <div className="elAnimation" data-animation="clip-top-to-bottom">
-          <video src={FeaturesVideo} controls />
+          <video src="/features.mp4" controls />
         </div>
       </section>
       <section className="okkeworld--image-full relative h-auto w-full">

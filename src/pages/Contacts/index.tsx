@@ -67,7 +67,7 @@ const Contacts: FC = () => {
     <section className="contacts--form-section relative h-auto w-full xl:h-screen">
       <div className="bg-primary relative flex h-full w-full flex-col items-start justify-start pb-[2.5rem] xl:flex-row xl:pb-0">
         <div className="relative flex h-full w-full flex-col xl:w-[55%] xl:flex-row-reverse">
-          <div className="relative hidden h-full w-[42vh] bg-[#A9AFA4] mask-[url(/src/assets/contact-bg.svg)] mask-no-repeat xl:block" />
+          <div className="relative hidden h-full w-[42vh] bg-[#A9AFA4] mask-[url(/contact-bg.svg)] mask-no-repeat xl:block" />
           <div className="relative box-border flex w-full flex-col items-center justify-start gap-8 bg-[#A9AFA4] pt-[7.5rem] pr-[5vw] pl-[5vw] xl:w-[calc(100%-42vh)] xl:flex-row xl:gap-0 xl:pt-0 xl:pr-0">
             <div className="center relative flex h-auto w-full flex-col gap-4">
               <h1 className="font-humane leading-full text-[80px] font-light text-white uppercase md:text-[15vw]">
@@ -87,7 +87,7 @@ const Contacts: FC = () => {
                 Contact us via the form
               </p>
             </div>
-            <div className="bg-primary relative mx-[-2px] mb-[-2px] block h-[calc(124*(100vw+4px)/300)] w-[calc(100vw+4px)] mask-[url(/src/assets/contact-bg2.svg)] mask-no-repeat xl:hidden" />
+            <div className="bg-primary relative mx-[-2px] mb-[-2px] block h-[calc(124*(100vw+4px)/300)] w-[calc(100vw+4px)] mask-[url(/contact-bg2.svg)] mask-no-repeat xl:hidden" />
           </div>
         </div>
         <div className="relative flex h-full w-full items-center justify-center pt-[2rem] xl:w-[45%] xl:pt-0">
@@ -153,7 +153,7 @@ const Contacts: FC = () => {
                 />
                 <div className="custom-check relative flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border border-[#e1e1e1] xl:h-[2rem] xl:w-[2rem] xl:rounded-[0.6rem]">
                   <div
-                    className={`inner-check relative h-3 w-3 bg-[#e1e1e1] mask-[url('/src/assets/check.svg')] mask-no-repeat opacity-0 transition-opacity duration-200 ease-in-out xl:h-[1.5rem] xl:w-[1.5rem] ${isChecked ? 'opacity-100' : 'opacity-0'}`}
+                    className={`inner-check relative h-3 w-3 bg-[#e1e1e1] mask-[url('/check.svg')] mask-no-repeat opacity-0 transition-opacity duration-200 ease-in-out xl:h-[1.5rem] xl:w-[1.5rem] ${isChecked ? 'opacity-100' : 'opacity-0'}`}
                   />
                 </div>
                 <span className="leading-full flex-1 basis-[100%] text-[14px] text-[#e1e1e1] xl:basis-auto xl:text-base">

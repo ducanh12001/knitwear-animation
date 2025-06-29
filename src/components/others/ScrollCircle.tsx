@@ -120,7 +120,7 @@ const ScrollCircle: React.FC = () => {
       onClick={scrollToTop}
     >
       <div
-        className="relative h-4 w-4 rotate-0 bg-[#302F35] mask-[url('/src/assets/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
+        className="relative h-4 w-4 rotate-0 bg-[#302F35] mask-[url('/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
         ref={arrowRef}
       />
       <div className="circle-back">
