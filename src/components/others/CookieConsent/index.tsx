@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { useCookieConsent } from '@/contexts/cookie/CookieConsentContext';
+
+import { useCookieConsent } from '@/hooks/others/useCookieConsent';
 import { applyAllCookiePreferences } from '@/utils/cookieHandlers';
 import type { KeyofCookiePreferences } from '@/types';
+
 import CookieBanner from '@/components/others/CookieConsent/CookieBanner';
 import CookieModal from '@/components/others/CookieConsent/CookieModal';
 import RevisitButton from '@/components/others/CookieConsent/RevisitButton';

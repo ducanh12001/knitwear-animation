@@ -84,8 +84,9 @@ const ScrollCircle: React.FC = () => {
         progressAnimationRef.current = null;
       }
 
-      arrowAnimationsRef.current.forEach((anim) => anim.kill());
-      arrowAnimationsRef.current.clear();
+      const currentArrowAnimations = arrowAnimationsRef.current;
+      currentArrowAnimations.forEach((anim) => anim.kill());
+      currentArrowAnimations.clear();
 
       ScrollTrigger.getAll().forEach((trigger) => {
         if (

@@ -1,5 +1,5 @@
 import { useEffect, type FC } from 'react';
-import { useCookieConsent } from '@/contexts/cookie/CookieConsentContext';
+import { useCookieConsent } from '@/hooks/others/useCookieConsent';
 import type { KeyofCookiePreferences } from '@/types';
 
 /**
@@ -16,7 +16,7 @@ import type { KeyofCookiePreferences } from '@/types';
 interface ConsentScriptProps {
   category: KeyofCookiePreferences;
   src: string;
-  attributes?: Record<string, any>;
+  attributes?: Record<string, string | boolean | number>;
   onLoad?: () => void;
   onError?: (err?: string | Event) => void;
   removeOnReject?: boolean;
@@ -53,7 +53,7 @@ const ConsentScript: FC<ConsentScriptProps> = ({
 
         // Add additional attributes
         Object.entries(attributes).forEach(([key, value]) => {
-          scriptElement!.setAttribute(key, value);
+          scriptElement!.setAttribute(key, String(value));
         });
 
         // Add event handlers

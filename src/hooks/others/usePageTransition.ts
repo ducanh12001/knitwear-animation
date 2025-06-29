@@ -129,7 +129,7 @@ export const usePageTransition = () => {
 
       timelineRef.current = tl;
     },
-    [location, isTransitioning],
+    [location, lenis],
   );
 
   const cleanup = useCallback(() => {

@@ -1,6 +1,6 @@
 declare global {
   interface Window {
-    dataLayer: any[];
+    dataLayer: unknown[];
   }
 }
 
@@ -9,7 +9,7 @@ export const setupGoogleAnalytics = (isAnalyticsAllowed: boolean) => {
   if (isAnalyticsAllowed) {
     // Initialize Google Analytics
     window.dataLayer = window.dataLayer || [];
-    function gtag(...args: any[]) {
+    function gtag(...args: unknown[]) {
       window.dataLayer.push(args);
     }
     gtag('js', new Date());

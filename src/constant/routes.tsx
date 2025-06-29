@@ -43,7 +43,7 @@ export const ROUTES = [
     element: <Contacts />,
   },
   {
-    path: '/product-category/:id',
+    path: '/product/:id',
     title: 'Product',
     element: <ProductDetail />,
   },

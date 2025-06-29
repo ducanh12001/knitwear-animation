@@ -1,6 +1,6 @@
 import { useState, useEffect, type FC } from 'react';
 import { openCookiePreferences } from '@/utils/cookieHandlers';
-import { useCookieConsent } from '@/contexts/cookie/CookieConsentContext';
+import { useCookieConsent } from '@/hooks/others/useCookieConsent';
 import ConsentScript from '@/components/others/CookieConsent/ConsentScript';
 
 const AnalyticsExample: FC = () => {

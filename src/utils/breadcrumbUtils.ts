@@ -12,7 +12,7 @@ export const useBreadcrumb = (): BreadcrumbItem[] => {
   const location = useLocation();
 
   const getIdFromPath = (pathname: string) => {
-    const match = pathname.match(/\/product-category\/(.+)/);
+    const match = pathname.match(/\/product\/(.+)/);
     return match ? match[1] : undefined;
   };
   const id = getIdFromPath(location.pathname);
