@@ -1,23 +1,23 @@
 import { useEffect, useState } from 'react';
-import {
-  menProducts,
-  womenProducts,
-} from '@/constant/mock-datas/sampleProductList';
+import { ProductService } from '@/services/productService';
+import type { Product } from '@/types';
 
 export const useProductDetail = (id: string | undefined) => {
-  const [product, setProduct] = useState<any>({});
+  const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
-    if (id) {
-      const paramProduct = [...menProducts, ...womenProducts].find(
-        (item) => item.id.toString() === id,
-      );
-      if (paramProduct) {
-        setProduct(paramProduct);
-      } else {
-        console.error('Product not found');
+    const fetchProduct = async () => {
+      if (id) {
+        const productId = parseInt(id);
+        const foundProduct = await ProductService.getProductById(productId);
+        if (foundProduct) {
+          setProduct(foundProduct);
+        } else {
+          console.error('Product not found');
+        }
       }
-    }
+    };
+    fetchProduct();
   }, [id]);
 
   return { product };

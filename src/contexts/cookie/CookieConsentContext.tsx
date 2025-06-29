@@ -1,7 +1,8 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
 import useCookies from '@/hooks/others/useCookies';
+import { CookieConsentContext } from '@/contexts/cookie/CookieContext';
 import type {
-  CookieConsentContextValue,
   CookieOptions,
   CookiePreferences,
   KeyofCookiePreferences,
@@ -18,21 +19,7 @@ const DEFAULT_PREFERENCES: CookiePreferences = {
 
 const COOKIE_CONSENT_NAME = 'cookieyes-consent';
 
-const CookieConsentContext = createContext<CookieConsentContextValue | null>(
-  null,
-);
-
-export const useCookieConsent = (): CookieConsentContextValue => {
-  const context = useContext(CookieConsentContext);
-  if (!context) {
-    throw new Error(
-      'useCookieConsent must be used within a CookieConsentProvider',
-    );
-  }
-  return context;
-};
-
-export const CookieConsentProvider = ({ children }: ProviderProps) => {
+const CookieConsentProvider = ({ children }: ProviderProps) => {
   const { getCookie, setCookie, hasCookie, isReady } = useCookies();
   const [preferences, setPreferences] =
     useState<CookiePreferences>(DEFAULT_PREFERENCES);
@@ -151,7 +138,7 @@ export const CookieConsentProvider = ({ children }: ProviderProps) => {
     return preferences;
   };
 
-  const contextValue: CookieConsentContextValue = {
+  const contextValue = {
     preferences,
     hasConsent,
     isLoading,
@@ -169,4 +156,4 @@ export const CookieConsentProvider = ({ children }: ProviderProps) => {
   );
 };
 
-export default CookieConsentContext;
+export default CookieConsentProvider;

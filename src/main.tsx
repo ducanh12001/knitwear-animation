@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe, type StripeElementsOptions } from '@stripe/stripe-js';
 
-import { CookieConsentProvider } from '@/contexts/cookie/CookieConsentContext';
+import CookieConsentProvider from '@/contexts/cookie/CookieConsentContext';
 import CartProvider from '@/contexts/cart/CartProvider';
 import ModalProvider from '@/contexts/modal/ModalProvider';
 import App from '@/App';

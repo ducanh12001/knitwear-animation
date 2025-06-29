@@ -1,8 +1,7 @@
-import {
-  menProducts,
-  womenProducts,
-} from '@/constant/mock-datas/sampleProductList';
+import { useState, useEffect } from 'react';
 import ProductCard from '@/pages/HomePage/ProductList/ProductCard';
+import { ProductService } from '@/services/productService';
+import type { Product } from '@/types';
 
 const FILTER_ITEMS = [
   {
@@ -40,6 +39,18 @@ interface ProductCollectionProps {
 }
 
 const ProductCollection = ({ isMen }: ProductCollectionProps) => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const productList = isMen 
+        ? await ProductService.getMenProducts()
+        : await ProductService.getWomenProducts();
+      setProducts(productList);
+    };
+    fetchProducts();
+  }, [isMen]);
+
   return (
     <section className="relative box-border h-auto w-full px-[5vw] pt-[5rem] pb-[10vh] md:pt-[calc(6rem+5vh)]">
       <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[2.5rem] md:gap-[6rem]">
@@ -72,7 +83,7 @@ const ProductCollection = ({ isMen }: ProductCollectionProps) => {
         </div>
         <div className="relative h-auto w-full">
           <div className="relative grid h-auto w-full grid-cols-2 gap-x-0 gap-y-[8rem] md:grid-cols-4 md:gap-x-[2rem]">
-            {(isMen ? menProducts : womenProducts).map((product, index) => (
+            {products.map((product, index) => (
               <ProductCard key={`${product.id}-${index}`} product={product} />
             ))}
           </div>

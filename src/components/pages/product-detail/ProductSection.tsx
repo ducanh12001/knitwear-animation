@@ -9,6 +9,7 @@ import useCart from '@/hooks/others/useCart';
 import { useModal } from '@/hooks/others/useModal';
 import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
 import type { Product } from '@/types';
+
 import ProductDetails from '@/components/pages/product-detail/ProductDetails';
 import HeatIndicator from '@/components/pages/product-detail/HeatIndicator';
 import { Button } from '@/components/atoms/buttons/Button';
@@ -317,7 +318,8 @@ const ProductSection: FC<ProductSectionProps> = ({
                   >
                     {sizes.map((size, index) => (
                       <button
-                        className={`relative box-border flex h-[3rem] w-[3rem] items-center justify-center rounded-full border-2 border-solid transition-all duration-350 ease-in-out xl:h-[4rem] xl:w-[4rem] ${index % 2 === 1 ? 'cursor-not-allowed opacity-20' : 'cursor-pointer opacity-100'}`}
+                        className={`relative box-border flex h-[3rem] w-[3rem] items-center justify-center rounded-full border-2 border-solid transition-all duration-350 ease-in-out xl:h-[4rem] xl:w-[4rem] ${index % 2 === 1 ? 'pointer-events-none opacity-20' : 'cursor-pointer opacity-100'}`}
+                        disabled={index % 2 === 1}
                         key={index}
                         onClick={() => handleSizeSelect(index)}
                         aria-checked={selectedSize === index}
