@@ -1,6 +1,6 @@
 import { type FC, type RefObject } from 'react';
 import { CloseButton } from '@/components/atoms/buttons/CloseButton';
-import { FEATURES_DATA } from '@/pages/OkkeWorld/FeaturesSection';
+import { FEATURES_DATA } from '@/constant/featuresData';
 
 interface FeatureModalProps {
   modalRef: RefObject<HTMLDivElement | null>;

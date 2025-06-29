@@ -2,12 +2,13 @@ import { useRef, useState, type FC } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useMediaQuery } from 'react-responsive';
+
 import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
+import { FEATURES_DATA } from '@/constant/featuresData';
+import FeatureModal from '@/components/organisms/modal/FeatureModal';
 
 import ModelImage from '@/assets/images/banner/model.jpg';
 import ModelImageSp from '@/assets/images/banner/model-sp.png';
-import FeatureModal from '@/components/organisms/modal/FeatureModal';
-import { FEATURES_DATA } from '@/pages/OkkeWorld/featuresData';
 
 const FeaturesSection: FC = () => {
   const isDesktop = useMediaQuery({
