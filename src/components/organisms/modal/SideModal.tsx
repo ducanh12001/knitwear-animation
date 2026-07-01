@@ -5,9 +5,10 @@ import {
   type ReactNode,
   type RefObject,
 } from 'react';
-import gsap from 'gsap';
-import { useLenis } from 'lenis/react';
 import { useGSAP } from '@gsap/react';
+import { useLenis } from 'lenis/react';
+
+import { gsap } from '@/lib/gsap';
 
 interface SideModalProps {
   isOpen: boolean;
@@ -109,12 +110,18 @@ const SideModal: FC<SideModalProps> = ({
     );
   });
 
+  const prevIsOpenRef = useRef(isOpen);
+
   useEffect(() => {
-    if (isOpen) {
+    const wasOpen = prevIsOpenRef.current;
+
+    if (isOpen && !wasOpen) {
       openModal();
-    } else {
+    } else if (!isOpen && wasOpen) {
       closeModal();
     }
+
+    prevIsOpenRef.current = isOpen;
   }, [isOpen, openModal, closeModal]);
 
   return (
@@ -133,7 +140,7 @@ const SideModal: FC<SideModalProps> = ({
       />
       <div
         ref={panelRef}
-        className="absolute top-0 right-0 z-20 h-full origin-top-right translate-x-[100%] scale-x-95 overflow-hidden bg-[#e1e1e1] md:!w-[35vw]"
+        className="absolute top-0 right-0 z-20 h-full origin-top-right translate-x-[100%] scale-x-95 overflow-hidden bg-surface md:!w-[35vw]"
         style={{
           width,
         }}

@@ -15,9 +15,8 @@ export const useCartPage = () => {
     },
   });
 
-  const onApplyCoupon = (data: CouponFormData) => {
-    console.log('Applying coupon:', data);
-    // Coupon code processing logic is here
+  const onApplyCoupon = () => {
+    // Coupon code processing logic goes here
   };
 
   return {

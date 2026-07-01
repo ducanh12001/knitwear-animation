@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import { gsap } from '@/lib/gsap';
 import { Link } from 'react-router';
 
 const Limited: FC = () => {

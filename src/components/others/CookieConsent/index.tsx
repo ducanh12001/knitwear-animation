@@ -45,7 +45,7 @@ const CookieConsent = () => {
           }
         });
       } else {
-        console.log('Consent found:', preferences);
+        applyAllCookiePreferences(preferences);
       }
     }
 

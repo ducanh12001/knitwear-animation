@@ -1,6 +1,15 @@
 /// <reference types="vite/client" />
 
-declare module "*.json" {
+interface ImportMetaEnv {
+  readonly VITE_STRIPE_PUBLISHABLE_KEY: string;
+  readonly VITE_SITE_URL: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
+declare module '*.json' {
   const value: Record<string, unknown>;
   export default value;
 }

@@ -1,7 +1,5 @@
-import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-
-gsap.registerPlugin(useGSAP);
+import { gsap } from '@/lib/gsap';
 
 const CustomCursor: React.FC = () => {
   useGSAP(() => {

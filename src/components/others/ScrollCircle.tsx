@@ -1,12 +1,12 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useCallback, useEffect, useRef } from 'react';
+import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { useMediaQuery } from 'react-responsive';
 import { useLenis } from 'lenis/react';
 import type Lenis from 'lenis';
 import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
 
-gsap.registerPlugin(ScrollTrigger);
+const CIRCLE_RADIUS = 48;
+const CIRCUMFERENCE = 2 * Math.PI * CIRCLE_RADIUS;
 
 const ScrollCircle: React.FC = () => {
   const isSP = useMediaQuery({
@@ -14,113 +14,143 @@ const ScrollCircle: React.FC = () => {
   });
   const circleRef = useRef<SVGCircleElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
-  const lastScrollY = useRef<number>(0);
+  const currentRotation = useRef(0);
   const lenis = useLenis();
+  const arrowTweenRef = useRef<gsap.core.Tween | null>(null);
+  const scrollTweenRef = useRef<gsap.core.Tween | null>(null);
+  const isScrollingToTopRef = useRef(false);
 
-  const progressAnimationRef = useRef<gsap.core.Tween | null>(null);
-  const arrowAnimationsRef = useRef<Set<gsap.core.Tween>>(new Set());
+  const setArrowRotation = useCallback((rotation: number) => {
+    const arrow = arrowRef.current;
+    if (!arrow || rotation === currentRotation.current) return;
+
+    arrowTweenRef.current?.kill();
+    arrowTweenRef.current = gsap.to(arrow, {
+      rotation,
+      duration: 0.3,
+      overwrite: true,
+    });
+    currentRotation.current = rotation;
+  }, []);
+
+  const setHeaderScrolled = useCallback(
+    (scrolled: boolean) => {
+      const header = document.querySelector('header.has-banner');
+      const scrolledClass = isSP ? 'scrolled-mob' : 'scrolled';
+      if (scrolled) {
+        header?.classList.add(scrolledClass);
+      } else {
+        header?.classList.remove(scrolledClass);
+      }
+    },
+    [isSP],
+  );
+
+  const scrollToTop = () => {
+    if (!lenis || lenis.scroll <= 0) return;
+
+    scrollTweenRef.current?.kill();
+    isScrollingToTopRef.current = true;
+
+    setHeaderScrolled(false);
+    setArrowRotation(180);
+
+    lenis.scrollTo(lenis.scroll, { immediate: true, force: true });
+
+    const scrollProxy = { y: lenis.scroll };
+
+    scrollTweenRef.current = gsap.to(scrollProxy, {
+      y: 0,
+      duration: 1.5,
+      ease: 'power3.out',
+      onUpdate: () => {
+        lenis.scrollTo(scrollProxy.y, { immediate: true, force: true });
+        ScrollTrigger.update();
+        setHeaderScrolled(false);
+      },
+      onComplete: () => {
+        lenis.scrollTo(0, { immediate: true, force: true });
+        ScrollTrigger.refresh();
+        setHeaderScrolled(false);
+        setArrowRotation(0);
+        isScrollingToTopRef.current = false;
+        scrollTweenRef.current = null;
+      },
+    });
+  };
 
   useEffect(() => {
     if (!lenis) return;
 
     const circle = circleRef.current;
     const arrow = arrowRef.current;
-    const header = document.querySelector('header.has-banner');
 
     if (!circle || !arrow) return;
 
-    progressAnimationRef.current = gsap.to(circle, {
-      scrollTrigger: {
-        trigger: 'body',
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: true,
-        refreshPriority: -1,
-      },
-      strokeDashoffset: 0,
-      ease: 'none',
-    });
+    const updateProgress = (scroll: number, limit: number) => {
+      const progress = limit > 0 ? Math.min(Math.max(scroll / limit, 0), 1) : 0;
+      circle.style.strokeDashoffset = String(CIRCUMFERENCE * (1 - progress));
+    };
 
     const handleLenisScroll = (lenisInstance: Lenis) => {
-      const { scroll, limit } = lenisInstance;
+      const { scroll, limit, direction } = lenisInstance;
 
-      arrowAnimationsRef.current.forEach((anim) => anim.kill());
-      arrowAnimationsRef.current.clear();
+      updateProgress(scroll, limit);
 
-      let newAnimation: gsap.core.Tween;
+      if (isScrollingToTopRef.current) {
+        if (scroll <= 0) {
+          setArrowRotation(0);
+          setHeaderScrolled(false);
+          isScrollingToTopRef.current = false;
+        }
+        return;
+      }
 
       if (scroll <= 0) {
-        newAnimation = gsap.to(arrow, { rotation: 0, duration: 0.3 });
-      } else if (scroll >= limit - 10) {
-        newAnimation = gsap.to(arrow, { rotation: 180, duration: 0.3 });
-      } else {
-        if (scroll > lastScrollY.current) {
-          newAnimation = gsap.to(arrow, { rotation: 0, duration: 0.3 });
-          header?.classList.add(isSP ? 'scrolled-mob' : 'scrolled');
-        } else {
-          newAnimation = gsap.to(arrow, { rotation: 180, duration: 0.3 });
-          header?.classList.remove(isSP ? 'scrolled-mob' : 'scrolled');
-        }
+        setArrowRotation(0);
+        setHeaderScrolled(false);
+        return;
       }
 
-      arrowAnimationsRef.current.add(newAnimation);
-      lastScrollY.current = scroll;
+      if (scroll >= limit - 10) {
+        setArrowRotation(180);
+        return;
+      }
+
+      if (direction === 1) {
+        setArrowRotation(0);
+        setHeaderScrolled(true);
+      } else if (direction === -1) {
+        setArrowRotation(180);
+        setHeaderScrolled(false);
+      }
     };
 
+    updateProgress(lenis.scroll, lenis.limit);
     lenis.on('scroll', handleLenisScroll);
 
-    const refreshScrollTrigger = () => {
-      ScrollTrigger.refresh();
-    };
-
-    const timeoutId = setTimeout(refreshScrollTrigger, 100);
+    const handleResize = () => updateProgress(lenis.scroll, lenis.limit);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      clearTimeout(timeoutId);
       lenis.off('scroll', handleLenisScroll);
-
-      if (progressAnimationRef.current) {
-        progressAnimationRef.current.kill();
-        progressAnimationRef.current = null;
-      }
-
-      const currentArrowAnimations = arrowAnimationsRef.current;
-      currentArrowAnimations.forEach((anim) => anim.kill());
-      currentArrowAnimations.clear();
-
-      ScrollTrigger.getAll().forEach((trigger) => {
-        if (
-          trigger.trigger === document.body ||
-          trigger.vars.trigger === 'body'
-        ) {
-          trigger.kill();
-        }
-      });
+      window.removeEventListener('resize', handleResize);
+      arrowTweenRef.current?.kill();
+      scrollTweenRef.current?.kill();
+      isScrollingToTopRef.current = false;
     };
-  }, [isSP, lenis]);
-
-  const scrollToTop = () => {
-    const arrow = arrowRef.current;
-    if (
-      arrow &&
-      lenis &&
-      (gsap.getProperty(arrow, 'rotation') as number) > 150
-    ) {
-      lenis.scrollTo(0, {
-        duration: 1.5,
-        easing: (t: number) => 1 - Math.pow(1 - t, 3),
-      });
-    }
-  };
+  }, [lenis, setArrowRotation, setHeaderScrolled]);
 
   return (
     <div
       id="circle-scroll"
       className="fixed right-[5vw] bottom-[5vh] z-140 flex h-12 w-12 cursor-pointer items-center justify-center md:h-24 md:w-24"
       onClick={scrollToTop}
+      role="button"
+      aria-label="Scroll to top"
     >
       <div
-        className="relative h-4 w-4 rotate-0 bg-[#302F35] mask-[url('/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
+        className="relative h-4 w-4 rotate-0 bg-surface-dark mask-[url('/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
         ref={arrowRef}
       />
       <div className="circle-back">
@@ -128,7 +158,7 @@ const ScrollCircle: React.FC = () => {
           <circle
             cx="50"
             cy="50"
-            r="48"
+            r={CIRCLE_RADIUS}
             fill="none"
             stroke="rgba(48, 47, 53, 0.2)"
             strokeWidth="2"
@@ -142,16 +172,13 @@ const ScrollCircle: React.FC = () => {
             className="progress-circle"
             cx="50"
             cy="50"
-            r="48"
+            r={CIRCLE_RADIUS}
             fill="none"
             stroke="#302F35"
             strokeWidth="2"
             strokeLinecap="round"
-            strokeDasharray="301.59" // 2 * π * 48
-            strokeDashoffset="301.59"
-            style={{
-              transition: 'stroke-dashoffset 0.1s ease-out',
-            }}
+            strokeDasharray={CIRCUMFERENCE}
+            strokeDashoffset={CIRCUMFERENCE}
           />
         </svg>
       </div>

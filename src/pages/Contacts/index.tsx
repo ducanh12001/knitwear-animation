@@ -3,7 +3,9 @@ import { useState } from 'react';
 import { useForm, type Path, type RegisterOptions } from 'react-hook-form';
 import { Link } from 'react-router';
 import { FormInput } from '@/components/atoms/inputs/FormInput';
+import { Button } from '@/components/atoms/buttons/Button';
 import { MESSAGES } from '@/constant/validation';
+import { useGSAPAnimation } from '@/hooks/others/useGSAPAnimation';
 
 interface ContactFormData {
   'contact-firstname': string;
@@ -14,16 +16,9 @@ interface ContactFormData {
   'contact-privacy': boolean;
 }
 
-const validationRules: Record<
-  keyof ContactFormData,
-  RegisterOptions<ContactFormData, Path<ContactFormData>>
-> = {
-  'contact-firstname': {
-    required: MESSAGES.REQUIRED,
-  },
-  'contact-lastname': {
-    required: MESSAGES.REQUIRED,
-  },
+const validationRules = {
+  'contact-firstname': { required: MESSAGES.REQUIRED },
+  'contact-lastname': { required: MESSAGES.REQUIRED },
   'contact-mail': {
     required: MESSAGES.REQUIRED,
     pattern: {
@@ -32,11 +27,10 @@ const validationRules: Record<
     },
   },
   'contact-order': {},
-  'contact-message': {},
-  'contact-privacy': {
-    required: MESSAGES.ACCEPT_PRIVACY,
-  },
-};
+} satisfies Record<
+  'contact-firstname' | 'contact-lastname' | 'contact-mail' | 'contact-order',
+  RegisterOptions<ContactFormData, Path<ContactFormData>>
+>;
 
 const defaultValues: ContactFormData = {
   'contact-firstname': '',
@@ -47,158 +41,266 @@ const defaultValues: ContactFormData = {
   'contact-privacy': false,
 };
 
+const INPUT_CLASS =
+  'border border-primary/15 bg-white text-primary placeholder:text-primary/40 focus:border-primary/30';
+
+const INFO_ITEMS = [
+  {
+    label: 'Hours',
+    lines: ['Monday – Thursday', '9:00 – 13:00 / 14:00 – 18:00 (CET)'],
+  },
+  {
+    label: 'Email',
+    lines: ['info@okke.it', 'Reply within 1–2 business days'],
+  },
+] as const;
+
 const Contacts: FC = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  useGSAPAnimation();
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    watch,
+    reset,
+    formState: { errors, isSubmitting, isSubmitted },
   } = useForm<ContactFormData>({
     defaultValues,
-    mode: 'onBlur',
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
   });
 
-  const onSubmit = (data: ContactFormData) => {
-    console.log('Form Data:', data);
+  const isPrivacyChecked = watch('contact-privacy');
+  const showErrors = isSubmitted;
+
+  const onSubmit = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 900));
+    setIsSuccess(true);
+    reset(defaultValues);
+  };
+
+  const handleSendAnother = () => {
+    setIsSuccess(false);
   };
 
   return (
-    <section className="contacts--form-section relative h-auto w-full xl:h-screen">
-      <div className="bg-primary relative flex h-full w-full flex-col items-start justify-start pb-[2.5rem] xl:flex-row xl:pb-0">
-        <div className="relative flex h-full w-full flex-col xl:w-[55%] xl:flex-row-reverse">
-          <div className="relative hidden h-full w-[42vh] bg-[#A9AFA4] mask-[url(/contact-bg.svg)] mask-no-repeat xl:block" />
-          <div className="relative box-border flex w-full flex-col items-center justify-start gap-8 bg-[#A9AFA4] pt-[7.5rem] pr-[5vw] pl-[5vw] xl:w-[calc(100%-42vh)] xl:flex-row xl:gap-0 xl:pt-0 xl:pr-0">
-            <div className="center relative flex h-auto w-full flex-col gap-4">
-              <h1 className="font-humane leading-full text-[80px] font-light text-white uppercase md:text-[15vw]">
-                Contact us
-              </h1>
-              <div className="wp-block-group relative mb-8 box-border flex w-full">
-                <div className="wp-block-group__inner-container relative flex h-auto w-full flex-col gap-2">
-                  <p className="leading-full text-xl text-white">
-                    Our Customer Service is active from Monday to Thursday{' '}
-                  </p>
-                  <p className="leading-full text-xl text-white">
-                    9:00 – 13:00 / 14:00 – 18:00 (Italian time)
-                  </p>
-                </div>
-              </div>
-              <p className="leading-full text-xl text-white">
-                Contact us via the form
-              </p>
-            </div>
-            <div className="bg-primary relative mx-[-2px] mb-[-2px] block h-[calc(124*(100vw+4px)/300)] w-[calc(100vw+4px)] mask-[url(/contact-bg2.svg)] mask-no-repeat xl:hidden" />
-          </div>
-        </div>
-        <div className="relative flex h-full w-full items-center justify-center pt-[2rem] xl:w-[45%] xl:pt-0">
-          <form
-            className="relative mx-auto flex h-auto w-[90%] flex-col items-center justify-start gap-[1.25rem] md:max-xl:grid md:max-xl:grid-cols-2 xl:mx-0 xl:w-auto xl:items-start xl:pr-[5vw]"
-            onSubmit={handleSubmit(onSubmit)}
+    <section className="contacts-page relative w-full px-[5vw] pt-[calc(5vh+5.5rem)] pb-16 md:pb-20">
+      <div className="mx-auto w-full max-w-6xl">
+        <h1
+          className="elAnimation font-humane leading-full text-[clamp(3rem,12vw,7rem)] font-light text-surface-dark uppercase"
+          data-animation="ease-bottom-to-top"
+        >
+          Contact us
+        </h1>
+        <p
+          className="elAnimation mt-4 max-w-xl text-base text-primary/70 md:text-lg"
+          data-animation="ease-bottom-to-top"
+        >
+          Our Customer Service team can help with orders, sizing, and product
+          questions.
+        </p>
+
+        {isSuccess ? (
+          <div
+            className="elAnimation mt-12 max-w-lg rounded-2xl border border-primary/10 bg-white p-8 md:p-10"
+            data-animation="fade-in"
           >
-            <FormInput<ContactFormData>
-              name="contact-firstname"
-              placeholder="Name *"
-              register={register}
-              validation={validationRules['contact-firstname']}
-              errors={errors}
-              inputClassName="border border-[#e1e1e1] bg-transparent text-xl text-[#e1e1e1] xl:h-[4rem] xl:rounded-[25px] xl:px-[3rem]"
-            />
-
-            <FormInput<ContactFormData>
-              name="contact-lastname"
-              placeholder="Surname *"
-              register={register}
-              validation={validationRules['contact-lastname']}
-              errors={errors}
-              inputClassName="border border-[#e1e1e1] bg-transparent text-xl text-[#e1e1e1] xl:h-[4rem] xl:rounded-[25px] xl:px-[3rem]"
-            />
-
-            <FormInput<ContactFormData>
-              type="email"
-              name="contact-mail"
-              placeholder="Email address *"
-              register={register}
-              validation={validationRules['contact-mail']}
-              errors={errors}
-              inputClassName="border border-[#e1e1e1] bg-transparent text-xl text-[#e1e1e1] xl:h-[4rem] xl:rounded-[25px] xl:px-[3rem]"
-            />
-
-            <FormInput<ContactFormData>
-              name="contact-order"
-              placeholder="Order ID"
-              register={register}
-              validation={validationRules['contact-order']}
-              errors={errors}
-              inputClassName="border border-[#e1e1e1] bg-transparent text-xl text-[#e1e1e1] xl:h-[4rem] xl:rounded-[25px] xl:px-[3rem]"
-            />
-
-            <div className="form-item relative flex h-auto w-full flex-col md:max-xl:col-span-2">
-              <textarea
-                placeholder="Message"
-                className="leading-full relative z-2 box-border h-[120px] w-full resize-none rounded-[14px] border border-[#e1e1e1] bg-transparent px-[1rem] py-[1rem] text-xl text-[#e1e1e1] outline-none lg:h-[200px] xl:h-[300px] xl:rounded-[25px] xl:px-[3rem]"
-                {...register('contact-message')}
-              />
+            <h2 className="font-humane leading-full text-[clamp(2rem,6vw,3rem)] text-surface-dark uppercase">
+              Message sent
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-primary/70">
+              Thank you for reaching out. We will get back to you as soon as
+              possible.
+            </p>
+            <div className="mt-6 w-full sm:w-auto">
+              <Button type="button" onClick={handleSendAnother}>
+                Send another message
+              </Button>
             </div>
+          </div>
+        ) : (
+          <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:gap-16">
+            <aside
+              className="elAnimation flex flex-col gap-6"
+              data-animation="ease-stagger-list"
+            >
+              {INFO_ITEMS.map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-2xl border border-primary/10 bg-white p-6"
+                >
+                  <span className="text-xs font-bold tracking-widest text-primary/50 uppercase">
+                    {item.label}
+                  </span>
+                  {item.lines.map((line) => (
+                    <p
+                      key={line}
+                      className="mt-1 text-base text-primary first:mt-2 md:text-lg"
+                    >
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              ))}
+              <p className="text-sm text-primary/50">
+                New ESSE Maglieria s.r.l.
+              </p>
+            </aside>
 
-            <div className="form-item custom-checkbox relative mt-4 h-auto w-auto md:max-xl:col-span-2 md:max-xl:mt-0 xl:mt-[2.5rem]">
-              <label className="check-container relative flex h-auto w-full cursor-pointer items-center justify-start gap-2 xl:gap-4">
-                <input
-                  type="checkbox"
-                  id="contact-privacy"
-                  className="invisible hidden opacity-0"
-                  {...register('contact-privacy', {
-                    required: 'Accept our privacy policy',
-                  })}
-                  onChange={() => setIsChecked(!isChecked)}
-                />
-                <div className="custom-check relative flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border border-[#e1e1e1] xl:h-[2rem] xl:w-[2rem] xl:rounded-[0.6rem]">
-                  <div
-                    className={`inner-check relative h-3 w-3 bg-[#e1e1e1] mask-[url('/check.svg')] mask-no-repeat opacity-0 transition-opacity duration-200 ease-in-out xl:h-[1.5rem] xl:w-[1.5rem] ${isChecked ? 'opacity-100' : 'opacity-0'}`}
+            <form
+              className="elAnimation rounded-2xl border border-primary/10 bg-white p-6 md:p-8"
+              data-animation="ease-bottom-to-top"
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+            >
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                  <FormInput<ContactFormData>
+                    name="contact-firstname"
+                    placeholder="Name *"
+                    register={register}
+                    validation={validationRules['contact-firstname']}
+                    errors={errors}
+                    showErrors={false}
+                    inputClassName={INPUT_CLASS}
+                  />
+                  {showErrors && errors['contact-firstname'] && (
+                    <span className="text-secondary mt-1 block text-xs">
+                      {errors['contact-firstname'].message}
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <FormInput<ContactFormData>
+                    name="contact-lastname"
+                    placeholder="Surname *"
+                    register={register}
+                    validation={validationRules['contact-lastname']}
+                    errors={errors}
+                    showErrors={false}
+                    inputClassName={INPUT_CLASS}
+                  />
+                  {showErrors && errors['contact-lastname'] && (
+                    <span className="text-secondary mt-1 block text-xs">
+                      {errors['contact-lastname'].message}
+                    </span>
+                  )}
+                </div>
+
+                <div className="sm:col-span-2">
+                  <FormInput<ContactFormData>
+                    type="email"
+                    name="contact-mail"
+                    placeholder="Email address *"
+                    register={register}
+                    validation={validationRules['contact-mail']}
+                    errors={errors}
+                    showErrors={false}
+                    inputClassName={INPUT_CLASS}
+                  />
+                  {showErrors && errors['contact-mail'] && (
+                    <span className="text-secondary mt-1 block text-xs">
+                      {errors['contact-mail'].message}
+                    </span>
+                  )}
+                </div>
+
+                <div className="sm:col-span-2">
+                  <FormInput<ContactFormData>
+                    name="contact-order"
+                    placeholder="Order ID (optional)"
+                    register={register}
+                    validation={validationRules['contact-order']}
+                    errors={errors}
+                    showErrors={false}
+                    inputClassName={INPUT_CLASS}
                   />
                 </div>
-                <span className="leading-full flex-1 basis-[100%] text-[14px] text-[#e1e1e1] xl:basis-auto xl:text-base">
-                  I have read and accepted the
-                  <Link
-                    to="/privacy-policy"
-                    target="_blank"
-                    className="leading-full mx-1 text-[14px] font-bold text-[#e1e1e1] xl:text-base"
-                  >
-                    Privacy Policy
-                  </Link>
-                  provided by New ESSE Maglieria s.r.l.
-                </span>
-                <div className="errors absolute -bottom-4 left-[3rem]">
-                  {errors['contact-privacy'] && (
-                    <span className="error leading-full text-secondary absolute bottom-0 left-0 text-xs whitespace-nowrap opacity-100 transition-opacity duration-300 ease-in-out">
+
+                <div className="sm:col-span-2">
+                  <textarea
+                    placeholder="Your message"
+                    rows={3}
+                    className={`leading-relaxed box-border w-full resize-none rounded-[14px] border px-4 py-3 text-base outline-none transition-colors duration-200 md:h-[6rem] md:px-8 md:text-xl ${INPUT_CLASS}`}
+                    {...register('contact-message', {
+                      maxLength: {
+                        value: 1000,
+                        message: MESSAGES.MAX_LENGTH(1000),
+                      },
+                    })}
+                  />
+                  {showErrors && errors['contact-message'] && (
+                    <span className="text-secondary mt-1 block text-xs">
+                      {errors['contact-message'].message}
+                    </span>
+                  )}
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="flex cursor-pointer items-start gap-3">
+                    <input
+                      type="checkbox"
+                      className="sr-only"
+                      {...register('contact-privacy', {
+                        required: MESSAGES.ACCEPT_PRIVACY,
+                      })}
+                    />
+                    <span
+                      className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border transition-colors duration-200 ${
+                        isPrivacyChecked
+                          ? 'border-secondary bg-secondary'
+                          : 'border-primary/30 bg-white'
+                      }`}
+                      aria-hidden="true"
+                    >
+                      {isPrivacyChecked && (
+                        <svg
+                          viewBox="0 0 12 10"
+                          className="h-2.5 w-3 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path d="M1 5l3.5 3.5L11 1" />
+                        </svg>
+                      )}
+                    </span>
+                    <span className="text-sm leading-relaxed text-primary/70">
+                      I have read and accepted the{' '}
+                      <Link
+                        to="/privacy-policy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-primary underline-offset-2 hover:underline"
+                      >
+                        Privacy Policy
+                      </Link>{' '}
+                      provided by New ESSE Maglieria s.r.l.
+                    </span>
+                  </label>
+                  {showErrors && errors['contact-privacy'] && (
+                    <span className="text-secondary mt-2 block text-xs">
                       {errors['contact-privacy'].message}
                     </span>
                   )}
                 </div>
-              </label>
-            </div>
 
-            <div className="submit-contact-form relative flex h-auto w-full items-center justify-end">
-              <input
-                type="hidden"
-                name="contacts-success"
-                value='{"title":"Email sent successfully","subtitle":"We will contact you as soon as possible."}'
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`btn relative flex h-[48px] w-full items-center justify-center gap-4 rounded-[14px] transition-colors duration-350 ease-in-out xl:h-[6rem] ${
-                  isSubmitting
-                    ? 'cursor-not-allowed bg-gray-400 opacity-70'
-                    : 'bg-secondary cursor-pointer hover:bg-[#fd5932]'
-                }`}
-              >
-                <span className="leading-full text-base text-[#e1e1e1] uppercase xl:text-xl">
-                  {isSubmitting ? 'Sending...' : 'Send'}
-                </span>
-              </button>
-            </div>
-          </form>
-        </div>
+                <div className="sm:col-span-2">
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    loading={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send message'}
+                  </Button>
+                </div>
+              </div>
+            </form>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-creative';
 import { Link } from 'react-router';
+
 import DecryptedText from '@/components/animations/DecryptedText';
 import type { SlideData } from '.';
 
@@ -44,12 +45,9 @@ const TitleSlider = ({ slides, onSwiper }: TitleSliderProps) => {
       speed={1500}
     >
       {slides.map((slide, index) => (
-        <SwiperSlide key={index}>
-          <Link to={slide.href} className="swiper-slide">
-            <h2
-              className="elAnimation font-humane leading-full absolute top-1/2 left-0 z-20 m-0 h-auto w-full -translate-y-1/2 text-center text-[90px] font-light text-white uppercase mix-blend-difference md:text-[15vw]"
-              data-animation="scrumbleText"
-            >
+        <SwiperSlide key={slide.href}>
+          <Link to={slide.href} className="swiper-slide block h-full">
+            <h2 className="font-humane leading-full absolute top-1/2 left-0 z-20 m-0 h-auto w-full -translate-y-1/2 px-[5vw] text-center text-[clamp(2.5rem,15vw,10rem)] font-light text-white uppercase mix-blend-difference">
               {index === 0 ? (
                 <DecryptedText
                   text={slide.title}

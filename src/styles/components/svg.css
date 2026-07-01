@@ -14,11 +14,9 @@
 }
 
 .circle-front circle {
-  stroke: #302f35; /* Màu border chạy */
+  stroke: #302f35;
   stroke-width: 4;
   stroke-linecap: round;
-  stroke-dasharray: 301.44; /* Chu vi = 2 * π * 48 */
-  stroke-dashoffset: 301.44;
   transform: rotate(-90deg);
   transform-origin: center;
 }

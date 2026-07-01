@@ -26,7 +26,7 @@
     visibility: hidden;
     transform: translateX(10vw);
   }
-  &[data-animation='scrumbleText'] {
+  &[data-animation='scrambleText'] {
     opacity: 0;
     visibility: hidden;
     /* transform: translateY(10vh); */

@@ -36,7 +36,6 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
                   }`}
                 >
                   <img
-                    key={index}
                     src={color.image}
                     alt={product.title}
                     className="block h-full w-full"
@@ -49,7 +48,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <div className="relative flex h-full w-full grow flex-col items-start justify-between gap-4">
             <div className="relative flex h-auto w-full flex-col items-center justify-start text-center">
               <div className="relative">
-                <h3 className="font-humane group-hover:visibility-hidden visibility-visible text-[3rem] font-normal text-[#302F35] uppercase opacity-100 transition-opacity duration-500 ease-in-out group-hover:opacity-0 md:text-[4vw]">
+                <h3 className="font-humane group-hover:visibility-hidden visibility-visible text-[3rem] font-normal text-surface-dark uppercase opacity-100 transition-opacity duration-500 ease-in-out group-hover:opacity-0 md:text-[4vw]">
                   {product.title}
                 </h3>
                 <div className="absolute top-1/2 left-1/2 flex w-auto -translate-1/2 items-center justify-center gap-4 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">

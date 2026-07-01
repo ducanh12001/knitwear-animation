@@ -12,7 +12,7 @@ export const usePayment = () => {
   const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
-  const { cartItems, cartTotal, removeFromCart } = useCart();
+  const { cartItems, cartTotal, removeFromCart, clearCart } = useCart();
 
   const [isShipDifferent, setIsShipDifferent] = useState(false);
   const [selectedPayment, setSelectedPayment] =
@@ -109,7 +109,7 @@ export const usePayment = () => {
         return false;
       }
 
-      const { error, paymentMethod } = await stripe.createPaymentMethod({
+      const { error } = await stripe.createPaymentMethod({
         type: 'card',
         card: cardElement,
         billing_details: {
@@ -132,10 +132,7 @@ export const usePayment = () => {
         return false;
       }
 
-      console.log('[PaymentMethod]', paymentMethod);
-
-      // TODO: Send paymentMethod.id to server
-      // const response = await processPaymentOnServer(paymentMethod.id, data);
+      // TODO: Send paymentMethod.id to server for order confirmation
 
       return true;
     } catch (err) {
@@ -145,10 +142,9 @@ export const usePayment = () => {
     }
   };
 
-  const processBankTransfer = async (data: PaymentForm): Promise<boolean> => {
+  const processBankTransfer = async (): Promise<boolean> => {
     try {
-      // TODO: Process bank transfer order
-      console.log('Processing bank transfer order:', data);
+      // TODO: Process bank transfer order on server
       return true;
     } catch (err) {
       console.error('Bank transfer error:', err);
@@ -158,7 +154,6 @@ export const usePayment = () => {
   };
 
   const onSubmit: SubmitHandler<PaymentForm> = async (data) => {
-    console.log('Order data:', data);
     if (!canSubmit || isProcessing) return;
 
     setIsProcessing(true);
@@ -172,7 +167,7 @@ export const usePayment = () => {
           success = await processStripePayment(data);
           break;
         case 'bacs':
-          success = await processBankTransfer(data);
+          success = await processBankTransfer();
           break;
         default:
           setPaymentError('Invalid payment method selected');
@@ -180,10 +175,8 @@ export const usePayment = () => {
       }
 
       if (success) {
-        // TODO: Clear cart and redirect
-        // clearCart();
-        // navigate('/order-confirmation');
-        console.log('Order processed successfully');
+        clearCart();
+        navigate('/cart');
       }
     } catch (err) {
       console.error('Submission error:', err);

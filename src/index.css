@@ -1,7 +1,12 @@
 @import 'https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap';
 @import 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Permanent+Marker&display=swap';
-@import 'https://unpkg.com/lenis@1.3.3/dist/lenis.css';
 @import 'tailwindcss';
+@import 'lenis/dist/lenis.css';
+
+@import './styles/swiper.css';
+@import './styles/animation.css';
+@import './styles/slider.css';
+@import './styles/components/index.css';
 
 @font-face {
   font-family: 'Humane Grotesque';
@@ -59,17 +64,19 @@
   --color-primary-hover: #616161;
   --color-secondary: #fd7453;
   --color-secondary-hover: #fd5932;
+  --color-surface: #e1e1e1;
+  --color-surface-dark: #302f35;
+  --color-accent-gray: #a9afa4;
+  --color-everest: #93a7a8;
   --leading-full: 100%;
+  --duration-350: 350ms;
 }
 
 html {
-  /* Firefox */
   scrollbar-width: none;
-  /* Ẩn nhưng vẫn cho phép cuộn */
   overflow-y: scroll;
 }
 
-/* Chrome, Safari, Edge */
 html::-webkit-scrollbar {
   display: none;
 }
@@ -78,11 +85,6 @@ html::-webkit-scrollbar {
   font-family: 'Inter', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -95,10 +97,10 @@ a {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
 }
 
 img {
@@ -111,13 +113,6 @@ ul {
   margin: 0;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-}
-
 .desktop {
   display: none;
 }
@@ -125,7 +120,8 @@ ul {
 .mobile {
   display: block;
 }
-@media (min-width: 48rem /* 768px */) {
+
+@media (min-width: 48rem) {
   .desktop {
     display: block;
   }

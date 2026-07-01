@@ -1,7 +1,15 @@
-import { useLocation } from 'react-router';
 import { SEO } from '@/components/others/SEO';
+import { usePageTransitionContext } from '@/contexts/PageTransitionContext';
 
-const seoData = {
+const seoData: Record<
+  string,
+  {
+    title: string;
+    description: string;
+    keywords: string;
+    noIndex?: boolean;
+  }
+> = {
   '/': {
     title: 'OKKE Knitwear - Premium Italian Fashion',
     description:
@@ -62,10 +70,11 @@ const seoData = {
   },
 };
 
-export const useAutoSEO = () => {
-  const location = useLocation();
-  const currentSEO =
-    seoData[location.pathname as keyof typeof seoData] || seoData['/'];
+const AutoSEO = () => {
+  const { displayPathname } = usePageTransitionContext();
+  const currentSEO = seoData[displayPathname] ?? seoData['/'];
 
   return <SEO {...currentSEO} />;
 };
+
+export default AutoSEO;

@@ -78,5 +78,4 @@ export const whiteRoutes = [
   '/',
   '/everest-okke-limited',
   '/okkeworld',
-  '/contacts',
 ];

@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
-import gsap from 'gsap';
+import { gsap } from '@/lib/gsap';
 import { useLenis } from 'lenis/react';
 import { useLocation } from 'react-router';
 import { getPageTitle } from '@/constant/functions';
@@ -14,8 +14,6 @@ const TRANSITION_CONFIG = {
   delay: {
     color2: -0.6,
     exit: 0.2,
-    reset: 1,
-    titleReset: 1.1,
   },
   ease: {
     in: 'power2.in',
@@ -41,6 +39,7 @@ export const usePageTransition = () => {
     (callback = () => {}) => {
       const config = TRANSITION_CONFIG;
       setIsTransitioning(true);
+
       const pageTransition = document.querySelector('#pageTransition');
 
       if (!pageTransition) {
@@ -53,57 +52,36 @@ export const usePageTransition = () => {
       const color2 = pageTransition.querySelector('.color-2');
       const title = pageTransition.querySelector('.title h2');
 
-      if (title) {
-        title.textContent = getPageTitle(location.pathname);
+      if (!color1 || !color2 || !title) {
+        setIsTransitioning(false);
+        setDisplayLocation(location);
+        return;
       }
+
+      title.textContent = getPageTitle(location.pathname);
 
       if (timelineRef.current) {
         timelineRef.current.kill();
       }
 
+      gsap.set(pageTransition, { opacity: 1, visibility: 'inherit' });
+
       const tl = gsap.timeline({
         onComplete: () => {
-          setDisplayLocation(location);
-          lenis?.scrollTo(0, { immediate: true });
           setIsTransitioning(false);
-
-          gsap.to(color2, {
-            clipPath: config.clipPaths.hidden,
-            duration: config.duration.clipPath,
-            ease: config.ease.in,
-          });
-          gsap.to(color1, {
-            clipPath: config.clipPaths.hidden,
-            duration: config.duration.clipPath,
-            ease: config.ease.in,
-            delay: 0.2,
-          });
-          gsap.set(pageTransition, {
-            opacity: 0,
-            visibility: 'hidden',
-            delay: 1,
-          });
-          gsap.set(title, {
-            y: -10,
-            opacity: 0,
-            visibility: 'hidden',
-            delay: 1.1,
-          });
-
           callback();
         },
       });
 
-      tl.set(pageTransition, { opacity: 1, visibility: 'inherit' })
-        .fromTo(
-          color1,
-          { clipPath: config.clipPaths.bottom },
-          {
-            clipPath: config.clipPaths.full,
-            duration: config.duration.clipPath,
-            ease: config.ease.out,
-          },
-        )
+      tl.fromTo(
+        color1,
+        { clipPath: config.clipPaths.bottom },
+        {
+          clipPath: config.clipPaths.full,
+          duration: config.duration.clipPath,
+          ease: config.ease.out,
+        },
+      )
         .fromTo(
           color2,
           { clipPath: config.clipPaths.bottom },
@@ -112,7 +90,7 @@ export const usePageTransition = () => {
             duration: config.duration.clipPath,
             ease: config.ease.out,
           },
-          '-=0.6',
+          config.delay.color2,
         )
         .fromTo(
           title,
@@ -121,11 +99,31 @@ export const usePageTransition = () => {
             y: 0,
             opacity: 1,
             visibility: 'inherit',
-            duration: 0.6,
+            duration: config.duration.title,
             ease: config.ease.out,
           },
         )
-        .to({}, { duration: 0.5 });
+        .to({}, { duration: config.duration.pause })
+        .add(() => {
+          setDisplayLocation(location);
+          lenis?.scrollTo(0, { immediate: true });
+        })
+        .to(color2, {
+          clipPath: config.clipPaths.hidden,
+          duration: config.duration.exit,
+          ease: config.ease.in,
+        })
+        .to(
+          color1,
+          {
+            clipPath: config.clipPaths.hidden,
+            duration: config.duration.exit,
+            ease: config.ease.in,
+          },
+          `-=${config.duration.exit - config.delay.exit}`,
+        )
+        .set(pageTransition, { opacity: 0, visibility: 'hidden' })
+        .set(title, { y: -10, opacity: 0, visibility: 'hidden' });
 
       timelineRef.current = tl;
     },
@@ -145,6 +143,6 @@ export const usePageTransition = () => {
     isTransitioning,
     startAnimation,
     cleanup,
-    pageTitle: getPageTitle(location.pathname),
+    transitionTitle: getPageTitle(location.pathname),
   };
 };

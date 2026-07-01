@@ -1,7 +1,7 @@
 import { useRef, useCallback } from 'react';
 import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 import type { ModalState } from '@/types';
+import { gsap } from '@/lib/gsap';
 
 const HEADER_ANIMATION_CONFIG = {
   duration: {
@@ -157,6 +157,7 @@ export const useHeaderAnimation = (
   headerRef: React.RefObject<HTMLElement | null>,
 ) => {
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
+  const isInitialMount = useRef(true);
 
   const handleScrolledClass = useCallback(
     (isOpening: boolean) => {
@@ -238,6 +239,12 @@ export const useHeaderAnimation = (
   useGSAP(() => {
     if (!headerRef.current) return;
 
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      setInitialState();
+      return;
+    }
+
     if (timelineRef.current) {
       timelineRef.current.kill();
       timelineRef.current = null;
@@ -246,7 +253,6 @@ export const useHeaderAnimation = (
     if (modalState.menuOpen) {
       animateMenuOpen();
     } else {
-      setInitialState();
       animateMenuClose();
     }
 

@@ -10,7 +10,8 @@ import ModalProvider from '@/contexts/modal/ModalProvider';
 import App from '@/App';
 import './index.css';
 
-const stripePromise = loadStripe('your_publishable_key');
+const stripeKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
+const stripePromise = stripeKey ? loadStripe(stripeKey) : null;
 
 const stripeOptions: StripeElementsOptions = {
   locale: 'en',

@@ -1,5 +1,5 @@
 {
-  "name": "test-animation",
+  "name": "knitwear-animation",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -18,7 +18,6 @@
     "@tailwindcss/vite": "^4.1.7",
     "axios": "^1.9.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.12.1",
     "gsap": "^3.13.0",
     "lenis": "^1.3.3",
     "lodash": "^4.17.21",

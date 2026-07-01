@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
 import { useGSAPAnimation } from '@/hooks/others/useGSAPAnimation';
+import { ScrollTrigger } from '@/lib/gsap';
 import { ProductService } from '@/services/productService';
 import type { Product } from '@/types';
 
@@ -26,8 +27,14 @@ const OkkeLimited = () => {
     fetchFirstProduct();
   }, []);
 
+  useEffect(() => {
+    if (!firstProduct) return;
+    const timer = setTimeout(() => ScrollTrigger.refresh(), 100);
+    return () => clearTimeout(timer);
+  }, [firstProduct]);
+
   return (
-    <div className="page-okkelimited bg-[#93A7A8]">
+    <div className="page-okkelimited bg-everest">
       <IntroSection isSP={isSP} />
       <ImagesSection
         blockTop={{
@@ -54,8 +61,8 @@ const OkkeLimited = () => {
               'Production limited to 100 items worldwide. This reversible garment is created using 8 strands of wool/Cordura in a natural colour (side A), combined with 4 strands of pure cashmere in taupe (side B).',
             price: { regular: '850.00' },
           }}
-          themeColor="#93A7A8"
-          sectionClass="bg-[#e1e1e1] pt-[10vh]"
+          themeColor="var(--color-everest)"
+          sectionClass="bg-surface pt-[10vh]"
         />
       )}
     </div>
