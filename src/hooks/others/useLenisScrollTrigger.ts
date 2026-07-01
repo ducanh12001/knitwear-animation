@@ -11,7 +11,9 @@ export const useLenisScrollTrigger = () => {
     ScrollTrigger.scrollerProxy(document.documentElement, {
       scrollTop(value) {
         if (arguments.length && value !== undefined) {
-          lenis.scrollTo(value, { immediate: true });
+          if (lenis.isScrolling !== 'smooth') {
+            lenis.scrollTo(value, { immediate: true });
+          }
         }
         return lenis.scroll;
       },

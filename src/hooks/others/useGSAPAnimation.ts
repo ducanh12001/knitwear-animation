@@ -17,8 +17,20 @@ export const useGSAPAnimation = () => {
 
     const cleanup = initScrollAnimations(main);
 
+    const hasRelevantMutation = (mutations: MutationRecord[]) =>
+      mutations.some((mutation) =>
+        [...mutation.addedNodes].some((node) => {
+          if (!(node instanceof Element)) return false;
+          return (
+            node.matches('.elAnimation, .home-rel-product') ||
+            node.querySelector('.elAnimation, .home-rel-product') !== null
+          );
+        }),
+      );
+
     let debounceTimer: ReturnType<typeof setTimeout>;
-    const observer = new MutationObserver(() => {
+    const observer = new MutationObserver((mutations) => {
+      if (!hasRelevantMutation(mutations)) return;
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => refreshScrollAnimations(), 150);
     });

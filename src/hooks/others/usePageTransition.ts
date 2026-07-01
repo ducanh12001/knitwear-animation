@@ -52,9 +52,13 @@ export const usePageTransition = () => {
       const color2 = pageTransition.querySelector('.color-2');
       const title = pageTransition.querySelector('.title h2');
 
-      if (title) {
-        title.textContent = getPageTitle(location.pathname);
+      if (!color1 || !color2 || !title) {
+        setIsTransitioning(false);
+        setDisplayLocation(location);
+        return;
       }
+
+      title.textContent = getPageTitle(location.pathname);
 
       if (timelineRef.current) {
         timelineRef.current.kill();

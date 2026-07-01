@@ -18,6 +18,15 @@ export const useProductDetail = (id: string | undefined) => {
     const fetchProduct = async () => {
       setIsLoading(true);
       const productId = parseInt(id, 10);
+
+      if (Number.isNaN(productId)) {
+        if (!cancelled) {
+          setProduct(null);
+          setIsLoading(false);
+        }
+        return;
+      }
+
       const foundProduct = await ProductService.getProductById(productId);
 
       if (cancelled) return;
