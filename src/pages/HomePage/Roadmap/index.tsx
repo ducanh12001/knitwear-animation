@@ -1,9 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap } from '@/lib/gsap';
 import { Link } from 'react-router';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Roadmap = () => {
   const discoverLinkRef = useRef<HTMLAnchorElement | null>(null);
@@ -43,9 +40,9 @@ const Roadmap = () => {
   }, []);
 
   return (
-    <section className="relative flex h-auto w-full flex-col items-start justify-start gap-[15vh] bg-[#A9AFA4] py-[15vh]">
-      <div className="relative grid h-auto w-full grid-cols-2">
-        <div className="image relative flex h-auto w-full items-start justify-end">
+    <section className="relative flex w-full flex-col gap-[10vh] bg-accent-gray py-[10vh] md:gap-[15vh] md:py-[15vh]">
+      <div className="relative flex w-full flex-col gap-8 px-[5vw] md:grid md:grid-cols-2 md:gap-0 md:px-0">
+        <div className="image relative flex w-full items-start justify-center md:justify-end">
           <div
             className="elAnimation inner-image overflow-hidden"
             data-animation="clip-top-to-bottom"
@@ -53,17 +50,17 @@ const Roadmap = () => {
             <div className="imageScale">
               <img
                 src="/images/banner/road-1.jpg"
-                className="block h-auto w-[33vw]"
+                className="block h-auto w-full max-w-[33vw] md:w-[33vw]"
                 alt="Okke Knitwear 1"
               />
             </div>
           </div>
         </div>
-        <div className="text relative h-auto w-full pt-[5vh]">
+        <div className="text relative w-full md:pt-[5vh]">
           <div className="relative flex h-auto w-full translate-x-0 flex-col items-end justify-start md:translate-x-[-5vw]">
             <div className="relative w-full">
               <h2
-                className="elAnimation text-[20px] leading-[120%] tracking-normal text-white md:text-[3vw] md:tracking-[-2px]"
+                className="elAnimation text-lg leading-snug tracking-normal text-white md:text-[clamp(1.25rem,3vw,2.5rem)] md:tracking-[-2px]"
                 data-animation="ease-bottom-to-top"
               >
                 OKKE is technical innovation and yarn evolution, a new space
@@ -89,7 +86,7 @@ const Roadmap = () => {
                       cy="52.340576171875"
                       rx="217.434326171875"
                       ry="52.340576171875"
-                      className="fill-[#A9AFA4] stroke-white stroke-2"
+                      className="fill-accent-gray stroke-white stroke-2"
                       style={{
                         strokeLinecap: 'round',
                       }}
@@ -106,7 +103,7 @@ const Roadmap = () => {
                       cy="52.340576171875"
                       rx="217.434326171875"
                       ry="52.340576171875"
-                      className="fill-[#A9AFA4] stroke-white stroke-4"
+                      className="fill-accent-gray stroke-white stroke-4"
                       style={{
                         strokeLinecap: 'round',
                         strokeDasharray: '993.52, 993.52',

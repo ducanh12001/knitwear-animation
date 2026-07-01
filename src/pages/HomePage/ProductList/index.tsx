@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 
 import type { Product } from '@/types';
-import ProductCard from '@/pages/HomePage/ProductList/ProductCard';
+import ProductCard from '@/components/pages/product/ProductCard';
 import { ProductService } from '@/services/productService';
+import { refreshScrollAnimations } from '@/lib/scrollAnimations';
 
 const ProductList: FC = () => {
   const [menProducts, setMenProducts] = useState<Product[]>([]);
@@ -22,89 +22,54 @@ const ProductList: FC = () => {
     fetchProducts();
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
-      },
-    },
-  };
+  useEffect(() => {
+    if (menProducts.length === 0 && womenProducts.length === 0) return;
 
-  const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: 60,
-      scale: 0.9,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-  };
+    const timer = setTimeout(() => refreshScrollAnimations(), 50);
+    return () => clearTimeout(timer);
+  }, [menProducts, womenProducts]);
 
   return (
-    <section className="relative h-auto w-full bg-[#e1e1e1] px-[5vw] py-[10vh]">
-      <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[15vh]">
-        <div className="relative flex h-auto w-full flex-col items-center justify-start">
+    <section className="relative w-full bg-surface px-[5vw] py-[10vh]">
+      <div className="relative flex w-full flex-col gap-[12vh]">
+        <div className="relative flex w-full flex-col items-center">
           <h2
-            className="elAnimation font-humane text-[90px] font-light text-[#302F35] uppercase md:text-[15vw]"
+            className="elAnimation font-humane text-[clamp(3rem,15vw,10rem)] font-light text-surface-dark uppercase"
             data-animation="ease-bottom-to-top"
           >
             Men best seller
           </h2>
 
-          <motion.div
-            className="relative grid h-auto w-full grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-10%' }}
+          <div
+            className="elAnimation relative mt-8 grid w-full grid-cols-2 gap-6 md:grid-cols-3 md:gap-8 lg:grid-cols-4"
+            data-animation="ease-stagger-list"
           >
-            {menProducts.map((product, index) => (
-              <motion.div
-                key={`men-${product.id}-${index}`}
-                variants={itemVariants}
-                className="h-full"
-              >
+            {menProducts.map((product) => (
+              <div key={`men-${product.id}`} className="home-rel-product h-full">
                 <ProductCard product={product} />
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
-        <div className="relative flex h-auto w-full flex-col items-center justify-start">
+        <div className="relative flex w-full flex-col items-center">
           <h2
-            className="elAnimation font-humane text-6xl text-[90px] font-light text-[#A9AFA4] uppercase md:text-[15vw]"
+            className="elAnimation font-humane text-[clamp(3rem,15vw,10rem)] font-light text-accent-gray uppercase"
             data-animation="ease-bottom-to-top"
           >
             Women best seller
           </h2>
 
-          <motion.div
-            className="relative grid h-auto w-full grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-10%' }}
+          <div
+            className="elAnimation relative mt-8 grid w-full grid-cols-2 gap-6 md:grid-cols-3 md:gap-8 lg:grid-cols-4"
+            data-animation="ease-stagger-list"
           >
-            {womenProducts.map((product, index) => (
-              <motion.div
-                key={`women-${product.id}-${index}`}
-                variants={itemVariants}
-                className="h-full"
-              >
+            {womenProducts.map((product) => (
+              <div key={`women-${product.id}`} className="home-rel-product h-full">
                 <ProductCard product={product} />
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

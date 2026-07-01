@@ -28,14 +28,14 @@ export default defineConfig({
 
           // Animation libraries
           'gsap-vendor': ['gsap'],
-          'animation-vendor': ['framer-motion', 'lenis'],
+          'animation-vendor': ['lenis'],
 
           // Form libraries
           'form-vendor': ['react-hook-form'],
 
           // UI/Utility libraries
           'ui-vendor': ['react-responsive'],
-          'utils-vendor': ['lodash', 'clsx'],
+          'utils-vendor': ['clsx'],
 
           // Page chunks - group related pages
           'home-chunk': [

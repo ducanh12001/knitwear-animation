@@ -80,7 +80,6 @@ const useCookies = (): UseCookiesReturn => {
         const parsedCookies = parseCookies();
         setCookies(parsedCookies);
         cookiesLoaded.current = true;
-        console.log('Cookies loaded:', parsedCookies);
       } catch (error) {
         console.error('Error loading cookies:', error);
       }

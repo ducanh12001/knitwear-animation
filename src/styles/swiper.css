@@ -1,17 +1,23 @@
-.product-middle .swiper .swiper-pagination {
+.product-middle .swiper .swiper-pagination,
+.product-mobile-swiper .swiper-pagination {
   @apply absolute bottom-[5vw] left-1/2 z-10 flex w-full -translate-x-1/2 items-center justify-center gap-2;
 }
 
-.product-middle .swiper .swiper-pagination .swiper-pagination-bullet {
+.product-middle .swiper .swiper-pagination .swiper-pagination-bullet,
+.product-mobile-swiper .swiper-pagination .swiper-pagination-bullet {
   @apply m-0 flex h-4 w-4 items-center justify-center rounded-full border border-[#fd7453] bg-transparent opacity-100;
 }
 
-.product-middle .swiper .swiper-pagination .swiper-pagination-bullet::after {
+.product-middle .swiper .swiper-pagination .swiper-pagination-bullet::after,
+.product-mobile-swiper .swiper-pagination .swiper-pagination-bullet::after {
   @apply relative h-2 w-2 rounded-full bg-[#fd7453] opacity-0 content-[''];
 }
 
 .product-middle
   .swiper
+  .swiper-pagination
+  .swiper-pagination-bullet.swiper-pagination-bullet-active::after,
+.product-mobile-swiper
   .swiper-pagination
   .swiper-pagination-bullet.swiper-pagination-bullet-active::after {
   opacity: 1;

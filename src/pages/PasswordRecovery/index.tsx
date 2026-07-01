@@ -17,8 +17,8 @@ const PasswordRecovery = () => {
     },
   });
 
-  const onSubmit = (data: PasswordRecoveryForm) => {
-    console.log('Form Data:', data);
+  const onSubmit = () => {
+    // Password recovery API integration goes here
   };
 
   return (

@@ -39,7 +39,7 @@ const ImagesSection: FC<ImagesSectionProps> = ({
         <div className="block-top relative box-border flex h-auto w-full items-start justify-center px-[10vw]">
           <div className="relative flex w-auto flex-col items-start justify-start gap-[5vw]">
             <h2
-              className="elAnimation font-humane text-[80px] leading-[75%] text-[#302F35] uppercase md:text-[15vw]"
+              className="elAnimation font-humane text-[clamp(3rem,15vw,10rem)] leading-[75%] text-surface-dark uppercase"
               data-animation="ease-bottom-to-top"
             >
               {blockTop.title}
@@ -48,7 +48,7 @@ const ImagesSection: FC<ImagesSectionProps> = ({
               className="elAnimation relative flex w-[90%] flex-col items-start justify-start"
               data-animation="ease-bottom-to-top"
             >
-              <p className="relative w-auto text-[3vw] leading-[120%] text-white">
+              <p className="relative w-auto text-base leading-snug text-white md:text-[clamp(1rem,3vw,1.75rem)]">
                 {blockTop.des}
               </p>
             </div>
@@ -107,14 +107,14 @@ const ImagesSection: FC<ImagesSectionProps> = ({
           </div>
           <div className="relative box-border grid w-full px-[5vw] py-[5rem] md:py-[10vw]">
             <p
-              className="elAnimation relative w-full text-[20px] leading-[120%] text-white md:text-[3vw]"
+              className="elAnimation relative w-full text-base leading-snug text-white md:text-[clamp(1rem,3vw,1.75rem)]"
               data-animation="ease-bottom-to-top"
             >
               {blockFull.des}
             </p>
             {blockFull.des2 && (
               <p
-                className="elAnimation relative w-full text-[20px] leading-[120%] text-[#302F35] md:text-[3vw]"
+                className="elAnimation relative w-full text-base leading-snug text-surface-dark md:text-[clamp(1rem,3vw,1.75rem)]"
                 data-animation="ease-bottom-to-top"
               >
                 {blockFull.des2}

@@ -27,7 +27,7 @@ const OkkeWorld: FC = () => {
         </div>
       </section>
       <ImagesSection
-        bgColor="#A9AFA4"
+        bgColor="var(--color-accent-gray)"
         blockTop={{
           title: 'The epitome of italian excellence',
           des: 'OKKE transforms high-performance technical fibers into luxurious garments, knitting a 3D future that embraces craftsmanship and extraordinary functionality. All of our garments are meticulously crafted to welcome your body.',
@@ -60,7 +60,7 @@ const OkkeWorld: FC = () => {
             />
           </div>
           <div className="absolute top-1/2 left-1/2 z-15 -translate-1/2">
-            <h2 className="font-humane text-[90px] leading-[75%] whitespace-nowrap text-white uppercase md:text-[12vw]">
+            <h2 className="font-humane text-[clamp(1.5rem,12vw,8rem)] leading-[75%] text-center whitespace-nowrap text-white uppercase">
               <DecryptedText
                 text="42°54’21.60” N 13°11’42.00”E"
                 animateOn="view"

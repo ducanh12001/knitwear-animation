@@ -9,6 +9,24 @@ header.scrolled-mob {
 }
 
 .dark-mode header.scrolled-mob {
-  background-color: #e1e1e1;
+  background-color: var(--color-surface);
   transition: background-color 0.5s ease-in-out;
+}
+
+@keyframes header-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.header-marquee-track {
+  animation: header-marquee 35s linear infinite;
+  will-change: transform;
+}
+
+.header-marquee:hover .header-marquee-track {
+  animation-play-state: paused;
 }

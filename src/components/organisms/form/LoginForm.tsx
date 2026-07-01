@@ -53,8 +53,8 @@ const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>(
       mode: 'onBlur',
     });
 
-    const onSubmit = (data: LoginFormData) => {
-      console.log('Form Data:', data);
+    const onSubmit = () => {
+      // Login API integration goes here
     };
 
     return (

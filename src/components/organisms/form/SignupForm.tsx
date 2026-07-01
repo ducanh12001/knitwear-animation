@@ -76,8 +76,8 @@ const SignupForm = forwardRef<HTMLFormElement, SignupFormProps>(
       mode: 'onBlur',
     });
 
-    const onSubmit = (data: SignupFormData) => {
-      console.log('Form Data:', data);
+    const onSubmit = () => {
+      // Signup API integration goes here
     };
 
     return (

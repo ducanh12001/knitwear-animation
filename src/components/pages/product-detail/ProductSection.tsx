@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useRef, useState, type FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from '@/lib/gsap';
 import { useMediaQuery } from 'react-responsive';
 
 import useCart from '@/hooks/others/useCart';
 import { useModal } from '@/hooks/others/useModal';
-import { DESKTOP_BREAKPOINT } from '@/constant/breakpoint';
+import { TABLET_BREAKPOINT } from '@/constant/breakpoint';
 import type { Product } from '@/types';
 
 import ProductDetails from '@/components/pages/product-detail/ProductDetails';
@@ -18,22 +17,21 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css';
 
-gsap.registerPlugin(ScrollTrigger);
-
 interface ProductSectionProps {
   product: Product;
   themeColor?: string;
   sectionClass?: string;
 }
 
+const SIZES = ['S', 'M', 'L', 'XL', 'XXL'] as const;
+
 const ProductSection: FC<ProductSectionProps> = ({
   product,
   themeColor = 'var(--color-primary)',
   sectionClass = '',
 }) => {
-  const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
-  const isSP = useMediaQuery({
-    query: `(width < ${DESKTOP_BREAKPOINT}px)`,
+  const isDesktop = useMediaQuery({
+    query: `(min-width: ${TABLET_BREAKPOINT}px)`,
   });
   const { toggleCartModal } = useModal();
   const { addToCart } = useCart();
@@ -55,8 +53,12 @@ const ProductSection: FC<ProductSectionProps> = ({
   }, [product.slides]);
 
   useEffect(() => {
-    if (isSP) return;
-    if (!imagesLoaded) return;
+    imagesLoadedCountRef.current = 0;
+    setImagesLoaded(false);
+  }, [product.id]);
+
+  useEffect(() => {
+    if (!isDesktop) return;
 
     const sectionElement = sectionRef.current;
     const leftElement = productLeftRef.current;
@@ -64,213 +66,184 @@ const ProductSection: FC<ProductSectionProps> = ({
 
     if (!sectionElement || !leftElement || !rightElement) return;
 
-    const leftTrigger = ScrollTrigger.create({
+    const getPinOffset = () => {
+      const header = document.querySelector<HTMLElement>('header.has-banner');
+      return header
+        ? Math.ceil(header.getBoundingClientRect().height) + 16
+        : 100;
+    };
+
+    const pinConfig: ScrollTrigger.Vars = {
       trigger: sectionElement,
-      start: 'top top',
+      start: () => `top top+=${getPinOffset()}`,
       end: 'bottom bottom',
-      pin: leftElement,
       pinSpacing: false,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+    };
+
+    const leftTrigger = ScrollTrigger.create({
+      ...pinConfig,
+      pin: leftElement,
     });
 
     const rightTrigger = ScrollTrigger.create({
-      trigger: sectionElement,
-      start: 'top top',
-      end: 'bottom bottom',
+      ...pinConfig,
       pin: rightElement,
-      pinSpacing: false,
     });
 
+    const refreshId = requestAnimationFrame(() => ScrollTrigger.refresh());
+
     return () => {
+      cancelAnimationFrame(refreshId);
       leftTrigger.kill();
       rightTrigger.kill();
     };
-  }, [isSP, imagesLoaded]);
+  }, [isDesktop, product.id]);
+
+  useEffect(() => {
+    if (!isDesktop || !imagesLoaded) return;
+
+    const refreshId = requestAnimationFrame(() => ScrollTrigger.refresh());
+    return () => cancelAnimationFrame(refreshId);
+  }, [isDesktop, imagesLoaded]);
 
   const handleAddToCart = () => {
     if (selectedSize >= 0) {
-      addToCart(product, sizes[selectedSize], selectedColor, 1);
-      console.log(
-        `Added ${product.title}, size ${sizes[selectedSize]}, color ${
-          product.colors?.[selectedColor]?.hex
-        } to cart`,
-      );
+      addToCart(product, SIZES[selectedSize], selectedColor, 1);
       toggleCartModal(true);
     }
   };
 
-  const handleColorSelect = (index: number): void => {
-    setSelectedColor(index);
-  };
-
-  const handleSizeSelect = (index: number): void => {
-    setSelectedSize(index);
-  };
-
-  const handleColorKeyDown = (
-    e: React.KeyboardEvent<HTMLDivElement>,
-    index: number,
-  ): void => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      handleColorSelect(index);
-    }
-  };
-
-  const handleSizeKeyDown = (
-    e: React.KeyboardEvent<HTMLButtonElement>,
-    index: number,
-  ): void => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      handleSizeSelect(index);
-    }
-  };
+  const selectedColorName =
+    product.colors?.[selectedColor]?.name ?? 'Select color';
 
   return (
     <section
-      className={`product--shop-section relative h-auto w-full ${sectionClass}`}
+      className={`product--shop-section relative w-full pt-[calc(5vh+4.5rem)] pb-10 md:pb-16 ${sectionClass}`}
       ref={sectionRef}
     >
-      <div
-        className="relative flex h-auto w-full flex-col items-start justify-start gap-0 md:grid md:gap-[2rem]"
-        style={{
-          gridTemplateColumns:
-            '1fr calc(1150 * (100vh - (6rem + 5vh)) / 1440) 1fr',
-        }}
-      >
-        {/* Left Column */}
-        <div
-          ref={productLeftRef}
-          className="product-left relative box-border h-auto w-full pt-[6rem] pr-[5vw] pl-[5vw] md:sticky md:!top-[10rem] md:!h-[100vh] md:pt-0 md:pr-0"
-        >
-          <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[3rem]">
-            <div className="product-top relative flex h-auto w-full flex-col items-start justify-start gap-[1rem]">
-              <div className="product-title desktop relative w-full">
-                <h1
-                  className="font-humane leading-full text-[15vw] uppercase md:text-[8vw]"
-                  style={{ color: themeColor }}
-                >
-                  {product.title}
-                </h1>
-              </div>
-            </div>
-            {!isSP && (
-              <>
-                <ProductDetails isMobile={false} />
-                <HeatIndicator isMobile={false} />
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* Middle Column - Images */}
-        <div className="product-middle relative h-auto w-full">
-          <div className="images relative hidden h-auto w-full flex-col items-start justify-start gap-[1.25rem] pt-[calc(6rem+5vh)] md:flex">
-            {product.slides?.map((slide, index) => (
-              <div
-                key={index}
-                className="relative w-full md:w-[calc(1150*(100vh-(6rem+5vh))/1440)]"
+      <div className="mx-auto w-full max-w-[1440px] px-[5vw] lg:px-[4vw]">
+        <div className="relative flex w-full flex-col gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(300px,480px)_minmax(0,1fr)] lg:items-start lg:gap-x-10 xl:gap-x-14">
+          {/* Left — title & details (desktop) */}
+          <div ref={productLeftRef} className="hidden lg:block lg:pt-4">
+            <div className="flex flex-col gap-8 pr-2 xl:gap-10">
+              <h1
+                className="font-humane leading-full text-[clamp(2.5rem,5vw,5.5rem)] uppercase"
+                style={{ color: themeColor }}
               >
-                <img
-                  src={slide.img}
-                  alt={slide.alt}
-                  loading="lazy"
-                  className="block h-full w-full object-cover object-center"
-                  onLoad={handleImageLoaded}
-                />
-              </div>
-            ))}
+                {product.title}
+              </h1>
+              <ProductDetails isMobile={false} />
+              <HeatIndicator isMobile={false} />
+            </div>
           </div>
 
-          <Swiper
-            modules={[Navigation, Pagination]}
-            navigation={{
-              prevEl: '.swiper-button-prev',
-              nextEl: '.swiper-button-next',
-            }}
-            spaceBetween={0}
-            slidesPerView={1}
-            loop={true}
-            className="!block md:!hidden"
-            pagination={{
-              clickable: true,
-              renderBullet: (_, className) =>
-                `<span class="${className} swiper-pagination-bullet"></span>`,
-            }}
-          >
-            {product.slides?.map((slide, index) => (
-              <SwiperSlide key={index}>
-                <img
-                  src={slide.img}
-                  alt={slide.alt}
-                  className="block h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </SwiperSlide>
-            ))}
-            <div className="swiper-button-prev absolute top-1/2 !left-[5vw] !m-0 flex !h-4 !w-4 -translate-y-1/2 rotate-90 cursor-pointer items-center justify-center md:!h-[3rem] md:!w-[3rem]">
-              <div
-                className="bg-primary h-full w-full mask-[url('/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
-                aria-hidden="true"
-              />
-            </div>
-            <div className="swiper-button-next absolute top-1/2 !right-[5vw] !m-0 flex !h-4 !w-4 -translate-y-1/2 -rotate-90 cursor-pointer items-center justify-center md:!h-[3rem] md:!w-[3rem]">
-              <div
-                className="bg-primary h-full w-full mask-[url('/arrow.svg')] mask-no-repeat md:h-[1.5rem] md:w-[1.5rem]"
-                aria-hidden="true"
-              />
-            </div>
-          </Swiper>
-        </div>
-
-        {/* Right Column */}
-        <div
-          ref={productRightRef}
-          className="product-right relative box-border h-auto w-full py-[2rem] pr-[5vw] pl-[5vw] md:sticky md:!top-[10rem] md:!h-[100vh] md:py-0 md:pl-0"
-        >
-          <div className="relative flex h-auto w-full flex-col items-start justify-start gap-[3.75rem]">
-            <div className="product-top relative flex h-auto w-full flex-col items-start justify-start gap-[2rem]">
-              <div className="product-title mobile relative w-full">
-                <h1
-                  className="leading-full font-humane text-center text-[20vw] font-bold uppercase"
-                  style={{ color: themeColor }}
-                >
-                  {product.title}
-                </h1>
-              </div>
-
-              <div className="product-price relative flex h-auto w-full items-center justify-between">
-                <div className="left relative flex h-auto w-auto flex-col items-start justify-end">
-                  {product.price?.sale ? (
-                    <>
-                      <span className="regular leading-full text-secondary line-through">
-                        € {product.price.regular}
-                      </span>
-                      <span className="sale leading-full text-primary text-[2rem]">
-                        € {product.price.sale}
-                      </span>
-                    </>
-                  ) : (
-                    <span className="regular leading-full text-primary text-[2rem]">
-                      € {product.price?.regular}
-                    </span>
-                  )}
+          {/* Center — images */}
+          <div className="product-middle relative w-full lg:mx-auto lg:max-w-[480px]">
+            <div className="images relative hidden flex-col gap-4 lg:flex">
+              {product.slides?.map((slide, index) => (
+                <div key={index} className="relative w-full overflow-hidden">
+                  <img
+                    src={slide.img}
+                    alt={slide.alt}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    className="block aspect-[3/4] w-full object-cover object-center"
+                    onLoad={handleImageLoaded}
+                  />
                 </div>
+              ))}
+            </div>
+
+            <Swiper
+              modules={[Navigation, Pagination]}
+              navigation={{
+                prevEl: '.product-swiper-prev',
+                nextEl: '.product-swiper-next',
+              }}
+              spaceBetween={0}
+              slidesPerView={1}
+              loop={Boolean(product.slides?.length && product.slides.length > 1)}
+              className="product-mobile-swiper !block lg:!hidden"
+              pagination={{
+                clickable: true,
+                renderBullet: (_, className) =>
+                  `<span class="${className} swiper-pagination-bullet"></span>`,
+              }}
+            >
+              {product.slides?.map((slide, index) => (
+                <SwiperSlide key={index}>
+                  <img
+                    src={slide.img}
+                    alt={slide.alt}
+                    className="block aspect-[4/5] w-full object-cover"
+                    loading="lazy"
+                  />
+                </SwiperSlide>
+              ))}
+              <button
+                type="button"
+                className="product-swiper-prev absolute top-1/2 left-3 z-10 flex h-8 w-8 -translate-y-1/2 rotate-90 items-center justify-center"
+                aria-label="Previous image"
+              >
+                <div
+                  className="bg-primary h-full w-full mask-[url('/arrow.svg')] mask-no-repeat"
+                  aria-hidden="true"
+                />
+              </button>
+              <button
+                type="button"
+                className="product-swiper-next absolute top-1/2 right-3 z-10 flex h-8 w-8 -translate-y-1/2 -rotate-90 items-center justify-center"
+                aria-label="Next image"
+              >
+                <div
+                  className="bg-primary h-full w-full mask-[url('/arrow.svg')] mask-no-repeat"
+                  aria-hidden="true"
+                />
+              </button>
+            </Swiper>
+          </div>
+
+          {/* Right — purchase info */}
+          <div ref={productRightRef} className="product-right lg:pt-4 lg:pl-2">
+            <div className="flex flex-col gap-6 md:gap-7">
+              <h1
+                className="font-humane leading-full text-center text-[clamp(2rem,10vw,3.5rem)] uppercase lg:hidden"
+                style={{ color: themeColor }}
+              >
+                {product.title}
+              </h1>
+
+              <div className="flex items-end">
+                {product.price?.sale ? (
+                  <div className="flex flex-col items-start gap-1">
+                    <span className="leading-full text-secondary text-base line-through md:text-lg">
+                      € {product.price.regular}
+                    </span>
+                    <span className="leading-full text-primary text-2xl">
+                      € {product.price.sale}
+                    </span>
+                  </div>
+                ) : (
+                  <span className="leading-full text-primary text-2xl">
+                    € {product.price?.regular}
+                  </span>
+                )}
               </div>
 
-              <div className="product-colors-variations relative flex h-auto w-full flex-col items-start justify-start gap-[1rem]">
-                <span className="leading-full text-primary relative flex h-auto w-full items-center justify-start gap-[0.5rem] text-base font-bold uppercase">
+              <div className="flex flex-col gap-3">
+                <span className="leading-full text-primary flex flex-wrap items-center gap-2 text-sm font-bold uppercase">
                   Color
-                  <span className="font-normal normal-case">Natural/Taupe</span>
+                  <span className="font-normal normal-case">{selectedColorName}</span>
                 </span>
-                <div className="col-list relative flex h-auto w-full items-center justify-start gap-[1rem]">
+                <div className="flex flex-wrap items-center gap-3">
                   {product.colors?.map((item, index) => (
-                    <div
+                    <button
+                      type="button"
                       key={index}
-                      className="product-color relative box-border flex h-[3rem] w-[3rem] items-center justify-center rounded-full xl:h-[4rem] xl:w-[4rem]"
+                      className="flex h-11 w-11 items-center justify-center rounded-full xl:h-12 xl:w-12"
                       aria-label={`Select color ${item.name}`}
-                      role="radio"
-                      aria-checked={selectedColor === index}
+                      aria-pressed={selectedColor === index}
                       style={{
                         backgroundColor:
                           selectedColor === index
@@ -279,14 +252,12 @@ const ProductSection: FC<ProductSectionProps> = ({
                         border:
                           selectedColor === index
                             ? `2px solid ${item.hex}`
-                            : 'none',
+                            : '2px solid transparent',
                       }}
-                      onClick={() => handleColorSelect(index)}
-                      tabIndex={0}
-                      onKeyDown={(e) => handleColorKeyDown(e, index)}
+                      onClick={() => setSelectedColor(index)}
                     >
-                      <div
-                        className="inner h-[2.5rem] w-[2.5rem] rounded-full xl:h-[3.25rem] xl:w-[3.25rem]"
+                      <span
+                        className="block h-9 w-9 rounded-full xl:h-10 xl:w-10"
                         style={{
                           backgroundColor:
                             selectedColor === index
@@ -294,87 +265,75 @@ const ProductSection: FC<ProductSectionProps> = ({
                               : 'transparent',
                         }}
                       />
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
 
-              <div className="product-variations relative flex h-auto w-full flex-col items-start justify-start gap-[1rem]">
-                <div className="top relative flex h-auto w-full items-center justify-between">
-                  <span className="label leading-full text-primary relative flex items-center justify-start gap-[0.5rem] font-bold uppercase">
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center justify-between">
+                  <span className="leading-full text-primary text-sm font-bold uppercase">
                     Size
                   </span>
-                  <button className="sizes-guide-btn relative w-auto">
-                    <span className="font-base leading-full font-bold text-[#302F35] uppercase">
-                      Size chart
-                    </span>
+                  <button
+                    type="button"
+                    className="text-sm font-bold text-surface-dark uppercase"
+                  >
+                    Size chart
                   </button>
                 </div>
-                <div className="row relative flex h-auto w-full flex-col items-start justify-between md:flex-row">
-                  <div
-                    className="variations-list relative flex h-auto w-full flex-wrap items-center justify-start gap-[1rem]"
-                    role="radiogroup"
-                    aria-label="Select size"
-                  >
-                    {sizes.map((size, index) => (
-                      <button
-                        className={`relative box-border flex h-[3rem] w-[3rem] items-center justify-center rounded-full border-2 border-solid transition-all duration-350 ease-in-out xl:h-[4rem] xl:w-[4rem] ${index % 2 === 1 ? 'pointer-events-none opacity-20' : 'cursor-pointer opacity-100'}`}
-                        disabled={index % 2 === 1}
-                        key={index}
-                        onClick={() => handleSizeSelect(index)}
-                        aria-checked={selectedSize === index}
-                        aria-label={`Size ${size}`}
-                        onKeyDown={(e) => handleSizeKeyDown(e, index)}
+                <div
+                  className="flex flex-wrap gap-2.5"
+                  role="radiogroup"
+                  aria-label="Select size"
+                >
+                  {SIZES.map((size, index) => (
+                    <button
+                      type="button"
+                      className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border-2 border-solid transition-all duration-350 ease-in-out"
+                      key={size}
+                      onClick={() => setSelectedSize(index)}
+                      aria-pressed={selectedSize === index}
+                      aria-label={`Size ${size}`}
+                      style={{
+                        borderColor:
+                          selectedSize === index
+                            ? themeColor
+                            : 'var(--color-primary)',
+                      }}
+                    >
+                      <span
+                        className={`flex h-9 w-9 items-center justify-center rounded-full text-xs ${selectedSize === index ? 'text-white' : 'text-primary'}`}
                         style={{
-                          borderColor:
-                            selectedSize === index
-                              ? themeColor
-                              : 'var(--color-primary)',
+                          backgroundColor:
+                            selectedSize === index ? themeColor : 'transparent',
                         }}
                       >
-                        <div
-                          className={`leading-full relative flex h-[2.5rem] w-[2.5rem] items-center justify-center rounded-full text-xs transition-colors duration-350 ease-in-out xl:h-[3.25rem] xl:w-[3.25rem] xl:text-base ${selectedSize === index ? `text-white` : 'text-primary'}`}
-                          style={{
-                            backgroundColor:
-                              selectedSize === index
-                                ? themeColor
-                                : 'transparent',
-                          }}
-                        >
-                          {size}
-                        </div>
-                      </button>
-                    ))}
-                  </div>
+                        {size}
+                      </span>
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              <div className="product-description relative w-full">
-                <p className="text-primary leading-full">
-                  {product.description}
-                </p>
-              </div>
-            </div>
+              <p className="text-primary max-w-prose text-sm leading-relaxed md:text-base">
+                {product.description}
+              </p>
 
-            <div className="product-bottom relative flex h-auto w-full flex-col items-start justify-start gap-[1rem]">
-              <div className="product-button relative flex h-auto w-full items-start justify-start">
-                <Button
-                  disabled={selectedSize < 0}
-                  className="font-bold uppercase"
-                  onClick={handleAddToCart}
-                  bgColor={themeColor}
-                >
-                  Add to Cart
-                </Button>
-              </div>
-            </div>
+              <Button
+                disabled={selectedSize < 0}
+                className="w-full font-bold uppercase sm:w-auto"
+                onClick={handleAddToCart}
+                bgColor={themeColor}
+              >
+                Add to Cart
+              </Button>
 
-            {isSP && (
-              <>
+              <div className="flex flex-col gap-6 border-t border-primary/10 pt-6 lg:hidden">
                 <ProductDetails isMobile={true} />
                 <HeatIndicator isMobile={true} />
-              </>
-            )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -53,7 +53,7 @@ const CartProvider = ({ children }: ProviderProps) => {
         {
           id: product.id,
           title: product.title,
-          price: product.price?.sale || product.price?.regular,
+          price: String(product.price?.sale ?? product.price?.regular ?? '0'),
           image: product.image || '',
           size,
           color: color,

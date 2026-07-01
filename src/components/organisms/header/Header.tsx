@@ -1,11 +1,12 @@
 import React, { useRef, useMemo, type FC } from 'react';
-import { Link, useLocation } from 'react-router';
+import { Link } from 'react-router';
 
 import { whiteRoutes } from '@/constant/routes';
+import { usePageTransitionContext } from '@/contexts/PageTransitionContext';
 import { useHeaderAnimation } from '@/hooks/others/useHeaderAnimation';
 import { useModal } from '@/hooks/others/useModal';
 import useCart from '@/hooks/others/useCart';
-import ScrollVelocity from '@/components/animations/ScrollVelocity';
+import PromoMarquee from '@/components/animations/PromoMarquee';
 import { Breadcrumb } from '@/components/others/Breadcrumb';
 import type { MenuLink } from '@/types';
 import { useModalAwareNavigation } from '@/hooks/others/useModalAwareNavigation';
@@ -29,7 +30,7 @@ const MENU_LINKS: MenuLink[] = [
 ];
 
 const Header: FC = () => {
-  const location = useLocation();
+  const { displayPathname } = usePageTransitionContext();
   const { navigate } = useModalAwareNavigation();
   const { modalState, toggleCartModal, toggleLoginModal, toggleMenu } =
     useModal();
@@ -38,10 +39,10 @@ const Header: FC = () => {
   const headerRef = useRef<HTMLElement>(null);
 
   const textColor: string = useMemo(() => {
-    return whiteRoutes.some((route) => location.pathname === route)
+    return whiteRoutes.some((route) => displayPathname === route)
       ? '#fff'
       : '#1d1d1d';
-  }, [location.pathname]);
+  }, [displayPathname]);
 
   useHeaderAnimation(modalState, textColor, headerRef);
 
@@ -58,11 +59,7 @@ const Header: FC = () => {
       className="has-banner fixed top-0 left-0 z-145 box-border flex h-auto w-full translate-y-0 flex-col gap-[calc((5vh-1rem)/2)] pt-[calc((5vh-1rem)/2)] transition-transform duration-500 ease-in-out"
       ref={headerRef}
     >
-      <ScrollVelocity
-        texts={[
-          'Okke Promo Launch 50% off – Free shipping for orders over 350€',
-        ]}
-      />
+      <PromoMarquee text="Okke Promo Launch 50% off – Free shipping for orders over 350€" />
 
       <div className="header-wrapper relative box-border flex h-auto w-full items-start justify-between gap-4 px-[5vw] text-[1.2rem]">
         <div className="left relative flex w-auto items-start justify-start gap-[1.5rem] xl:gap-[6rem]">
@@ -140,7 +137,7 @@ const Header: FC = () => {
             </ul>
             <Breadcrumb
               textStyle={textStyle}
-              isHomePage={location.pathname === '/'}
+              isHomePage={displayPathname === '/'}
             />
           </div>
         </div>
