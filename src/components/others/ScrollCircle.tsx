@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { useMediaQuery } from 'react-responsive';
 import { useLenis } from 'lenis/react';
@@ -20,23 +20,40 @@ const ScrollCircle: React.FC = () => {
   const scrollTweenRef = useRef<gsap.core.Tween | null>(null);
   const isScrollingToTopRef = useRef(false);
 
+  const setArrowRotation = useCallback((rotation: number) => {
+    const arrow = arrowRef.current;
+    if (!arrow || rotation === currentRotation.current) return;
+
+    arrowTweenRef.current?.kill();
+    arrowTweenRef.current = gsap.to(arrow, {
+      rotation,
+      duration: 0.3,
+      overwrite: true,
+    });
+    currentRotation.current = rotation;
+  }, []);
+
+  const setHeaderScrolled = useCallback(
+    (scrolled: boolean) => {
+      const header = document.querySelector('header.has-banner');
+      const scrolledClass = isSP ? 'scrolled-mob' : 'scrolled';
+      if (scrolled) {
+        header?.classList.add(scrolledClass);
+      } else {
+        header?.classList.remove(scrolledClass);
+      }
+    },
+    [isSP],
+  );
+
   const scrollToTop = () => {
     if (!lenis || lenis.scroll <= 0) return;
-
-    const header = document.querySelector('header.has-banner');
-    const scrolledClass = isSP ? 'scrolled-mob' : 'scrolled';
 
     scrollTweenRef.current?.kill();
     isScrollingToTopRef.current = true;
 
-    header?.classList.remove(scrolledClass);
-    arrowTweenRef.current?.kill();
-    arrowTweenRef.current = gsap.to(arrowRef.current, {
-      rotation: 180,
-      duration: 0.3,
-      overwrite: true,
-    });
-    currentRotation.current = 180;
+    setHeaderScrolled(false);
+    setArrowRotation(180);
 
     lenis.scrollTo(lenis.scroll, { immediate: true, force: true });
 
@@ -49,19 +66,13 @@ const ScrollCircle: React.FC = () => {
       onUpdate: () => {
         lenis.scrollTo(scrollProxy.y, { immediate: true, force: true });
         ScrollTrigger.update();
-        header?.classList.remove(scrolledClass);
+        setHeaderScrolled(false);
       },
       onComplete: () => {
         lenis.scrollTo(0, { immediate: true, force: true });
         ScrollTrigger.refresh();
-        header?.classList.remove(scrolledClass);
-        arrowTweenRef.current?.kill();
-        arrowTweenRef.current = gsap.to(arrowRef.current, {
-          rotation: 0,
-          duration: 0.3,
-          overwrite: true,
-        });
-        currentRotation.current = 0;
+        setHeaderScrolled(false);
+        setArrowRotation(0);
         isScrollingToTopRef.current = false;
         scrollTweenRef.current = null;
       },
@@ -73,26 +84,12 @@ const ScrollCircle: React.FC = () => {
 
     const circle = circleRef.current;
     const arrow = arrowRef.current;
-    const header = document.querySelector('header.has-banner');
-    const scrolledClass = isSP ? 'scrolled-mob' : 'scrolled';
 
     if (!circle || !arrow) return;
 
     const updateProgress = (scroll: number, limit: number) => {
       const progress = limit > 0 ? Math.min(Math.max(scroll / limit, 0), 1) : 0;
       circle.style.strokeDashoffset = String(CIRCUMFERENCE * (1 - progress));
-    };
-
-    const setArrowRotation = (rotation: number) => {
-      if (rotation === currentRotation.current) return;
-
-      arrowTweenRef.current?.kill();
-      arrowTweenRef.current = gsap.to(arrow, {
-        rotation,
-        duration: 0.3,
-        overwrite: true,
-      });
-      currentRotation.current = rotation;
     };
 
     const handleLenisScroll = (lenisInstance: Lenis) => {
@@ -103,7 +100,7 @@ const ScrollCircle: React.FC = () => {
       if (isScrollingToTopRef.current) {
         if (scroll <= 0) {
           setArrowRotation(0);
-          header?.classList.remove(scrolledClass);
+          setHeaderScrolled(false);
           isScrollingToTopRef.current = false;
         }
         return;
@@ -111,7 +108,7 @@ const ScrollCircle: React.FC = () => {
 
       if (scroll <= 0) {
         setArrowRotation(0);
-        header?.classList.remove(scrolledClass);
+        setHeaderScrolled(false);
         return;
       }
 
@@ -122,10 +119,10 @@ const ScrollCircle: React.FC = () => {
 
       if (direction === 1) {
         setArrowRotation(0);
-        header?.classList.add(scrolledClass);
+        setHeaderScrolled(true);
       } else if (direction === -1) {
         setArrowRotation(180);
-        header?.classList.remove(scrolledClass);
+        setHeaderScrolled(false);
       }
     };
 
@@ -142,7 +139,7 @@ const ScrollCircle: React.FC = () => {
       scrollTweenRef.current?.kill();
       isScrollingToTopRef.current = false;
     };
-  }, [isSP, lenis]);
+  }, [lenis, setArrowRotation, setHeaderScrolled]);
 
   return (
     <div

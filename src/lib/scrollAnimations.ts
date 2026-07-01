@@ -15,7 +15,8 @@ let refreshCleanup: AnimationCleanup | null = null;
 const killCleanup = (cleanup: AnimationCleanup | null) => {
   if (!cleanup) return;
   cleanup.animations.forEach((animation) => animation.kill());
-  cleanup.triggers.forEach((trigger) => trigger.kill());
+  cleanup.animations.length = 0;
+  cleanup.triggers.length = 0;
 };
 
 const scrollTriggerConfig = (
@@ -60,7 +61,6 @@ export const animateElement = (
 
   const trackTween = (tween: gsap.core.Tween) => {
     cleanup.animations.push(tween);
-    if (tween.scrollTrigger) cleanup.triggers.push(tween.scrollTrigger);
     return tween;
   };
 
@@ -303,6 +303,11 @@ export const refreshScrollAnimations = (): void => {
     });
 
   killCleanup(refreshCleanup);
+
+  main.querySelectorAll(`[${PENDING_ATTR}]`).forEach((el) => {
+    el.removeAttribute(PENDING_ATTR);
+  });
+
   refreshCleanup = { animations: [], triggers: [] };
 
   main
